@@ -48,8 +48,8 @@ namespace FurnitureRental
 
             CurrentUser.Login(employee);
 
-            Form1 mainForm = new Form1();
-            mainForm.Show();
+            //Form1 mainForm = new Form1();
+            //mainForm.Show();
 
             Hide();
         }
