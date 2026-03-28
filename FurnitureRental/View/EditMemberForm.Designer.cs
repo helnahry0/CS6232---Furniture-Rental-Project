@@ -54,10 +54,10 @@ namespace FurnitureRental.View
             // lblMemberID
             // 
             lblMemberID.AutoSize = true;
-            lblMemberID.Font = new Font("Segoe UI", 9.75F);
+            lblMemberID.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblMemberID.Location = new Point(48, 25);
             lblMemberID.Name = "lblMemberID";
-            lblMemberID.Size = new Size(77, 17);
+            lblMemberID.Size = new Size(79, 17);
             lblMemberID.TabIndex = 0;
             lblMemberID.Text = "Member ID:";
             lblMemberID.Click += label1_Click;
@@ -65,80 +65,80 @@ namespace FurnitureRental.View
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Font = new Font("Segoe UI", 9.75F);
+            lblFirstName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblFirstName.Location = new Point(48, 68);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(74, 17);
+            lblFirstName.Size = new Size(77, 17);
             lblFirstName.TabIndex = 1;
             lblFirstName.Text = "First Name:";
             // 
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Font = new Font("Segoe UI", 9.75F);
+            lblLastName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblLastName.Location = new Point(49, 112);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(73, 17);
+            lblLastName.Size = new Size(75, 17);
             lblLastName.TabIndex = 2;
             lblLastName.Text = "Last Name:";
             // 
             // lblGender
             // 
             lblGender.AutoSize = true;
-            lblGender.Font = new Font("Segoe UI", 9.75F);
+            lblGender.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblGender.Location = new Point(50, 156);
             lblGender.Name = "lblGender";
-            lblGender.Size = new Size(54, 17);
+            lblGender.Size = new Size(56, 17);
             lblGender.TabIndex = 3;
             lblGender.Text = "Gender:";
             // 
             // lblDOB
             // 
             lblDOB.AutoSize = true;
-            lblDOB.Font = new Font("Segoe UI", 9.75F);
+            lblDOB.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblDOB.Location = new Point(54, 202);
             lblDOB.Name = "lblDOB";
-            lblDOB.Size = new Size(37, 17);
+            lblDOB.Size = new Size(38, 17);
             lblDOB.TabIndex = 4;
             lblDOB.Text = "DOB:";
             // 
             // lblAddress
             // 
             lblAddress.AutoSize = true;
-            lblAddress.Font = new Font("Segoe UI", 9.75F);
+            lblAddress.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblAddress.Location = new Point(54, 246);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(59, 17);
+            lblAddress.Size = new Size(60, 17);
             lblAddress.TabIndex = 5;
             lblAddress.Text = "Address:";
             // 
             // lblCity
             // 
             lblCity.AutoSize = true;
-            lblCity.Font = new Font("Segoe UI", 9.75F);
+            lblCity.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblCity.Location = new Point(54, 284);
             lblCity.Name = "lblCity";
-            lblCity.Size = new Size(32, 17);
+            lblCity.Size = new Size(34, 17);
             lblCity.TabIndex = 6;
             lblCity.Text = "City:";
             // 
             // lblState
             // 
             lblState.AutoSize = true;
-            lblState.Font = new Font("Segoe UI", 9.75F);
+            lblState.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblState.Location = new Point(54, 320);
             lblState.Name = "lblState";
-            lblState.Size = new Size(40, 17);
+            lblState.Size = new Size(42, 17);
             lblState.TabIndex = 7;
             lblState.Text = "State:";
             // 
             // lblPhone
             // 
             lblPhone.AutoSize = true;
-            lblPhone.Font = new Font("Segoe UI", 9.75F);
+            lblPhone.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblPhone.Location = new Point(54, 356);
             lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(47, 17);
+            lblPhone.Size = new Size(50, 17);
             lblPhone.TabIndex = 8;
             lblPhone.Text = "Phone:";
             // 
@@ -146,10 +146,10 @@ namespace FurnitureRental.View
             // 
             btnSave.BackColor = SystemColors.ActiveBorder;
             btnSave.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
-            btnSave.ForeColor = SystemColors.ActiveCaptionText;
-            btnSave.Location = new Point(119, 395);
+            btnSave.ForeColor = Color.Black;
+            btnSave.Location = new Point(118, 392);
             btnSave.Name = "btnSave";
-            btnSave.Size = new Size(83, 29);
+            btnSave.Size = new Size(83, 38);
             btnSave.TabIndex = 20;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
@@ -160,9 +160,9 @@ namespace FurnitureRental.View
             btnCancel.BackColor = SystemColors.ActiveBorder;
             btnCancel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
             btnCancel.ForeColor = SystemColors.ActiveCaptionText;
-            btnCancel.Location = new Point(249, 392);
+            btnCancel.Location = new Point(250, 392);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(80, 32);
+            btnCancel.Size = new Size(80, 38);
             btnCancel.TabIndex = 21;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
