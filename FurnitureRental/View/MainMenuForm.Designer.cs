@@ -31,6 +31,7 @@
             tabControlMainform = new TabControl();
             MemberSearch = new TabPage();
             FurnitureSearch = new TabPage();
+            CreateMember = new TabPage();
             Cart = new TabPage();
             Returns = new TabPage();
             label1 = new Label();
@@ -42,6 +43,7 @@
             // tabControlMainform
             // 
             tabControlMainform.Controls.Add(MemberSearch);
+            tabControlMainform.Controls.Add(CreateMember);
             tabControlMainform.Controls.Add(FurnitureSearch);
             tabControlMainform.Controls.Add(Cart);
             tabControlMainform.Controls.Add(Returns);
@@ -73,6 +75,16 @@
             FurnitureSearch.TabIndex = 1;
             FurnitureSearch.Text = "Furniture Search";
             FurnitureSearch.UseVisualStyleBackColor = true;
+            // 
+            // CreateMember
+            // 
+            CreateMember.Location = new Point(4, 29);
+            CreateMember.Name = "CreateMember";
+            CreateMember.Padding = new Padding(3);
+            CreateMember.Size = new Size(772, 319);
+            CreateMember.TabIndex = 4;
+            CreateMember.Text = "Create Member";
+            CreateMember.UseVisualStyleBackColor = true;
             // 
             // Cart
             // 
@@ -152,5 +164,6 @@
         private LinkLabel lnkLogout;
         private TabPage Cart;
         private TabPage Returns;
+        private TabPage CreateMember;
     }
 }
