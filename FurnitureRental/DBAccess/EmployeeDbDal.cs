@@ -3,7 +3,7 @@ using Microsoft.Data.SqlClient;
 using System;
 using System.Data;
 
-namespace FurnitureRental.DBAcess
+namespace FurnitureRental.DBAccess
 {
     public class EmployeeDbDal
     {
