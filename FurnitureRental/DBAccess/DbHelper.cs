@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace FurnitureRental.DBAcess
+namespace FurnitureRental.DBAccess
 {
     public static class DbHelper
     {
