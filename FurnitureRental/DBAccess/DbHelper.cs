@@ -5,6 +5,6 @@ namespace FurnitureRental.DBAccess
     public static class DbHelper
     {
         public static string ConnectionString =>
-            ConfigurationManager.ConnectionStrings["FurnitureRentalDb"].ConnectionString;
+            ConfigurationManager.ConnectionStrings["FurnitureRentalDB"].ConnectionString;
     }
 }

@@ -1,8 +1,6 @@
-﻿using FurnitureRental.DBAcess;
+﻿using FurnitureRental.DBAccess;
 using FurnitureRental.Model;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Windows.Forms;
+using FurnitureRental.View;
 
 namespace FurnitureRental
 {
@@ -16,7 +14,6 @@ namespace FurnitureRental
             txtPassword.UseSystemPasswordChar = true;
             lblError.Text = string.Empty;
         }
-
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
@@ -38,20 +35,25 @@ namespace FurnitureRental
 
             Employee? employee = employeeDbDal.AuthenticateEmployee(username, password);
 
-            if (employee == null)
+            if (employee != null)
+            {
+                CurrentUser.Login(employee);
+
+                MainMenuForm mainForm = new MainMenuForm();
+                mainForm.Show();
+                this.Hide();
+            }
+            else
             {
                 lblError.Text = "Invalid username or password.";
                 txtPassword.Clear();
                 txtPassword.Focus();
-                return;
             }
+        }
 
-            CurrentUser.Login(employee);
-
-            //Form1 mainForm = new Form1();
-            //mainForm.Show();
-
-            Hide();
+        private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

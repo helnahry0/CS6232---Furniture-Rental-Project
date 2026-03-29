@@ -23,66 +23,83 @@
 
         private void InitializeComponent()
         {
-            lblTitle = new System.Windows.Forms.Label();
-            lblUsername = new System.Windows.Forms.Label();
-            lblPassword = new System.Windows.Forms.Label();
-            lblError = new System.Windows.Forms.Label();
-            txtUsername = new System.Windows.Forms.TextBox();
-            txtPassword = new System.Windows.Forms.TextBox();
-            btnLogin = new System.Windows.Forms.Button();
+            lblTitle = new Label();
+            lblUsername = new Label();
+            lblPassword = new Label();
+            lblError = new Label();
+            txtUsername = new TextBox();
+            txtPassword = new TextBox();
+            btnLogin = new Button();
             SuspendLayout();
-
+            // 
+            // lblTitle
+            // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new System.Drawing.Font("Segoe UI", 16F, System.Drawing.FontStyle.Bold);
-            lblTitle.Location = new System.Drawing.Point(92, 24);
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
+            lblTitle.Location = new Point(92, 24);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new System.Drawing.Size(176, 30);
+            lblTitle.Size = new Size(177, 30);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Employee Login";
-
+            // 
+            // lblUsername
+            // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new System.Drawing.Point(38, 84);
+            lblUsername.Location = new Point(38, 84);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new System.Drawing.Size(63, 15);
+            lblUsername.Size = new Size(63, 15);
             lblUsername.TabIndex = 1;
             lblUsername.Text = "Username:";
-
-            txtUsername.Location = new System.Drawing.Point(122, 81);
-            txtUsername.Name = "txtUsername";
-            txtUsername.Size = new System.Drawing.Size(180, 23);
-            txtUsername.TabIndex = 2;
-
+            // 
+            // lblPassword
+            // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new System.Drawing.Point(38, 123);
+            lblPassword.Location = new Point(38, 123);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new System.Drawing.Size(60, 15);
+            lblPassword.Size = new Size(60, 15);
             lblPassword.TabIndex = 3;
             lblPassword.Text = "Password:";
-
-            txtPassword.Location = new System.Drawing.Point(122, 120);
+            // 
+            // lblError
+            // 
+            lblError.AutoSize = true;
+            lblError.ForeColor = Color.Red;
+            lblError.Location = new Point(38, 212);
+            lblError.Name = "lblError";
+            lblError.Size = new Size(48, 15);
+            lblError.TabIndex = 6;
+            lblError.Text = "lbl Error";
+            // 
+            // txtUsername
+            // 
+            txtUsername.Location = new Point(122, 81);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(180, 23);
+            txtUsername.TabIndex = 2;
+            // 
+            // txtPassword
+            // 
+            txtPassword.Location = new Point(122, 120);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new System.Drawing.Size(180, 23);
+            txtPassword.Size = new Size(180, 23);
             txtPassword.TabIndex = 4;
-
-            btnLogin.Location = new System.Drawing.Point(122, 162);
+            // 
+            // btnLogin
+            // 
+            btnLogin.Location = new Point(122, 162);
             btnLogin.Name = "btnLogin";
-            btnLogin.Size = new System.Drawing.Size(100, 32);
+            btnLogin.Size = new Size(100, 32);
             btnLogin.TabIndex = 5;
             btnLogin.Text = "Login";
             btnLogin.UseVisualStyleBackColor = true;
             btnLogin.Click += btnLogin_Click;
-
-            lblError.AutoSize = true;
-            lblError.ForeColor = System.Drawing.Color.Red;
-            lblError.Location = new System.Drawing.Point(38, 212);
-            lblError.Name = "lblError";
-            lblError.Size = new System.Drawing.Size(0, 15);
-            lblError.TabIndex = 6;
-
+            // 
+            // LoginForm
+            // 
             AcceptButton = btnLogin;
-            AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(356, 253);
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(356, 253);
             Controls.Add(lblError);
             Controls.Add(btnLogin);
             Controls.Add(txtPassword);
@@ -91,8 +108,9 @@
             Controls.Add(lblUsername);
             Controls.Add(lblTitle);
             Name = "LoginForm";
-            StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Login";
+            FormClosed += LoginForm_FormClosed;
             ResumeLayout(false);
             PerformLayout();
         }
