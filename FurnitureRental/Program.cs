@@ -1,3 +1,5 @@
+using FurnitureRental.View;
+
 namespace FurnitureRental
 {
     internal static class Program
@@ -12,6 +14,7 @@ namespace FurnitureRental
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new LoginForm());
+            //Application.Run(new CreateMemberForm());
         }
     }
 }
