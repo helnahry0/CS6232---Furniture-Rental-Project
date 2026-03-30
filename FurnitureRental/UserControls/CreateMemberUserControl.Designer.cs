@@ -55,25 +55,25 @@
             // 
             // ClearButton
             // 
-            ClearButton.Location = new Point(491, 441);
+            ClearButton.Location = new Point(491, 409);
             ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(112, 29);
+            ClearButton.Size = new Size(112, 39);
             ClearButton.TabIndex = 12;
             ClearButton.Text = "Clear";
             ClearButton.UseVisualStyleBackColor = true;
             // 
             // CreateButton
             // 
-            CreateButton.Location = new Point(239, 441);
+            CreateButton.Location = new Point(239, 409);
             CreateButton.Name = "CreateButton";
-            CreateButton.Size = new Size(179, 29);
+            CreateButton.Size = new Size(179, 39);
             CreateButton.TabIndex = 11;
             CreateButton.Text = "Create Member";
             CreateButton.UseVisualStyleBackColor = true;
             // 
             // ZipTextBox
             // 
-            ZipTextBox.Location = new Point(239, 390);
+            ZipTextBox.Location = new Point(239, 367);
             ZipTextBox.Name = "ZipTextBox";
             ZipTextBox.Size = new Size(364, 27);
             ZipTextBox.TabIndex = 10;
@@ -82,7 +82,7 @@
             // 
             ZipLabel.AutoSize = true;
             ZipLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            ZipLabel.Location = new Point(170, 393);
+            ZipLabel.Location = new Point(170, 370);
             ZipLabel.Name = "ZipLabel";
             ZipLabel.Size = new Size(35, 20);
             ZipLabel.TabIndex = 42;
@@ -90,7 +90,7 @@
             // 
             // StateTextBox
             // 
-            StateTextBox.Location = new Point(239, 357);
+            StateTextBox.Location = new Point(239, 334);
             StateTextBox.Name = "StateTextBox";
             StateTextBox.Size = new Size(364, 27);
             StateTextBox.TabIndex = 9;
@@ -99,7 +99,7 @@
             // 
             StateLabel.AutoSize = true;
             StateLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            StateLabel.Location = new Point(170, 360);
+            StateLabel.Location = new Point(170, 337);
             StateLabel.Name = "StateLabel";
             StateLabel.Size = new Size(49, 20);
             StateLabel.TabIndex = 40;
@@ -107,7 +107,7 @@
             // 
             // CityTextBox
             // 
-            CityTextBox.Location = new Point(239, 324);
+            CityTextBox.Location = new Point(239, 301);
             CityTextBox.Name = "CityTextBox";
             CityTextBox.Size = new Size(364, 27);
             CityTextBox.TabIndex = 8;
@@ -116,7 +116,7 @@
             // 
             CityLabel.AutoSize = true;
             CityLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            CityLabel.Location = new Point(170, 327);
+            CityLabel.Location = new Point(170, 304);
             CityLabel.Name = "CityLabel";
             CityLabel.Size = new Size(40, 20);
             CityLabel.TabIndex = 38;
@@ -124,7 +124,7 @@
             // 
             // Address2TextBox
             // 
-            Address2TextBox.Location = new Point(239, 291);
+            Address2TextBox.Location = new Point(239, 268);
             Address2TextBox.Name = "Address2TextBox";
             Address2TextBox.Size = new Size(364, 27);
             Address2TextBox.TabIndex = 7;
@@ -133,7 +133,7 @@
             // 
             Address2Label.AutoSize = true;
             Address2Label.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            Address2Label.Location = new Point(130, 294);
+            Address2Label.Location = new Point(130, 271);
             Address2Label.Name = "Address2Label";
             Address2Label.Size = new Size(83, 20);
             Address2Label.TabIndex = 36;
@@ -141,7 +141,7 @@
             // 
             // Address1TextBox
             // 
-            Address1TextBox.Location = new Point(239, 258);
+            Address1TextBox.Location = new Point(239, 235);
             Address1TextBox.Name = "Address1TextBox";
             Address1TextBox.Size = new Size(364, 27);
             Address1TextBox.TabIndex = 6;
@@ -150,7 +150,7 @@
             // 
             Address1Label.AutoSize = true;
             Address1Label.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            Address1Label.Location = new Point(130, 261);
+            Address1Label.Location = new Point(130, 238);
             Address1Label.Name = "Address1Label";
             Address1Label.Size = new Size(83, 20);
             Address1Label.TabIndex = 34;
@@ -159,7 +159,7 @@
             // SexComboBox
             // 
             SexComboBox.FormattingEnabled = true;
-            SexComboBox.Location = new Point(239, 181);
+            SexComboBox.Location = new Point(239, 158);
             SexComboBox.Name = "SexComboBox";
             SexComboBox.Size = new Size(295, 28);
             SexComboBox.TabIndex = 4;
@@ -168,7 +168,7 @@
             // 
             SexLabel.AutoSize = true;
             SexLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            SexLabel.Location = new Point(172, 184);
+            SexLabel.Location = new Point(172, 161);
             SexLabel.Name = "SexLabel";
             SexLabel.Size = new Size(37, 20);
             SexLabel.TabIndex = 30;
@@ -178,7 +178,7 @@
             // 
             PhoneNumberLabel.AutoSize = true;
             PhoneNumberLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            PhoneNumberLabel.Location = new Point(97, 219);
+            PhoneNumberLabel.Location = new Point(97, 196);
             PhoneNumberLabel.Name = "PhoneNumberLabel";
             PhoneNumberLabel.Size = new Size(120, 20);
             PhoneNumberLabel.TabIndex = 32;
@@ -189,7 +189,7 @@
             DobDateTimePicker.Checked = false;
             DobDateTimePicker.CustomFormat = "yyyy-MM-dd";
             DobDateTimePicker.Format = DateTimePickerFormat.Custom;
-            DobDateTimePicker.Location = new Point(239, 148);
+            DobDateTimePicker.Location = new Point(239, 125);
             DobDateTimePicker.MaxDate = new DateTime(2200, 12, 31, 0, 0, 0, 0);
             DobDateTimePicker.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             DobDateTimePicker.Name = "DobDateTimePicker";
@@ -200,7 +200,7 @@
             // 
             DobLabel.AutoSize = true;
             DobLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            DobLabel.Location = new Point(155, 158);
+            DobLabel.Location = new Point(155, 135);
             DobLabel.Name = "DobLabel";
             DobLabel.Size = new Size(55, 20);
             DobLabel.TabIndex = 28;
@@ -208,7 +208,7 @@
             // 
             // LastNameTextBox
             // 
-            LastNameTextBox.Location = new Point(239, 112);
+            LastNameTextBox.Location = new Point(239, 89);
             LastNameTextBox.Name = "LastNameTextBox";
             LastNameTextBox.Size = new Size(364, 27);
             LastNameTextBox.TabIndex = 2;
@@ -217,7 +217,7 @@
             // 
             LastNameLabel.AutoSize = true;
             LastNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            LastNameLabel.Location = new Point(125, 116);
+            LastNameLabel.Location = new Point(125, 93);
             LastNameLabel.Name = "LastNameLabel";
             LastNameLabel.Size = new Size(88, 20);
             LastNameLabel.TabIndex = 26;
@@ -225,7 +225,7 @@
             // 
             // FirstNameTextBox
             // 
-            FirstNameTextBox.Location = new Point(239, 75);
+            FirstNameTextBox.Location = new Point(239, 52);
             FirstNameTextBox.Name = "FirstNameTextBox";
             FirstNameTextBox.Size = new Size(364, 27);
             FirstNameTextBox.TabIndex = 1;
@@ -234,7 +234,7 @@
             // 
             FirstNameLabel.AutoSize = true;
             FirstNameLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            FirstNameLabel.Location = new Point(125, 79);
+            FirstNameLabel.Location = new Point(125, 56);
             FirstNameLabel.Name = "FirstNameLabel";
             FirstNameLabel.Size = new Size(90, 20);
             FirstNameLabel.TabIndex = 24;
@@ -244,7 +244,7 @@
             // 
             RegMemberLabel.AutoSize = true;
             RegMemberLabel.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
-            RegMemberLabel.Location = new Point(64, 44);
+            RegMemberLabel.Location = new Point(64, 21);
             RegMemberLabel.Name = "RegMemberLabel";
             RegMemberLabel.Size = new Size(183, 20);
             RegMemberLabel.TabIndex = 23;
@@ -252,7 +252,7 @@
             // 
             // PhoneNumberMaskedTextBox
             // 
-            PhoneNumberMaskedTextBox.Location = new Point(239, 219);
+            PhoneNumberMaskedTextBox.Location = new Point(239, 196);
             PhoneNumberMaskedTextBox.Name = "PhoneNumberMaskedTextBox";
             PhoneNumberMaskedTextBox.Size = new Size(364, 27);
             PhoneNumberMaskedTextBox.TabIndex = 5;
