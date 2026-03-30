@@ -188,6 +188,57 @@ namespace FurnitureRental.DBAccess
             return members;
         }
 
+        public List<Member> GetAllMembers()
+        {
+            const string query = @"
+        SELECT
+            member_id,
+            first_name,
+            last_name,
+            sex,
+            dob,
+            phone,
+            address1,
+            address2,
+            city,
+            state,
+            zip
+        FROM dbo.Member
+        ORDER BY last_name, first_name;";
+
+            List<Member> members = new List<Member>();
+
+            using SqlConnection connection =
+                new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
+            using SqlCommand command = new SqlCommand(query, connection);
+
+            connection.Open();
+
+            using SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                members.Add(new Member
+                {
+                    MemberId = Convert.ToInt32(reader["member_id"]),
+                    FirstName = Convert.ToString(reader["first_name"]) ?? string.Empty,
+                    LastName = Convert.ToString(reader["last_name"]) ?? string.Empty,
+                    Sex = Convert.ToString(reader["sex"]) ?? string.Empty,
+                    Dob = Convert.ToDateTime(reader["dob"]),
+                    Phone = Convert.ToString(reader["phone"]) ?? string.Empty,
+                    Address1 = Convert.ToString(reader["address1"]) ?? string.Empty,
+                    Address2 = reader["address2"] == DBNull.Value
+                        ? string.Empty
+                        : Convert.ToString(reader["address2"]) ?? string.Empty,
+                    City = Convert.ToString(reader["city"]) ?? string.Empty,
+                    State = Convert.ToString(reader["state"]) ?? string.Empty,
+                    Zip = Convert.ToString(reader["zip"]) ?? string.Empty
+                });
+            }
+
+            return members;
+        }
+
         /// <summary>
         /// Updates the member.
         /// </summary>

@@ -16,6 +16,7 @@ namespace FurnitureRental.UserControls
             radMemberId.Checked = true;
             UpdateSearchMode();
             ConfigureMemberGrid();
+            LoadAllMembers();
         }
 
         /// <summary>
@@ -191,10 +192,10 @@ namespace FurnitureRental.UserControls
             txtFirstName.Clear();
             txtLastName.Clear();
             lblError.Text = string.Empty;
-            dgvMembers.DataSource = null;
 
             radMemberId.Checked = true;
             UpdateSearchMode();
+            LoadAllMembers();
         }
 
         /// <summary>
@@ -214,6 +215,15 @@ namespace FurnitureRental.UserControls
             form.ShowDialog();
 
             btnSearch.PerformClick();
+        }
+
+        /// <summary>
+        /// Loads all members.
+        /// </summary>
+        private void LoadAllMembers()
+        {
+            dgvMembers.DataSource = null;
+            dgvMembers.DataSource = _memberController.GetAllMembers();
         }
     }
 }
