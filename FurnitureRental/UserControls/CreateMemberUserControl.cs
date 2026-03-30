@@ -1,14 +1,12 @@
-﻿using FurnitureRental.DBAccess;
+﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
-using System;
-using System.Drawing;
-using System.Windows.Forms;
+using System.Text.RegularExpressions;
 
 namespace FurnitureRental.UserControls
 {
     public partial class CreateMemberUserControl : UserControl
     {
-        private readonly MemberDal _memberDal = new MemberDal();
+        private readonly MemberController _memberController = new MemberController();
 
         private Label _firstNameError = new Label();
         private Label _lastNameError = new Label();
@@ -19,6 +17,9 @@ namespace FurnitureRental.UserControls
         private Label _stateError = new Label();
         private Label _zipError = new Label();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateMemberUserControl"/> class.
+        /// </summary>
         public CreateMemberUserControl()
         {
             InitializeComponent();
@@ -27,7 +28,9 @@ namespace FurnitureRental.UserControls
             WireUpEvents();
         }
 
-
+        /// <summary>
+        /// Setups the sex ComboBox.
+        /// </summary>
         private void SetupSexComboBox()
         {
             SexComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
@@ -38,6 +41,9 @@ namespace FurnitureRental.UserControls
             SexComboBox.SelectedIndex = 0;
         }
 
+        /// <summary>
+        /// Setups the error labels.
+        /// </summary>
         private void SetupErrorLabels()
         {
             var errorSetup = new (Label errorLabel, Control inputControl)[]
@@ -67,6 +73,9 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Wires up events.
+        /// </summary>
         private void WireUpEvents()
         {
             CreateButton.Click += CreateButton_Click;
@@ -83,6 +92,11 @@ namespace FurnitureRental.UserControls
             StateTextBox.MaxLength = 2;
         }
 
+        /// <summary>
+        /// Handles the KeyPress event of the LettersOnly control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
         private void LettersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             // lets letters, spaces, hyphens and backspace be pressed
@@ -92,6 +106,11 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Handles the KeyPress event of the NumbersOnly control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
         private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             // lets only digits and backspace only
@@ -101,6 +120,11 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Handles the KeyPress event of the PhoneNumbersOnly control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
         private void PhoneNumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
         {
             // lets only characters found in phone numbers be pressed
@@ -110,37 +134,58 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the CreateButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void CreateButton_Click(object sender, EventArgs e)
         {
             if (!ValidateFields())
+            {
                 return;
+            }
 
             try
             {
+                string digitsOnlyPhone = Regex.Replace(PhoneNumberMaskedTextBox.Text, @"\D", "");
+
                 Member newMember = new Member
                 {
                     FirstName = FirstNameTextBox.Text.Trim(),
                     LastName = LastNameTextBox.Text.Trim(),
                     Sex = SexComboBox.SelectedItem!.ToString()!,
                     Dob = DobDateTimePicker.Value.Date,
-                    Phone = PhoneNumberMaskedTextBox.Text.Trim(),
+                    Phone = digitsOnlyPhone,
                     Address1 = Address1TextBox.Text.Trim(),
-                    Address2 = string.IsNullOrWhiteSpace(Address2TextBox.Text) ? null : Address2TextBox.Text.Trim(),
+                    Address2 = string.IsNullOrWhiteSpace(Address2TextBox.Text)
+                        ? string.Empty
+                        : Address2TextBox.Text.Trim(),
                     City = CityTextBox.Text.Trim(),
                     State = StateTextBox.Text.Trim().ToUpper(),
                     Zip = ZipTextBox.Text.Trim()
                 };
 
-                _memberDal.AddMember(newMember);
+                if (_memberController.TryAddMember(newMember, out string errorMessage))
+                {
+                    MessageBox.Show(
+                        $"Member {newMember.FirstName} {newMember.LastName} has been successfully registered.",
+                        "Success",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Information
+                    );
 
-                MessageBox.Show(
-                    $"Member {newMember.FullName} has been successfully registered.",
-                    "Success",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Information
-                );
-
-                ClearAllFields();
+                    ClearAllFields();
+                }
+                else
+                {
+                    MessageBox.Show(
+                        errorMessage,
+                        "Validation Error",
+                        MessageBoxButtons.OK,
+                        MessageBoxIcon.Warning
+                    );
+                }
             }
             catch (Exception ex)
             {
@@ -153,11 +198,19 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the ClearButton control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void ClearButton_Click(object sender, EventArgs e)
         {
             ClearAllFields();
         }
 
+        /// <summary>
+        /// Clears all fields.
+        /// </summary>
         private void ClearAllFields()
         {
             FirstNameTextBox.Clear();
@@ -174,7 +227,10 @@ namespace FurnitureRental.UserControls
             HideAllErrors();
         }
 
-
+        /// <summary>
+        /// Validates the fields.
+        /// </summary>
+        /// <returns></returns>
         private bool ValidateFields()
         {
             HideAllErrors();
@@ -246,12 +302,20 @@ namespace FurnitureRental.UserControls
             return isValid;
         }
 
+        /// <summary>
+        /// Shows the error.
+        /// </summary>
+        /// <param name="errorLabel">The error label.</param>
+        /// <param name="message">The message.</param>
         private void ShowError(Label errorLabel, string message)
         {
             errorLabel.Text = message;
             errorLabel.Visible = true;
         }
 
+        /// <summary>
+        /// Hides all errors.
+        /// </summary>
         private void HideAllErrors()
         {
             _firstNameError.Visible = false;

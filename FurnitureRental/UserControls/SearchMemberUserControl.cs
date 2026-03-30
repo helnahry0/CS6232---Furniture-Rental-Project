@@ -1,9 +1,6 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
 using FurnitureRental.View;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace FurnitureRental.UserControls
 {
@@ -17,6 +14,11 @@ namespace FurnitureRental.UserControls
             _memberController = new MemberController();
         }
 
+        /// <summary>
+        /// Handles the Load event of the SearchMemberUserControl control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void SearchMemberUserControl_Load(object sender, EventArgs e)
         {
             radMemberId.Checked = true; 
@@ -24,6 +26,9 @@ namespace FurnitureRental.UserControls
             ConfigureMemberGrid();
         }
 
+        /// <summary>
+        /// Updates the search mode.
+        /// </summary>
         private void UpdateSearchMode()
         {
             txtMemberId.Enabled = radMemberId.Checked;
@@ -39,10 +44,18 @@ namespace FurnitureRental.UserControls
             lblError.Text = string.Empty;
         }
 
+        /// <summary>
+        /// Handles the CheckedChanged event of the radMemberId control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void radMemberId_CheckedChanged(object sender, EventArgs e) => UpdateSearchMode();
         private void radPhone_CheckedChanged(object sender, EventArgs e) => UpdateSearchMode();
         private void radFullName_CheckedChanged(object sender, EventArgs e) => UpdateSearchMode();
 
+        /// <summary>
+        /// Configures the member grid.
+        /// </summary>
         private void ConfigureMemberGrid()
         {
             dgvMembers.AutoGenerateColumns = false;
@@ -83,6 +96,11 @@ namespace FurnitureRental.UserControls
             dgvMembers.AllowUserToDeleteRows = false;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnSearch control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnSearch_Click(object sender, EventArgs e)
         {
             lblError.Text = string.Empty;
@@ -126,6 +144,11 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnClear control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnClear_Click(object sender, EventArgs e)
         {
             txtMemberId.Clear();
@@ -136,6 +159,11 @@ namespace FurnitureRental.UserControls
             dgvMembers.DataSource = null;
         }
 
+        /// <summary>
+        /// Handles the Click event of the btnEdit control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnEdit_Click(object sender, EventArgs e)
         {
             if (dgvMembers.CurrentRow == null || dgvMembers.CurrentRow.DataBoundItem is not Member selectedMember)

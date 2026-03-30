@@ -6,6 +6,12 @@ namespace FurnitureRental.DBAccess
 {
     public class EmployeeDbDal
     {
+        /// <summary>
+        /// Authenticates the employee.
+        /// </summary>
+        /// <param name="username">The username.</param>
+        /// <param name="password">The password.</param>
+        /// <returns></returns>
         public Employee? AuthenticateEmployee(string username, string password)
         {
             const string query = @"

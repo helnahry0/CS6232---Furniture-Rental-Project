@@ -1,15 +1,15 @@
-﻿using FurnitureRental.DBAccess;
-using FurnitureRental.Model;
+﻿using FurnitureRental.Model;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
 
 namespace FurnitureRental.DBAccess
 {
     public class MemberDbDal
     {
-        /* Add New Member */
+        /// <summary>
+        /// Adds a new member
+        /// </summary>
+        /// <param name="member"></param
         public void AddMember(Member member)
         {
             const string query = @"
@@ -60,7 +60,11 @@ namespace FurnitureRental.DBAccess
             command.ExecuteNonQuery();
         }
 
-        /* Search Members */
+        /// <summary>
+        /// Gets the member by id.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
+        /// <returns></returns>
         public Member? GetMemberById(int memberId)
         {
             const string query = @"
@@ -97,6 +101,11 @@ namespace FurnitureRental.DBAccess
             return CreateMember(reader);
         }
 
+        /// <summary>
+        /// Gets the member by phone.
+        /// </summary>
+        /// <param name="phone">The phone.</param>
+        /// <returns></returns>
         public Member? GetMemberByPhone(string phone)
         {
             const string query = @"
@@ -133,6 +142,12 @@ namespace FurnitureRental.DBAccess
             return CreateMember(reader);
         }
 
+        /// <summary>
+        /// Gets the members by full name.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <returns></returns>
         public List<Member> GetMembersByFullName(string firstName, string lastName)
         {
             const string query = @"
@@ -173,7 +188,11 @@ namespace FurnitureRental.DBAccess
             return members;
         }
 
-        /* Update or Edit Members */
+        /// <summary>
+        /// Updates the member.
+        /// </summary>
+        /// <param name="member">The member.</param>
+        /// <returns></returns>
         public bool UpdateMember(Member member)
         {
             const string query = @"
@@ -212,7 +231,11 @@ namespace FurnitureRental.DBAccess
             return command.ExecuteNonQuery() == 1;
         }
 
-        /* Creates members from db to populate member lists */
+        /// <summary>
+        /// Creates the member.
+        /// </summary>
+        /// <param name="reader">The reader.</param>
+        /// <returns></returns>
         private static Member CreateMember(SqlDataReader reader)
         {
             return new Member

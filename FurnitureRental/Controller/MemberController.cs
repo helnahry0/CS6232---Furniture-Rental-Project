@@ -1,6 +1,5 @@
 ﻿using FurnitureRental.DBAccess;
 using FurnitureRental.Model;
-using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
 namespace FurnitureRental.Controller

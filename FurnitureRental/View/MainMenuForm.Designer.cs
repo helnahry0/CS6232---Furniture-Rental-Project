@@ -30,18 +30,14 @@
         {
             tabControlMainform = new TabControl();
             SearchMember = new TabPage();
-            searchMemberUserControl1 = new FurnitureRental.UserControls.SearchMemberUserControl();
             CreateMember = new TabPage();
-            createMemberUserControl1 = new FurnitureRental.UserControls.CreateMemberUserControl();
             FurnitureSearch = new TabPage();
             Cart = new TabPage();
             Returns = new TabPage();
-            label1 = new Label();
+            lblMainForm = new Label();
             lblUsername = new Label();
             lnkLogout = new LinkLabel();
             tabControlMainform.SuspendLayout();
-            SearchMember.SuspendLayout();
-            CreateMember.SuspendLayout();
             SuspendLayout();
             // 
             // tabControlMainform
@@ -52,62 +48,40 @@
             tabControlMainform.Controls.Add(Cart);
             tabControlMainform.Controls.Add(Returns);
             tabControlMainform.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControlMainform.Location = new Point(14, 115);
-            tabControlMainform.Margin = new Padding(3, 4, 3, 4);
+            tabControlMainform.Location = new Point(12, 86);
             tabControlMainform.Name = "tabControlMainform";
             tabControlMainform.SelectedIndex = 0;
-            tabControlMainform.Size = new Size(891, 588);
+            tabControlMainform.Size = new Size(780, 441);
             tabControlMainform.TabIndex = 0;
             // 
             // SearchMember
             // 
-            SearchMember.Controls.Add(searchMemberUserControl1);
             SearchMember.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            SearchMember.Location = new Point(4, 34);
-            SearchMember.Margin = new Padding(3, 4, 3, 4);
+            SearchMember.Location = new Point(4, 29);
             SearchMember.Name = "SearchMember";
-            SearchMember.Padding = new Padding(3, 4, 3, 4);
-            SearchMember.Size = new Size(883, 550);
+            SearchMember.Padding = new Padding(3, 3, 3, 3);
+            SearchMember.Size = new Size(772, 408);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
             // 
-            // searchMemberUserControl1
-            // 
-            searchMemberUserControl1.Location = new Point(11, 8);
-            searchMemberUserControl1.Margin = new Padding(3, 5, 3, 5);
-            searchMemberUserControl1.Name = "searchMemberUserControl1";
-            searchMemberUserControl1.Size = new Size(590, 388);
-            searchMemberUserControl1.TabIndex = 0;
-            // 
             // CreateMember
             // 
-            CreateMember.Controls.Add(createMemberUserControl1);
-            CreateMember.Location = new Point(4, 34);
-            CreateMember.Margin = new Padding(3, 4, 3, 4);
+            CreateMember.Location = new Point(4, 29);
             CreateMember.Name = "CreateMember";
-            CreateMember.Padding = new Padding(3, 4, 3, 4);
-            CreateMember.Size = new Size(883, 550);
+            CreateMember.Padding = new Padding(3, 3, 3, 3);
+            CreateMember.Size = new Size(772, 408);
             CreateMember.TabIndex = 4;
             CreateMember.Text = "Create Member";
             CreateMember.UseVisualStyleBackColor = true;
             // 
-            // createMemberUserControl1
-            // 
-            createMemberUserControl1.Dock = DockStyle.Fill;
-            createMemberUserControl1.Location = new Point(3, 4);
-            createMemberUserControl1.Name = "createMemberUserControl1";
-            createMemberUserControl1.Size = new Size(877, 542);
-            createMemberUserControl1.TabIndex = 0;
-            // 
             // FurnitureSearch
             // 
             FurnitureSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            FurnitureSearch.Location = new Point(4, 34);
-            FurnitureSearch.Margin = new Padding(3, 4, 3, 4);
+            FurnitureSearch.Location = new Point(4, 29);
             FurnitureSearch.Name = "FurnitureSearch";
-            FurnitureSearch.Padding = new Padding(3, 4, 3, 4);
-            FurnitureSearch.Size = new Size(192, 62);
+            FurnitureSearch.Padding = new Padding(3, 3, 3, 3);
+            FurnitureSearch.Size = new Size(772, 408);
             FurnitureSearch.TabIndex = 1;
             FurnitureSearch.Text = "Furniture Search";
             FurnitureSearch.UseVisualStyleBackColor = true;
@@ -115,10 +89,9 @@
             // Cart
             // 
             Cart.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Cart.Location = new Point(4, 34);
-            Cart.Margin = new Padding(3, 4, 3, 4);
+            Cart.Location = new Point(4, 29);
             Cart.Name = "Cart";
-            Cart.Size = new Size(192, 62);
+            Cart.Size = new Size(772, 408);
             Cart.TabIndex = 2;
             Cart.Text = "Cart";
             Cart.UseVisualStyleBackColor = true;
@@ -126,30 +99,29 @@
             // Returns
             // 
             Returns.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Returns.Location = new Point(4, 34);
-            Returns.Margin = new Padding(3, 4, 3, 4);
+            Returns.Location = new Point(4, 29);
             Returns.Name = "Returns";
-            Returns.Size = new Size(192, 62);
+            Returns.Size = new Size(772, 408);
             Returns.TabIndex = 3;
             Returns.Text = "Returns";
             Returns.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // lblMainForm
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(19, 12);
-            label1.Name = "label1";
-            label1.Size = new Size(429, 41);
-            label1.TabIndex = 2;
-            label1.Text = "FURNITURE RENTAL SYSTEM";
+            lblMainForm.AutoSize = true;
+            lblMainForm.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMainForm.Location = new Point(17, 9);
+            lblMainForm.Name = "lblMainForm";
+            lblMainForm.Size = new Size(340, 32);
+            lblMainForm.TabIndex = 2;
+            lblMainForm.Text = "FURNITURE RENTAL SYSTEM";
             // 
             // lblUsername
             // 
             lblUsername.AutoSize = true;
-            lblUsername.Location = new Point(30, 67);
+            lblUsername.Location = new Point(26, 50);
             lblUsername.Name = "lblUsername";
-            lblUsername.Size = new Size(97, 20);
+            lblUsername.Size = new Size(77, 15);
             lblUsername.TabIndex = 3;
             lblUsername.Text = "Logged in as:";
             // 
@@ -157,9 +129,9 @@
             // 
             lnkLogout.AutoSize = true;
             lnkLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkLogout.Location = new Point(824, 28);
+            lnkLogout.Location = new Point(721, 21);
             lnkLogout.Name = "lnkLogout";
-            lnkLogout.Size = new Size(64, 23);
+            lnkLogout.Size = new Size(51, 17);
             lnkLogout.TabIndex = 4;
             lnkLogout.TabStop = true;
             lnkLogout.Text = "Logout";
@@ -167,21 +139,18 @@
             // 
             // MainMenuForm
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(914, 716);
+            ClientSize = new Size(800, 537);
             Controls.Add(lnkLogout);
             Controls.Add(lblUsername);
-            Controls.Add(label1);
+            Controls.Add(lblMainForm);
             Controls.Add(tabControlMainform);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "MainMenuForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "MainMenuForm";
             FormClosed += MainMenuForm_FormClosed;
             tabControlMainform.ResumeLayout(false);
-            SearchMember.ResumeLayout(false);
-            CreateMember.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -191,7 +160,7 @@
         private TabControl tabControlMainform;
         private TabPage SearchMember;
         private TabPage FurnitureSearch;
-        private Label label1;
+        private Label lblMainForm;
         private Label lblUsername;
         private LinkLabel lnkLogout;
         private TabPage Cart;

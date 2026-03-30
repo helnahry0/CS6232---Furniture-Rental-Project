@@ -14,6 +14,12 @@ namespace FurnitureRental
             txtPassword.UseSystemPasswordChar = true;
             lblError.Text = string.Empty;
         }
+
+        /// <summary>
+        /// Handles the Click event of the btnLogin control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
         private void btnLogin_Click(object sender, EventArgs e)
         {
             string username = txtUsername.Text.Trim();
@@ -51,6 +57,11 @@ namespace FurnitureRental
             }
         }
 
+        /// <summary>
+        /// Handles the FormClosed event of the LoginForm control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="FormClosedEventArgs"/> instance containing the event data.</param>
         private void LoginForm_FormClosed(object sender, FormClosedEventArgs e)
         {
             Application.Exit();
