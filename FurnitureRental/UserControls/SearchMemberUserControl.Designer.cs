@@ -22,19 +22,11 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
             pnlSearchContainer = new Panel();
             pnlResults = new Panel();
             dgvMembers = new DataGridView();
-            colMemberId = new DataGridViewTextBoxColumn();
-            colFirstName = new DataGridViewTextBoxColumn();
-            colLastName = new DataGridViewTextBoxColumn();
-            colPhone = new DataGridViewTextBoxColumn();
             pnlSearchControls = new Panel();
             lblError = new Label();
             btnEdit = new Button();
@@ -85,7 +77,6 @@
             dgvMembers.AllowUserToDeleteRows = false;
             dgvMembers.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvMembers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvMembers.Columns.AddRange(new DataGridViewColumn[] { colMemberId, colFirstName, colLastName, colPhone });
             dgvMembers.Dock = DockStyle.Fill;
             dgvMembers.Location = new Point(10, 10);
             dgvMembers.MultiSelect = false;
@@ -94,30 +85,6 @@
             dgvMembers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMembers.Size = new Size(350, 445);
             dgvMembers.TabIndex = 0;
-            // 
-            // colMemberId
-            // 
-            colMemberId.HeaderText = "Member ID";
-            colMemberId.Name = "colMemberId";
-            colMemberId.ReadOnly = true;
-            // 
-            // colFirstName
-            // 
-            colFirstName.HeaderText = "First Name";
-            colFirstName.Name = "colFirstName";
-            colFirstName.ReadOnly = true;
-            // 
-            // colLastName
-            // 
-            colLastName.HeaderText = "Last Name";
-            colLastName.Name = "colLastName";
-            colLastName.ReadOnly = true;
-            // 
-            // colPhone
-            // 
-            colPhone.HeaderText = "Phone Number";
-            colPhone.Name = "colPhone";
-            colPhone.ReadOnly = true;
             // 
             // pnlSearchControls
             // 
@@ -148,63 +115,63 @@
             // 
             lblError.AutoSize = true;
             lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(111, 377);
+            lblError.Location = new Point(20, 355);
             lblError.Name = "lblError";
             lblError.Size = new Size(0, 15);
-            lblError.TabIndex = 1;
+            lblError.TabIndex = 15;
             // 
             // btnEdit
             // 
             btnEdit.Location = new Point(209, 315);
             btnEdit.Name = "btnEdit";
-            btnEdit.Size = new Size(75, 23);
-            btnEdit.TabIndex = 3;
+            btnEdit.Size = new Size(90, 28);
+            btnEdit.TabIndex = 8;
             btnEdit.Text = "Edit";
             btnEdit.UseVisualStyleBackColor = true;
+            btnEdit.Click += btnEdit_Click;
             // 
             // txtMemberId
             // 
-            txtMemberId.AccessibleRole = AccessibleRole.Text;
-            txtMemberId.Enabled = false;
             txtMemberId.Location = new Point(93, 251);
             txtMemberId.Name = "txtMemberId";
-            txtMemberId.Size = new Size(100, 23);
-            txtMemberId.TabIndex = 4;
+            txtMemberId.Size = new Size(150, 23);
+            txtMemberId.TabIndex = 7;
             // 
             // btnClear
             // 
             btnClear.Location = new Point(111, 315);
             btnClear.Name = "btnClear";
-            btnClear.Size = new Size(75, 23);
-            btnClear.TabIndex = 2;
+            btnClear.Size = new Size(75, 28);
+            btnClear.TabIndex = 9;
             btnClear.Text = "Clear";
             btnClear.UseVisualStyleBackColor = true;
+            btnClear.Click += btnClear_Click;
             // 
             // lblMemberId
             // 
             lblMemberId.AutoSize = true;
-            lblMemberId.Location = new Point(10, 254);
+            lblMemberId.Location = new Point(13, 254);
             lblMemberId.Name = "lblMemberId";
             lblMemberId.Size = new Size(69, 15);
-            lblMemberId.TabIndex = 4;
+            lblMemberId.TabIndex = 11;
             lblMemberId.Text = "Member ID:";
             // 
             // btnSearch
             // 
-            btnSearch.Location = new Point(8, 315);
+            btnSearch.Location = new Point(13, 315);
             btnSearch.Name = "btnSearch";
-            btnSearch.Size = new Size(75, 23);
-            btnSearch.TabIndex = 1;
+            btnSearch.Size = new Size(75, 28);
+            btnSearch.TabIndex = 10;
             btnSearch.Text = "Search";
             btnSearch.UseVisualStyleBackColor = true;
+            btnSearch.Click += btnSearch_Click;
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.Enabled = false;
             txtPhoneNumber.Location = new Point(93, 199);
             txtPhoneNumber.Name = "txtPhoneNumber";
-            txtPhoneNumber.Size = new Size(100, 23);
-            txtPhoneNumber.TabIndex = 3;
+            txtPhoneNumber.Size = new Size(150, 23);
+            txtPhoneNumber.TabIndex = 6;
             // 
             // lblSearchCriteria
             // 
@@ -212,16 +179,15 @@
             lblSearchCriteria.Location = new Point(103, 25);
             lblSearchCriteria.Name = "lblSearchCriteria";
             lblSearchCriteria.Size = new Size(83, 15);
-            lblSearchCriteria.TabIndex = 1;
+            lblSearchCriteria.TabIndex = 0;
             lblSearchCriteria.Text = "Search Criteria";
             // 
             // txtLastName
             // 
-            txtLastName.Enabled = false;
             txtLastName.Location = new Point(93, 148);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(100, 23);
-            txtLastName.TabIndex = 2;
+            txtLastName.Size = new Size(150, 23);
+            txtLastName.TabIndex = 5;
             // 
             // lblPhone
             // 
@@ -229,16 +195,15 @@
             lblPhone.Location = new Point(3, 202);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(91, 15);
-            lblPhone.TabIndex = 3;
+            lblPhone.TabIndex = 10;
             lblPhone.Text = "Phone Number:";
             // 
             // txtFirstName
             // 
-            txtFirstName.Enabled = false;
             txtFirstName.Location = new Point(93, 98);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(100, 23);
-            txtFirstName.TabIndex = 1;
+            txtFirstName.Size = new Size(150, 23);
+            txtFirstName.TabIndex = 4;
             // 
             // radFullName
             // 
@@ -250,6 +215,7 @@
             radFullName.TabStop = true;
             radFullName.Text = "Full Name";
             radFullName.UseVisualStyleBackColor = true;
+            radFullName.CheckedChanged += radFullName_CheckedChanged;
             // 
             // lblLastName
             // 
@@ -257,7 +223,7 @@
             lblLastName.Location = new Point(13, 148);
             lblLastName.Name = "lblLastName";
             lblLastName.Size = new Size(66, 15);
-            lblLastName.TabIndex = 2;
+            lblLastName.TabIndex = 9;
             lblLastName.Text = "Last Name:";
             // 
             // radMemberId
@@ -270,6 +236,7 @@
             radMemberId.TabStop = true;
             radMemberId.Text = "Member ID";
             radMemberId.UseVisualStyleBackColor = true;
+            radMemberId.CheckedChanged += radMemberId_CheckedChanged;
             // 
             // lblFirstName
             // 
@@ -277,7 +244,7 @@
             lblFirstName.Location = new Point(13, 101);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(67, 15);
-            lblFirstName.TabIndex = 1;
+            lblFirstName.TabIndex = 8;
             lblFirstName.Text = "First Name:";
             // 
             // radPhone
@@ -290,6 +257,7 @@
             radPhone.TabStop = true;
             radPhone.Text = "Phone Number";
             radPhone.UseVisualStyleBackColor = true;
+            radPhone.CheckedChanged += radPhone_CheckedChanged;
             // 
             // SearchMemberUserControl
             // 
@@ -309,28 +277,24 @@
         #endregion
 
         private Panel pnlSearchContainer;
-        private Label lblSearchCriteria;
-        private Panel pnlSearchControls;
-        private RadioButton radFullName;
-        private RadioButton radMemberId;
-        private RadioButton radPhone;
-        private TextBox txtMemberId;
-        private TextBox txtPhoneNumber;
-        private TextBox txtLastName;
-        private Label lblMemberId;
-        private Label lblPhone;
-        private TextBox txtFirstName;
-        private Label lblLastName;
-        private Label lblFirstName;
-        private Button btnEdit;
-        private Button btnClear;
-        private Button btnSearch;
-        private Label lblError;
         private Panel pnlResults;
         private DataGridView dgvMembers;
-        private DataGridViewTextBoxColumn colMemberId;
-        private DataGridViewTextBoxColumn colFirstName;
-        private DataGridViewTextBoxColumn colLastName;
-        private DataGridViewTextBoxColumn colPhone;
+        private Panel pnlSearchControls;
+        private Label lblError;
+        private Button btnEdit;
+        private TextBox txtMemberId;
+        private Button btnClear;
+        private Label lblMemberId;
+        private Button btnSearch;
+        private TextBox txtPhoneNumber;
+        private Label lblSearchCriteria;
+        private TextBox txtLastName;
+        private Label lblPhone;
+        private TextBox txtFirstName;
+        private RadioButton radFullName;
+        private Label lblLastName;
+        private RadioButton radMemberId;
+        private Label lblFirstName;
+        private RadioButton radPhone;
     }
 }

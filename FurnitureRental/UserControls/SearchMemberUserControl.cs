@@ -12,16 +12,8 @@ namespace FurnitureRental.UserControls
         {
             InitializeComponent();
             _memberController = new MemberController();
-        }
 
-        /// <summary>
-        /// Handles the Load event of the SearchMemberUserControl control.
-        /// </summary>
-        /// <param name="sender">The source of the event.</param>
-        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void SearchMemberUserControl_Load(object sender, EventArgs e)
-        {
-            radMemberId.Checked = true; 
+            radMemberId.Checked = true;
             UpdateSearchMode();
             ConfigureMemberGrid();
         }
@@ -36,10 +28,25 @@ namespace FurnitureRental.UserControls
             txtFirstName.Enabled = radFullName.Checked;
             txtLastName.Enabled = radFullName.Checked;
 
-            if (!txtMemberId.Enabled) txtMemberId.Clear();
-            if (!txtPhoneNumber.Enabled) txtPhoneNumber.Clear();
-            if (!txtFirstName.Enabled) txtFirstName.Clear();
-            if (!txtLastName.Enabled) txtLastName.Clear();
+            if (!txtMemberId.Enabled)
+            {
+                txtMemberId.Clear();
+            }
+
+            if (!txtPhoneNumber.Enabled)
+            {
+                txtPhoneNumber.Clear();
+            }
+
+            if (!txtFirstName.Enabled)
+            {
+                txtFirstName.Clear();
+            }
+
+            if (!txtLastName.Enabled)
+            {
+                txtLastName.Clear();
+            }
 
             lblError.Text = string.Empty;
         }
@@ -49,9 +56,30 @@ namespace FurnitureRental.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void radMemberId_CheckedChanged(object sender, EventArgs e) => UpdateSearchMode();
-        private void radPhone_CheckedChanged(object sender, EventArgs e) => UpdateSearchMode();
-        private void radFullName_CheckedChanged(object sender, EventArgs e) => UpdateSearchMode();
+        private void radMemberId_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateSearchMode();
+        }
+
+        /// <summary>
+        /// Handles the CheckedChanged event of the radPhone control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void radPhone_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateSearchMode();
+        }
+
+        /// <summary>
+        /// Handles the CheckedChanged event of the radFullName control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void radFullName_CheckedChanged(object sender, EventArgs e)
+        {
+            UpdateSearchMode();
+        }
 
         /// <summary>
         /// Configures the member grid.
@@ -85,7 +113,7 @@ namespace FurnitureRental.UserControls
             dgvMembers.Columns.Add(new DataGridViewTextBoxColumn
             {
                 Name = "Phone",
-                HeaderText = "Phone",
+                HeaderText = "Phone Number",
                 DataPropertyName = "Phone"
             });
 
@@ -108,7 +136,10 @@ namespace FurnitureRental.UserControls
 
             if (radMemberId.Checked)
             {
-                if (_memberController.TrySearchByMemberId(txtMemberId.Text.Trim(), out Member? member, out string errorMessage))
+                if (_memberController.TrySearchByMemberId(
+                    txtMemberId.Text.Trim(),
+                    out Member? member,
+                    out string errorMessage))
                 {
                     dgvMembers.DataSource = new List<Member> { member! };
                 }
@@ -119,7 +150,10 @@ namespace FurnitureRental.UserControls
             }
             else if (radPhone.Checked)
             {
-                if (_memberController.TrySearchByPhone(txtPhoneNumber.Text.Trim(), out Member? member, out string errorMessage))
+                if (_memberController.TrySearchByPhone(
+                    txtPhoneNumber.Text.Trim(),
+                    out Member? member,
+                    out string errorMessage))
                 {
                     dgvMembers.DataSource = new List<Member> { member! };
                 }
@@ -130,10 +164,11 @@ namespace FurnitureRental.UserControls
             }
             else if (radFullName.Checked)
             {
-                if (_memberController.TrySearchByFullName(txtFirstName.Text.Trim(),
-                                                          txtLastName.Text.Trim(),
-                                                          out List<Member> members,
-                                                          out string errorMessage))
+                if (_memberController.TrySearchByFullName(
+                    txtFirstName.Text.Trim(),
+                    txtLastName.Text.Trim(),
+                    out List<Member> members,
+                    out string errorMessage))
                 {
                     dgvMembers.DataSource = members;
                 }
@@ -157,6 +192,9 @@ namespace FurnitureRental.UserControls
             txtLastName.Clear();
             lblError.Text = string.Empty;
             dgvMembers.DataSource = null;
+
+            radMemberId.Checked = true;
+            UpdateSearchMode();
         }
 
         /// <summary>
@@ -175,7 +213,7 @@ namespace FurnitureRental.UserControls
             EditMemberForm form = new EditMemberForm(selectedMember.MemberId);
             form.ShowDialog();
 
-            btnSearch.PerformClick(); 
+            btnSearch.PerformClick();
         }
     }
 }

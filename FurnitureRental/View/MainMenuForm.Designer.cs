@@ -166,7 +166,5 @@
         private TabPage Cart;
         private TabPage Returns;
         private TabPage CreateMember;
-        private UserControls.SearchMemberUserControl searchMemberUserControl1;
-        private UserControls.CreateMemberUserControl createMemberUserControl1;
     }
 }
