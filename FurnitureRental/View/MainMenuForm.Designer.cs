@@ -65,7 +65,7 @@
             SearchMember.Margin = new Padding(3, 4, 3, 4);
             SearchMember.Name = "SearchMember";
             SearchMember.Padding = new Padding(3, 4, 3, 4);
-            SearchMember.Size = new Size(977, 550);
+            SearchMember.Size = new Size(977, 651);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
