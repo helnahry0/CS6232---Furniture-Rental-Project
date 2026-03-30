@@ -165,6 +165,15 @@ namespace FurnitureRental.Controller
         }
 
         /// <summary>
+        /// Gets all members.
+        /// </summary>
+        /// <returns></returns>
+        public List<Member> GetAllMembers()
+        {
+            return _memberDbDal.GetAllMembers();
+        }
+
+        /// <summary>
         /// Validates the member.
         /// </summary>
         /// <param name="member">The member.</param>

@@ -62,8 +62,8 @@
             SearchMember.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
             SearchMember.Location = new Point(4, 29);
             SearchMember.Name = "SearchMember";
-            SearchMember.Padding = new Padding(3, 3, 3, 3);
-            SearchMember.Size = new Size(854, 484);
+            SearchMember.Padding = new Padding(3, 4, 3, 4);
+            SearchMember.Size = new Size(977, 651);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
