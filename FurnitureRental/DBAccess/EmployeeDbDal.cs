@@ -20,7 +20,8 @@ namespace FurnitureRental.DBAccess
                 WHERE username = @Username
                   AND password = @Password;";
 
-            using SqlConnection connection = new SqlConnection(DbHelper.ConnectionString);
+            using SqlConnection connection =
+    new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
             using SqlCommand command = new SqlCommand(query, connection);
 
             command.Parameters.Add("@Username", SqlDbType.VarChar).Value = username;

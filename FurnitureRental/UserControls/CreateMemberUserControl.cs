@@ -1,4 +1,4 @@
-﻿using FurnitureRental.DBAcess;
+﻿using FurnitureRental.DBAccess;
 using FurnitureRental.Model;
 using System;
 using System.Drawing;

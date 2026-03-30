@@ -1,4 +1,4 @@
-﻿namespace FurnitureRental.DBAcess
+﻿namespace FurnitureRental.DBAccess
 {
     /// <summary>
     /// This will provide a centralized location for database connection settings.
