@@ -2,7 +2,7 @@
 using Microsoft.Data.SqlClient;
 using System.Data;
 
-namespace FurnitureRental.DBAccess
+namespace FurnitureRental.DAL
 {
     public class MemberDbDal
     {

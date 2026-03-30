@@ -1,4 +1,4 @@
-﻿namespace FurnitureRental.DBAccess
+﻿namespace FurnitureRental.DAL
 {
     /// <summary>
     /// This will provide a centralized location for database connection settings.

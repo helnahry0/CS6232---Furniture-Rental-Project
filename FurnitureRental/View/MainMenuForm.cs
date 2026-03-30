@@ -17,7 +17,7 @@
         {
             var searchControl = new UserControls.SearchMemberUserControl
             {
-                Dock = DockStyle.Fill 
+                Dock = DockStyle.Fill
             };
 
             SearchMember.Controls.Clear();

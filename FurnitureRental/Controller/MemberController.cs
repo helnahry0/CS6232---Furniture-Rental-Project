@@ -1,4 +1,4 @@
-﻿using FurnitureRental.DBAccess;
+﻿using FurnitureRental.DAL;
 using FurnitureRental.Model;
 using System.Text.RegularExpressions;
 
