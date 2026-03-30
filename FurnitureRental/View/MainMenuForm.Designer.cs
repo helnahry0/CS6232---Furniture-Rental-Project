@@ -32,13 +32,13 @@
             SearchMember = new TabPage();
             searchMemberUserControl1 = new FurnitureRental.UserControls.SearchMemberUserControl();
             CreateMember = new TabPage();
+            createMemberUserControl1 = new FurnitureRental.UserControls.CreateMemberUserControl();
             FurnitureSearch = new TabPage();
             Cart = new TabPage();
             Returns = new TabPage();
             label1 = new Label();
             lblUsername = new Label();
             lnkLogout = new LinkLabel();
-            createMemberUserControl1 = new FurnitureRental.UserControls.CreateMemberUserControl();
             tabControlMainform.SuspendLayout();
             SearchMember.SuspendLayout();
             CreateMember.SuspendLayout();
@@ -67,7 +67,7 @@
             SearchMember.Margin = new Padding(3, 4, 3, 4);
             SearchMember.Name = "SearchMember";
             SearchMember.Padding = new Padding(3, 4, 3, 4);
-            SearchMember.Size = new Size(883, 431);
+            SearchMember.Size = new Size(883, 550);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
@@ -92,6 +92,14 @@
             CreateMember.Text = "Create Member";
             CreateMember.UseVisualStyleBackColor = true;
             // 
+            // createMemberUserControl1
+            // 
+            createMemberUserControl1.Dock = DockStyle.Fill;
+            createMemberUserControl1.Location = new Point(3, 4);
+            createMemberUserControl1.Name = "createMemberUserControl1";
+            createMemberUserControl1.Size = new Size(877, 542);
+            createMemberUserControl1.TabIndex = 0;
+            // 
             // FurnitureSearch
             // 
             FurnitureSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
@@ -99,7 +107,7 @@
             FurnitureSearch.Margin = new Padding(3, 4, 3, 4);
             FurnitureSearch.Name = "FurnitureSearch";
             FurnitureSearch.Padding = new Padding(3, 4, 3, 4);
-            FurnitureSearch.Size = new Size(883, 431);
+            FurnitureSearch.Size = new Size(192, 62);
             FurnitureSearch.TabIndex = 1;
             FurnitureSearch.Text = "Furniture Search";
             FurnitureSearch.UseVisualStyleBackColor = true;
@@ -110,7 +118,7 @@
             Cart.Location = new Point(4, 34);
             Cart.Margin = new Padding(3, 4, 3, 4);
             Cart.Name = "Cart";
-            Cart.Size = new Size(883, 431);
+            Cart.Size = new Size(192, 62);
             Cart.TabIndex = 2;
             Cart.Text = "Cart";
             Cart.UseVisualStyleBackColor = true;
@@ -121,7 +129,7 @@
             Returns.Location = new Point(4, 34);
             Returns.Margin = new Padding(3, 4, 3, 4);
             Returns.Name = "Returns";
-            Returns.Size = new Size(883, 431);
+            Returns.Size = new Size(192, 62);
             Returns.TabIndex = 3;
             Returns.Text = "Returns";
             Returns.UseVisualStyleBackColor = true;
@@ -156,14 +164,6 @@
             lnkLogout.TabStop = true;
             lnkLogout.Text = "Logout";
             lnkLogout.LinkClicked += lnkLogout_LinkClicked;
-            // 
-            // createMemberUserControl1
-            // 
-            createMemberUserControl1.Dock = DockStyle.Fill;
-            createMemberUserControl1.Location = new Point(3, 4);
-            createMemberUserControl1.Name = "createMemberUserControl1";
-            createMemberUserControl1.Size = new Size(877, 542);
-            createMemberUserControl1.TabIndex = 0;
             // 
             // MainMenuForm
             // 
