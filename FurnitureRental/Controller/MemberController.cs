@@ -4,16 +4,27 @@ using System.Text.RegularExpressions;
 
 namespace FurnitureRental.Controller
 {
+    /// <summary>
+    ///  Controller class for managing member-related operations such as adding, updating, and searching for members.
+    /// </summary>
     public class MemberController
     {
         private readonly MemberDbDal _memberDbDal;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MemberController"/> class.
+        /// </summary>
         public MemberController()
         {
             _memberDbDal = new MemberDbDal();
         }
 
-        /* Tries to add a member */
+        /// <summary>
+        /// Tries the add member.
+        /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="errorMessage">The error message.</param>
+        /// <returns></returns>
         public bool TryAddMember(Member member, out string errorMessage)
         {
             errorMessage = ValidateMember(member);
@@ -27,7 +38,12 @@ namespace FurnitureRental.Controller
             return true;
         }
 
-        /* Tries to update a current member */
+        /// <summary>
+        /// Tries the update member.
+        /// </summary>
+        /// <param name="member">The member.</param>
+        /// <param name="errorMessage">The error message.</param>
+        /// <returns></returns>
         public bool TryUpdateMember(Member member, out string errorMessage)
         {
             errorMessage = ValidateMember(member);
@@ -48,7 +64,13 @@ namespace FurnitureRental.Controller
             return true;
         }
 
-        /*Tries to search for a member by their id */
+        /// <summary>
+        /// Tries the search by member identifier.
+        /// </summary>
+        /// <param name="memberIdInput">The member identifier input.</param>
+        /// <param name="member">The member.</param>
+        /// <param name="errorMessage">The error message.</param>
+        /// <returns></returns>
         public bool TrySearchByMemberId(string memberIdInput, out Member? member, out string errorMessage)
         {
             member = null;
@@ -77,7 +99,13 @@ namespace FurnitureRental.Controller
             return true;
         }
 
-        /* Tries to search for a member by their phone number */
+        /// <summary>
+        /// Tries the search by phone.
+        /// </summary>
+        /// <param name="phoneInput">The phone input.</param>
+        /// <param name="member">The member.</param>
+        /// <param name="errorMessage">The error message.</param>
+        /// <returns></returns>
         public bool TrySearchByPhone(string phoneInput, out Member? member, out string errorMessage)
         {
             member = null;
@@ -106,7 +134,14 @@ namespace FurnitureRental.Controller
             return true;
         }
 
-        /* Tries to search for a member by their full name */
+        /// <summary>
+        /// Tries the full name of the search by.
+        /// </summary>
+        /// <param name="firstName">The first name.</param>
+        /// <param name="lastName">The last name.</param>
+        /// <param name="members">The members.</param>
+        /// <param name="errorMessage">The error message.</param>
+        /// <returns></returns>
         public bool TrySearchByFullName(string firstName, string lastName, out List<Member> members, out string errorMessage)
         {
             members = new List<Member>();
