@@ -65,10 +65,10 @@
             // 
             pnlResults.Controls.Add(dgvMembers);
             pnlResults.Dock = DockStyle.Fill;
-            pnlResults.Location = new Point(327, 10);
+            pnlResults.Location = new Point(350, 10);
             pnlResults.Name = "pnlResults";
             pnlResults.Padding = new Padding(10);
-            pnlResults.Size = new Size(370, 465);
+            pnlResults.Size = new Size(347, 465);
             pnlResults.TabIndex = 1;
             // 
             // dgvMembers
@@ -83,7 +83,7 @@
             dgvMembers.Name = "dgvMembers";
             dgvMembers.ReadOnly = true;
             dgvMembers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvMembers.Size = new Size(350, 445);
+            dgvMembers.Size = new Size(327, 445);
             dgvMembers.TabIndex = 0;
             // 
             // pnlSearchControls
@@ -108,14 +108,14 @@
             pnlSearchControls.Location = new Point(10, 10);
             pnlSearchControls.Name = "pnlSearchControls";
             pnlSearchControls.Padding = new Padding(10);
-            pnlSearchControls.Size = new Size(317, 465);
+            pnlSearchControls.Size = new Size(340, 465);
             pnlSearchControls.TabIndex = 0;
             // 
             // lblError
             // 
             lblError.AutoSize = true;
             lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(20, 355);
+            lblError.Location = new Point(15, 360);
             lblError.Name = "lblError";
             lblError.Size = new Size(0, 15);
             lblError.TabIndex = 15;
@@ -132,7 +132,7 @@
             // 
             // txtMemberId
             // 
-            txtMemberId.Location = new Point(93, 251);
+            txtMemberId.Location = new Point(110, 251);
             txtMemberId.Name = "txtMemberId";
             txtMemberId.Size = new Size(150, 23);
             txtMemberId.TabIndex = 7;
@@ -150,7 +150,7 @@
             // lblMemberId
             // 
             lblMemberId.AutoSize = true;
-            lblMemberId.Location = new Point(13, 254);
+            lblMemberId.Location = new Point(15, 254);
             lblMemberId.Name = "lblMemberId";
             lblMemberId.Size = new Size(69, 15);
             lblMemberId.TabIndex = 11;
@@ -168,7 +168,7 @@
             // 
             // txtPhoneNumber
             // 
-            txtPhoneNumber.Location = new Point(93, 199);
+            txtPhoneNumber.Location = new Point(110, 199);
             txtPhoneNumber.Name = "txtPhoneNumber";
             txtPhoneNumber.Size = new Size(150, 23);
             txtPhoneNumber.TabIndex = 6;
@@ -184,7 +184,7 @@
             // 
             // txtLastName
             // 
-            txtLastName.Location = new Point(93, 148);
+            txtLastName.Location = new Point(110, 145);
             txtLastName.Name = "txtLastName";
             txtLastName.Size = new Size(150, 23);
             txtLastName.TabIndex = 5;
@@ -192,15 +192,15 @@
             // lblPhone
             // 
             lblPhone.AutoSize = true;
-            lblPhone.Location = new Point(3, 202);
+            lblPhone.Location = new Point(15, 202);
             lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(91, 15);
+            lblPhone.Size = new Size(54, 15);
             lblPhone.TabIndex = 10;
-            lblPhone.Text = "Phone Number:";
+            lblPhone.Text = "Phone #:";
             // 
             // txtFirstName
             // 
-            txtFirstName.Location = new Point(93, 98);
+            txtFirstName.Location = new Point(110, 98);
             txtFirstName.Name = "txtFirstName";
             txtFirstName.Size = new Size(150, 23);
             txtFirstName.TabIndex = 4;
@@ -208,7 +208,7 @@
             // radFullName
             // 
             radFullName.AutoSize = true;
-            radFullName.Location = new Point(214, 56);
+            radFullName.Location = new Point(209, 55);
             radFullName.Name = "radFullName";
             radFullName.Size = new Size(79, 19);
             radFullName.TabIndex = 3;
@@ -220,7 +220,7 @@
             // lblLastName
             // 
             lblLastName.AutoSize = true;
-            lblLastName.Location = new Point(13, 148);
+            lblLastName.Location = new Point(15, 148);
             lblLastName.Name = "lblLastName";
             lblLastName.Size = new Size(66, 15);
             lblLastName.TabIndex = 9;
@@ -229,7 +229,7 @@
             // radMemberId
             // 
             radMemberId.AutoSize = true;
-            radMemberId.Location = new Point(8, 56);
+            radMemberId.Location = new Point(15, 55);
             radMemberId.Name = "radMemberId";
             radMemberId.Size = new Size(84, 19);
             radMemberId.TabIndex = 1;
@@ -241,7 +241,7 @@
             // lblFirstName
             // 
             lblFirstName.AutoSize = true;
-            lblFirstName.Location = new Point(13, 101);
+            lblFirstName.Location = new Point(15, 101);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(67, 15);
             lblFirstName.TabIndex = 8;
@@ -250,12 +250,12 @@
             // radPhone
             // 
             radPhone.AutoSize = true;
-            radPhone.Location = new Point(102, 56);
+            radPhone.Location = new Point(120, 55);
             radPhone.Name = "radPhone";
-            radPhone.Size = new Size(106, 19);
+            radPhone.Size = new Size(69, 19);
             radPhone.TabIndex = 2;
             radPhone.TabStop = true;
-            radPhone.Text = "Phone Number";
+            radPhone.Text = "Phone #";
             radPhone.UseVisualStyleBackColor = true;
             radPhone.CheckedChanged += radPhone_CheckedChanged;
             // 
