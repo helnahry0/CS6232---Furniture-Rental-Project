@@ -29,20 +29,22 @@
         private void InitializeComponent()
         {
             tabControlMainform = new TabControl();
-            MemberSearch = new TabPage();
-            FurnitureSearch = new TabPage();
+            SearchMember = new TabPage();
             CreateMember = new TabPage();
+            FurnitureSearch = new TabPage();
             Cart = new TabPage();
             Returns = new TabPage();
             label1 = new Label();
             lblUsername = new Label();
             lnkLogout = new LinkLabel();
+            searchMemberUserControl1 = new FurnitureRental.UserControls.SearchMemberUserControl();
             tabControlMainform.SuspendLayout();
+            SearchMember.SuspendLayout();
             SuspendLayout();
             // 
             // tabControlMainform
             // 
-            tabControlMainform.Controls.Add(MemberSearch);
+            tabControlMainform.Controls.Add(SearchMember);
             tabControlMainform.Controls.Add(CreateMember);
             tabControlMainform.Controls.Add(FurnitureSearch);
             tabControlMainform.Controls.Add(Cart);
@@ -54,16 +56,27 @@
             tabControlMainform.Size = new Size(780, 352);
             tabControlMainform.TabIndex = 0;
             // 
-            // MemberSearch
+            // SearchMember
             // 
-            MemberSearch.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            MemberSearch.Location = new Point(4, 29);
-            MemberSearch.Name = "MemberSearch";
-            MemberSearch.Padding = new Padding(3);
-            MemberSearch.Size = new Size(772, 319);
-            MemberSearch.TabIndex = 0;
-            MemberSearch.Text = "Member Search";
-            MemberSearch.UseVisualStyleBackColor = true;
+            SearchMember.Controls.Add(searchMemberUserControl1);
+            SearchMember.Font = new Font("Segoe UI Semibold", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            SearchMember.Location = new Point(4, 29);
+            SearchMember.Name = "SearchMember";
+            SearchMember.Padding = new Padding(3);
+            SearchMember.Size = new Size(772, 319);
+            SearchMember.TabIndex = 0;
+            SearchMember.Text = "Search Member";
+            SearchMember.UseVisualStyleBackColor = true;
+            // 
+            // CreateMember
+            // 
+            CreateMember.Location = new Point(4, 29);
+            CreateMember.Name = "CreateMember";
+            CreateMember.Padding = new Padding(3);
+            CreateMember.Size = new Size(772, 319);
+            CreateMember.TabIndex = 4;
+            CreateMember.Text = "Create Member";
+            CreateMember.UseVisualStyleBackColor = true;
             // 
             // FurnitureSearch
             // 
@@ -75,16 +88,6 @@
             FurnitureSearch.TabIndex = 1;
             FurnitureSearch.Text = "Furniture Search";
             FurnitureSearch.UseVisualStyleBackColor = true;
-            // 
-            // CreateMember
-            // 
-            CreateMember.Location = new Point(4, 29);
-            CreateMember.Name = "CreateMember";
-            CreateMember.Padding = new Padding(3);
-            CreateMember.Size = new Size(772, 319);
-            CreateMember.TabIndex = 4;
-            CreateMember.Text = "Create Member";
-            CreateMember.UseVisualStyleBackColor = true;
             // 
             // Cart
             // 
@@ -137,6 +140,13 @@
             lnkLogout.Text = "Logout";
             lnkLogout.LinkClicked += lnkLogout_LinkClicked;
             // 
+            // searchMemberUserControl1
+            // 
+            searchMemberUserControl1.Location = new Point(10, 6);
+            searchMemberUserControl1.Name = "searchMemberUserControl1";
+            searchMemberUserControl1.Size = new Size(516, 291);
+            searchMemberUserControl1.TabIndex = 0;
+            // 
             // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -150,6 +160,7 @@
             Text = "MainMenuForm";
             FormClosed += MainMenuForm_FormClosed;
             tabControlMainform.ResumeLayout(false);
+            SearchMember.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -157,7 +168,7 @@
         #endregion
 
         private TabControl tabControlMainform;
-        private TabPage MemberSearch;
+        private TabPage SearchMember;
         private TabPage FurnitureSearch;
         private Label label1;
         private Label lblUsername;
@@ -165,5 +176,6 @@
         private TabPage Cart;
         private TabPage Returns;
         private TabPage CreateMember;
+        private UserControls.SearchMemberUserControl searchMemberUserControl1;
     }
 }
