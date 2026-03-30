@@ -145,9 +145,10 @@
             // 
             // lnkLogout
             // 
+            lnkLogout.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             lnkLogout.AutoSize = true;
             lnkLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkLogout.Location = new Point(824, 28);
+            lnkLogout.Location = new Point(931, 30);
             lnkLogout.Name = "lnkLogout";
             lnkLogout.Size = new Size(64, 23);
             lnkLogout.TabIndex = 4;
