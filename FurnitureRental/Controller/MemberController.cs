@@ -4,22 +4,28 @@ using System.Text.RegularExpressions;
 
 namespace FurnitureRental.Controller
 {
+    /// <summary>
+    ///  Controller class for managing member-related operations such as adding, updating, and searching for members.
+    /// </summary>
     public class MemberController
     {
         private readonly MemberDbDal _memberDbDal;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MemberController"/> class.
+        /// </summary>
         public MemberController()
         {
             _memberDbDal = new MemberDbDal();
         }
 
         /// <summary>
-        /// Tries the add a member.
+        /// Tries the add member.
         /// </summary>
         /// <param name="member">The member.</param>
         /// <param name="errorMessage">The error message.</param>
         /// <returns></returns>
-       public bool TryAddMember(Member member, out string errorMessage)
+        public bool TryAddMember(Member member, out string errorMessage)
         {
             errorMessage = ValidateMember(member);
 

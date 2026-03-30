@@ -55,7 +55,7 @@
             tabControlMainform.Margin = new Padding(3, 4, 3, 4);
             tabControlMainform.Name = "tabControlMainform";
             tabControlMainform.SelectedIndex = 0;
-            tabControlMainform.Size = new Size(985, 588);
+            tabControlMainform.Size = new Size(985, 689);
             tabControlMainform.TabIndex = 0;
             // 
             // SearchMember
@@ -77,7 +77,7 @@
             CreateMember.Margin = new Padding(3, 4, 3, 4);
             CreateMember.Name = "CreateMember";
             CreateMember.Padding = new Padding(3, 4, 3, 4);
-            CreateMember.Size = new Size(192, 62);
+            CreateMember.Size = new Size(977, 651);
             CreateMember.TabIndex = 4;
             CreateMember.Text = "Create Member";
             CreateMember.UseVisualStyleBackColor = true;
@@ -87,7 +87,7 @@
             createMemberUserControl1.Dock = DockStyle.Fill;
             createMemberUserControl1.Location = new Point(3, 4);
             createMemberUserControl1.Name = "createMemberUserControl1";
-            createMemberUserControl1.Size = new Size(186, 54);
+            createMemberUserControl1.Size = new Size(971, 643);
             createMemberUserControl1.TabIndex = 0;
             // 
             // FurnitureSearch
@@ -160,7 +160,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1008, 716);
+            ClientSize = new Size(1008, 817);
             Controls.Add(lnkLogout);
             Controls.Add(lblUsername);
             Controls.Add(lblMainForm);
