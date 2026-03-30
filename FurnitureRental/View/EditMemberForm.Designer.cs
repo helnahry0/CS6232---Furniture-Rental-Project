@@ -40,17 +40,19 @@ namespace FurnitureRental.View
             lblPhone = new Label();
             btnSave = new Button();
             btnCancel = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            textBox3 = new TextBox();
-            textBox4 = new TextBox();
-            textBox5 = new TextBox();
-            textBox6 = new TextBox();
-            comboBox1 = new ComboBox();
-            comboBox3 = new ComboBox();
+            txtMemberId = new TextBox();
+            txtFirstName = new TextBox();
+            txtLastName = new TextBox();
+            txtAddress1 = new TextBox();
+            txtCity = new TextBox();
+            txtPhone = new TextBox();
+            cboGender = new ComboBox();
+            cboState = new ComboBox();
             lblAddress2 = new Label();
-            textBox7 = new TextBox();
-            Edit_DobDateTimePicker = new DateTimePicker();
+            txtAddress2 = new TextBox();
+            dtpDOB = new DateTimePicker();
+            txtZip = new TextBox();
+            lblZip = new Label();
             SuspendLayout();
             // 
             // lblMemberID
@@ -60,7 +62,7 @@ namespace FurnitureRental.View
             lblMemberID.Location = new Point(52, 20);
             lblMemberID.Name = "lblMemberID";
             lblMemberID.Size = new Size(79, 17);
-            lblMemberID.TabIndex = 0;
+            lblMemberID.TabIndex = 41;
             lblMemberID.Text = "Member ID:";
             lblMemberID.Click += label1_Click;
             // 
@@ -71,7 +73,7 @@ namespace FurnitureRental.View
             lblFirstName.Location = new Point(52, 56);
             lblFirstName.Name = "lblFirstName";
             lblFirstName.Size = new Size(77, 17);
-            lblFirstName.TabIndex = 1;
+            lblFirstName.TabIndex = 31;
             lblFirstName.Text = "First Name:";
             // 
             // lblLastName
@@ -81,7 +83,7 @@ namespace FurnitureRental.View
             lblLastName.Location = new Point(52, 93);
             lblLastName.Name = "lblLastName";
             lblLastName.Size = new Size(75, 17);
-            lblLastName.TabIndex = 2;
+            lblLastName.TabIndex = 32;
             lblLastName.Text = "Last Name:";
             // 
             // lblGender
@@ -91,7 +93,7 @@ namespace FurnitureRental.View
             lblGender.Location = new Point(52, 125);
             lblGender.Name = "lblGender";
             lblGender.Size = new Size(56, 17);
-            lblGender.TabIndex = 3;
+            lblGender.TabIndex = 33;
             lblGender.Text = "Gender:";
             // 
             // lblDOB
@@ -101,58 +103,58 @@ namespace FurnitureRental.View
             lblDOB.Location = new Point(52, 160);
             lblDOB.Name = "lblDOB";
             lblDOB.Size = new Size(38, 17);
-            lblDOB.TabIndex = 4;
+            lblDOB.TabIndex = 34;
             lblDOB.Text = "DOB:";
             // 
             // lblAddress
             // 
             lblAddress.AutoSize = true;
             lblAddress.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            lblAddress.Location = new Point(51, 194);
+            lblAddress.Location = new Point(51, 228);
             lblAddress.Name = "lblAddress";
             lblAddress.Size = new Size(65, 17);
-            lblAddress.TabIndex = 5;
+            lblAddress.TabIndex = 36;
             lblAddress.Text = "Address1:";
             // 
             // lblCity
             // 
             lblCity.AutoSize = true;
             lblCity.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            lblCity.Location = new Point(51, 266);
+            lblCity.Location = new Point(51, 300);
             lblCity.Name = "lblCity";
             lblCity.Size = new Size(34, 17);
-            lblCity.TabIndex = 6;
+            lblCity.TabIndex = 38;
             lblCity.Text = "City:";
             // 
             // lblState
             // 
             lblState.AutoSize = true;
             lblState.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            lblState.Location = new Point(51, 297);
+            lblState.Location = new Point(51, 331);
             lblState.Name = "lblState";
             lblState.Size = new Size(42, 17);
-            lblState.TabIndex = 7;
+            lblState.TabIndex = 39;
             lblState.Text = "State:";
             // 
             // lblPhone
             // 
             lblPhone.AutoSize = true;
             lblPhone.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
-            lblPhone.Location = new Point(51, 334);
+            lblPhone.Location = new Point(51, 191);
             lblPhone.Name = "lblPhone";
             lblPhone.Size = new Size(50, 17);
-            lblPhone.TabIndex = 8;
+            lblPhone.TabIndex = 35;
             lblPhone.Text = "Phone:";
             // 
             // btnSave
             // 
             btnSave.BackColor = SystemColors.ActiveBorder;
-            btnSave.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            btnSave.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(118, 371);
+            btnSave.Location = new Point(100, 404);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(83, 38);
-            btnSave.TabIndex = 20;
+            btnSave.TabIndex = 11;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = false;
             btnSave.Click += btnSave_Click;
@@ -160,136 +162,158 @@ namespace FurnitureRental.View
             // btnCancel
             // 
             btnCancel.BackColor = SystemColors.ActiveBorder;
-            btnCancel.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold);
+            btnCancel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnCancel.ForeColor = SystemColors.ActiveCaptionText;
-            btnCancel.Location = new Point(264, 371);
+            btnCancel.Location = new Point(232, 404);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(80, 38);
-            btnCancel.TabIndex = 21;
+            btnCancel.TabIndex = 12;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = false;
             btnCancel.Click += btnCancel_Click;
             // 
-            // textBox1
+            // txtMemberId
             // 
-            textBox1.BorderStyle = BorderStyle.FixedSingle;
-            textBox1.Font = new Font("Segoe UI", 12F);
-            textBox1.Location = new Point(159, 15);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(152, 29);
-            textBox1.TabIndex = 11;
+            txtMemberId.BorderStyle = BorderStyle.FixedSingle;
+            txtMemberId.Font = new Font("Segoe UI", 12F);
+            txtMemberId.Location = new Point(159, 15);
+            txtMemberId.Name = "txtMemberId";
+            txtMemberId.ReadOnly = true;
+            txtMemberId.Size = new Size(152, 29);
+            txtMemberId.TabIndex = 41;
+            txtMemberId.TabStop = false;
             // 
-            // textBox2
+            // txtFirstName
             // 
-            textBox2.BorderStyle = BorderStyle.FixedSingle;
-            textBox2.Font = new Font("Segoe UI", 12F);
-            textBox2.Location = new Point(158, 51);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(222, 29);
-            textBox2.TabIndex = 12;
+            txtFirstName.BorderStyle = BorderStyle.FixedSingle;
+            txtFirstName.Font = new Font("Segoe UI", 12F);
+            txtFirstName.Location = new Point(158, 51);
+            txtFirstName.Name = "txtFirstName";
+            txtFirstName.Size = new Size(266, 29);
+            txtFirstName.TabIndex = 1;
             // 
-            // textBox3
+            // txtLastName
             // 
-            textBox3.BorderStyle = BorderStyle.FixedSingle;
-            textBox3.Font = new Font("Segoe UI", 12F);
-            textBox3.Location = new Point(159, 88);
-            textBox3.Name = "textBox3";
-            textBox3.Size = new Size(222, 29);
-            textBox3.TabIndex = 13;
+            txtLastName.BorderStyle = BorderStyle.FixedSingle;
+            txtLastName.Font = new Font("Segoe UI", 12F);
+            txtLastName.Location = new Point(159, 88);
+            txtLastName.Name = "txtLastName";
+            txtLastName.Size = new Size(265, 29);
+            txtLastName.TabIndex = 2;
             // 
-            // textBox4
+            // txtAddress1
             // 
-            textBox4.BorderStyle = BorderStyle.FixedSingle;
-            textBox4.Font = new Font("Segoe UI", 12F);
-            textBox4.Location = new Point(160, 194);
-            textBox4.Name = "textBox4";
-            textBox4.Size = new Size(222, 29);
-            textBox4.TabIndex = 16;
+            txtAddress1.BorderStyle = BorderStyle.FixedSingle;
+            txtAddress1.Font = new Font("Segoe UI", 12F);
+            txtAddress1.Location = new Point(160, 228);
+            txtAddress1.Name = "txtAddress1";
+            txtAddress1.Size = new Size(264, 29);
+            txtAddress1.TabIndex = 6;
             // 
-            // textBox5
+            // txtCity
             // 
-            textBox5.BorderStyle = BorderStyle.FixedSingle;
-            textBox5.Font = new Font("Segoe UI", 12F);
-            textBox5.Location = new Point(159, 261);
-            textBox5.Name = "textBox5";
-            textBox5.Size = new Size(152, 29);
-            textBox5.TabIndex = 17;
+            txtCity.BorderStyle = BorderStyle.FixedSingle;
+            txtCity.Font = new Font("Segoe UI", 12F);
+            txtCity.Location = new Point(159, 295);
+            txtCity.Name = "txtCity";
+            txtCity.Size = new Size(184, 29);
+            txtCity.TabIndex = 8;
             // 
-            // textBox6
+            // txtPhone
             // 
-            textBox6.BorderStyle = BorderStyle.FixedSingle;
-            textBox6.Font = new Font("Segoe UI", 12F);
-            textBox6.Location = new Point(160, 334);
-            textBox6.Name = "textBox6";
-            textBox6.Size = new Size(132, 29);
-            textBox6.TabIndex = 19;
+            txtPhone.BorderStyle = BorderStyle.FixedSingle;
+            txtPhone.Font = new Font("Segoe UI", 12F);
+            txtPhone.Location = new Point(160, 191);
+            txtPhone.Name = "txtPhone";
+            txtPhone.Size = new Size(132, 29);
+            txtPhone.TabIndex = 5;
             // 
-            // comboBox1
+            // cboGender
             // 
-            comboBox1.Font = new Font("Segoe UI", 12F);
-            comboBox1.FormattingEnabled = true;
-            comboBox1.Location = new Point(159, 125);
-            comboBox1.Name = "comboBox1";
-            comboBox1.Size = new Size(153, 29);
-            comboBox1.TabIndex = 14;
+            cboGender.Font = new Font("Segoe UI", 12F);
+            cboGender.FormattingEnabled = true;
+            cboGender.Location = new Point(159, 125);
+            cboGender.Name = "cboGender";
+            cboGender.Size = new Size(153, 29);
+            cboGender.TabIndex = 3;
             // 
-            // comboBox3
+            // cboState
             // 
-            comboBox3.Font = new Font("Segoe UI", 12F);
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(159, 297);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(133, 29);
-            comboBox3.TabIndex = 18;
+            cboState.Font = new Font("Segoe UI", 12F);
+            cboState.FormattingEnabled = true;
+            cboState.Location = new Point(159, 331);
+            cboState.Name = "cboState";
+            cboState.Size = new Size(133, 29);
+            cboState.TabIndex = 9;
             // 
             // lblAddress2
             // 
             lblAddress2.AutoSize = true;
             lblAddress2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAddress2.Location = new Point(49, 232);
+            lblAddress2.Location = new Point(49, 266);
             lblAddress2.Name = "lblAddress2";
             lblAddress2.Size = new Size(67, 17);
-            lblAddress2.TabIndex = 5;
+            lblAddress2.TabIndex = 37;
             lblAddress2.Text = "Address2:";
             // 
-            // textBox7
+            // txtAddress2
             // 
-            textBox7.BorderStyle = BorderStyle.FixedSingle;
-            textBox7.Location = new Point(159, 230);
-            textBox7.Name = "textBox7";
-            textBox7.Size = new Size(221, 25);
-            textBox7.TabIndex = 23;
+            txtAddress2.BorderStyle = BorderStyle.FixedSingle;
+            txtAddress2.Location = new Point(159, 264);
+            txtAddress2.Name = "txtAddress2";
+            txtAddress2.Size = new Size(265, 25);
+            txtAddress2.TabIndex = 7;
             // 
-            // Edit_DobDateTimePicker
+            // dtpDOB
             // 
-            Edit_DobDateTimePicker.Checked = false;
-            Edit_DobDateTimePicker.CustomFormat = "yyyy-MM-dd";
-            Edit_DobDateTimePicker.Format = DateTimePickerFormat.Custom;
-            Edit_DobDateTimePicker.Location = new Point(159, 161);
-            Edit_DobDateTimePicker.Margin = new Padding(3, 2, 3, 2);
-            Edit_DobDateTimePicker.MaxDate = new DateTime(2200, 12, 31, 0, 0, 0, 0);
-            Edit_DobDateTimePicker.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
-            Edit_DobDateTimePicker.Name = "Edit_DobDateTimePicker";
-            Edit_DobDateTimePicker.Size = new Size(153, 25);
-            Edit_DobDateTimePicker.TabIndex = 15;
+            dtpDOB.Checked = false;
+            dtpDOB.CustomFormat = "yyyy-MM-dd";
+            dtpDOB.Format = DateTimePickerFormat.Custom;
+            dtpDOB.Location = new Point(159, 161);
+            dtpDOB.Margin = new Padding(3, 2, 3, 2);
+            dtpDOB.MaxDate = new DateTime(2200, 12, 31, 0, 0, 0, 0);
+            dtpDOB.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
+            dtpDOB.Name = "dtpDOB";
+            dtpDOB.Size = new Size(153, 25);
+            dtpDOB.TabIndex = 4;
+            // 
+            // txtZip
+            // 
+            txtZip.BorderStyle = BorderStyle.FixedSingle;
+            txtZip.Font = new Font("Segoe UI", 12F);
+            txtZip.Location = new Point(160, 368);
+            txtZip.Name = "txtZip";
+            txtZip.Size = new Size(132, 29);
+            txtZip.TabIndex = 10;
+            // 
+            // lblZip
+            // 
+            lblZip.AutoSize = true;
+            lblZip.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
+            lblZip.Location = new Point(51, 368);
+            lblZip.Name = "lblZip";
+            lblZip.Size = new Size(62, 17);
+            lblZip.TabIndex = 40;
+            lblZip.Text = "Zip Code";
             // 
             // EditMemberForm
             // 
             AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(531, 417);
-            Controls.Add(Edit_DobDateTimePicker);
-            Controls.Add(textBox7);
+            ClientSize = new Size(497, 452);
+            Controls.Add(txtZip);
+            Controls.Add(lblZip);
+            Controls.Add(dtpDOB);
+            Controls.Add(txtAddress2);
             Controls.Add(lblAddress2);
-            Controls.Add(comboBox3);
-            Controls.Add(comboBox1);
-            Controls.Add(textBox6);
-            Controls.Add(textBox5);
-            Controls.Add(textBox4);
-            Controls.Add(textBox3);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(cboState);
+            Controls.Add(cboGender);
+            Controls.Add(txtPhone);
+            Controls.Add(txtCity);
+            Controls.Add(txtAddress1);
+            Controls.Add(txtLastName);
+            Controls.Add(txtFirstName);
+            Controls.Add(txtMemberId);
             Controls.Add(btnCancel);
             Controls.Add(btnSave);
             Controls.Add(lblPhone);
@@ -304,6 +328,7 @@ namespace FurnitureRental.View
             Font = new Font("Segoe UI", 9.75F);
             Name = "EditMemberForm";
             Text = "EditMemberForm";
+            Load += EditMemberForm_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -326,16 +351,18 @@ namespace FurnitureRental.View
         private Label lblPhone;
         private Button btnSave;
         private Button btnCancel;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private TextBox textBox3;
-        private TextBox textBox4;
-        private TextBox textBox5;
-        private TextBox textBox6;
-        private ComboBox comboBox1;
-        private ComboBox comboBox3;
+        private TextBox txtMemberId;
+        private TextBox txtFirstName;
+        private TextBox txtLastName;
+        private TextBox txtAddress1;
+        private TextBox txtCity;
+        private TextBox txtPhone;
+        private ComboBox cboGender;
+        private ComboBox cboState;
         private Label lblAddress2;
-        private TextBox textBox7;
-        private DateTimePicker Edit_DobDateTimePicker;
+        private TextBox txtAddress2;
+        private DateTimePicker dtpDOB;
+        private TextBox txtZip;
+        private Label lblZip;
     }
 }

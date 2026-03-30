@@ -9,36 +9,71 @@ namespace FurnitureRental.DBAccess
         public Member? GetMemberById(int memberId)
         {
             const string query = @"
-                SELECT
-                    member_id,
-                    first_name,
-                    last_name,
-                    sex,
-                    dob,
-                    phone,
-                    address1,
-                    address2,
-                    city,
-                    state,
-                    zip
+                SELECT *
                 FROM dbo.Member
-                WHERE member_id = @MemberId;";
+                WHERE member_id = @MemberId";
 
             using SqlConnection connection = new SqlConnection(DbHelper.ConnectionString);
-            using SqlCommand command = new SqlCommand(query, connection);
+            using SqlCommand cmd = new SqlCommand(query, connection);
 
-            command.Parameters.Add("@MemberId", SqlDbType.Int).Value = memberId;
+            cmd.Parameters.Add("@MemberId", SqlDbType.Int).Value = memberId;
 
             connection.Open();
 
-            using SqlDataReader reader = command.ExecuteReader();
+            using SqlDataReader reader = cmd.ExecuteReader();
 
             if (!reader.Read())
-            {
                 return null;
-            }
 
-            return CreateMember(reader);
+            return new Member
+            {
+                MemberId = Convert.ToInt32(reader["member_id"]),
+                FirstName = Convert.ToString(reader["first_name"]) ?? "",
+                LastName = Convert.ToString(reader["last_name"]) ?? "",
+                Sex = Convert.ToString(reader["sex"]) ?? "",
+                Dob = Convert.ToDateTime(reader["dob"]),
+                Phone = Convert.ToString(reader["phone"]) ?? "",
+                Address1 = Convert.ToString(reader["address1"]) ?? "",
+                Address2 = Convert.ToString(reader["address2"]) ?? "",
+                City = Convert.ToString(reader["city"]) ?? "",
+                State = Convert.ToString(reader["state"]) ?? "",
+                Zip = Convert.ToString(reader["zip"]) ?? ""
+            };
+        }
+
+        public bool UpdateMember(Member member)
+        {
+            const string query = @"
+                UPDATE dbo.Member
+                SET first_name = @FirstName,
+                    last_name = @LastName,
+                    sex = @Sex,
+                    dob = @DOB,
+                    phone = @Phone,
+                    address1 = @Address1,
+                    address2 = @Address2,
+                    city = @City,
+                    state = @State,
+                    zip = @Zip
+                WHERE member_id = @MemberId";
+
+            using SqlConnection conn = new SqlConnection(DbHelper.ConnectionString);
+            using SqlCommand cmd = new SqlCommand(query, conn);
+
+            cmd.Parameters.AddWithValue("@FirstName", member.FirstName);
+            cmd.Parameters.AddWithValue("@LastName", member.LastName);
+            cmd.Parameters.AddWithValue("@Sex", member.Sex);
+            cmd.Parameters.AddWithValue("@DOB", member.Dob);
+            cmd.Parameters.AddWithValue("@Phone", member.Phone);
+            cmd.Parameters.AddWithValue("@Address1", member.Address1);
+            cmd.Parameters.AddWithValue("@Address2", member.Address2 ?? (object)DBNull.Value);
+            cmd.Parameters.AddWithValue("@City", member.City);
+            cmd.Parameters.AddWithValue("@State", member.State);
+            cmd.Parameters.AddWithValue("@Zip", member.Zip);
+            cmd.Parameters.AddWithValue("@MemberId", member.MemberId);
+
+            conn.Open();
+            return cmd.ExecuteNonQuery() == 1;
         }
 
         public Member? GetMemberByPhone(string phone)

@@ -20,8 +20,10 @@ namespace FurnitureRental.UserControls
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            EditMemberForm editForm = new EditMemberForm();
-            editForm.Show();
+            // TODO: replace this with actual Member ID
+            int selectedMemberId = 1;
+            EditMemberForm form = new EditMemberForm(selectedMemberId);
+            form.ShowDialog();
         }
     }
 }
