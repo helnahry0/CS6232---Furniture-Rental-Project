@@ -1,5 +1,3 @@
-using FurnitureRental.View;
-
 namespace FurnitureRental
 {
     internal static class Program
