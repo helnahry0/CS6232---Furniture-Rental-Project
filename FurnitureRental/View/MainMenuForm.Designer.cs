@@ -94,7 +94,7 @@
             FurnitureSearch.Location = new Point(4, 29);
             FurnitureSearch.Name = "FurnitureSearch";
             FurnitureSearch.Padding = new Padding(3);
-            FurnitureSearch.Size = new Size(854, 484);
+            FurnitureSearch.Size = new Size(192, 67);
             FurnitureSearch.TabIndex = 1;
             FurnitureSearch.Text = "Furniture Search";
             FurnitureSearch.UseVisualStyleBackColor = true;

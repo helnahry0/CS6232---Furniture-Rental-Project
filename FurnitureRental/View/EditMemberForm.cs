@@ -20,7 +20,6 @@ namespace FurnitureRental.View
         private void EditMemberForm_Load(object? sender, EventArgs e)
         {
             LoadStates();
-            LoadGenders();
 
             Member? member = _memberController.GetMemberById(_memberId);
 
@@ -47,16 +46,6 @@ namespace FurnitureRental.View
                 cboState.SelectedItem = member.State;
                 txtZip.Text = member.Zip;
             }
-        }
-
-        private void LoadGenders()
-        {
-            cboGender.Items.AddRange(new[]
-            {
-                "Male",
-                "Female",
-                "Other"
-            });
         }
 
         private void LoadStates()

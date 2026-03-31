@@ -232,6 +232,7 @@ namespace FurnitureRental.View
             // 
             cboGender.Font = new Font("Segoe UI", 12F);
             cboGender.FormattingEnabled = true;
+            cboGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
             cboGender.Location = new Point(159, 125);
             cboGender.Name = "cboGender";
             cboGender.Size = new Size(153, 29);
@@ -269,7 +270,7 @@ namespace FurnitureRental.View
             // 
             dtpDOB.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpDOB.Checked = false;
-            dtpDOB.CustomFormat = "yyyy-MM-dd";
+            dtpDOB.CustomFormat = "MM-dd-yyyy";
             dtpDOB.Format = DateTimePickerFormat.Custom;
             dtpDOB.Location = new Point(159, 161);
             dtpDOB.Margin = new Padding(3, 2, 3, 2);
