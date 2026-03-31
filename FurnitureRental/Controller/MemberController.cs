@@ -20,6 +20,42 @@ namespace FurnitureRental.Controller
         }
 
         /// <summary>
+        /// Get Member by ID.
+        /// </summary>
+        /// <param name="memberId">Member ID</param>
+        /// <returns></returns>
+        public Member? GetMemberById(int memberId)
+        {
+            try
+            {
+                return _memberDbDal.GetMemberById(memberId);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return null;
+            }
+        }
+
+        /// <summary>
+        /// Update Member.
+        /// </summary>
+        /// <param name="member">Member</param>
+        /// <returns></returns>
+        public bool UpdateMember(Member member)
+        {
+            try
+            {
+                return _memberDbDal.UpdateMember(member);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                return false;
+            }
+        }
+
+        /// <summary>
         /// Tries the add member.
         /// </summary>
         /// <param name="member">The member.</param>

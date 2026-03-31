@@ -97,7 +97,7 @@ namespace FurnitureRental.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
-        private void LettersOnly_KeyPress(object sender, KeyPressEventArgs e)
+        private void LettersOnly_KeyPress(object? sender, KeyPressEventArgs e)
         {
             // lets letters, spaces, hyphens and backspace be pressed
             if (!char.IsLetter(e.KeyChar) && e.KeyChar != ' ' && e.KeyChar != '-' && e.KeyChar != (char)Keys.Back)
@@ -111,7 +111,7 @@ namespace FurnitureRental.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
-        private void NumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
+        private void NumbersOnly_KeyPress(object? sender, KeyPressEventArgs e)
         {
             // lets only digits and backspace only
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
@@ -125,7 +125,7 @@ namespace FurnitureRental.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
-        private void PhoneNumbersOnly_KeyPress(object sender, KeyPressEventArgs e)
+        private void PhoneNumbersOnly_KeyPress(object? sender, KeyPressEventArgs e)
         {
             // lets only characters found in phone numbers be pressed
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ' && e.KeyChar != '+' && e.KeyChar != '-' && e.KeyChar != '(' && e.KeyChar != ')')
@@ -139,7 +139,7 @@ namespace FurnitureRental.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void CreateButton_Click(object sender, EventArgs e)
+        private void CreateButton_Click(object? sender, EventArgs e)
         {
             if (!ValidateFields())
             {
@@ -203,7 +203,7 @@ namespace FurnitureRental.UserControls
         /// </summary>
         /// <param name="sender">The source of the event.</param>
         /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
-        private void ClearButton_Click(object sender, EventArgs e)
+        private void ClearButton_Click(object? sender, EventArgs e)
         {
             ClearAllFields();
         }

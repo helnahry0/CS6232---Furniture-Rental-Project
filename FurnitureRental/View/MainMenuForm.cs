@@ -6,11 +6,15 @@
         public MainMenuForm()
         {
             InitializeComponent();
-            lblUsername.Text =
-                    $"Logged in as: {CurrentUser.Employee.FirstName} {CurrentUser.Employee.LastName} - " +
-                    $"Employee ID: {CurrentUser.Employee.EmployeeId}";
-
-            LoadSearchMemberUserControl();
+            if (CurrentUser.Employee != null)
+            {
+                lblUsername.Text = $"Logged in as: {CurrentUser.Employee.FirstName} {CurrentUser.Employee.LastName} - Employee ID: {CurrentUser.Employee.EmployeeId}";
+                LoadSearchMemberUserControl();
+            }
+            else
+            {
+                lblUsername.Text = "Not logged in";
+            }
         }
 
         private void LoadSearchMemberUserControl()

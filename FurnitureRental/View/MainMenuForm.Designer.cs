@@ -63,7 +63,7 @@
             SearchMember.Location = new Point(4, 29);
             SearchMember.Name = "SearchMember";
             SearchMember.Padding = new Padding(3, 4, 3, 4);
-            SearchMember.Size = new Size(977, 651);
+            SearchMember.Size = new Size(854, 484);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
@@ -73,7 +73,7 @@
             CreateMember.Controls.Add(createMemberUserControl1);
             CreateMember.Location = new Point(4, 29);
             CreateMember.Name = "CreateMember";
-            CreateMember.Padding = new Padding(3, 3, 3, 3);
+            CreateMember.Padding = new Padding(3);
             CreateMember.Size = new Size(854, 484);
             CreateMember.TabIndex = 4;
             CreateMember.Text = "Create Member";
@@ -93,7 +93,7 @@
             FurnitureSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             FurnitureSearch.Location = new Point(4, 29);
             FurnitureSearch.Name = "FurnitureSearch";
-            FurnitureSearch.Padding = new Padding(3, 3, 3, 3);
+            FurnitureSearch.Padding = new Padding(3);
             FurnitureSearch.Size = new Size(854, 484);
             FurnitureSearch.TabIndex = 1;
             FurnitureSearch.Text = "Furniture Search";
@@ -104,7 +104,7 @@
             Cart.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Cart.Location = new Point(4, 29);
             Cart.Name = "Cart";
-            Cart.Size = new Size(854, 484);
+            Cart.Size = new Size(192, 67);
             Cart.TabIndex = 2;
             Cart.Text = "Cart";
             Cart.UseVisualStyleBackColor = true;
@@ -114,7 +114,7 @@
             Returns.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Returns.Location = new Point(4, 29);
             Returns.Name = "Returns";
-            Returns.Size = new Size(854, 484);
+            Returns.Size = new Size(192, 67);
             Returns.TabIndex = 3;
             Returns.Text = "Returns";
             Returns.UseVisualStyleBackColor = true;

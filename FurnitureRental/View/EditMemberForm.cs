@@ -1,12 +1,13 @@
-﻿using FurnitureRental.DAL;
+﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
+
 
 namespace FurnitureRental.View
 {
     public partial class EditMemberForm : Form
     {
         private readonly int _memberId;
-        private readonly MemberDbDal _memberDal = new MemberDbDal();
+        private readonly MemberController _memberController = new MemberController();
 
         public EditMemberForm(int memberId)
         {
@@ -16,31 +17,36 @@ namespace FurnitureRental.View
             this.Load += EditMemberForm_Load;
         }
 
-        private void EditMemberForm_Load(object sender, EventArgs e)
+        private void EditMemberForm_Load(object? sender, EventArgs e)
         {
             LoadStates();
             LoadGenders();
 
-            Member? member = _memberDal.GetMemberById(_memberId);
+            Member? member = _memberController.GetMemberById(_memberId);
 
             if (member == null)
             {
-                MessageBox.Show("Member not found.");
+                MessageBox.Show(
+                    "Unable to load member data. Please try again.",
+                    "Database Error",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
                 this.Close();
-                return;
             }
-
-            txtMemberId.Text = member.MemberId.ToString();
-            txtFirstName.Text = member.FirstName;
-            txtLastName.Text = member.LastName;
-            cboGender.SelectedItem = member.Sex;
-            dtpDOB.Value = member.Dob;
-            txtPhone.Text = member.Phone;
-            txtAddress1.Text = member.Address1;
-            txtAddress2.Text = member.Address2;
-            txtCity.Text = member.City;
-            cboState.SelectedItem = member.State;
-            txtZip.Text = member.Zip;
+            else
+            {
+                txtMemberId.Text = member.MemberId.ToString();
+                txtFirstName.Text = member.FirstName;
+                txtLastName.Text = member.LastName;
+                cboGender.SelectedItem = member.Sex;
+                dtpDOB.Value = member.Dob;
+                txtPhone.Text = member.Phone;
+                txtAddress1.Text = member.Address1;
+                txtAddress2.Text = member.Address2;
+                txtCity.Text = member.City;
+                cboState.SelectedItem = member.State;
+                txtZip.Text = member.Zip;
+            }
         }
 
         private void LoadGenders()
@@ -80,17 +86,17 @@ namespace FurnitureRental.View
                 MemberId = _memberId,
                 FirstName = txtFirstName.Text.Trim(),
                 LastName = txtLastName.Text.Trim(),
-                Sex = cboGender.SelectedItem.ToString()!,
+                Sex = cboGender?.SelectedItem?.ToString()!,
                 Dob = dtpDOB.Value.Date,
                 Phone = txtPhone.Text.Trim(),
                 Address1 = txtAddress1.Text.Trim(),
                 Address2 = txtAddress2.Text.Trim(),
                 City = txtCity.Text.Trim(),
-                State = cboState.SelectedItem.ToString()!,
+                State = cboState?.SelectedItem?.ToString()!,
                 Zip = txtZip.Text.Trim()
             };
 
-            bool success = _memberDal.UpdateMember(member);
+            bool success = _memberController.UpdateMember(member);
 
             if (success)
             {

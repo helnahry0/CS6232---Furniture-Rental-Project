@@ -214,7 +214,7 @@ namespace FurnitureRental.View
             // 
             txtCity.BorderStyle = BorderStyle.FixedSingle;
             txtCity.Font = new Font("Segoe UI", 12F);
-            txtCity.Location = new Point(159, 295);
+            txtCity.Location = new Point(159, 297);
             txtCity.Name = "txtCity";
             txtCity.Size = new Size(184, 29);
             txtCity.TabIndex = 8;
@@ -259,13 +259,15 @@ namespace FurnitureRental.View
             // txtAddress2
             // 
             txtAddress2.BorderStyle = BorderStyle.FixedSingle;
+            txtAddress2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtAddress2.Location = new Point(159, 264);
             txtAddress2.Name = "txtAddress2";
-            txtAddress2.Size = new Size(265, 25);
+            txtAddress2.Size = new Size(265, 29);
             txtAddress2.TabIndex = 7;
             // 
             // dtpDOB
             // 
+            dtpDOB.CalendarFont = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpDOB.Checked = false;
             dtpDOB.CustomFormat = "yyyy-MM-dd";
             dtpDOB.Format = DateTimePickerFormat.Custom;
