@@ -21,7 +21,7 @@ namespace FurnitureRental.View
         /// Initializes a new instance of the <see cref="EditMemberForm"/> class.
         /// </summary>
         /// <param name="memberId">The member identifier.</param>
-/        public EditMemberForm(int memberId)
+        public EditMemberForm(int memberId)
         {
             InitializeComponent();
             _memberId = memberId;

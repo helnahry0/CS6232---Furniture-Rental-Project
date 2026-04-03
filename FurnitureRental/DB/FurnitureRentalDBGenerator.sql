@@ -32,7 +32,7 @@ CREATE TABLE dbo.Member (
     address2 VARCHAR(100) NULL,
     city VARCHAR(50) NOT NULL,
     state CHAR(2) NOT NULL,
-    zip VARCHAR(10) NOT NULL
+    zip VARCHAR(5) NOT NULL
 );
 GO
 
@@ -49,7 +49,7 @@ CREATE TABLE dbo.Employee
     address2 VARCHAR(100) NULL,
     city VARCHAR(50) NOT NULL,
     state CHAR(2) NOT NULL,
-    zip VARCHAR(10) NOT NULL,
+    zip VARCHAR(5) NOT NULL,
     username VARCHAR(50) NOT NULL UNIQUE,
     password VARCHAR(100) NOT NULL
 );

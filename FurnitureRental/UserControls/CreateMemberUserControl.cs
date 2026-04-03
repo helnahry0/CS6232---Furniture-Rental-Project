@@ -26,6 +26,7 @@ namespace FurnitureRental.UserControls
             SetupSexComboBox();
             SetupErrorLabels();
             WireUpEvents();
+            SetupStateComboBox();
         }
 
         /// <summary>
@@ -42,6 +43,21 @@ namespace FurnitureRental.UserControls
         }
 
         /// <summary>
+        /// Setups the State ComboBox.
+        /// </summary>
+        private void SetupStateComboBox()
+        {
+            StateComboBox.Items.AddRange(new[]
+            {
+                "  ","AL","AK","AZ","AR","CA","CO","CT","DE","FL","GA",
+                "HI","ID","IL","IN","IA","KS","KY","LA","ME","MD",
+                "MA","MI","MN","MS","MO","MT","NE","NV","NH","NJ",
+                "NM","NY","NC","ND","OH","OK","OR","PA","RI","SC",
+                "SD","TN","TX","UT","VT","VA","WA","WV","WI","WY"
+            });
+        }
+
+        /// <summary>
         /// Setups the error labels.
         /// </summary>
         private void SetupErrorLabels()
@@ -54,7 +70,7 @@ namespace FurnitureRental.UserControls
                 (_phoneError,     PhoneNumberMaskedTextBox),
                 (_address1Error,  Address1TextBox),
                 (_cityError,      CityTextBox),
-                (_stateError,     StateTextBox),
+                (_stateError,     StateComboBox),
                 (_zipError,       ZipTextBox),
             };
 
@@ -87,9 +103,7 @@ namespace FurnitureRental.UserControls
 
             PhoneNumberMaskedTextBox.KeyPress += PhoneNumbersOnly_KeyPress;
             ZipTextBox.KeyPress += NumbersOnly_KeyPress;
-
-            StateTextBox.KeyPress += LettersOnly_KeyPress;
-            StateTextBox.MaxLength = 2;
+            ZipTextBox.MaxLength = 5;
         }
 
         /// <summary>
@@ -162,7 +176,7 @@ namespace FurnitureRental.UserControls
                         ? string.Empty
                         : Address2TextBox.Text.Trim(),
                     City = CityTextBox.Text.Trim(),
-                    State = StateTextBox.Text.Trim().ToUpper(),
+                    State = StateComboBox.SelectedItem!.ToString()!,
                     Zip = ZipTextBox.Text.Trim()
                 };
 
@@ -221,7 +235,7 @@ namespace FurnitureRental.UserControls
             Address1TextBox.Clear();
             Address2TextBox.Clear();
             CityTextBox.Clear();
-            StateTextBox.Clear();
+            StateComboBox.SelectedIndex = 0;
             ZipTextBox.Clear();
 
             HideAllErrors();
@@ -277,14 +291,9 @@ namespace FurnitureRental.UserControls
                 isValid = false;
             }
 
-            if (string.IsNullOrWhiteSpace(StateTextBox.Text))
+            if (StateComboBox.SelectedIndex == 0 || StateComboBox.SelectedItem == null)
             {
-                ShowError(_stateError, "State is required.");
-                isValid = false;
-            }
-            else if (StateTextBox.Text.Trim().Length != 2)
-            {
-                ShowError(_stateError, "Use 2-letter state code (e.g. GA).");
+                ShowError(_stateError, "Please select a State.");
                 isValid = false;
             }
 
@@ -293,9 +302,9 @@ namespace FurnitureRental.UserControls
                 ShowError(_zipError, "Zip code is required.");
                 isValid = false;
             }
-            else if (ZipTextBox.Text.Trim().Length > 10)
+            else if (ZipTextBox.Text.Trim().Length > 5)
             {
-                ShowError(_zipError, "Zip code is too long.");
+                ShowError(_zipError, "Zip code mst be 5 digits.");
                 isValid = false;
             }
 

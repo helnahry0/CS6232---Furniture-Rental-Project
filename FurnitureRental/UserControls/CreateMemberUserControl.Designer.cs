@@ -32,7 +32,6 @@
             CreateButton = new Button();
             ZipTextBox = new TextBox();
             ZipLabel = new Label();
-            StateTextBox = new TextBox();
             StateLabel = new Label();
             CityTextBox = new TextBox();
             CityLabel = new Label();
@@ -51,6 +50,7 @@
             FirstNameLabel = new Label();
             RegMemberLabel = new Label();
             PhoneNumberMaskedTextBox = new MaskedTextBox();
+            StateComboBox = new ComboBox();
             SuspendLayout();
             // 
             // ClearButton
@@ -87,13 +87,6 @@
             ZipLabel.Size = new Size(35, 20);
             ZipLabel.TabIndex = 42;
             ZipLabel.Text = "Zip:";
-            // 
-            // StateTextBox
-            // 
-            StateTextBox.Location = new Point(239, 334);
-            StateTextBox.Name = "StateTextBox";
-            StateTextBox.Size = new Size(364, 27);
-            StateTextBox.TabIndex = 9;
             // 
             // StateLabel
             // 
@@ -158,6 +151,7 @@
             // 
             // SexComboBox
             // 
+            SexComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             SexComboBox.FormattingEnabled = true;
             SexComboBox.Location = new Point(239, 158);
             SexComboBox.Name = "SexComboBox";
@@ -257,16 +251,25 @@
             PhoneNumberMaskedTextBox.Size = new Size(364, 27);
             PhoneNumberMaskedTextBox.TabIndex = 5;
             // 
+            // StateComboBox
+            // 
+            StateComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
+            StateComboBox.FormattingEnabled = true;
+            StateComboBox.Location = new Point(239, 334);
+            StateComboBox.Name = "StateComboBox";
+            StateComboBox.Size = new Size(364, 28);
+            StateComboBox.TabIndex = 9;
+            // 
             // CreateMemberUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(StateComboBox);
             Controls.Add(PhoneNumberMaskedTextBox);
             Controls.Add(ClearButton);
             Controls.Add(CreateButton);
             Controls.Add(ZipTextBox);
             Controls.Add(ZipLabel);
-            Controls.Add(StateTextBox);
             Controls.Add(StateLabel);
             Controls.Add(CityTextBox);
             Controls.Add(CityLabel);
@@ -296,7 +299,6 @@
         private Button CreateButton;
         private TextBox ZipTextBox;
         private Label ZipLabel;
-        private TextBox StateTextBox;
         private Label StateLabel;
         private TextBox CityTextBox;
         private Label CityLabel;
@@ -315,5 +317,6 @@
         private Label FirstNameLabel;
         private Label RegMemberLabel;
         private MaskedTextBox PhoneNumberMaskedTextBox;
+        private ComboBox StateComboBox;
     }
 }
