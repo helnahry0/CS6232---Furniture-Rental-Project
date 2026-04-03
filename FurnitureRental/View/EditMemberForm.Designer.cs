@@ -151,7 +151,7 @@ namespace FurnitureRental.View
             btnSave.BackColor = SystemColors.ActiveBorder;
             btnSave.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnSave.ForeColor = Color.Black;
-            btnSave.Location = new Point(100, 404);
+            btnSave.Location = new Point(100, 415);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(83, 38);
             btnSave.TabIndex = 11;
@@ -164,7 +164,7 @@ namespace FurnitureRental.View
             btnCancel.BackColor = SystemColors.ActiveBorder;
             btnCancel.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             btnCancel.ForeColor = SystemColors.ActiveCaptionText;
-            btnCancel.Location = new Point(232, 404);
+            btnCancel.Location = new Point(232, 415);
             btnCancel.Name = "btnCancel";
             btnCancel.Size = new Size(80, 38);
             btnCancel.TabIndex = 12;
@@ -232,7 +232,7 @@ namespace FurnitureRental.View
             // 
             cboGender.Font = new Font("Segoe UI", 12F);
             cboGender.FormattingEnabled = true;
-            cboGender.Items.AddRange(new object[] { "Male", "Female", "Other" });
+            cboGender.Items.AddRange(new object[] { "Male", "Female" });
             cboGender.Location = new Point(159, 125);
             cboGender.Name = "cboGender";
             cboGender.Size = new Size(153, 36);
@@ -303,7 +303,7 @@ namespace FurnitureRental.View
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(497, 452);
+            ClientSize = new Size(642, 474);
             Controls.Add(txtZip);
             Controls.Add(lblZip);
             Controls.Add(dtpDOB);
@@ -331,7 +331,7 @@ namespace FurnitureRental.View
             Font = new Font("Segoe UI", 9.75F);
             Name = "EditMemberForm";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "EditMemberForm";
+            Text = "Edit Member Form";
             Load += EditMemberForm_Load;
             ResumeLayout(false);
             PerformLayout();

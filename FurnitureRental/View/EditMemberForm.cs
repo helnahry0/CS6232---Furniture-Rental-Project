@@ -16,6 +16,12 @@ namespace FurnitureRental.View
     {
         private readonly int _memberId;
         private readonly MemberController _memberController = new MemberController();
+        private Label _firstNameError = new Label();
+        private Label _lastNameError = new Label();
+        private Label _genderError = new Label();
+        private Label _phoneError = new Label();
+        private Label _stateError = new Label();
+        private Label _zipError = new Label();
 
         /// <summary>
         /// Initializes a new instance of the <see cref="EditMemberForm"/> class.
@@ -32,6 +38,7 @@ namespace FurnitureRental.View
         private void EditMemberForm_Load(object? sender, EventArgs e)
         {
             LoadStates();
+            SetupErrorLabels();
 
             Member? member = _memberController.GetMemberById(_memberId);
 
@@ -72,6 +79,59 @@ namespace FurnitureRental.View
             });
         }
 
+
+        /// <summary>
+        /// Sets up inline error labels positioned to the right of their associated input controls.
+        /// </summary>
+        private void SetupErrorLabels()
+        {
+            var errorSetup = new (Label errorLabel, Control inputControl)[]
+            {
+                (_firstNameError, txtFirstName),
+                (_lastNameError,  txtLastName),
+                (_genderError,    cboGender),
+                (_phoneError,     txtPhone),
+                (_stateError,     cboState),
+                (_zipError,       txtZip),
+            };
+
+            foreach (var (errorLabel, inputControl) in errorSetup)
+            {
+                errorLabel.ForeColor = Color.Red;
+                errorLabel.AutoSize = true;
+                errorLabel.Font = new Font("Segoe UI", 8F);
+                errorLabel.Visible = false;
+                errorLabel.Location = new Point(
+                    inputControl.Right + 5,
+                    inputControl.Top + 5
+                );
+
+                Controls.Add(errorLabel);
+            }
+        }
+
+        /// <summary>
+        /// Shows an error label with the given message.
+        /// </summary>
+        private void ShowError(Label errorLabel, string message)
+        {
+            errorLabel.Text = message;
+            errorLabel.Visible = true;
+        }
+
+        /// <summary>
+        /// Hides all inline validation error labels.
+        /// </summary>
+        private void HideAllErrors()
+        {
+            _firstNameError.Visible = false;
+            _lastNameError.Visible = false;
+            _genderError.Visible = false;
+            _phoneError.Visible = false;
+            _stateError.Visible = false;
+            _zipError.Visible = false;
+        }
+
         private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -109,45 +169,50 @@ namespace FurnitureRental.View
                 MessageBox.Show("Update failed.");
             }
         }
+
         private bool ValidateForm()
         {
+            HideAllErrors();
+            bool isValid = true;
+
             if (string.IsNullOrWhiteSpace(txtFirstName.Text))
             {
-                MessageBox.Show("First name is required.");
-                return false;
+                ShowError(_firstNameError, "First name is required.");
+                isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtLastName.Text))
             {
-                MessageBox.Show("Last name is required.");
-                return false;
+                ShowError(_lastNameError, "Last name is required.");
+                isValid = false;
             }
 
             if (cboGender.SelectedItem == null)
             {
-                MessageBox.Show("Please select gender.");
-                return false;
+                ShowError(_genderError, "Please select a gender.");
+                isValid = false;
             }
 
             if (txtPhone.Text.Length != 10 || !txtPhone.Text.All(char.IsDigit))
             {
-                MessageBox.Show("Phone number must be exactly 10 digits.");
-                return false;
+                ShowError(_phoneError, "Must be exactly 10 digits.");
+                isValid = false;
             }
 
             if (cboState.SelectedItem == null)
             {
-                MessageBox.Show("Please select state.");
-                return false;
+                ShowError(_stateError, "Please select a state.");
+                isValid = false;
             }
 
             if (string.IsNullOrWhiteSpace(txtZip.Text))
             {
-                MessageBox.Show("Zip code is required.");
-                return false;
+                ShowError(_zipError, "Zip code is required.");
+                isValid = false;
             }
 
-            return true;
+            return isValid;
         }
+
     }
 }
