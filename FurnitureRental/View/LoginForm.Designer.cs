@@ -1,5 +1,9 @@
 ﻿namespace FurnitureRental
 {
+    /// <summary>
+    /// Login form for employees to access the furniture rental system.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     partial class LoginForm
     {
         private System.ComponentModel.IContainer components = null;

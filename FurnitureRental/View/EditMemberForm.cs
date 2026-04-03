@@ -1,15 +1,27 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
 
-
+/// <summary>
+///  View for the Edit Member form, allowing users to update member information. 
+///  It loads the member data on form load and provides validation before saving changes.
+/// </summary>
 namespace FurnitureRental.View
 {
+    /// <summary>
+    /// Edit Member form that allows users to update member information. 
+    /// It loads the member data on form load and provides validation before saving changes.
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.Form" />
     public partial class EditMemberForm : Form
     {
         private readonly int _memberId;
         private readonly MemberController _memberController = new MemberController();
 
-        public EditMemberForm(int memberId)
+        /// <summary>
+        /// Initializes a new instance of the <see cref="EditMemberForm"/> class.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
+/        public EditMemberForm(int memberId)
         {
             InitializeComponent();
             _memberId = memberId;
