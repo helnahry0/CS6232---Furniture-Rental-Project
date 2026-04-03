@@ -1,14 +1,32 @@
-﻿namespace FurnitureRental.View
+﻿using FurnitureRental.Controller;
+
+namespace FurnitureRental.View
 {
+    /// <summary>
+    /// Provides the main menu screen after employee login.
+    /// </summary>
     public partial class MainMenuForm : Form
     {
-
+        /// <summary>
+        /// Initializes a new instance of the <see cref="MainMenuForm"/> class.
+        /// </summary>
         public MainMenuForm()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Handles the form load event.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The event data.</param>
+        private void MainMenuForm_Load(object sender, EventArgs e)
+        {
             if (CurrentUser.Employee != null)
             {
-                lblUsername.Text = $"Logged in as: {CurrentUser.Employee.FirstName} {CurrentUser.Employee.LastName} - Employee ID: {CurrentUser.Employee.EmployeeId}";
+                lblUsername.Text =
+                    $"Logged in as: {CurrentUser.Employee.FirstName} {CurrentUser.Employee.LastName} - Employee ID: {CurrentUser.Employee.EmployeeId}";
+
                 LoadSearchMemberUserControl();
             }
             else
@@ -17,6 +35,9 @@
             }
         }
 
+        /// <summary>
+        /// Loads the search member control into the tab.
+        /// </summary>
         private void LoadSearchMemberUserControl()
         {
             var searchControl = new UserControls.SearchMemberUserControl
@@ -28,18 +49,25 @@
             SearchMember.Controls.Add(searchControl);
         }
 
+        /// <summary>
+        /// Handles logout.
+        /// </summary>
         private void lnkLogout_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Hide();
+            CurrentUser.Logout();
+            DialogResult = DialogResult.Retry;
+            Close();
         }
 
-        private void MainMenuForm_FormClosed(object sender, FormClosedEventArgs e)
+        /// <summary>
+        /// Handles closing the main form.
+        /// </summary>
+        private void MainMenuForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
-            this.Hide();
+            if (DialogResult != DialogResult.Retry)
+            {
+                DialogResult = DialogResult.Cancel;
+            }
         }
     }
 }

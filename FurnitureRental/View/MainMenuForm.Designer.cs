@@ -163,7 +163,8 @@
             Name = "MainMenuForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Furniture Rental";
-            FormClosed += MainMenuForm_FormClosed;
+            Load += MainMenuForm_Load;
+            FormClosing += MainMenuForm_FormClosing;
             tabControlMainform.ResumeLayout(false);
             CreateMember.ResumeLayout(false);
             ResumeLayout(false);
