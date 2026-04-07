@@ -210,3 +210,24 @@ VALUES
 (4, 1, 'Coffee Table', 'Traditional coffee table', 12.00, 5),
 (5, 2, 'Sectional Sofa', 'Contemporary sectional sofa', 30.00, 3);
 GO
+
+/*Temporary Rental Transaction Seeds */
+INSERT INTO dbo.RentalTransaction
+(member_id, employee_id, rental_date, due_date)
+VALUES
+(1, 2, '2026-04-01', '2026-04-07'),
+(1, 3, '2026-04-10', '2026-04-15'),
+(2, 2, '2026-04-12', '2026-04-18');
+GO
+
+/* Temporary Rental Detail Seeds */
+INSERT INTO dbo.RentalDetail
+(rental_id, furniture_id, quantity_rented)
+VALUES
+(1, 1, 1),
+(1, 3, 2),
+(2, 2, 1),
+(2, 4, 1),
+(2, 5, 2),
+(3, 3, 4);
+GO
