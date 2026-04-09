@@ -96,8 +96,8 @@ CREATE TABLE dbo.RentalTransaction
     rental_id INT IDENTITY(1,1) PRIMARY KEY,
     member_id INT NOT NULL,
     employee_id INT NOT NULL,
-    rental_date DATE NOT NULL,
-    due_date DATE NOT NULL,
+    rental_date DATETIME NOT NULL DEFAULT GETDATE(),
+    due_date DATETIME NOT NULL,
 
     CONSTRAINT FK_RentalTransaction_Member
         FOREIGN KEY (member_id) REFERENCES dbo.Member(member_id),
