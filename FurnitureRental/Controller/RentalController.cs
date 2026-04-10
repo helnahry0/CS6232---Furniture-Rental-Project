@@ -63,5 +63,6 @@ namespace FurnitureRental.Controller
         {
             return _rentalDbDal.GetRentalItemsByRentalId(rentalId);
         }
+
     }
 }

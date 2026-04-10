@@ -38,8 +38,10 @@
             lblMainForm = new Label();
             lblUsername = new Label();
             lnkLogout = new LinkLabel();
+            rentalCartUserControl1 = new FurnitureRental.UserControls.RentalCartUserControl();
             tabControlMainform.SuspendLayout();
             CreateMember.SuspendLayout();
+            Cart.SuspendLayout();
             SuspendLayout();
             // 
             // tabControlMainform
@@ -54,7 +56,7 @@
             tabControlMainform.Location = new Point(12, 86);
             tabControlMainform.Name = "tabControlMainform";
             tabControlMainform.SelectedIndex = 0;
-            tabControlMainform.Size = new Size(862, 517);
+            tabControlMainform.Size = new Size(872, 575);
             tabControlMainform.TabIndex = 0;
             // 
             // SearchMember
@@ -63,7 +65,7 @@
             SearchMember.Location = new Point(4, 29);
             SearchMember.Name = "SearchMember";
             SearchMember.Padding = new Padding(3, 4, 3, 4);
-            SearchMember.Size = new Size(854, 484);
+            SearchMember.Size = new Size(864, 542);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
@@ -74,7 +76,7 @@
             CreateMember.Location = new Point(4, 29);
             CreateMember.Name = "CreateMember";
             CreateMember.Padding = new Padding(3);
-            CreateMember.Size = new Size(854, 484);
+            CreateMember.Size = new Size(192, 67);
             CreateMember.TabIndex = 4;
             CreateMember.Text = "Create Member";
             CreateMember.UseVisualStyleBackColor = true;
@@ -85,7 +87,7 @@
             createMemberUserControl1.Location = new Point(3, 3);
             createMemberUserControl1.Margin = new Padding(3, 2, 3, 2);
             createMemberUserControl1.Name = "createMemberUserControl1";
-            createMemberUserControl1.Size = new Size(848, 478);
+            createMemberUserControl1.Size = new Size(186, 61);
             createMemberUserControl1.TabIndex = 0;
             // 
             // FurnitureSearch
@@ -101,10 +103,11 @@
             // 
             // Cart
             // 
+            Cart.Controls.Add(rentalCartUserControl1);
             Cart.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             Cart.Location = new Point(4, 29);
             Cart.Name = "Cart";
-            Cart.Size = new Size(192, 67);
+            Cart.Size = new Size(864, 542);
             Cart.TabIndex = 2;
             Cart.Text = "Cart";
             Cart.UseVisualStyleBackColor = true;
@@ -151,11 +154,18 @@
             lnkLogout.Text = "Logout";
             lnkLogout.LinkClicked += lnkLogout_LinkClicked;
             // 
+            // rentalCartUserControl1
+            // 
+            rentalCartUserControl1.Location = new Point(82, 11);
+            rentalCartUserControl1.Name = "rentalCartUserControl1";
+            rentalCartUserControl1.Size = new Size(639, 528);
+            rentalCartUserControl1.TabIndex = 0;
+            // 
             // MainMenuForm
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(882, 613);
+            ClientSize = new Size(892, 671);
             Controls.Add(lnkLogout);
             Controls.Add(lblUsername);
             Controls.Add(lblMainForm);
@@ -163,10 +173,11 @@
             Name = "MainMenuForm";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Furniture Rental";
-            Load += MainMenuForm_Load;
             FormClosing += MainMenuForm_FormClosing;
+            Load += MainMenuForm_Load;
             tabControlMainform.ResumeLayout(false);
             CreateMember.ResumeLayout(false);
+            Cart.ResumeLayout(false);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -183,5 +194,6 @@
         private TabPage Returns;
         private TabPage CreateMember;
         private UserControls.CreateMemberUserControl createMemberUserControl1;
+        private UserControls.RentalCartUserControl rentalCartUserControl1;
     }
 }

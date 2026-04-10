@@ -1,8 +1,5 @@
-﻿using FurnitureRental.DAL;
-using FurnitureRental.Model;
+﻿using FurnitureRental.Model;
 using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
 using System.Data;
 
 namespace FurnitureRental.DAL;
@@ -99,7 +96,7 @@ public class RentalDbDal
     {
         return new RentalTransaction
         {
-            RentalId = Convert.ToInt32(reader["rental_id"]),
+            RentalTransactionId = Convert.ToInt32(reader["rental_id"]),
             MemberId = Convert.ToInt32(reader["member_id"]),
             EmployeeId = Convert.ToInt32(reader["employee_id"]),
             RentalDate = Convert.ToDateTime(reader["rental_date"]),
@@ -122,5 +119,47 @@ public class RentalDbDal
             QuantityRented = Convert.ToInt32(reader["quantity_rented"]),
             DailyRentalRate = Convert.ToDecimal(reader["daily_rental_rate"])
         };
+    }
+    public List<CartItem> GetCartItems(int memberId)
+    {
+        List<CartItem> list = new List<CartItem>();
+
+        string query = @"
+        SELECT 
+            f.furniture_id,
+            f.furniture_name,
+            f.daily_rental_rate,
+            rd.quantity_rented
+        FROM RentalTransaction rt
+        JOIN RentalDetail rd ON rt.rental_id = rd.rental_id
+        JOIN Furniture f ON rd.furniture_id = f.furniture_id
+        WHERE rt.member_id = @MemberId
+        ORDER BY rt.rental_id DESC;";
+
+        using SqlConnection connection =
+            new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
+        using SqlCommand command = new SqlCommand(query, connection);
+
+        command.Parameters.AddWithValue("@MemberId", memberId);
+
+        connection.Open();
+
+        using SqlDataReader reader = command.ExecuteReader();
+
+        while (reader.Read())
+        {
+            int qty = Convert.ToInt32(reader["quantity_rented"]);
+            decimal rate = Convert.ToDecimal(reader["daily_rental_rate"]);
+
+            list.Add(new CartItem
+            {
+                FurnitureId = Convert.ToInt32(reader["furniture_id"]),
+                Name = reader["furniture_name"].ToString()!,
+                DailyRate = rate,
+                Quantity = qty
+            });
+        }
+
+        return list;
     }
 }

@@ -37,10 +37,6 @@
             dtpDueDate = new DateTimePicker();
             lblCustomerName = new Label();
             lblEmployeeName = new Label();
-            dgvFurniture = new DataGridView();
-            lblAddQty = new Label();
-            numAddQty = new NumericUpDown();
-            btnAddToCart = new Button();
             grpShoppingCart = new GroupBox();
             btnEmptyCart = new Button();
             btnRemoveSelected = new Button();
@@ -49,16 +45,14 @@
             lblSelectedQty = new Label();
             dgvCart = new DataGridView();
             grpOrderSummary = new GroupBox();
+            btnCancel = new Button();
+            btnSubmitRental = new Button();
             lblTotal = new Label();
             lblSubtotal = new Label();
             lblItemCount = new Label();
             lblTotalTitle = new Label();
             lblSubttotalTitle = new Label();
             lblItemCountTitle = new Label();
-            btnSubmitRental = new Button();
-            btnCancel = new Button();
-            ((System.ComponentModel.ISupportInitialize)dgvFurniture).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)numAddQty).BeginInit();
             grpShoppingCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numQty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
@@ -68,9 +62,10 @@
             // lblRentalCart
             // 
             lblRentalCart.AutoSize = true;
-            lblRentalCart.Location = new Point(46, 21);
+            lblRentalCart.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblRentalCart.Location = new Point(23, 10);
             lblRentalCart.Name = "lblRentalCart";
-            lblRentalCart.Size = new Size(65, 15);
+            lblRentalCart.Size = new Size(137, 32);
             lblRentalCart.TabIndex = 1;
             lblRentalCart.Text = "Rental Cart";
             // 
@@ -142,42 +137,6 @@
             lblEmployeeName.TabIndex = 11;
             lblEmployeeName.Text = "label1";
             // 
-            // dgvFurniture
-            // 
-            dgvFurniture.AllowUserToAddRows = false;
-            dgvFurniture.AllowUserToDeleteRows = false;
-            dgvFurniture.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvFurniture.Location = new Point(23, 176);
-            dgvFurniture.Name = "dgvFurniture";
-            dgvFurniture.ReadOnly = true;
-            dgvFurniture.Size = new Size(250, 154);
-            dgvFurniture.TabIndex = 12;
-            // 
-            // lblAddQty
-            // 
-            lblAddQty.AutoSize = true;
-            lblAddQty.Location = new Point(46, 233);
-            lblAddQty.Name = "lblAddQty";
-            lblAddQty.Size = new Size(56, 15);
-            lblAddQty.TabIndex = 13;
-            lblAddQty.Text = "Quantity:";
-            // 
-            // numAddQty
-            // 
-            numAddQty.Location = new Point(143, 225);
-            numAddQty.Name = "numAddQty";
-            numAddQty.Size = new Size(120, 23);
-            numAddQty.TabIndex = 14;
-            // 
-            // btnAddToCart
-            // 
-            btnAddToCart.Location = new Point(78, 281);
-            btnAddToCart.Name = "btnAddToCart";
-            btnAddToCart.Size = new Size(136, 23);
-            btnAddToCart.TabIndex = 15;
-            btnAddToCart.Text = "Add Selected To Cart";
-            btnAddToCart.UseVisualStyleBackColor = true;
-            // 
             // grpShoppingCart
             // 
             grpShoppingCart.Controls.Add(btnEmptyCart);
@@ -186,7 +145,7 @@
             grpShoppingCart.Controls.Add(numQty);
             grpShoppingCart.Controls.Add(lblSelectedQty);
             grpShoppingCart.Controls.Add(dgvCart);
-            grpShoppingCart.Location = new Point(319, 150);
+            grpShoppingCart.Location = new Point(23, 129);
             grpShoppingCart.Name = "grpShoppingCart";
             grpShoppingCart.Size = new Size(598, 265);
             grpShoppingCart.TabIndex = 16;
@@ -195,42 +154,48 @@
             // 
             // btnEmptyCart
             // 
-            btnEmptyCart.Location = new Point(373, 236);
+            btnEmptyCart.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnEmptyCart.Location = new Point(394, 236);
             btnEmptyCart.Name = "btnEmptyCart";
             btnEmptyCart.Size = new Size(75, 23);
             btnEmptyCart.TabIndex = 5;
             btnEmptyCart.Text = "Empty Cart";
             btnEmptyCart.UseVisualStyleBackColor = true;
+            btnEmptyCart.Click += btnEmptyCart_Click;
             // 
             // btnRemoveSelected
             // 
-            btnRemoveSelected.Location = new Point(179, 236);
+            btnRemoveSelected.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnRemoveSelected.Location = new Point(230, 236);
             btnRemoveSelected.Name = "btnRemoveSelected";
             btnRemoveSelected.Size = new Size(120, 23);
             btnRemoveSelected.TabIndex = 4;
             btnRemoveSelected.Text = "Remove Selected";
             btnRemoveSelected.UseVisualStyleBackColor = true;
+            btnRemoveSelected.Click += btnRemoveSelected_Click;
             // 
             // btnUpdateQty
             // 
-            btnUpdateQty.Location = new Point(15, 236);
+            btnUpdateQty.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnUpdateQty.Location = new Point(66, 236);
             btnUpdateQty.Name = "btnUpdateQty";
             btnUpdateQty.Size = new Size(108, 23);
             btnUpdateQty.TabIndex = 3;
             btnUpdateQty.Text = "Update Quantity";
             btnUpdateQty.UseVisualStyleBackColor = true;
+            btnUpdateQty.Click += btnUpdateQty_Click;
             // 
             // numQty
             // 
-            numQty.Location = new Point(179, 194);
+            numQty.Location = new Point(219, 200);
             numQty.Name = "numQty";
-            numQty.Size = new Size(120, 23);
+            numQty.Size = new Size(66, 23);
             numQty.TabIndex = 2;
             // 
             // lblSelectedQty
             // 
             lblSelectedQty.AutoSize = true;
-            lblSelectedQty.Location = new Point(15, 202);
+            lblSelectedQty.Location = new Point(66, 202);
             lblSelectedQty.Name = "lblSelectedQty";
             lblSelectedQty.Size = new Size(130, 15);
             lblSelectedQty.TabIndex = 1;
@@ -239,11 +204,11 @@
             // dgvCart
             // 
             dgvCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCart.Location = new Point(15, 36);
+            dgvCart.Location = new Point(15, 22);
             dgvCart.Name = "dgvCart";
-            dgvCart.Size = new Size(433, 144);
+            dgvCart.Size = new Size(564, 166);
             dgvCart.TabIndex = 0;
-            dgvCart.CellContentClick += dgvCart_CellContentClick_1;
+
             // 
             // grpOrderSummary
             // 
@@ -255,19 +220,43 @@
             grpOrderSummary.Controls.Add(lblTotalTitle);
             grpOrderSummary.Controls.Add(lblSubttotalTitle);
             grpOrderSummary.Controls.Add(lblItemCountTitle);
-            grpOrderSummary.Location = new Point(23, 440);
+            grpOrderSummary.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            grpOrderSummary.Location = new Point(23, 400);
             grpOrderSummary.Name = "grpOrderSummary";
-            grpOrderSummary.Size = new Size(894, 115);
+            grpOrderSummary.Size = new Size(598, 115);
             grpOrderSummary.TabIndex = 18;
             grpOrderSummary.TabStop = false;
             grpOrderSummary.Text = "Order Summary";
             // 
+            // btnCancel
+            // 
+            btnCancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnCancel.Location = new Point(424, 43);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 7;
+            btnCancel.Text = "Cancel";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
+            // 
+            // btnSubmitRental
+            // 
+            btnSubmitRental.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
+            btnSubmitRental.Location = new Point(245, 43);
+            btnSubmitRental.Name = "btnSubmitRental";
+            btnSubmitRental.Size = new Size(161, 23);
+            btnSubmitRental.TabIndex = 6;
+            btnSubmitRental.Text = "Submit Rental Transaction";
+            btnSubmitRental.UseVisualStyleBackColor = true;
+            btnSubmitRental.Click += btnSubmitRental_Click;
+            // 
             // lblTotal
             // 
             lblTotal.AutoSize = true;
+            lblTotal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTotal.Location = new Point(182, 72);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(34, 15);
+            lblTotal.Size = new Size(38, 15);
             lblTotal.TabIndex = 5;
             lblTotal.Text = "$0.00";
             // 
@@ -276,7 +265,7 @@
             lblSubtotal.AutoSize = true;
             lblSubtotal.Location = new Point(182, 51);
             lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(34, 15);
+            lblSubtotal.Size = new Size(38, 15);
             lblSubtotal.TabIndex = 4;
             lblSubtotal.Text = "$0.00";
             // 
@@ -285,7 +274,7 @@
             lblItemCount.AutoSize = true;
             lblItemCount.Location = new Point(182, 26);
             lblItemCount.Name = "lblItemCount";
-            lblItemCount.Size = new Size(13, 15);
+            lblItemCount.Size = new Size(14, 15);
             lblItemCount.TabIndex = 3;
             lblItemCount.Text = "0";
             // 
@@ -297,14 +286,13 @@
             lblTotalTitle.Size = new Size(36, 15);
             lblTotalTitle.TabIndex = 2;
             lblTotalTitle.Text = "Total:";
-            lblTotalTitle.Click += label3_Click;
             // 
             // lblSubttotalTitle
             // 
             lblSubttotalTitle.AutoSize = true;
             lblSubttotalTitle.Location = new Point(31, 51);
             lblSubttotalTitle.Name = "lblSubttotalTitle";
-            lblSubttotalTitle.Size = new Size(54, 15);
+            lblSubttotalTitle.Size = new Size(55, 15);
             lblSubttotalTitle.TabIndex = 1;
             lblSubttotalTitle.Text = "Subtotal:";
             // 
@@ -317,34 +305,12 @@
             lblItemCountTitle.TabIndex = 0;
             lblItemCountTitle.Text = "Items in Cart:";
             // 
-            // btnSubmitRental
-            // 
-            btnSubmitRental.Location = new Point(390, 88);
-            btnSubmitRental.Name = "btnSubmitRental";
-            btnSubmitRental.Size = new Size(161, 23);
-            btnSubmitRental.TabIndex = 6;
-            btnSubmitRental.Text = "Submit Rental Transaction";
-            btnSubmitRental.UseVisualStyleBackColor = true;
-            // 
-            // btnCancel
-            // 
-            btnCancel.Location = new Point(635, 88);
-            btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
-            btnCancel.TabIndex = 7;
-            btnCancel.Text = "Cancel";
-            btnCancel.UseVisualStyleBackColor = true;
-            // 
             // RentalCartUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(grpOrderSummary);
             Controls.Add(grpShoppingCart);
-            Controls.Add(btnAddToCart);
-            Controls.Add(numAddQty);
-            Controls.Add(lblAddQty);
-            Controls.Add(dgvFurniture);
             Controls.Add(lblEmployeeName);
             Controls.Add(lblCustomerName);
             Controls.Add(dtpDueDate);
@@ -355,9 +321,7 @@
             Controls.Add(lblMemberId);
             Controls.Add(lblRentalCart);
             Name = "RentalCartUserControl";
-            Size = new Size(982, 602);
-            ((System.ComponentModel.ISupportInitialize)dgvFurniture).EndInit();
-            ((System.ComponentModel.ISupportInitialize)numAddQty).EndInit();
+            Size = new Size(639, 528);
             grpShoppingCart.ResumeLayout(false);
             grpShoppingCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numQty).EndInit();
@@ -380,10 +344,6 @@
         private DateTimePicker dtpDueDate;
         private Label lblCustomerName;
         private Label lblEmployeeName;
-        private DataGridView dgvFurniture;
-        private Label lblAddQty;
-        private NumericUpDown numAddQty;
-        private Button btnAddToCart;
         private GroupBox grpShoppingCart;
         private DataGridView dgvCart;
         private Button btnEmptyCart;

@@ -7,8 +7,8 @@
     {
         /// <summary>
         /// Gets or sets the rental transaction ID.
-        /// </summary>
-        public int RentalId { get; set; }
+        /// </summary>        
+        public int RentalTransactionId { get; set; }
 
         /// <summary>
         /// Gets or sets the member ID.
@@ -29,5 +29,7 @@
         /// Gets or sets the due date.
         /// </summary>
         public DateTime DueDate { get; set; }
+
+        public List<CartItem> Items { get; set; } = new List<CartItem>();
     }
 }
