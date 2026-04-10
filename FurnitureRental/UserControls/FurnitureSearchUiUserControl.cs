@@ -16,5 +16,6 @@ namespace FurnitureRental.UserControls
         {
             InitializeComponent();
         }
+
     }
 }
