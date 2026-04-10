@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using FurnitureRental.Controller;
+using FurnitureRental.Model;
+using FurnitureRental.View;
 
 namespace FurnitureRental.UserControls
 {
     public partial class FurnitureSearchUiUserControl : UserControl
     {
+        private readonly FurnitureController _furnitureController;
+
         public FurnitureSearchUiUserControl()
         {
             InitializeComponent();
         }
+
 
     }
 }

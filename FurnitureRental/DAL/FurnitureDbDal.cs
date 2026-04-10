@@ -106,49 +106,7 @@ namespace FurnitureRental.DAL
             return furnitureList;
         }
 
-        /// <summary>
-        /// Retrieves a comprehensive list of furniture items, including their 
-        /// associated category and style names.
-        /// </summary>
-        /// <returns>A list of <see cref="FurnitureItemSummary"/> objects containing combined furniture details.</returns>
-        public List<FurnitureItemSummary> GetFurnitureSummaries()
-        {
-            const string query = @"
-        SELECT 
-            f.furniture_id, 
-            f.furniture_name, 
-            c.category_name, 
-            s.style_name, 
-            f.daily_rental_rate, 
-            f.quantity_on_hand
-        FROM dbo.Furniture f
-        INNER JOIN dbo.FurnitureCategory c ON f.category_id = c.category_id
-        INNER JOIN dbo.FurnitureStyle s ON f.style_id = s.style_id;";
-
-            List<FurnitureItemSummary> summaries = new List<FurnitureItemSummary>();
-
-            using SqlConnection connection = new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
-            using SqlCommand command = new SqlCommand(query, connection);
-
-            connection.Open();
-            using SqlDataReader reader = command.ExecuteReader();
-
-            while (reader.Read())
-            {
-                summaries.Add(new FurnitureItemSummary
-                {
-                    FurnitureId = Convert.ToInt32(reader["furniture_id"]),
-                    FurnitureName = reader["furniture_name"].ToString() ?? string.Empty,
-                    CategoryName = reader["category_name"].ToString() ?? string.Empty,
-                    StyleName = reader["style_name"].ToString() ?? string.Empty,
-                    DailyRentalRate = Convert.ToDecimal(reader["daily_rental_rate"]),
-                    QuantityOnHand = Convert.ToInt32(reader["quantity_on_hand"])
-                });
-            }
-
-            return summaries;
-        }
-
+        
         /// <summary>
         /// Helper method to map a database row to a Furniture object.
         /// </summary>

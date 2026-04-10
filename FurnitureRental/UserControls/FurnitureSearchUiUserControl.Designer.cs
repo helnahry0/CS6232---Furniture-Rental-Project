@@ -41,6 +41,8 @@
             AddToCartButton = new Button();
             splitContainer1 = new SplitContainer();
             dataGridView1 = new DataGridView();
+            DescriptionLabel = new Label();
+            AddDescriptionLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -51,16 +53,17 @@
             // FurnitureSearchLabel
             // 
             FurnitureSearchLabel.AutoSize = true;
-            FurnitureSearchLabel.Location = new Point(40, 67);
+            FurnitureSearchLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
+            FurnitureSearchLabel.Location = new Point(25, 18);
             FurnitureSearchLabel.Name = "FurnitureSearchLabel";
-            FurnitureSearchLabel.Size = new Size(115, 20);
+            FurnitureSearchLabel.Size = new Size(139, 25);
             FurnitureSearchLabel.TabIndex = 0;
             FurnitureSearchLabel.Text = "Furniture Search";
             // 
             // CategoryLabel
             // 
             CategoryLabel.AutoSize = true;
-            CategoryLabel.Location = new Point(39, 105);
+            CategoryLabel.Location = new Point(39, 100);
             CategoryLabel.Name = "CategoryLabel";
             CategoryLabel.Size = new Size(84, 20);
             CategoryLabel.TabIndex = 1;
@@ -69,7 +72,7 @@
             // StyleLabel
             // 
             StyleLabel.AutoSize = true;
-            StyleLabel.Location = new Point(39, 151);
+            StyleLabel.Location = new Point(39, 156);
             StyleLabel.Name = "StyleLabel";
             StyleLabel.Size = new Size(84, 20);
             StyleLabel.TabIndex = 2;
@@ -78,7 +81,7 @@
             // FurnitureIdLabel
             // 
             FurnitureIdLabel.AutoSize = true;
-            FurnitureIdLabel.Location = new Point(34, 197);
+            FurnitureIdLabel.Location = new Point(34, 213);
             FurnitureIdLabel.Name = "FurnitureIdLabel";
             FurnitureIdLabel.Size = new Size(89, 20);
             FurnitureIdLabel.TabIndex = 3;
@@ -87,7 +90,7 @@
             // FurnitureNameLabel
             // 
             FurnitureNameLabel.AutoSize = true;
-            FurnitureNameLabel.Location = new Point(34, 272);
+            FurnitureNameLabel.Location = new Point(25, 280);
             FurnitureNameLabel.Name = "FurnitureNameLabel";
             FurnitureNameLabel.Size = new Size(114, 20);
             FurnitureNameLabel.TabIndex = 4;
@@ -96,7 +99,7 @@
             // CategoryComboBox
             // 
             CategoryComboBox.FormattingEnabled = true;
-            CategoryComboBox.Location = new Point(129, 105);
+            CategoryComboBox.Location = new Point(129, 100);
             CategoryComboBox.Name = "CategoryComboBox";
             CategoryComboBox.Size = new Size(215, 28);
             CategoryComboBox.TabIndex = 5;
@@ -104,28 +107,29 @@
             // StyleComboBox
             // 
             StyleComboBox.FormattingEnabled = true;
-            StyleComboBox.Location = new Point(129, 151);
+            StyleComboBox.Location = new Point(129, 156);
             StyleComboBox.Name = "StyleComboBox";
             StyleComboBox.Size = new Size(215, 28);
             StyleComboBox.TabIndex = 6;
             // 
             // FurnitureIdTextBox
             // 
-            FurnitureIdTextBox.Location = new Point(129, 197);
+            FurnitureIdTextBox.Location = new Point(129, 213);
             FurnitureIdTextBox.Name = "FurnitureIdTextBox";
             FurnitureIdTextBox.Size = new Size(215, 27);
             FurnitureIdTextBox.TabIndex = 7;
             // 
             // FurnitureNameTextBox
             // 
-            FurnitureNameTextBox.Location = new Point(154, 269);
+            FurnitureNameTextBox.Location = new Point(145, 277);
             FurnitureNameTextBox.Name = "FurnitureNameTextBox";
-            FurnitureNameTextBox.Size = new Size(190, 27);
+            FurnitureNameTextBox.ReadOnly = true;
+            FurnitureNameTextBox.Size = new Size(199, 27);
             FurnitureNameTextBox.TabIndex = 8;
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(58, 350);
+            SearchButton.Location = new Point(38, 439);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(94, 29);
             SearchButton.TabIndex = 9;
@@ -134,7 +138,7 @@
             // 
             // AddToCartButton
             // 
-            AddToCartButton.Location = new Point(196, 350);
+            AddToCartButton.Location = new Point(176, 439);
             AddToCartButton.Name = "AddToCartButton";
             AddToCartButton.Size = new Size(148, 29);
             AddToCartButton.TabIndex = 10;
@@ -148,6 +152,8 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(AddDescriptionLabel);
+            splitContainer1.Panel1.Controls.Add(DescriptionLabel);
             splitContainer1.Panel1.Controls.Add(FurnitureNameTextBox);
             splitContainer1.Panel1.Controls.Add(AddToCartButton);
             splitContainer1.Panel1.Controls.Add(FurnitureSearchLabel);
@@ -163,18 +169,36 @@
             // splitContainer1.Panel2
             // 
             splitContainer1.Panel2.Controls.Add(dataGridView1);
-            splitContainer1.Size = new Size(1209, 497);
-            splitContainer1.SplitterDistance = 453;
+            splitContainer1.Size = new Size(993, 497);
+            splitContainer1.SplitterDistance = 398;
             splitContainer1.TabIndex = 11;
             // 
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(31, 21);
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 0);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(708, 460);
+            dataGridView1.Size = new Size(591, 497);
             dataGridView1.TabIndex = 0;
+            // 
+            // DescriptionLabel
+            // 
+            DescriptionLabel.AutoSize = true;
+            DescriptionLabel.Location = new Point(24, 331);
+            DescriptionLabel.Name = "DescriptionLabel";
+            DescriptionLabel.Size = new Size(96, 20);
+            DescriptionLabel.TabIndex = 11;
+            DescriptionLabel.Text = "Description : ";
+            // 
+            // AddDescriptionLabel
+            // 
+            AddDescriptionLabel.AutoSize = true;
+            AddDescriptionLabel.Location = new Point(31, 357);
+            AddDescriptionLabel.Name = "AddDescriptionLabel";
+            AddDescriptionLabel.Size = new Size(0, 20);
+            AddDescriptionLabel.TabIndex = 12;
             // 
             // FurnitureSearchUiUserControl
             // 
@@ -183,7 +207,7 @@
             Controls.Add(splitContainer1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FurnitureSearchUiUserControl";
-            Size = new Size(1257, 551);
+            Size = new Size(1053, 551);
             splitContainer1.Panel1.ResumeLayout(false);
             splitContainer1.Panel1.PerformLayout();
             splitContainer1.Panel2.ResumeLayout(false);
@@ -208,5 +232,7 @@
         private Button AddToCartButton;
         private SplitContainer splitContainer1;
         private DataGridView dataGridView1;
+        private Label AddDescriptionLabel;
+        private Label DescriptionLabel;
     }
 }

@@ -48,13 +48,6 @@ namespace FurnitureRental.Controller
             return _furnitureDbDal.GetFurnitureByCategoryAndStyle(categoryId, styleId);
         }
 
-        /// <summary>
-        /// Gets a summary list of furniture including human-readable category and style names.
-        /// </summary>
-        /// <returns>A list of <see cref="FurnitureItemSummary"/> objects.</returns>
-        public List<FurnitureItemSummary> GetFurnitureSummaries()
-        {
-            return _furnitureDbDal.GetFurnitureSummaries();
-        }
+
     }
 }
