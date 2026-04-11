@@ -28,6 +28,7 @@
             pnlResults = new Panel();
             dgvMembers = new DataGridView();
             pnlSearchControls = new Panel();
+            btnViewRentalHistory = new Button();
             lblError = new Label();
             btnEdit = new Button();
             txtMemberId = new TextBox();
@@ -85,9 +86,11 @@
             dgvMembers.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvMembers.Size = new Size(327, 445);
             dgvMembers.TabIndex = 0;
+            dgvMembers.SelectionChanged += dgvMembers_SelectionChanged;
             // 
             // pnlSearchControls
             // 
+            pnlSearchControls.Controls.Add(btnViewRentalHistory);
             pnlSearchControls.Controls.Add(lblError);
             pnlSearchControls.Controls.Add(btnEdit);
             pnlSearchControls.Controls.Add(txtMemberId);
@@ -110,6 +113,17 @@
             pnlSearchControls.Padding = new Padding(10);
             pnlSearchControls.Size = new Size(340, 465);
             pnlSearchControls.TabIndex = 0;
+            // 
+            // btnViewRentalHistory
+            // 
+            btnViewRentalHistory.Enabled = false;
+            btnViewRentalHistory.Location = new Point(13, 355);
+            btnViewRentalHistory.Name = "btnViewRentalHistory";
+            btnViewRentalHistory.Size = new Size(286, 30);
+            btnViewRentalHistory.TabIndex = 16;
+            btnViewRentalHistory.Text = "View Rental History";
+            btnViewRentalHistory.UseVisualStyleBackColor = true;
+            btnViewRentalHistory.Click += btnViewRentalHistory_Click;
             // 
             // lblError
             // 
@@ -296,5 +310,6 @@
         private RadioButton radMemberId;
         private Label lblFirstName;
         private RadioButton radPhone;
+        private Button btnViewRentalHistory;
     }
 }

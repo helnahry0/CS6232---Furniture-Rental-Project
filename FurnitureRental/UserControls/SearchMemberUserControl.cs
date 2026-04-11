@@ -16,6 +16,8 @@ namespace FurnitureRental.UserControls
             radMemberId.Checked = true;
             UpdateSearchMode();
             ConfigureMemberGrid();
+            btnEdit.Enabled = false;
+            btnViewRentalHistory.Enabled = false;
             LoadAllMembers();
         }
 
@@ -178,6 +180,9 @@ namespace FurnitureRental.UserControls
                     lblError.Text = errorMessage;
                 }
             }
+
+            btnEdit.Enabled = false;
+            btnViewRentalHistory.Enabled = false;
         }
 
         /// <summary>
@@ -224,6 +229,41 @@ namespace FurnitureRental.UserControls
         {
             dgvMembers.DataSource = null;
             dgvMembers.DataSource = _memberController.GetAllMembers();
+
+            btnEdit.Enabled = false;
+            btnViewRentalHistory.Enabled = false;
+        }
+
+        /// <summary>
+        /// Handles the Click event of the btnViewRentalHistory control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void btnViewRentalHistory_Click(object sender, EventArgs e)
+        {
+            if (dgvMembers.CurrentRow == null || dgvMembers.CurrentRow.DataBoundItem is not Member selectedMember)
+            {
+                lblError.Text = "Please select a member to view rental history.";
+                return;
+            }
+
+            RentalHistoryForm form = new RentalHistoryForm(selectedMember.MemberId);
+            form.ShowDialog();
+        }
+
+        /// <summary>
+        /// Enables or disables buttons based on selected member
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        private void dgvMembers_SelectionChanged(object sender, EventArgs e)
+        {
+            bool hasSelection = dgvMembers.CurrentRow != null &&
+                                dgvMembers.CurrentRow.DataBoundItem is Member;
+
+            btnEdit.Enabled = hasSelection;
+            btnViewRentalHistory.Enabled = hasSelection;
+
         }
     }
 }
