@@ -40,6 +40,7 @@
             SearchButton = new Button();
             AddToCartButton = new Button();
             splitContainer1 = new SplitContainer();
+            ClearButton = new Button();
             AddDescriptionLabel = new Label();
             DescriptionLabel = new Label();
             FurnitureDataGridView = new DataGridView();
@@ -131,7 +132,7 @@
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(38, 439);
+            SearchButton.Location = new Point(26, 439);
             SearchButton.Name = "SearchButton";
             SearchButton.Size = new Size(94, 29);
             SearchButton.TabIndex = 9;
@@ -140,7 +141,7 @@
             // 
             // AddToCartButton
             // 
-            AddToCartButton.Location = new Point(176, 439);
+            AddToCartButton.Location = new Point(238, 439);
             AddToCartButton.Name = "AddToCartButton";
             AddToCartButton.Size = new Size(148, 29);
             AddToCartButton.TabIndex = 10;
@@ -155,6 +156,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            splitContainer1.Panel1.Controls.Add(ClearButton);
             splitContainer1.Panel1.Controls.Add(AddDescriptionLabel);
             splitContainer1.Panel1.Controls.Add(DescriptionLabel);
             splitContainer1.Panel1.Controls.Add(FurnitureNameTextBox);
@@ -175,6 +177,16 @@
             splitContainer1.Size = new Size(1177, 497);
             splitContainer1.SplitterDistance = 408;
             splitContainer1.TabIndex = 11;
+            // 
+            // ClearButton
+            // 
+            ClearButton.Location = new Point(134, 439);
+            ClearButton.Name = "ClearButton";
+            ClearButton.Size = new Size(94, 29);
+            ClearButton.TabIndex = 13;
+            ClearButton.Text = "Clear";
+            ClearButton.UseVisualStyleBackColor = true;
+            ClearButton.Click += ClearButton_Click;
             // 
             // AddDescriptionLabel
             // 
@@ -239,5 +251,6 @@
         private DataGridView FurnitureDataGridView;
         private Label AddDescriptionLabel;
         private Label DescriptionLabel;
+        private Button ClearButton;
     }
 }

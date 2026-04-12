@@ -27,7 +27,7 @@ namespace FurnitureRental.UserControls
             _errorLabel = new Label
             {
                 ForeColor = Color.Red,
-                Location = new Point(FurnitureIdTextBox.Location.X, FurnitureIdTextBox.Location.Y + 30),
+                Location = new Point(FurnitureIdTextBox.Location.X - 130, FurnitureIdTextBox.Location.Y + 30),
                 AutoSize = true,
                 Text = "",
                 Visible = false
@@ -137,7 +137,30 @@ namespace FurnitureRental.UserControls
             FurnitureDataGridView.DataSource = results;
         }
 
+        private void ClearButton_Click(object sender, EventArgs e)
+        {
+            FurnitureIdTextBox.Clear();
+            FurnitureNameTextBox.Clear();
 
+            _errorLabel.Visible = false;
+
+            if (CategoryComboBox.Items.Count > 0)
+            {
+                CategoryComboBox.SelectedIndex = 0;
+            }
+
+            if (StyleComboBox.Items.Count > 0)
+            {
+                StyleComboBox.SelectedIndex = 0;
+            }
+
+            int? categoryId = CategoryComboBox.SelectedValue as int?;
+            int? styleId = StyleComboBox.SelectedValue as int?;
+
+            var allFurniture = _furnitureController.GetFurnitureByCategoryAndStyle(categoryId, styleId);
+            FurnitureDataGridView.DataSource = allFurniture;
+
+        }
 
         private void FurnitureDataGridView_SelectionChanged(object sender, EventArgs e)
         {
