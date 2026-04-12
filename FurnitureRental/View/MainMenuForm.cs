@@ -13,6 +13,7 @@ namespace FurnitureRental.View
         public MainMenuForm()
         {
             InitializeComponent();
+            furnitureSearchUiUserControl1.RentalCart = rentalCartUserControl1;
         }
 
         /// <summary>

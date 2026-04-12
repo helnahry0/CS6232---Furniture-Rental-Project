@@ -1,20 +1,59 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TextBox;
 
 namespace FurnitureRental.UserControls
 {
     public partial class RentalCartUserControl : UserControl
     {
+        private MemberController memcontroller = new MemberController();
         private RentalController controller = new RentalController();
         private List<CartItem> cartItems = new List<CartItem>();
+        private BindingSource cartBindingSource = new BindingSource();
 
         public RentalCartUserControl()
         {
             InitializeComponent();
+            LoadCustomers();
             SetupCartGrid();
 
+            dgvCart.DataSource = cartBindingSource;
+            dgvCart.CellContentClick += DgvCart_CellContentClick;
 
+            RefreshCart();
+
+            if (CurrentUser.Employee != null)
+            {
+                lblEmployeeName.Text = $"{CurrentUser.Employee.FirstName} {CurrentUser.Employee.LastName}";
+            }
+            else
+            {
+                lblEmployeeName.Text = "Not logged in";
+            }
+        }
+        public void LoadCustomers()
+        {
+            var customers = memcontroller.GetAllMembers();
+
+            cboCustomer.DataSource = customers;
+            cboCustomer.DisplayMember = "FullName";
+            cboCustomer.ValueMember = "MemberId";
+            cboCustomer.SelectedIndex = -1;
+        }
+
+
+        private void cboCustomer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cboCustomer.SelectedIndex == -1)
+            {
+                txtMemberId.Clear();
+                return;
+            }
+
+            if (cboCustomer.SelectedValue != null &&
+                int.TryParse(cboCustomer.SelectedValue.ToString(), out int memberId))
+            {
+                txtMemberId.Text = memberId.ToString();
+            }
         }
 
         private void SetupCartGrid()
@@ -55,32 +94,57 @@ namespace FurnitureRental.UserControls
             });
         }
 
+        private CartItem? GetSelectedCartItem()
+        {
+            if (dgvCart.CurrentRow == null ||
+                dgvCart.CurrentRow.Index < 0 ||
+                dgvCart.CurrentRow.DataBoundItem is not CartItem item)
+            {
+                return null;
+            }
+
+            return item;
+        }
+
         private void RefreshCart()
         {
-            dgvCart.DataSource = null;
-            dgvCart.DataSource = cartItems;
+            cartBindingSource.DataSource = null;
+            cartBindingSource.DataSource = cartItems;
 
             lblItemCount.Text = cartItems.Count.ToString();
 
             decimal subtotal = cartItems.Sum(x => x.TotalPrice);
-
             lblSubtotal.Text = subtotal.ToString("C");
             lblTotal.Text = subtotal.ToString("C");
+
+            // To prevent invalid row state
+            dgvCart.ClearSelection();
+            dgvCart.CurrentCell = null;
+
+            numQty.Value = cartItems.Count > 0
+                ? cartItems[0].Quantity
+                : 1;
         }
+
         private void DgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.RowIndex < 0) return;
 
+            if (dgvCart.Rows[e.RowIndex].DataBoundItem is not CartItem item)
+                return;
+
+            numQty.Value = item.Quantity;
         }
 
         private void btnUpdateQty_Click(object sender, EventArgs e)
         {
-            if (dgvCart.CurrentRow == null)
+            var item = GetSelectedCartItem();
+
+            if (item == null)
             {
                 MessageBox.Show("Select an item in cart.");
                 return;
             }
-
-            var item = (CartItem)dgvCart.CurrentRow.DataBoundItem;
 
             int newQty = (int)numQty.Value;
 
@@ -97,9 +161,13 @@ namespace FurnitureRental.UserControls
 
         private void btnRemoveSelected_Click(object sender, EventArgs e)
         {
-            if (dgvCart.CurrentRow == null) return;
+            var item = GetSelectedCartItem();
+            if (item == null)
+            {
+                MessageBox.Show("Select an item in cart.");
+                return;
+            }
 
-            var item = (CartItem)dgvCart.CurrentRow.DataBoundItem;
             cartItems.Remove(item);
 
             RefreshCart();
@@ -108,6 +176,37 @@ namespace FurnitureRental.UserControls
         private void btnEmptyCart_Click(object sender, EventArgs e)
         {
             cartItems.Clear();
+            RefreshCart();
+        }
+
+        public void AddToCart(Furniture furniture, int quantity)
+        {
+            if (furniture == null) return;
+
+            if (quantity <= 0)
+            {
+                MessageBox.Show("Quantity must be greater than 0.");
+                return;
+            }
+
+            // Check if item already exists
+            var existing = cartItems.FirstOrDefault(x => x.FurnitureId == furniture.FurnitureId);
+
+            if (existing != null)
+            {
+                existing.Quantity += quantity;
+            }
+            else
+            {
+                cartItems.Add(new CartItem
+                {
+                    FurnitureId = furniture.FurnitureId,
+                    Name = furniture.FurnitureName,
+                    DailyRate = furniture.DailyRentalRate,
+                    Quantity = quantity
+                });
+            }
+
             RefreshCart();
         }
 
@@ -173,6 +272,8 @@ namespace FurnitureRental.UserControls
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cartItems.Clear();
+            RefreshCart();
         }
+
     }
 }

@@ -35,7 +35,6 @@
             lblEmployee = new Label();
             txtMemberId = new TextBox();
             dtpDueDate = new DateTimePicker();
-            lblCustomerName = new Label();
             lblEmployeeName = new Label();
             grpShoppingCart = new GroupBox();
             btnEmptyCart = new Button();
@@ -53,6 +52,7 @@
             lblTotalTitle = new Label();
             lblSubttotalTitle = new Label();
             lblItemCountTitle = new Label();
+            cboCustomer = new ComboBox();
             grpShoppingCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numQty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
@@ -72,7 +72,7 @@
             // lblMemberId
             // 
             lblMemberId.AutoSize = true;
-            lblMemberId.Location = new Point(23, 64);
+            lblMemberId.Location = new Point(387, 64);
             lblMemberId.Name = "lblMemberId";
             lblMemberId.Size = new Size(69, 15);
             lblMemberId.TabIndex = 2;
@@ -81,7 +81,7 @@
             // lblDueDate
             // 
             lblDueDate.AutoSize = true;
-            lblDueDate.Location = new Point(23, 96);
+            lblDueDate.Location = new Point(36, 95);
             lblDueDate.Name = "lblDueDate";
             lblDueDate.Size = new Size(58, 15);
             lblDueDate.TabIndex = 3;
@@ -90,7 +90,7 @@
             // lblCustomer
             // 
             lblCustomer.AutoSize = true;
-            lblCustomer.Location = new Point(399, 64);
+            lblCustomer.Location = new Point(31, 63);
             lblCustomer.Name = "lblCustomer";
             lblCustomer.Size = new Size(62, 15);
             lblCustomer.TabIndex = 4;
@@ -99,7 +99,7 @@
             // lblEmployee
             // 
             lblEmployee.AutoSize = true;
-            lblEmployee.Location = new Point(399, 98);
+            lblEmployee.Location = new Point(392, 98);
             lblEmployee.Name = "lblEmployee";
             lblEmployee.Size = new Size(62, 15);
             lblEmployee.TabIndex = 5;
@@ -107,31 +107,25 @@
             // 
             // txtMemberId
             // 
-            txtMemberId.Location = new Point(143, 56);
+            txtMemberId.Location = new Point(477, 59);
             txtMemberId.Name = "txtMemberId";
+            txtMemberId.ReadOnly = true;
             txtMemberId.Size = new Size(100, 23);
             txtMemberId.TabIndex = 6;
             // 
             // dtpDueDate
             // 
-            dtpDueDate.Location = new Point(143, 90);
+            dtpDueDate.CustomFormat = "yyyy-MM-dd";
+            dtpDueDate.Format = DateTimePickerFormat.Custom;
+            dtpDueDate.Location = new Point(122, 92);
             dtpDueDate.Name = "dtpDueDate";
-            dtpDueDate.Size = new Size(200, 23);
+            dtpDueDate.Size = new Size(163, 23);
             dtpDueDate.TabIndex = 9;
-            // 
-            // lblCustomerName
-            // 
-            lblCustomerName.AutoSize = true;
-            lblCustomerName.Location = new Point(536, 64);
-            lblCustomerName.Name = "lblCustomerName";
-            lblCustomerName.Size = new Size(38, 15);
-            lblCustomerName.TabIndex = 10;
-            lblCustomerName.Text = "label1";
             // 
             // lblEmployeeName
             // 
             lblEmployeeName.AutoSize = true;
-            lblEmployeeName.Location = new Point(536, 98);
+            lblEmployeeName.Location = new Point(489, 100);
             lblEmployeeName.Name = "lblEmployeeName";
             lblEmployeeName.Size = new Size(38, 15);
             lblEmployeeName.TabIndex = 11;
@@ -208,7 +202,6 @@
             dgvCart.Name = "dgvCart";
             dgvCart.Size = new Size(564, 166);
             dgvCart.TabIndex = 0;
-
             // 
             // grpOrderSummary
             // 
@@ -305,14 +298,23 @@
             lblItemCountTitle.TabIndex = 0;
             lblItemCountTitle.Text = "Items in Cart:";
             // 
+            // cboCustomer
+            // 
+            cboCustomer.FormattingEnabled = true;
+            cboCustomer.Location = new Point(117, 59);
+            cboCustomer.Name = "cboCustomer";
+            cboCustomer.Size = new Size(213, 23);
+            cboCustomer.TabIndex = 19;
+            cboCustomer.SelectedIndexChanged += cboCustomer_SelectedIndexChanged;
+            // 
             // RentalCartUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(cboCustomer);
             Controls.Add(grpOrderSummary);
             Controls.Add(grpShoppingCart);
             Controls.Add(lblEmployeeName);
-            Controls.Add(lblCustomerName);
             Controls.Add(dtpDueDate);
             Controls.Add(txtMemberId);
             Controls.Add(lblEmployee);
@@ -342,7 +344,6 @@
         private Label lblEmployee;
         private TextBox txtMemberId;
         private DateTimePicker dtpDueDate;
-        private Label lblCustomerName;
         private Label lblEmployeeName;
         private GroupBox grpShoppingCart;
         private DataGridView dgvCart;
@@ -360,5 +361,6 @@
         private Label lblItemCountTitle;
         private Button btnCancel;
         private Button btnSubmitRental;
+        private ComboBox cboCustomer;
     }
 }
