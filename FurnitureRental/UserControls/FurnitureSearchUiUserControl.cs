@@ -11,6 +11,7 @@ namespace FurnitureRental.UserControls
         public FurnitureSearchUiUserControl()
         {
             InitializeComponent();
+            _furnitureController = new FurnitureController();
         }
 
 

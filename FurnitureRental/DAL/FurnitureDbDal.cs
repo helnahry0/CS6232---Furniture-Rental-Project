@@ -14,13 +14,15 @@ namespace FurnitureRental.DAL
         {
             const string query = @"
                 SELECT 
-                        furniture_id, 
-                        category_id, 
-                        style_id, 
-                        furniture_name, 
-                        description, 
-                        daily_rental_rate, 
-                        quantity_on_hand
+                    furniture_id, 
+                    furniture_name, 
+                    category_id,
+                    category_name,
+                    style_id, 
+                    style_name,
+                    description, 
+                    daily_rental_rate, 
+                    quantity_on_hand
                 FROM dbo.Furniture;";
 
             List<Furniture> furnitureList = new List<Furniture>();
@@ -46,13 +48,15 @@ namespace FurnitureRental.DAL
         {
             const string query = @"
                 SELECT 
-                        furniture_id, 
-                        category_id, 
-                        style_id, 
-                        furniture_name, 
-                        description, 
-                        daily_rental_rate, 
-                        quantity_on_hand
+                    furniture_id, 
+                    furniture_name, 
+                    category_id,
+                    category_name,
+                    style_id, 
+                    style_name,
+                    description, 
+                    daily_rental_rate, 
+                    quantity_on_hand
                 FROM dbo.Furniture
                 WHERE furniture_id = @FurnitureId;";
 
@@ -78,13 +82,15 @@ namespace FurnitureRental.DAL
         {
             const string query = @"
                 SELECT 
-                        furniture_id, 
-                        category_id, 
-                        style_id, 
-                        furniture_name, 
-                        description, 
-                        daily_rental_rate, 
-                        quantity_on_hand
+                    furniture_id, 
+                    furniture_name, 
+                    category_id,
+                    category_name,
+                    style_id, 
+                    style_name,
+                    description, 
+                    daily_rental_rate, 
+                    quantity_on_hand
                 FROM dbo.Furniture
                 WHERE category_id = @CategoryId AND style_id = @StyleId;";
 
@@ -115,9 +121,16 @@ namespace FurnitureRental.DAL
             return new Furniture
             {
                 FurnitureId = Convert.ToInt32(reader["furniture_id"]),
-                CategoryId = Convert.ToInt32(reader["category_id"]),
-                StyleId = Convert.ToInt32(reader["style_id"]),
                 FurnitureName = Convert.ToString(reader["furniture_name"]) ?? string.Empty,
+
+                CategoryId = Convert.ToInt32(reader["category_id"]),
+                CategoryName = Convert.ToString(reader["category_name"]) ?? string.Empty,
+
+
+                StyleId = Convert.ToInt32(reader["style_id"]),
+                StyleName = Convert.ToString(reader["style_name"]) ?? string.Empty,
+
+
                 Description = reader["description"] == DBNull.Value
                     ? string.Empty
                     : Convert.ToString(reader["description"]) ?? string.Empty,

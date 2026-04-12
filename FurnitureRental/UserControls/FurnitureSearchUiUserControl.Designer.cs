@@ -40,9 +40,9 @@
             SearchButton = new Button();
             AddToCartButton = new Button();
             splitContainer1 = new SplitContainer();
-            dataGridView1 = new DataGridView();
-            DescriptionLabel = new Label();
             AddDescriptionLabel = new Label();
+            DescriptionLabel = new Label();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)splitContainer1).BeginInit();
             splitContainer1.Panel1.SuspendLayout();
             splitContainer1.Panel2.SuspendLayout();
@@ -173,15 +173,14 @@
             splitContainer1.SplitterDistance = 398;
             splitContainer1.TabIndex = 11;
             // 
-            // dataGridView1
+            // AddDescriptionLabel
             // 
-            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Dock = DockStyle.Fill;
-            dataGridView1.Location = new Point(0, 0);
-            dataGridView1.Name = "dataGridView1";
-            dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(591, 497);
-            dataGridView1.TabIndex = 0;
+            AddDescriptionLabel.AutoSize = true;
+            AddDescriptionLabel.Location = new Point(31, 357);
+            AddDescriptionLabel.Name = "AddDescriptionLabel";
+            AddDescriptionLabel.Size = new Size(171, 20);
+            AddDescriptionLabel.TabIndex = 12;
+            AddDescriptionLabel.Text = "description of item here.";
             // 
             // DescriptionLabel
             // 
@@ -192,13 +191,15 @@
             DescriptionLabel.TabIndex = 11;
             DescriptionLabel.Text = "Description : ";
             // 
-            // AddDescriptionLabel
+            // dataGridView1
             // 
-            AddDescriptionLabel.AutoSize = true;
-            AddDescriptionLabel.Location = new Point(31, 357);
-            AddDescriptionLabel.Name = "AddDescriptionLabel";
-            AddDescriptionLabel.Size = new Size(0, 20);
-            AddDescriptionLabel.TabIndex = 12;
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Dock = DockStyle.Fill;
+            dataGridView1.Location = new Point(0, 0);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.RowHeadersWidth = 51;
+            dataGridView1.Size = new Size(591, 497);
+            dataGridView1.TabIndex = 0;
             // 
             // FurnitureSearchUiUserControl
             // 
