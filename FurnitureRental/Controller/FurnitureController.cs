@@ -1,5 +1,6 @@
 ﻿using FurnitureRental.DAL;
 using FurnitureRental.Model;
+using System.Data;
 
 namespace FurnitureRental.Controller
 {
@@ -43,9 +44,17 @@ namespace FurnitureRental.Controller
         /// <param name="categoryId">The ID of the category.</param>
         /// <param name="styleId">The ID of the style.</param>
         /// <returns>A list of <see cref="Furniture"/> matching the criteria.</returns>
-        public List<Furniture> GetFurnitureByCategoryAndStyle(int categoryId, int styleId)
+        public List<Furniture> GetFurnitureByCategoryAndStyle(int? categoryId, int? styleId)
         {
             return _furnitureDbDal.GetFurnitureByCategoryAndStyle(categoryId, styleId);
+        }
+
+        public DataTable GetCategories() {
+           return _furnitureDbDal.GetCategories();
+        }
+
+        public DataTable GetStyles() { 
+            return _furnitureDbDal.GetStyles(); 
         }
 
 

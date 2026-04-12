@@ -1,17 +1,155 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
-using FurnitureRental.View;
+using System.Data;
 
 namespace FurnitureRental.UserControls
 {
     public partial class FurnitureSearchUiUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
+        private Label _errorLabel;
 
         public FurnitureSearchUiUserControl()
         {
             InitializeComponent();
             _furnitureController = new FurnitureController();
+
+            SetupErrorLabel();
+            SetupDataGridView();
+            LoadComboBoxData();
+            RefreshFurnitureList();
+            AttachEvents();
+        }
+
+
+        private void SetupErrorLabel()
+        {
+            _errorLabel = new Label
+            {
+                ForeColor = Color.Red,
+                Location = new Point(FurnitureIdTextBox.Location.X, FurnitureIdTextBox.Location.Y + 30),
+                AutoSize = true,
+                Text = "",
+                Visible = false
+            };
+            this.splitContainer1.Panel1.Controls.Add(_errorLabel);
+        }
+
+        private void SetupDataGridView()
+        {
+            FurnitureDataGridView.AutoGenerateColumns = false;
+            FurnitureDataGridView.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            FurnitureDataGridView.MultiSelect = false;
+
+            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "FurnitureId", HeaderText = "Furniture ID" });
+            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "FurnitureName", HeaderText = "Name" });
+            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "CategoryName", HeaderText = "Category" });
+            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "StyleName", HeaderText = "Style" });
+            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DailyRentalRate", HeaderText = "Rate" });
+            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantityOnHand", HeaderText = "Qty" });
+        }
+
+        private void LoadComboBoxData()
+        {
+
+            DataTable categoryTable = _furnitureController.GetCategories();
+            categoryTable.Columns["category_id"].AllowDBNull = true;
+
+            DataRow categoryRow = categoryTable.NewRow();
+            categoryRow["category_id"] = DBNull.Value;
+            categoryRow["category_name"] = "-- Select Category --";
+            categoryTable.Rows.InsertAt(categoryRow, 0);
+
+            CategoryComboBox.DataSource = categoryTable;
+            CategoryComboBox.DisplayMember = "category_name";
+            CategoryComboBox.ValueMember = "category_id";
+
+
+
+            DataTable styleTable = _furnitureController.GetStyles();
+            styleTable.Columns["style_id"].AllowDBNull = true;
+
+            DataRow styleRow = styleTable.NewRow();
+            styleRow["style_id"] = DBNull.Value;
+            styleRow["style_name"] = "-- Select Style --";
+            styleTable.Rows.InsertAt(styleRow, 0);
+
+            StyleComboBox.DataSource = styleTable;
+            StyleComboBox.DisplayMember = "style_name";
+            StyleComboBox.ValueMember = "style_id";
+        }
+
+        private void AttachEvents()
+        {
+            SearchButton.Click += SearchButton_Click;
+            FurnitureIdTextBox.KeyPress += FurnitureIdTextBox_KeyPress;
+            FurnitureDataGridView.SelectionChanged += FurnitureDataGridView_SelectionChanged;
+            CategoryComboBox.SelectedIndexChanged += FilterComboBox_SelectedIndexChanged;
+            StyleComboBox.SelectedIndexChanged += FilterComboBox_SelectedIndexChanged;
+        }
+
+        private void FilterComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            FurnitureIdTextBox.Clear();
+            _errorLabel.Visible = false;
+
+            int? categoryId = CategoryComboBox.SelectedValue as int?;
+            int? styleId = StyleComboBox.SelectedValue as int?;
+
+            var results = _furnitureController.GetFurnitureByCategoryAndStyle(categoryId, styleId);
+            FurnitureDataGridView.DataSource = results;
+        }
+
+        private void FurnitureIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void RefreshFurnitureList()
+        {
+            FurnitureDataGridView.DataSource = null;
+            FurnitureDataGridView.DataSource = _furnitureController.GetAllFurniture();
+        }
+
+        private void SearchButton_Click(object sender, EventArgs e)
+        {
+            _errorLabel.Visible = false;
+            List<Furniture> results = new List<Furniture>();
+
+            //Search by ID
+            if (!string.IsNullOrWhiteSpace(FurnitureIdTextBox.Text))
+            {
+                if (int.TryParse(FurnitureIdTextBox.Text, out int id))
+                {
+                    var item = _furnitureController.GetFurnitureById(id);
+                    if (item != null) results.Add(item);
+                    else
+                    {
+                        _errorLabel.Text = "No furniture found with this ID.";
+                        _errorLabel.Visible = true;
+                    }
+                }
+            }
+
+            FurnitureDataGridView.DataSource = results;
+        }
+
+
+
+        private void FurnitureDataGridView_SelectionChanged(object sender, EventArgs e)
+        {
+            if (FurnitureDataGridView.SelectedRows.Count > 0)
+            {
+                var selectedFurniture = (Furniture)FurnitureDataGridView.SelectedRows[0].DataBoundItem;
+
+                FurnitureNameTextBox.Text = selectedFurniture.FurnitureName;
+                AddDescriptionLabel.Text = string.IsNullOrWhiteSpace(selectedFurniture.Description)
+                    ? "No description available."
+                    : selectedFurniture.Description;
+            }
         }
 
 

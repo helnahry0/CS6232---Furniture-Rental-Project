@@ -14,16 +14,18 @@ namespace FurnitureRental.DAL
         {
             const string query = @"
                 SELECT 
-                    furniture_id, 
-                    furniture_name, 
-                    category_id,
-                    category_name,
-                    style_id, 
-                    style_name,
-                    description, 
-                    daily_rental_rate, 
-                    quantity_on_hand
-                FROM dbo.Furniture;";
+                    f.furniture_id, 
+                    f.furniture_name, 
+                    f.category_id, 
+                    c.category_name, 
+                    f.style_id, 
+                    s.style_name, 
+                    f.description, 
+                    f.daily_rental_rate, 
+                    f.quantity_on_hand
+                FROM dbo.Furniture f
+                INNER JOIN dbo.FurnitureCategory c ON f.category_id = c.category_id
+                INNER JOIN dbo.FurnitureStyle s ON f.style_id = s.style_id;";
 
             List<Furniture> furnitureList = new List<Furniture>();
 
@@ -41,6 +43,30 @@ namespace FurnitureRental.DAL
             return furnitureList;
         }
 
+
+        public DataTable GetCategories()
+        {
+            DataTable dt = new DataTable();
+            using SqlConnection connection = new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
+            using SqlCommand command = new SqlCommand("SELECT category_id, category_name FROM FurnitureCategory", connection);
+            connection.Open();
+            dt.Load(command.ExecuteReader());
+            return dt;
+        }
+
+        public DataTable GetStyles()
+        {
+            DataTable dt = new DataTable();
+            using SqlConnection connection = new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
+            using SqlCommand command = new SqlCommand("SELECT style_id, style_name FROM FurnitureStyle", connection);
+            connection.Open();
+            dt.Load(command.ExecuteReader());
+            return dt;
+        }
+
+
+
+
         /// <summary>
         /// Gets a specific furniture item by its ID.
         /// </summary>
@@ -48,17 +74,19 @@ namespace FurnitureRental.DAL
         {
             const string query = @"
                 SELECT 
-                    furniture_id, 
-                    furniture_name, 
-                    category_id,
-                    category_name,
-                    style_id, 
-                    style_name,
-                    description, 
-                    daily_rental_rate, 
-                    quantity_on_hand
-                FROM dbo.Furniture
-                WHERE furniture_id = @FurnitureId;";
+                    f.furniture_id, 
+                    f.furniture_name, 
+                    f.category_id, 
+                    c.category_name, 
+                    f.style_id, 
+                    s.style_name, 
+                    f.description, 
+                    f.daily_rental_rate, 
+                    f.quantity_on_hand
+                FROM dbo.Furniture f
+                INNER JOIN dbo.FurnitureCategory c ON f.category_id = c.category_id
+                INNER JOIN dbo.FurnitureStyle s ON f.style_id = s.style_id
+                WHERE f.furniture_id = @FurnitureId; ";
 
             using SqlConnection connection = new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
             using SqlCommand command = new SqlCommand(query, connection);
@@ -78,28 +106,31 @@ namespace FurnitureRental.DAL
         /// <summary>
         /// Searches for furniture by category and style.
         /// </summary>
-        public List<Furniture> GetFurnitureByCategoryAndStyle(int categoryId, int styleId)
+        public List<Furniture> GetFurnitureByCategoryAndStyle(int? categoryId, int? styleId)
         {
             const string query = @"
                 SELECT 
-                    furniture_id, 
-                    furniture_name, 
-                    category_id,
-                    category_name,
-                    style_id, 
-                    style_name,
-                    description, 
-                    daily_rental_rate, 
-                    quantity_on_hand
-                FROM dbo.Furniture
-                WHERE category_id = @CategoryId AND style_id = @StyleId;";
+                    f.furniture_id, 
+                    f.furniture_name, 
+                    f.category_id, 
+                    c.category_name, 
+                    f.style_id, 
+                    s.style_name, 
+                    f.description, 
+                    f.daily_rental_rate, 
+                    f.quantity_on_hand
+                FROM dbo.Furniture f
+                INNER JOIN dbo.FurnitureCategory c ON f.category_id = c.category_id
+                INNER JOIN dbo.FurnitureStyle s ON f.style_id = s.style_id
+                WHERE (@CategoryId IS NULL OR f.category_id = @CategoryId) AND 
+                (@StyleId IS NULL OR f.style_id = @StyleId);";
 
             List<Furniture> furnitureList = new List<Furniture>();
 
             using SqlConnection connection = new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
             using SqlCommand command = new SqlCommand(query, connection);
-            command.Parameters.Add("@CategoryId", SqlDbType.Int).Value = categoryId;
-            command.Parameters.Add("@StyleId", SqlDbType.Int).Value = styleId;
+            command.Parameters.Add("@CategoryId", SqlDbType.Int).Value = (object)categoryId ?? DBNull.Value;
+            command.Parameters.Add("@StyleId", SqlDbType.Int).Value = (object)styleId ?? DBNull.Value;
 
             connection.Open();
             using SqlDataReader reader = command.ExecuteReader();
@@ -138,5 +169,7 @@ namespace FurnitureRental.DAL
                 QuantityOnHand = Convert.ToInt32(reader["quantity_on_hand"])
             };
         }
+
+
     }
 }
