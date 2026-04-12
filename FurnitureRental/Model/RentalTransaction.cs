@@ -1,4 +1,6 @@
-﻿namespace FurnitureRental.Model
+﻿using System.Linq;
+
+namespace FurnitureRental.Model
 {
     /// <summary>
     /// Represents a rental transaction header.
@@ -30,6 +32,11 @@
         /// </summary>
         public DateTime DueDate { get; set; }
 
-        public List<CartItem> Items { get; set; } = new List<CartItem>();
+        public List<RentalHistoryItem> Items { get; set; } = new List<RentalHistoryItem>();
+
+        /// <summary>
+        /// Gets the total cost of the rental transaction.
+        /// </summary>
+        public decimal TotalCost => Items.Sum(x => x.LineTotal);
     }
 }

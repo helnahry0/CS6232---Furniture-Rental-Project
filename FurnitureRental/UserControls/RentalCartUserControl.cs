@@ -113,7 +113,61 @@ namespace FurnitureRental.UserControls
 
         private void btnSubmitRental_Click(object sender, EventArgs e)
         {
-           
+            if (!int.TryParse(txtMemberId.Text.Trim(), out int memberId))
+            {
+                MessageBox.Show("Enter a valid member ID.");
+                return;
+            }
+
+            if (CurrentUser.Employee == null)
+            {
+                MessageBox.Show("No employee is currently logged in.");
+                return;
+            }
+
+            if (cartItems.Count == 0)
+            {
+                MessageBox.Show("The cart is empty.");
+                return;
+            }
+
+            RentalTransaction rentalTransaction = new RentalTransaction
+            {
+                MemberId = memberId,
+                EmployeeId = CurrentUser.Employee.EmployeeId,
+                RentalDate = DateTime.Now,
+                DueDate = dtpDueDate.Value,
+                Items = cartItems.Select(x => new RentalHistoryItem
+                {
+                    FurnitureId = x.FurnitureId,
+                    QuantityRented = x.Quantity
+                }).ToList()
+            };
+
+            bool success = controller.TrySubmitRentalTransaction(
+                rentalTransaction,
+                out RentalTransaction? savedTransaction,
+                out string errorMessage);
+
+            if (!success || savedTransaction == null)
+            {
+                MessageBox.Show(errorMessage);
+                return;
+            }
+
+            MessageBox.Show(
+                $"Rental submitted successfully.\n\nRental ID: {savedTransaction.RentalTransactionId}\nTotal Cost: {savedTransaction.TotalCost:C}",
+                "Transaction Summary",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
+
+            using FurnitureRental.View.RentalReceiptForm receiptForm =
+                new FurnitureRental.View.RentalReceiptForm(savedTransaction);
+
+            receiptForm.ShowDialog();
+
+            cartItems.Clear();
+            RefreshCart();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

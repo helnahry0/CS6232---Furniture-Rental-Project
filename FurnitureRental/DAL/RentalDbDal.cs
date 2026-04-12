@@ -1,6 +1,7 @@
-﻿using FurnitureRental.Model;
-using Microsoft.Data.SqlClient;
+﻿using System;
 using System.Data;
+using Microsoft.Data.SqlClient;
+using FurnitureRental.Model;
 
 namespace FurnitureRental.DAL;
 
@@ -45,6 +46,184 @@ public class RentalDbDal
         }
 
         return rentals;
+    }
+
+
+    public RentalTransaction SubmitRentalTransaction(RentalTransaction rentalTransaction)
+    {
+        using SqlConnection connection =
+            new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
+
+        connection.Open();
+
+        using SqlTransaction dbTransaction = connection.BeginTransaction();
+
+        try
+        {
+            rentalTransaction.RentalTransactionId =
+                InsertRentalTransaction(rentalTransaction, connection, dbTransaction);
+
+            foreach (RentalHistoryItem item in rentalTransaction.Items)
+            {
+                FurnitureRentalItemInfo itemInfo =
+                    GetFurnitureRentalItemInfo(item.FurnitureId, connection, dbTransaction);
+
+                if (itemInfo == null)
+                {
+                    throw new ApplicationException($"Furniture ID {item.FurnitureId} was not found.");
+                }
+
+                if (item.QuantityRented > itemInfo.QuantityOnHand)
+                {
+                    throw new ApplicationException(
+                        $"Not enough quantity on hand for furniture ID {item.FurnitureId}. Available: {itemInfo.QuantityOnHand}.");
+                }
+
+                item.RentalId = rentalTransaction.RentalTransactionId;
+                item.FurnitureName = itemInfo.FurnitureName;
+                item.DailyRentalRate = itemInfo.DailyRentalRate;
+
+                InsertRentalDetail(item, connection, dbTransaction);
+                UpdateFurnitureQuantityOnHand(item.FurnitureId, item.QuantityRented, connection, dbTransaction);
+            }
+
+            dbTransaction.Commit();
+            return rentalTransaction;
+        }
+        catch
+        {
+            dbTransaction.Rollback();
+            throw;
+        }
+    }
+
+
+    private static int InsertRentalTransaction(
+    RentalTransaction rentalTransaction,
+    SqlConnection connection,
+    SqlTransaction dbTransaction)
+    {
+        const string query = @"
+        INSERT INTO dbo.RentalTransaction
+        (
+            member_id,
+            employee_id,
+            rental_date,
+            due_date
+        )
+        VALUES
+        (
+            @MemberId,
+            @EmployeeId,
+            @RentalDate,
+            @DueDate
+        );
+
+        SELECT CAST(SCOPE_IDENTITY() AS INT);";
+
+        using SqlCommand command = new SqlCommand(query, connection, dbTransaction);
+
+        command.Parameters.Add("@MemberId", SqlDbType.Int).Value = rentalTransaction.MemberId;
+        command.Parameters.Add("@EmployeeId", SqlDbType.Int).Value = rentalTransaction.EmployeeId;
+        command.Parameters.Add("@RentalDate", SqlDbType.DateTime).Value = rentalTransaction.RentalDate;
+        command.Parameters.Add("@DueDate", SqlDbType.DateTime).Value = rentalTransaction.DueDate;
+
+        return (int)command.ExecuteScalar()!;
+    }
+
+    private static void InsertRentalDetail(
+        RentalHistoryItem rentalItem,
+        SqlConnection connection,
+        SqlTransaction dbTransaction)
+    {
+        const string query = @"
+        INSERT INTO dbo.RentalDetail
+        (
+            rental_id,
+            furniture_id,
+            quantity_rented
+        )
+        VALUES
+        (
+            @RentalId,
+            @FurnitureId,
+            @QuantityRented
+        );";
+
+        using SqlCommand command = new SqlCommand(query, connection, dbTransaction);
+
+        command.Parameters.Add("@RentalId", SqlDbType.Int).Value = rentalItem.RentalId;
+        command.Parameters.Add("@FurnitureId", SqlDbType.Int).Value = rentalItem.FurnitureId;
+        command.Parameters.Add("@QuantityRented", SqlDbType.Int).Value = rentalItem.QuantityRented;
+
+        command.ExecuteNonQuery();
+    }
+
+    private static void UpdateFurnitureQuantityOnHand(
+        int furnitureId,
+        int quantityRented,
+        SqlConnection connection,
+        SqlTransaction dbTransaction)
+    {
+        const string query = @"
+        UPDATE dbo.Furniture
+        SET quantity_on_hand = quantity_on_hand - @QuantityRented
+        WHERE furniture_id = @FurnitureId;";
+
+        using SqlCommand command = new SqlCommand(query, connection, dbTransaction);
+
+        command.Parameters.Add("@FurnitureId", SqlDbType.Int).Value = furnitureId;
+        command.Parameters.Add("@QuantityRented", SqlDbType.Int).Value = quantityRented;
+
+        command.ExecuteNonQuery();
+    }
+
+    private static FurnitureRentalItemInfo GetFurnitureRentalItemInfo(
+        int furnitureId,
+        SqlConnection connection,
+        SqlTransaction dbTransaction)
+    {
+        const string query = @"
+        SELECT
+            furniture_id,
+            furniture_name,
+            daily_rental_rate,
+            quantity_on_hand
+        FROM dbo.Furniture
+        WHERE furniture_id = @FurnitureId;";
+
+        using SqlCommand command = new SqlCommand(query, connection, dbTransaction);
+        command.Parameters.Add("@FurnitureId", SqlDbType.Int).Value = furnitureId;
+
+        using SqlDataReader reader = command.ExecuteReader();
+
+        if (!reader.Read())
+        {
+            reader.Close();
+            return null!;
+        }
+
+        FurnitureRentalItemInfo itemInfo = new FurnitureRentalItemInfo
+        {
+            FurnitureId = Convert.ToInt32(reader["furniture_id"]),
+            FurnitureName = Convert.ToString(reader["furniture_name"]) ?? string.Empty,
+            DailyRentalRate = Convert.ToDecimal(reader["daily_rental_rate"]),
+            QuantityOnHand = Convert.ToInt32(reader["quantity_on_hand"])
+        };
+
+        reader.Close();
+        return itemInfo;
+    }
+
+    private class FurnitureRentalItemInfo
+    {
+        public int FurnitureId { get; set; }
+
+        public string FurnitureName { get; set; } = string.Empty;
+
+        public decimal DailyRentalRate { get; set; }
+
+        public int QuantityOnHand { get; set; }
     }
 
     /// <summary>
