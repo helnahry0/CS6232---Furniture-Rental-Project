@@ -43,7 +43,10 @@ namespace FurnitureRental.DAL
             return furnitureList;
         }
 
-
+        /// <summary>
+        /// Gets all furniture Categories from the database.
+        /// </summary>
+        /// <returns>A DataTable containing category_id and category_name.</returns>
         public DataTable GetCategories()
         {
             DataTable dt = new DataTable();
@@ -54,6 +57,10 @@ namespace FurnitureRental.DAL
             return dt;
         }
 
+        /// <summary>
+        /// Gets all furniture Styles from the database.
+        /// </summary>
+        /// <returns>A DataTable containing style_id and style_name.</returns>
         public DataTable GetStyles()
         {
             DataTable dt = new DataTable();
@@ -63,9 +70,6 @@ namespace FurnitureRental.DAL
             dt.Load(command.ExecuteReader());
             return dt;
         }
-
-
-
 
         /// <summary>
         /// Gets a specific furniture item by its ID.
