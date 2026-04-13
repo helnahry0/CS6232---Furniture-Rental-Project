@@ -53,6 +53,8 @@
             lblSubttotalTitle = new Label();
             lblItemCountTitle = new Label();
             cboCustomer = new ComboBox();
+            TotalQtyLabel = new Label();
+            TotalItemCountLabel = new Label();
             grpShoppingCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numQty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
@@ -63,71 +65,73 @@
             // 
             lblRentalCart.AutoSize = true;
             lblRentalCart.Font = new Font("Segoe UI Semibold", 18F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblRentalCart.Location = new Point(23, 10);
+            lblRentalCart.Location = new Point(26, 13);
             lblRentalCart.Name = "lblRentalCart";
-            lblRentalCart.Size = new Size(137, 32);
+            lblRentalCart.Size = new Size(171, 41);
             lblRentalCart.TabIndex = 1;
             lblRentalCart.Text = "Rental Cart";
             // 
             // lblMemberId
             // 
             lblMemberId.AutoSize = true;
-            lblMemberId.Location = new Point(387, 64);
+            lblMemberId.Location = new Point(442, 85);
             lblMemberId.Name = "lblMemberId";
-            lblMemberId.Size = new Size(69, 15);
+            lblMemberId.Size = new Size(87, 20);
             lblMemberId.TabIndex = 2;
             lblMemberId.Text = "Member ID:";
             // 
             // lblDueDate
             // 
             lblDueDate.AutoSize = true;
-            lblDueDate.Location = new Point(36, 95);
+            lblDueDate.Location = new Point(41, 127);
             lblDueDate.Name = "lblDueDate";
-            lblDueDate.Size = new Size(58, 15);
+            lblDueDate.Size = new Size(75, 20);
             lblDueDate.TabIndex = 3;
             lblDueDate.Text = "Due Date:";
             // 
             // lblCustomer
             // 
             lblCustomer.AutoSize = true;
-            lblCustomer.Location = new Point(31, 63);
+            lblCustomer.Location = new Point(35, 84);
             lblCustomer.Name = "lblCustomer";
-            lblCustomer.Size = new Size(62, 15);
+            lblCustomer.Size = new Size(75, 20);
             lblCustomer.TabIndex = 4;
             lblCustomer.Text = "Customer:";
             // 
             // lblEmployee
             // 
             lblEmployee.AutoSize = true;
-            lblEmployee.Location = new Point(392, 98);
+            lblEmployee.Location = new Point(448, 131);
             lblEmployee.Name = "lblEmployee";
-            lblEmployee.Size = new Size(62, 15);
+            lblEmployee.Size = new Size(78, 20);
             lblEmployee.TabIndex = 5;
             lblEmployee.Text = "Employee:";
             // 
             // txtMemberId
             // 
-            txtMemberId.Location = new Point(477, 59);
+            txtMemberId.Location = new Point(545, 79);
+            txtMemberId.Margin = new Padding(3, 4, 3, 4);
             txtMemberId.Name = "txtMemberId";
             txtMemberId.ReadOnly = true;
-            txtMemberId.Size = new Size(100, 23);
+            txtMemberId.Size = new Size(114, 27);
             txtMemberId.TabIndex = 6;
             // 
             // dtpDueDate
             // 
             dtpDueDate.CustomFormat = "yyyy-MM-dd";
             dtpDueDate.Format = DateTimePickerFormat.Custom;
-            dtpDueDate.Location = new Point(122, 92);
+            dtpDueDate.Location = new Point(139, 123);
+            dtpDueDate.Margin = new Padding(3, 4, 3, 4);
             dtpDueDate.Name = "dtpDueDate";
-            dtpDueDate.Size = new Size(163, 23);
+            dtpDueDate.Size = new Size(186, 27);
             dtpDueDate.TabIndex = 9;
             // 
             // lblEmployeeName
             // 
             lblEmployeeName.AutoSize = true;
-            lblEmployeeName.Location = new Point(489, 100);
+            lblEmployeeName.Location = new Point(559, 133);
             lblEmployeeName.Name = "lblEmployeeName";
-            lblEmployeeName.Size = new Size(38, 15);
+            lblEmployeeName.Size = new Size(50, 20);
             lblEmployeeName.TabIndex = 11;
             lblEmployeeName.Text = "label1";
             // 
@@ -139,9 +143,11 @@
             grpShoppingCart.Controls.Add(numQty);
             grpShoppingCart.Controls.Add(lblSelectedQty);
             grpShoppingCart.Controls.Add(dgvCart);
-            grpShoppingCart.Location = new Point(23, 129);
+            grpShoppingCart.Location = new Point(26, 172);
+            grpShoppingCart.Margin = new Padding(3, 4, 3, 4);
             grpShoppingCart.Name = "grpShoppingCart";
-            grpShoppingCart.Size = new Size(598, 265);
+            grpShoppingCart.Padding = new Padding(3, 4, 3, 4);
+            grpShoppingCart.Size = new Size(683, 353);
             grpShoppingCart.TabIndex = 16;
             grpShoppingCart.TabStop = false;
             grpShoppingCart.Text = "Shopping Cart";
@@ -149,9 +155,10 @@
             // btnEmptyCart
             // 
             btnEmptyCart.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnEmptyCart.Location = new Point(394, 236);
+            btnEmptyCart.Location = new Point(450, 315);
+            btnEmptyCart.Margin = new Padding(3, 4, 3, 4);
             btnEmptyCart.Name = "btnEmptyCart";
-            btnEmptyCart.Size = new Size(75, 23);
+            btnEmptyCart.Size = new Size(86, 31);
             btnEmptyCart.TabIndex = 5;
             btnEmptyCart.Text = "Empty Cart";
             btnEmptyCart.UseVisualStyleBackColor = true;
@@ -160,9 +167,10 @@
             // btnRemoveSelected
             // 
             btnRemoveSelected.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnRemoveSelected.Location = new Point(230, 236);
+            btnRemoveSelected.Location = new Point(263, 315);
+            btnRemoveSelected.Margin = new Padding(3, 4, 3, 4);
             btnRemoveSelected.Name = "btnRemoveSelected";
-            btnRemoveSelected.Size = new Size(120, 23);
+            btnRemoveSelected.Size = new Size(137, 31);
             btnRemoveSelected.TabIndex = 4;
             btnRemoveSelected.Text = "Remove Selected";
             btnRemoveSelected.UseVisualStyleBackColor = true;
@@ -171,9 +179,10 @@
             // btnUpdateQty
             // 
             btnUpdateQty.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnUpdateQty.Location = new Point(66, 236);
+            btnUpdateQty.Location = new Point(75, 315);
+            btnUpdateQty.Margin = new Padding(3, 4, 3, 4);
             btnUpdateQty.Name = "btnUpdateQty";
-            btnUpdateQty.Size = new Size(108, 23);
+            btnUpdateQty.Size = new Size(123, 31);
             btnUpdateQty.TabIndex = 3;
             btnUpdateQty.Text = "Update Quantity";
             btnUpdateQty.UseVisualStyleBackColor = true;
@@ -181,30 +190,35 @@
             // 
             // numQty
             // 
-            numQty.Location = new Point(219, 200);
+            numQty.Location = new Point(262, 267);
+            numQty.Margin = new Padding(3, 4, 3, 4);
             numQty.Name = "numQty";
-            numQty.Size = new Size(66, 23);
+            numQty.Size = new Size(75, 27);
             numQty.TabIndex = 2;
             // 
             // lblSelectedQty
             // 
             lblSelectedQty.AutoSize = true;
-            lblSelectedQty.Location = new Point(66, 202);
+            lblSelectedQty.Location = new Point(75, 269);
             lblSelectedQty.Name = "lblSelectedQty";
-            lblSelectedQty.Size = new Size(130, 15);
+            lblSelectedQty.Size = new Size(163, 20);
             lblSelectedQty.TabIndex = 1;
             lblSelectedQty.Text = "Selected Item Quantity:";
             // 
             // dgvCart
             // 
             dgvCart.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvCart.Location = new Point(15, 22);
+            dgvCart.Location = new Point(17, 29);
+            dgvCart.Margin = new Padding(3, 4, 3, 4);
             dgvCart.Name = "dgvCart";
-            dgvCart.Size = new Size(564, 166);
+            dgvCart.RowHeadersWidth = 51;
+            dgvCart.Size = new Size(645, 221);
             dgvCart.TabIndex = 0;
             // 
             // grpOrderSummary
             // 
+            grpOrderSummary.Controls.Add(TotalItemCountLabel);
+            grpOrderSummary.Controls.Add(TotalQtyLabel);
             grpOrderSummary.Controls.Add(btnCancel);
             grpOrderSummary.Controls.Add(btnSubmitRental);
             grpOrderSummary.Controls.Add(lblTotal);
@@ -214,9 +228,11 @@
             grpOrderSummary.Controls.Add(lblSubttotalTitle);
             grpOrderSummary.Controls.Add(lblItemCountTitle);
             grpOrderSummary.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            grpOrderSummary.Location = new Point(23, 400);
+            grpOrderSummary.Location = new Point(26, 533);
+            grpOrderSummary.Margin = new Padding(3, 4, 3, 4);
             grpOrderSummary.Name = "grpOrderSummary";
-            grpOrderSummary.Size = new Size(598, 115);
+            grpOrderSummary.Padding = new Padding(3, 4, 3, 4);
+            grpOrderSummary.Size = new Size(683, 153);
             grpOrderSummary.TabIndex = 18;
             grpOrderSummary.TabStop = false;
             grpOrderSummary.Text = "Order Summary";
@@ -224,9 +240,10 @@
             // btnCancel
             // 
             btnCancel.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnCancel.Location = new Point(424, 43);
+            btnCancel.Location = new Point(576, 96);
+            btnCancel.Margin = new Padding(3, 4, 3, 4);
             btnCancel.Name = "btnCancel";
-            btnCancel.Size = new Size(75, 23);
+            btnCancel.Size = new Size(86, 31);
             btnCancel.TabIndex = 7;
             btnCancel.Text = "Cancel";
             btnCancel.UseVisualStyleBackColor = true;
@@ -235,9 +252,10 @@
             // btnSubmitRental
             // 
             btnSubmitRental.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold);
-            btnSubmitRental.Location = new Point(245, 43);
+            btnSubmitRental.Location = new Point(371, 96);
+            btnSubmitRental.Margin = new Padding(3, 4, 3, 4);
             btnSubmitRental.Name = "btnSubmitRental";
-            btnSubmitRental.Size = new Size(161, 23);
+            btnSubmitRental.Size = new Size(184, 31);
             btnSubmitRental.TabIndex = 6;
             btnSubmitRental.Text = "Submit Rental Transaction";
             btnSubmitRental.UseVisualStyleBackColor = true;
@@ -247,69 +265,88 @@
             // 
             lblTotal.AutoSize = true;
             lblTotal.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTotal.Location = new Point(182, 72);
+            lblTotal.Location = new Point(208, 96);
             lblTotal.Name = "lblTotal";
-            lblTotal.Size = new Size(38, 15);
+            lblTotal.Size = new Size(45, 20);
             lblTotal.TabIndex = 5;
             lblTotal.Text = "$0.00";
             // 
             // lblSubtotal
             // 
             lblSubtotal.AutoSize = true;
-            lblSubtotal.Location = new Point(182, 51);
+            lblSubtotal.Location = new Point(208, 68);
             lblSubtotal.Name = "lblSubtotal";
-            lblSubtotal.Size = new Size(38, 15);
+            lblSubtotal.Size = new Size(45, 20);
             lblSubtotal.TabIndex = 4;
             lblSubtotal.Text = "$0.00";
             // 
             // lblItemCount
             // 
             lblItemCount.AutoSize = true;
-            lblItemCount.Location = new Point(182, 26);
+            lblItemCount.Location = new Point(208, 35);
             lblItemCount.Name = "lblItemCount";
-            lblItemCount.Size = new Size(14, 15);
+            lblItemCount.Size = new Size(17, 20);
             lblItemCount.TabIndex = 3;
             lblItemCount.Text = "0";
             // 
             // lblTotalTitle
             // 
             lblTotalTitle.AutoSize = true;
-            lblTotalTitle.Location = new Point(31, 72);
+            lblTotalTitle.Location = new Point(35, 96);
             lblTotalTitle.Name = "lblTotalTitle";
-            lblTotalTitle.Size = new Size(36, 15);
+            lblTotalTitle.Size = new Size(46, 20);
             lblTotalTitle.TabIndex = 2;
             lblTotalTitle.Text = "Total:";
             // 
             // lblSubttotalTitle
             // 
             lblSubttotalTitle.AutoSize = true;
-            lblSubttotalTitle.Location = new Point(31, 51);
+            lblSubttotalTitle.Location = new Point(35, 68);
             lblSubttotalTitle.Name = "lblSubttotalTitle";
-            lblSubttotalTitle.Size = new Size(55, 15);
+            lblSubttotalTitle.Size = new Size(70, 20);
             lblSubttotalTitle.TabIndex = 1;
             lblSubttotalTitle.Text = "Subtotal:";
             // 
             // lblItemCountTitle
             // 
             lblItemCountTitle.AutoSize = true;
-            lblItemCountTitle.Location = new Point(31, 26);
+            lblItemCountTitle.Location = new Point(35, 35);
             lblItemCountTitle.Name = "lblItemCountTitle";
-            lblItemCountTitle.Size = new Size(77, 15);
+            lblItemCountTitle.Size = new Size(98, 20);
             lblItemCountTitle.TabIndex = 0;
             lblItemCountTitle.Text = "Items in Cart:";
             // 
             // cboCustomer
             // 
             cboCustomer.FormattingEnabled = true;
-            cboCustomer.Location = new Point(117, 59);
+            cboCustomer.Location = new Point(134, 79);
+            cboCustomer.Margin = new Padding(3, 4, 3, 4);
             cboCustomer.Name = "cboCustomer";
-            cboCustomer.Size = new Size(213, 23);
+            cboCustomer.Size = new Size(243, 28);
             cboCustomer.TabIndex = 19;
             cboCustomer.SelectedIndexChanged += cboCustomer_SelectedIndexChanged;
             // 
+            // TotalQtyLabel
+            // 
+            TotalQtyLabel.AutoSize = true;
+            TotalQtyLabel.Location = new Point(318, 35);
+            TotalQtyLabel.Name = "TotalQtyLabel";
+            TotalQtyLabel.Size = new Size(132, 20);
+            TotalQtyLabel.TabIndex = 8;
+            TotalQtyLabel.Text = "Total Qty of items:";
+            // 
+            // TotalItemCountLabel
+            // 
+            TotalItemCountLabel.AutoSize = true;
+            TotalItemCountLabel.Location = new Point(478, 35);
+            TotalItemCountLabel.Name = "TotalItemCountLabel";
+            TotalItemCountLabel.Size = new Size(149, 20);
+            TotalItemCountLabel.TabIndex = 9;
+            TotalItemCountLabel.Text = "TotalItemCountLabel";
+            // 
             // RentalCartUserControl
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(cboCustomer);
             Controls.Add(grpOrderSummary);
@@ -322,8 +359,9 @@
             Controls.Add(lblDueDate);
             Controls.Add(lblMemberId);
             Controls.Add(lblRentalCart);
+            Margin = new Padding(3, 4, 3, 4);
             Name = "RentalCartUserControl";
-            Size = new Size(639, 528);
+            Size = new Size(730, 704);
             grpShoppingCart.ResumeLayout(false);
             grpShoppingCart.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)numQty).EndInit();
@@ -362,5 +400,7 @@
         private Button btnCancel;
         private Button btnSubmitRental;
         private ComboBox cboCustomer;
+        private Label TotalQtyLabel;
+        private Label TotalItemCountLabel;
     }
 }

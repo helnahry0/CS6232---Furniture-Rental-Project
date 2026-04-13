@@ -112,6 +112,7 @@ namespace FurnitureRental.UserControls
             cartBindingSource.DataSource = cartItems;
 
             lblItemCount.Text = cartItems.Count.ToString();
+            TotalItemCountLabel.Text = cartItems.Sum(x => x.Quantity).ToString();
 
             decimal subtotal = cartItems.Sum(x => x.TotalPrice);
             lblSubtotal.Text = subtotal.ToString("C");
