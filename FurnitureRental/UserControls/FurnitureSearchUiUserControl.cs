@@ -120,7 +120,6 @@ namespace FurnitureRental.UserControls
             _errorLabel.Visible = false;
             List<Furniture> results = new List<Furniture>();
 
-            //Search by ID
             if (!string.IsNullOrWhiteSpace(FurnitureIdTextBox.Text))
             {
                 if (int.TryParse(FurnitureIdTextBox.Text, out int id))
@@ -188,7 +187,6 @@ namespace FurnitureRental.UserControls
 
             var furniture = (Furniture)row.DataBoundItem;
 
-            // Read quantity from grid
             object cellValue = row.Cells["QuantityOnHand"].Value;
 
             if (cellValue == null || !int.TryParse(cellValue.ToString(), out int qty))

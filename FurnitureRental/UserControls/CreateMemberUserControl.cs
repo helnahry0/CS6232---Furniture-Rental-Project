@@ -141,7 +141,6 @@ namespace FurnitureRental.UserControls
         /// <param name="e">The <see cref="KeyPressEventArgs"/> instance containing the event data.</param>
         private void PhoneNumbersOnly_KeyPress(object? sender, KeyPressEventArgs e)
         {
-            // lets only characters found in phone numbers be pressed
             if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ' && e.KeyChar != '+' && e.KeyChar != '-' && e.KeyChar != '(' && e.KeyChar != ')')
             {
                 e.Handled = true;

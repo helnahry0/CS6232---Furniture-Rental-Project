@@ -1,6 +1,4 @@
-﻿using System.Linq;
-
-namespace FurnitureRental.Model
+﻿namespace FurnitureRental.Model
 {
     /// <summary>
     /// Represents a rental transaction header.

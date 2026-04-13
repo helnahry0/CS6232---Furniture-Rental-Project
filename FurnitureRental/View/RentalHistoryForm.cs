@@ -1,9 +1,5 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
-using Microsoft.Data.SqlClient;
-using System;
-using System.Collections.Generic;
-using System.Windows.Forms;
 
 namespace FurnitureRental.View
 {
@@ -12,17 +8,17 @@ namespace FurnitureRental.View
     /// </summary>
     public partial class RentalHistoryForm : Form
     {
-        private readonly int _memberId;
+        private readonly Member _member;
         private readonly RentalController _rentalController;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="RentalHistoryForm"/> class.
         /// </summary>
-        /// <param name="memberId">The selected member ID.</param>
-        public RentalHistoryForm(int memberId)
+        /// <param name="member">The selected member.</param>
+        public RentalHistoryForm(Member member)
         {
             InitializeComponent();
-            _memberId = memberId;
+            _member = member;
             _rentalController = new RentalController();
 
             StartPosition = FormStartPosition.CenterParent;
@@ -44,7 +40,9 @@ namespace FurnitureRental.View
             {
                 Name = "RentalTransactionId",
                 HeaderText = "Rental ID",
-                DataPropertyName = "RentalTransactionId"
+                DataPropertyName = "RentalTransactionId",
+                Width = 80,
+                MinimumWidth = 60
             });
 
             dgvRentalTransactions.Columns.Add(new DataGridViewTextBoxColumn
@@ -136,11 +134,11 @@ namespace FurnitureRental.View
         /// </summary>
         private void LoadRentalHistory()
         {
-            lblMemberInfo.Text = $"Rental History for Member ID: {_memberId}";
+            lblMemberInfo.Text = $"Rental History for {_member.FirstName} {_member.LastName} (Member ID: {_member.MemberId})";
             lblError.Text = string.Empty;
 
             if (_rentalController.TryGetRentalHistoryForMember(
-                _memberId.ToString(),
+                _member.MemberId.ToString(),
                 out List<RentalTransaction> rentals,
                 out string errorMessage))
             {

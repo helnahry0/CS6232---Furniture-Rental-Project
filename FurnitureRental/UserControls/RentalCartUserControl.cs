@@ -190,7 +190,6 @@ namespace FurnitureRental.UserControls
                 return;
             }
 
-            // Check if item already exists
             var existing = cartItems.FirstOrDefault(x => x.FurnitureId == furniture.FurnitureId);
 
             if (existing != null)

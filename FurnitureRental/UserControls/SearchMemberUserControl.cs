@@ -247,7 +247,7 @@ namespace FurnitureRental.UserControls
                 return;
             }
 
-            RentalHistoryForm form = new RentalHistoryForm(selectedMember.MemberId);
+            RentalHistoryForm form = new RentalHistoryForm(selectedMember);
             form.ShowDialog();
         }
 

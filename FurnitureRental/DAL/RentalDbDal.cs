@@ -1,7 +1,6 @@
-﻿using System;
-using System.Data;
+﻿using FurnitureRental.Model;
 using Microsoft.Data.SqlClient;
-using FurnitureRental.Model;
+using System.Data;
 
 namespace FurnitureRental.DAL;
 
@@ -48,7 +47,16 @@ public class RentalDbDal
         return rentals;
     }
 
-
+    /// <summary>
+    /// Submits the rental transaction.
+    /// </summary>
+    /// <param name="rentalTransaction">The rental transaction.</param>
+    /// <returns></returns>
+    /// <exception cref="System.ApplicationException">
+    /// Furniture ID {item.FurnitureId} was not found.
+    /// or
+    /// Not enough quantity on hand for furniture ID {item.FurnitureId}. Available: {itemInfo.QuantityOnHand}.
+    /// </exception>
     public RentalTransaction SubmitRentalTransaction(RentalTransaction rentalTransaction)
     {
         using SqlConnection connection =
@@ -97,7 +105,13 @@ public class RentalDbDal
         }
     }
 
-
+    /// <summary>
+    /// Inserts the rental transaction.
+    /// </summary>
+    /// <param name="rentalTransaction">The rental transaction.</param>
+    /// <param name="connection">The connection.</param>
+    /// <param name="dbTransaction">The database transaction.</param>
+    /// <returns></returns>
     private static int InsertRentalTransaction(
     RentalTransaction rentalTransaction,
     SqlConnection connection,
@@ -131,6 +145,12 @@ public class RentalDbDal
         return (int)command.ExecuteScalar()!;
     }
 
+    /// <summary>
+    /// Inserts the rental detail.
+    /// </summary>
+    /// <param name="rentalItem">The rental item.</param>
+    /// <param name="connection">The connection.</param>
+    /// <param name="dbTransaction">The database transaction.</param>
     private static void InsertRentalDetail(
         RentalHistoryItem rentalItem,
         SqlConnection connection,
@@ -159,6 +179,13 @@ public class RentalDbDal
         command.ExecuteNonQuery();
     }
 
+    /// <summary>
+    /// Updates the furniture quantity on hand.
+    /// </summary>
+    /// <param name="furnitureId">The furniture identifier.</param>
+    /// <param name="quantityRented">The quantity rented.</param>
+    /// <param name="connection">The connection.</param>
+    /// <param name="dbTransaction">The database transaction.</param>
     private static void UpdateFurnitureQuantityOnHand(
         int furnitureId,
         int quantityRented,
@@ -178,6 +205,13 @@ public class RentalDbDal
         command.ExecuteNonQuery();
     }
 
+    /// <summary>
+    /// Gets the furniture rental item information.
+    /// </summary>
+    /// <param name="furnitureId">The furniture identifier.</param>
+    /// <param name="connection">The connection.</param>
+    /// <param name="dbTransaction">The database transaction.</param>
+    /// <returns></returns>
     private static FurnitureRentalItemInfo GetFurnitureRentalItemInfo(
         int furnitureId,
         SqlConnection connection,
@@ -299,6 +333,12 @@ public class RentalDbDal
             DailyRentalRate = Convert.ToDecimal(reader["daily_rental_rate"])
         };
     }
+
+    /// <summary>
+    /// Gets the cart items.
+    /// </summary>
+    /// <param name="memberId">The member identifier.</param>
+    /// <returns></returns>
     public List<CartItem> GetCartItems(int memberId)
     {
         List<CartItem> list = new List<CartItem>();

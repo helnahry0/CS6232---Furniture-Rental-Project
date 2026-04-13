@@ -1,6 +1,4 @@
 ﻿using FurnitureRental.Model;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace FurnitureRental.View
 {
@@ -11,6 +9,10 @@ namespace FurnitureRental.View
     {
         private readonly RentalTransaction _transaction;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentalReceiptForm"/> class.
+        /// </summary>
+        /// <param name="transaction">The transaction.</param>
         public RentalReceiptForm(RentalTransaction transaction)
         {
             _transaction = transaction;
