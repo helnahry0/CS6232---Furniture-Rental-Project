@@ -3,6 +3,10 @@ using FurnitureRental.Model;
 
 namespace FurnitureRental.UserControls
 {
+    /// <summary>
+    /// This user control is responsible for managing the furniture rental cart, 
+    /// handling customer selection and processing rental transactions.
+    /// </summary>
     public partial class RentalCartUserControl : UserControl
     {
         private MemberController memcontroller = new MemberController();
@@ -10,6 +14,10 @@ namespace FurnitureRental.UserControls
         private List<CartItem> cartItems = new List<CartItem>();
         private BindingSource cartBindingSource = new BindingSource();
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="RentalCartUserControl"/> class.
+        /// It sets up data sources, grid configurations, and initial UI state.
+        /// </summary>
         public RentalCartUserControl()
         {
             InitializeComponent();
@@ -30,6 +38,10 @@ namespace FurnitureRental.UserControls
                 lblEmployeeName.Text = "Not logged in";
             }
         }
+
+        /// <summary>
+        /// Populates the customer combo box with all members registered in the system.
+        /// </summary>
         public void LoadCustomers()
         {
             var customers = memcontroller.GetAllMembers();
@@ -40,7 +52,9 @@ namespace FurnitureRental.UserControls
             cboCustomer.SelectedIndex = -1;
         }
 
-
+        /// <summary>
+        /// Handles the customer selection change, updating the member ID text field accordingly.
+        /// </summary>
         private void cboCustomer_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (cboCustomer.SelectedIndex == -1)
@@ -56,6 +70,10 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Configures the DataGridView columns for displaying cart item details 
+        /// : ID, Name, Rate, Quantity, and Total Price.
+        /// </summary>
         private void SetupCartGrid()
         {
             dgvCart.AutoGenerateColumns = false;
@@ -94,6 +112,10 @@ namespace FurnitureRental.UserControls
             });
         }
 
+        /// <summary>
+        /// Helper method to retrieve the currently selected <see cref="CartItem"/> from the grid.
+        /// </summary>
+        /// <returns>The selected CartItem, or null if no valid item is selected.</returns>
         private CartItem? GetSelectedCartItem()
         {
             if (dgvCart.CurrentRow == null ||
@@ -106,6 +128,10 @@ namespace FurnitureRental.UserControls
             return item;
         }
 
+        /// <summary>
+        /// Synchronizes the UI with the current state of the cart, updating totals, 
+        /// item counts, and refreshing the data grid binding.
+        /// </summary>
         private void RefreshCart()
         {
             cartBindingSource.DataSource = null;
@@ -127,6 +153,9 @@ namespace FurnitureRental.UserControls
                 : 1;
         }
 
+        /// <summary>
+        /// Updates the quantity numeric selector based on the clicked item in the cart grid.
+        /// </summary>
         private void DgvCart_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
@@ -137,6 +166,9 @@ namespace FurnitureRental.UserControls
             numQty.Value = item.Quantity;
         }
 
+        /// <summary>
+        /// Updates the quantity of the selected item in the cart.
+        /// </summary>
         private void btnUpdateQty_Click(object sender, EventArgs e)
         {
             var item = GetSelectedCartItem();
@@ -160,6 +192,9 @@ namespace FurnitureRental.UserControls
             RefreshCart();
         }
 
+        /// <summary>
+        /// Removes the currently selected item from the cart.
+        /// </summary>
         private void btnRemoveSelected_Click(object sender, EventArgs e)
         {
             var item = GetSelectedCartItem();
@@ -174,12 +209,20 @@ namespace FurnitureRental.UserControls
             RefreshCart();
         }
 
+        /// <summary>
+        /// Removes all items from the current cart.
+        /// </summary>
         private void btnEmptyCart_Click(object sender, EventArgs e)
         {
             cartItems.Clear();
             RefreshCart();
         }
 
+        /// <summary>
+        /// Adds a furniture item to the cart or increments the quantity if it already exists.
+        /// </summary>
+        /// <param name="furniture">The furniture item to add.</param>
+        /// <param name="quantity">The number of units to add.</param>
         public void AddToCart(Furniture furniture, int quantity)
         {
             if (furniture == null) return;
@@ -210,6 +253,10 @@ namespace FurnitureRental.UserControls
             RefreshCart();
         }
 
+        /// <summary>
+        /// Validates requirements and submits the rental transaction to the database. 
+        /// Displays a receipt upon success.
+        /// </summary>
         private void btnSubmitRental_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtMemberId.Text.Trim(), out int memberId))
@@ -269,6 +316,9 @@ namespace FurnitureRental.UserControls
             RefreshCart();
         }
 
+        /// <summary>
+        /// Cancels the current rental process and empties the cart.
+        /// </summary>
         private void btnCancel_Click(object sender, EventArgs e)
         {
             cartItems.Clear();
