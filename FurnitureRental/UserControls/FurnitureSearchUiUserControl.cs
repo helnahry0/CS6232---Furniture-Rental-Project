@@ -7,6 +7,7 @@ namespace FurnitureRental.UserControls
     public partial class FurnitureSearchUiUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
+        public RentalCartUserControl? RentalCart { get; set; }
         private Label _errorLabel;
 
         public FurnitureSearchUiUserControl()
@@ -46,7 +47,7 @@ namespace FurnitureRental.UserControls
             FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "CategoryName", HeaderText = "Category" });
             FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "StyleName", HeaderText = "Style" });
             FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "DailyRentalRate", HeaderText = "Rate" });
-            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { DataPropertyName = "QuantityOnHand", HeaderText = "Qty" });
+            FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { Name = "QuantityOnHand", DataPropertyName = "QuantityOnHand", HeaderText = "Qty" });
         }
 
         private void LoadComboBoxData()
@@ -175,6 +176,35 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        private void AddToCartButton_Click(object sender, EventArgs e)
+        {
+            if (FurnitureDataGridView.CurrentRow == null)
+            {
+                MessageBox.Show("Select a furniture item.");
+                return;
+            }
 
+            var row = FurnitureDataGridView.CurrentRow;
+
+            var furniture = (Furniture)row.DataBoundItem;
+
+            // Read quantity from grid
+            object cellValue = row.Cells["QuantityOnHand"].Value;
+
+            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int qty))
+            {
+                MessageBox.Show("Invalid quantity value.");
+                return;
+            }
+
+            if (qty <= 0)
+            {
+                MessageBox.Show("Selected Item Not in Stock.");
+                return;
+            }
+
+            RentalCart?.AddToCart(furniture, qty);
+            MessageBox.Show("Item Added to Cart.");
+        }
     }
 }
