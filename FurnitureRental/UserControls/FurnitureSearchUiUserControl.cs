@@ -4,12 +4,19 @@ using System.Data;
 
 namespace FurnitureRental.UserControls
 {
+    /// <summary>
+    /// User control responsible for searching, filtering, and viewing furniture items
+    /// within the furniture rental system.
+    /// </summary>
     public partial class FurnitureSearchUiUserControl : UserControl
     {
         private readonly FurnitureController _furnitureController;
         public RentalCartUserControl? RentalCart { get; set; }
         private Label _errorLabel;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="FurnitureSearchUiUserControl"/> class.
+        /// </summary>
         public FurnitureSearchUiUserControl()
         {
             InitializeComponent();
@@ -22,7 +29,9 @@ namespace FurnitureRental.UserControls
             AttachEvents();
         }
 
-
+        /// <summary>
+        /// Configures and adds the error reporting label to the UI panel.
+        /// </summary>
         private void SetupErrorLabel()
         {
             _errorLabel = new Label
@@ -36,6 +45,9 @@ namespace FurnitureRental.UserControls
             this.splitContainer1.Panel1.Controls.Add(_errorLabel);
         }
 
+        /// <summary>
+        /// Configures the Furniture DataGridView columns, selection modes, and data mapping.
+        /// </summary>
         private void SetupDataGridView()
         {
             FurnitureDataGridView.AutoGenerateColumns = false;
@@ -50,6 +62,10 @@ namespace FurnitureRental.UserControls
             FurnitureDataGridView.Columns.Add(new DataGridViewTextBoxColumn { Name = "QuantityOnHand", DataPropertyName = "QuantityOnHand", HeaderText = "Qty" });
         }
 
+        /// <summary>
+        /// Populates the Category and Style ComboBoxes with data from the database 
+        /// and inserts default "Select" prompts.
+        /// </summary>
         private void LoadComboBoxData()
         {
 
@@ -80,6 +96,9 @@ namespace FurnitureRental.UserControls
             StyleComboBox.ValueMember = "style_id";
         }
 
+        /// <summary>
+        /// Subscribes UI controls to their respective event handlers.
+        /// </summary>
         private void AttachEvents()
         {
             SearchButton.Click += SearchButton_Click;
@@ -89,6 +108,10 @@ namespace FurnitureRental.UserControls
             StyleComboBox.SelectedIndexChanged += FilterComboBox_SelectedIndexChanged;
         }
 
+        /// <summary>
+        /// Handles the SelectedIndexChanged event for both Category and Style ComboBoxes 
+        /// to filter the furniture list dynamically.
+        /// </summary>
         private void FilterComboBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             FurnitureIdTextBox.Clear();
@@ -101,6 +124,9 @@ namespace FurnitureRental.UserControls
             FurnitureDataGridView.DataSource = results;
         }
 
+        /// <summary>
+        /// Restricts the Furniture ID text box to only allow numeric input and control characters.
+        /// </summary>
         private void FurnitureIdTextBox_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
@@ -109,12 +135,18 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Retrieves all furniture items from the database and updates the DataGridView.
+        /// </summary>
         private void RefreshFurnitureList()
         {
             FurnitureDataGridView.DataSource = null;
             FurnitureDataGridView.DataSource = _furnitureController.GetAllFurniture();
         }
 
+        /// <summary>
+        /// Handles the Search button click event to find a specific furniture item by ID.
+        /// </summary>
         private void SearchButton_Click(object sender, EventArgs e)
         {
             _errorLabel.Visible = false;
@@ -137,6 +169,9 @@ namespace FurnitureRental.UserControls
             FurnitureDataGridView.DataSource = results;
         }
 
+        /// <summary>
+        /// Resets the search filters, text boxes and refreshes the list to default values.
+        /// </summary>
         private void ClearButton_Click(object sender, EventArgs e)
         {
             FurnitureIdTextBox.Clear();
@@ -162,6 +197,9 @@ namespace FurnitureRental.UserControls
 
         }
 
+        /// <summary>
+        /// Updates the description and name labels when a different row is selected in the DataGridView.
+        /// </summary>
         private void FurnitureDataGridView_SelectionChanged(object sender, EventArgs e)
         {
             if (FurnitureDataGridView.SelectedRows.Count > 0)
@@ -175,6 +213,9 @@ namespace FurnitureRental.UserControls
             }
         }
 
+        /// <summary>
+        /// Validates inventory and adds the selected furniture item to the rental cart.
+        /// </summary>
         private void AddToCartButton_Click(object sender, EventArgs e)
         {
             if (FurnitureDataGridView.CurrentRow == null)
