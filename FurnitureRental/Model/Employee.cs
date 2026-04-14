@@ -12,7 +12,7 @@
         /// </summary>
         /// <value>
         /// The employee identifier.
-        /// </value>
+        /// </value> 
         public int EmployeeId { get; set; }
 
         /// <summary>
