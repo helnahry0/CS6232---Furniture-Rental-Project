@@ -57,12 +57,9 @@ namespace FurnitureRental.Controller
         /// <param name="rentals">The list of rental transactions found.</param>
         /// <param name="errorMessage">The error message if no results or invalid input.</param>
         /// <returns>True if rental history is found; otherwise false.</returns>
-        public bool TryGetRentalHistoryForMember(
-            string memberIdInput,
-            out List<RentalTransaction> rentals,
-            out string errorMessage)
+        public bool TryGetRentalHistoryForMember(string memberIdInput, out List<RentalHistoryTransaction> rentals, out string errorMessage)
         {
-            rentals = new List<RentalTransaction>();
+            rentals = new List<RentalHistoryTransaction>();
             errorMessage = string.Empty;
 
             if (string.IsNullOrWhiteSpace(memberIdInput))
@@ -77,7 +74,7 @@ namespace FurnitureRental.Controller
                 return false;
             }
 
-            rentals = _rentalDbDal.GetRentalTransactionsByMemberId(memberId);
+            rentals = _rentalDbDal.GetRentalHistoryTransactionsByMemberId(memberId);
 
             if (rentals.Count == 0)
             {

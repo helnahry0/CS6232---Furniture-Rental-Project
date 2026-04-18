@@ -181,8 +181,8 @@ namespace FurnitureRental.UserControls
                 }
             }
 
-            btnEdit.Enabled = false;
-            btnViewRentalHistory.Enabled = false;
+            btnEdit.Enabled = true;
+            btnViewRentalHistory.Enabled = true;
         }
 
         /// <summary>
@@ -221,7 +221,7 @@ namespace FurnitureRental.UserControls
 
             btnSearch.PerformClick();
         }
-
+       
         /// <summary>
         /// Loads all members.
         /// </summary>
@@ -230,8 +230,20 @@ namespace FurnitureRental.UserControls
             dgvMembers.DataSource = null;
             dgvMembers.DataSource = _memberController.GetAllMembers();
 
-            btnEdit.Enabled = false;
-            btnViewRentalHistory.Enabled = false;
+            if (dgvMembers.Rows.Count > 0)
+            {
+                dgvMembers.ClearSelection();
+                dgvMembers.Rows[0].Selected = true;
+                dgvMembers.CurrentCell = dgvMembers.Rows[0].Cells[0];
+
+                btnEdit.Enabled = true;
+                btnViewRentalHistory.Enabled = true;
+            }
+            else
+            {
+                btnEdit.Enabled = false;
+                btnViewRentalHistory.Enabled = false;
+            }
         }
 
         /// <summary>

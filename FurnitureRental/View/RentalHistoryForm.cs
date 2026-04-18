@@ -63,9 +63,24 @@ namespace FurnitureRental.View
 
             dgvRentalTransactions.Columns.Add(new DataGridViewTextBoxColumn
             {
-                Name = "EmployeeId",
-                HeaderText = "Employee ID",
-                DataPropertyName = "EmployeeId"
+                Name = "EmployeeName",
+                HeaderText = "Employee",
+                DataPropertyName = "EmployeeName"
+            });
+
+            dgvRentalTransactions.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "ReturnDates",
+                HeaderText = "Return Date(s)",
+                DataPropertyName = "ReturnDates"
+            });
+
+            dgvRentalTransactions.Columns.Add(new DataGridViewTextBoxColumn
+            {
+                Name = "TotalCost",
+                HeaderText = "Total Cost",
+                DataPropertyName = "TotalCost",
+                DefaultCellStyle = new DataGridViewCellStyle { Format = "C2" }
             });
 
             dgvRentalTransactions.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
@@ -139,7 +154,7 @@ namespace FurnitureRental.View
 
             if (_rentalController.TryGetRentalHistoryForMember(
                 _member.MemberId.ToString(),
-                out List<RentalTransaction> rentals,
+                out List<RentalHistoryTransaction> rentals,
                 out string errorMessage))
             {
                 dgvRentalTransactions.DataSource = rentals;
@@ -164,7 +179,7 @@ namespace FurnitureRental.View
         private void LoadSelectedRentalItems()
         {
             if (dgvRentalTransactions.CurrentRow == null ||
-                dgvRentalTransactions.CurrentRow.DataBoundItem is not RentalTransaction selectedRental)
+                dgvRentalTransactions.CurrentRow.DataBoundItem is not RentalHistoryTransaction selectedRental)
             {
                 dgvRentalItems.DataSource = null;
                 return;

@@ -1,4 +1,6 @@
-﻿namespace FurnitureRental.Model
+﻿using Microsoft.VisualBasic;
+
+namespace FurnitureRental.Model
 {
     /// <summary>
     /// Represents an item shown in rental history detail.
@@ -31,8 +33,32 @@
         public decimal DailyRentalRate { get; set; }
 
         /// <summary>
+        /// Gets or sets the rental date.
+        /// </summary>
+        /// <value>
+        /// The rental date.
+        /// </value>
+        public DateTime RentalDate { get; set; }
+
+        /// <summary>
+        /// Gets or sets the due date.
+        /// </summary>
+        /// <value>
+        /// The due date.
+        /// </value>
+        public DateTime DueDate { get; set; }
+
+        /// <summary>
+        /// Gets the rental days.
+        /// </summary>
+        /// <value>
+        /// The rental days.
+        /// </value>
+        public int RentalDays => (DueDate.Date - RentalDate.Date).Days + 1;
+
+        /// <summary>
         /// Gets the line total for the rental item.
         /// </summary>
-        public decimal LineTotal => QuantityRented * DailyRentalRate;
+        public decimal LineTotal => QuantityRented * DailyRentalRate * RentalDays;
     }
 }
