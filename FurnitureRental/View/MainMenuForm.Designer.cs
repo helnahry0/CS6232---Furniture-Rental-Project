@@ -77,11 +77,11 @@
             // CreateMember
             // 
             CreateMember.Controls.Add(createMemberUserControl1);
-            CreateMember.Location = new Point(4, 29);
+            CreateMember.Location = new Point(4, 34);
             CreateMember.Margin = new Padding(3, 4, 3, 4);
             CreateMember.Name = "CreateMember";
             CreateMember.Padding = new Padding(3, 4, 3, 4);
-            CreateMember.Size = new Size(192, 67);
+            CreateMember.Size = new Size(192, 62);
             CreateMember.TabIndex = 4;
             CreateMember.Text = "Create Member";
             CreateMember.UseVisualStyleBackColor = true;
@@ -91,7 +91,7 @@
             createMemberUserControl1.Dock = DockStyle.Fill;
             createMemberUserControl1.Location = new Point(3, 4);
             createMemberUserControl1.Name = "createMemberUserControl1";
-            createMemberUserControl1.Size = new Size(186, 59);
+            createMemberUserControl1.Size = new Size(186, 54);
             createMemberUserControl1.TabIndex = 0;
             // 
             // FurnitureSearch
@@ -110,9 +110,11 @@
             // furnitureSearchUiUserControl1
             // 
             furnitureSearchUiUserControl1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            furnitureSearchUiUserControl1.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             furnitureSearchUiUserControl1.Location = new Point(3, 4);
             furnitureSearchUiUserControl1.Margin = new Padding(3, 4, 3, 4);
             furnitureSearchUiUserControl1.Name = "furnitureSearchUiUserControl1";
+            furnitureSearchUiUserControl1.RentalCart = null;
             furnitureSearchUiUserControl1.Size = new Size(1203, 721);
             furnitureSearchUiUserControl1.TabIndex = 0;
             // 
@@ -120,10 +122,10 @@
             // 
             Cart.Controls.Add(rentalCartUserControl1);
             Cart.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Cart.Location = new Point(4, 29);
+            Cart.Location = new Point(4, 34);
             Cart.Margin = new Padding(3, 4, 3, 4);
             Cart.Name = "Cart";
-            Cart.Size = new Size(192, 67);
+            Cart.Size = new Size(192, 62);
             Cart.TabIndex = 2;
             Cart.Text = "Cart";
             Cart.UseVisualStyleBackColor = true;
@@ -139,10 +141,10 @@
             // Returns
             // 
             Returns.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Returns.Location = new Point(4, 29);
+            Returns.Location = new Point(4, 34);
             Returns.Margin = new Padding(3, 4, 3, 4);
             Returns.Name = "Returns";
-            Returns.Size = new Size(192, 67);
+            Returns.Size = new Size(192, 62);
             Returns.TabIndex = 3;
             Returns.Text = "Returns";
             Returns.UseVisualStyleBackColor = true;
@@ -168,10 +170,10 @@
             // 
             // lnkLogout
             // 
-            lnkLogout.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            lnkLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lnkLogout.AutoSize = true;
             lnkLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkLogout.Location = new Point(931, 29);
+            lnkLogout.Location = new Point(1160, 67);
             lnkLogout.Name = "lnkLogout";
             lnkLogout.Size = new Size(64, 23);
             lnkLogout.TabIndex = 4;

@@ -74,6 +74,7 @@
             // ZipTextBox
             // 
             ZipTextBox.Location = new Point(239, 367);
+            ZipTextBox.MaxLength = 5;
             ZipTextBox.Name = "ZipTextBox";
             ZipTextBox.Size = new Size(364, 27);
             ZipTextBox.TabIndex = 10;

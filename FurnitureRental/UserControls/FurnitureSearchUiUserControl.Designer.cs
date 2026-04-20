@@ -39,12 +39,12 @@
             FurnitureNameTextBox = new TextBox();
             SearchButton = new Button();
             AddToCartButton = new Button();
-            panel1 = new Panel();
+            FurnSearchPanel = new Panel();
             ClearButton = new Button();
             AddDescriptionLabel = new Label();
             DescriptionLabel = new Label();
             FurnitureDataGridView = new DataGridView();
-            panel1.SuspendLayout();
+            FurnSearchPanel.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)FurnitureDataGridView).BeginInit();
             SuspendLayout();
             // 
@@ -146,27 +146,27 @@
             AddToCartButton.UseVisualStyleBackColor = true;
             AddToCartButton.Click += AddToCartButton_Click;
             // 
-            // panel1
+            // FurnSearchPanel
             // 
-            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            panel1.Controls.Add(ClearButton);
-            panel1.Controls.Add(CategoryComboBox);
-            panel1.Controls.Add(AddDescriptionLabel);
-            panel1.Controls.Add(FurnitureNameLabel);
-            panel1.Controls.Add(DescriptionLabel);
-            panel1.Controls.Add(StyleComboBox);
-            panel1.Controls.Add(FurnitureNameTextBox);
-            panel1.Controls.Add(FurnitureIdLabel);
-            panel1.Controls.Add(AddToCartButton);
-            panel1.Controls.Add(FurnitureIdTextBox);
-            panel1.Controls.Add(FurnitureSearchLabel);
-            panel1.Controls.Add(StyleLabel);
-            panel1.Controls.Add(SearchButton);
-            panel1.Controls.Add(CategoryLabel);
-            panel1.Location = new Point(27, 26);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(404, 597);
-            panel1.TabIndex = 1;
+            FurnSearchPanel.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            FurnSearchPanel.Controls.Add(ClearButton);
+            FurnSearchPanel.Controls.Add(CategoryComboBox);
+            FurnSearchPanel.Controls.Add(AddDescriptionLabel);
+            FurnSearchPanel.Controls.Add(FurnitureNameLabel);
+            FurnSearchPanel.Controls.Add(DescriptionLabel);
+            FurnSearchPanel.Controls.Add(StyleComboBox);
+            FurnSearchPanel.Controls.Add(FurnitureNameTextBox);
+            FurnSearchPanel.Controls.Add(FurnitureIdLabel);
+            FurnSearchPanel.Controls.Add(AddToCartButton);
+            FurnSearchPanel.Controls.Add(FurnitureIdTextBox);
+            FurnSearchPanel.Controls.Add(FurnitureSearchLabel);
+            FurnSearchPanel.Controls.Add(StyleLabel);
+            FurnSearchPanel.Controls.Add(SearchButton);
+            FurnSearchPanel.Controls.Add(CategoryLabel);
+            FurnSearchPanel.Location = new Point(27, 26);
+            FurnSearchPanel.Name = "FurnSearchPanel";
+            FurnSearchPanel.Size = new Size(439, 597);
+            FurnSearchPanel.TabIndex = 1;
             // 
             // ClearButton
             // 
@@ -213,12 +213,12 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(FurnitureDataGridView);
-            Controls.Add(panel1);
+            Controls.Add(FurnSearchPanel);
             Margin = new Padding(3, 4, 3, 4);
             Name = "FurnitureSearchUiUserControl";
             Size = new Size(1237, 645);
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
+            FurnSearchPanel.ResumeLayout(false);
+            FurnSearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)FurnitureDataGridView).EndInit();
             ResumeLayout(false);
         }
@@ -240,6 +240,6 @@
         private Label AddDescriptionLabel;
         private Label DescriptionLabel;
         private Button ClearButton;
-        private Panel panel1;
+        private Panel FurnSearchPanel;
     }
 }

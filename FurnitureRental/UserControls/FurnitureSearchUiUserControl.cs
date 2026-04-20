@@ -42,7 +42,7 @@ namespace FurnitureRental.UserControls
                 Text = "",
                 Visible = false
             };
-            //this.splitContainer1.Panel1.Controls.Add(_errorLabel);
+            this.FurnSearchPanel.Controls.Add(_errorLabel);
         }
 
         /// <summary>

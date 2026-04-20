@@ -208,7 +208,12 @@ VALUES
 (2, 2, 'Office Desk', 'Contemporary office desk', 18.00, 6),
 (3, 4, 'Dining Chair', 'Rustic wooden dining chair', 8.00, 20),
 (4, 1, 'Coffee Table', 'Traditional coffee table', 12.00, 5),
+(3, 2, 'Grand Dining Chair', 'Traditional, Large Wooden Dining Chair', 8.00, 20),
+(1, 4, 'Twin-sized Bed', 'Rustic Twin-sized bed frame', 15.00, 8),
+(4, 3, 'Rotating Table', 'Modern rotating table', 21.00, 4),
+(3, 2, 'Toadstool Chair', 'Contemporary Toadstool Chair', 10.00, 15),
 (5, 2, 'Sectional Sofa', 'Contemporary sectional sofa', 30.00, 3);
+
 GO
 
 /*Temporary Rental Transaction Seeds */
