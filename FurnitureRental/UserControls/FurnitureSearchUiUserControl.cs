@@ -42,7 +42,7 @@ namespace FurnitureRental.UserControls
                 Text = "",
                 Visible = false
             };
-            this.splitContainer1.Panel1.Controls.Add(_errorLabel);
+            //this.splitContainer1.Panel1.Controls.Add(_errorLabel);
         }
 
         /// <summary>
@@ -245,5 +245,7 @@ namespace FurnitureRental.UserControls
             RentalCart?.AddToCart(furniture, qty);
             MessageBox.Show("Item Added to Cart.");
         }
+
+
     }
 }
