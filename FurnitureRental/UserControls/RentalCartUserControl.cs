@@ -1,5 +1,6 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
+using Microsoft.VisualBasic;
 
 namespace FurnitureRental.UserControls
 {
@@ -9,9 +10,24 @@ namespace FurnitureRental.UserControls
     /// </summary>
     public partial class RentalCartUserControl : UserControl
     {
+        /// <summary>
+        /// controller used to retrieve member/customer data
+        /// </summary>
         private MemberController memcontroller = new MemberController();
+
+        /// <summary>
+        /// controller used to add rental transactions
+        /// </summary>
         private RentalController controller = new RentalController();
+
+        /// <summary>
+        /// list representing items currently in the cart
+        /// </summary>
         private List<CartItem> cartItems = new List<CartItem>();
+
+        /// <summary>
+        /// used to bind cart items to the Datagrid view
+        /// </summary>
         private BindingSource cartBindingSource = new BindingSource();
 
         /// <summary>
@@ -129,6 +145,17 @@ namespace FurnitureRental.UserControls
         }
 
         /// <summary>
+        /// Gets the number of rental days based on today and the selected due date.
+        /// Minimum rental period is 1 day.
+        /// </summary>
+        /// <returns>The number of rental days.</returns>
+        private int GetRentalDays()
+        {
+            int days = (dtpDueDate.Value.Date - DateTime.Today).Days;
+            return days <= 0 ? 1 : days;
+        }
+
+        /// <summary>
         /// Synchronizes the UI with the current state of the cart, updating totals, 
         /// item counts, and refreshing the data grid binding.
         /// </summary>
@@ -140,9 +167,14 @@ namespace FurnitureRental.UserControls
             lblItemCount.Text = cartItems.Count.ToString();
             TotalItemCountLabel.Text = cartItems.Sum(x => x.Quantity).ToString();
 
+            int rentalDays = GetRentalDays();
+            lblDays.Text = rentalDays.ToString();
+
             decimal subtotal = cartItems.Sum(x => x.TotalPrice);
             lblSubtotal.Text = subtotal.ToString("C");
-            lblTotal.Text = subtotal.ToString("C");
+
+            decimal total = cartItems.Sum(x => x.TotalPrice * rentalDays);
+            lblTotal.Text = total.ToString("C");
 
             // To prevent invalid row state
             dgvCart.ClearSelection();
@@ -164,6 +196,7 @@ namespace FurnitureRental.UserControls
                 return;
 
             numQty.Value = item.Quantity;
+            RefreshCart();
         }
 
         /// <summary>
@@ -187,8 +220,17 @@ namespace FurnitureRental.UserControls
                 return;
             }
 
-            item.Quantity = newQty;
+            if (newQty > item.QuantityOnHand)
+            {
+                MessageBox.Show(
+                    $"Quantity cannot exceed available stock ({item.QuantityOnHand}).",
+                    "Quantity Exceeds Stock",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
 
+            item.Quantity = newQty;
             RefreshCart();
         }
 
@@ -223,11 +265,11 @@ namespace FurnitureRental.UserControls
         /// </summary>
         /// <param name="furniture">The furniture item to add.</param>
         /// <param name="quantity">The number of units to add.</param>
-        public void AddToCart(Furniture furniture, int quantity)
+        public void AddToCart(Furniture furniture, int quantityonHand)
         {
             if (furniture == null) return;
 
-            if (quantity <= 0)
+            if (quantityonHand <= 0)
             {
                 MessageBox.Show("Quantity must be greater than 0.");
                 return;
@@ -237,7 +279,7 @@ namespace FurnitureRental.UserControls
 
             if (existing != null)
             {
-                existing.Quantity += quantity;
+                existing.Quantity += 1;
             }
             else
             {
@@ -246,7 +288,8 @@ namespace FurnitureRental.UserControls
                     FurnitureId = furniture.FurnitureId,
                     Name = furniture.FurnitureName,
                     DailyRate = furniture.DailyRentalRate,
-                    Quantity = quantity
+                    Quantity = 1,
+                    QuantityOnHand = quantityonHand
                 });
             }
 
@@ -274,6 +317,12 @@ namespace FurnitureRental.UserControls
             if (cartItems.Count == 0)
             {
                 MessageBox.Show("The cart is empty.");
+                return;
+            }
+
+            if (dtpDueDate.Value.Date < DateTime.Today)
+            {
+                MessageBox.Show("Due date cannot be in the past.");
                 return;
             }
 
@@ -325,5 +374,9 @@ namespace FurnitureRental.UserControls
             RefreshCart();
         }
 
+        private void dtpDueDate_ValueChanged(object sender, EventArgs e)
+        {
+            RefreshCart();
+        }
     }
 }

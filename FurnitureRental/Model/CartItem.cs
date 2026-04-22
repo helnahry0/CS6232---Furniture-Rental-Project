@@ -6,6 +6,7 @@
         public string Name { get; set; } = string.Empty;
         public decimal DailyRate { get; set; }
         public int Quantity { get; set; }
+        public int QuantityOnHand { get; set; }
         public decimal TotalPrice => DailyRate * Quantity;
     }
 }

@@ -229,7 +229,6 @@ namespace FurnitureRental.UserControls
             var furniture = (Furniture)row.DataBoundItem;
 
             object cellValue = row.Cells["QuantityOnHand"].Value;
-
             if (cellValue == null || !int.TryParse(cellValue.ToString(), out int qty))
             {
                 MessageBox.Show("Invalid quantity value.");
@@ -241,7 +240,7 @@ namespace FurnitureRental.UserControls
                 MessageBox.Show("Selected Item Not in Stock.");
                 return;
             }
-
+            
             RentalCart?.AddToCart(furniture, qty);
             MessageBox.Show("Item Added to Cart.");
         }
