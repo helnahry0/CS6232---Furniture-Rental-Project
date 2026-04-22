@@ -43,6 +43,10 @@ namespace FurnitureRental.UserControls
             dgvCart.DataSource = cartBindingSource;
             dgvCart.CellContentClick += DgvCart_CellContentClick;
 
+            // Set a valid range for quantity editing.
+            numQty.Minimum = 1;
+            numQty.Maximum = 1000;
+
             RefreshCart();
 
             if (CurrentUser.Employee != null)
@@ -155,6 +159,23 @@ namespace FurnitureRental.UserControls
             return days <= 0 ? 1 : days;
         }
 
+        private decimal ClampToNumericRange(int value)
+        {
+            decimal safeValue = value;
+
+            if (safeValue < numQty.Minimum)
+            {
+                safeValue = numQty.Minimum;
+            }
+
+            if (safeValue > numQty.Maximum)
+            {
+                safeValue = numQty.Maximum;
+            }
+
+            return safeValue;
+        }
+
         /// <summary>
         /// Synchronizes the UI with the current state of the cart, updating totals, 
         /// item counts, and refreshing the data grid binding.
@@ -180,9 +201,11 @@ namespace FurnitureRental.UserControls
             dgvCart.ClearSelection();
             dgvCart.CurrentCell = null;
 
-            numQty.Value = cartItems.Count > 0
-                ? cartItems[0].Quantity
-                : 1;
+            decimal nextQty = cartItems.Count > 0
+                ? ClampToNumericRange(cartItems[0].Quantity)
+                : numQty.Minimum;
+
+            numQty.Value = nextQty;
         }
 
         /// <summary>
@@ -195,8 +218,7 @@ namespace FurnitureRental.UserControls
             if (dgvCart.Rows[e.RowIndex].DataBoundItem is not CartItem item)
                 return;
 
-            numQty.Value = item.Quantity;
-            RefreshCart();
+            numQty.Value = ClampToNumericRange(item.Quantity);
         }
 
         /// <summary>
@@ -276,10 +298,21 @@ namespace FurnitureRental.UserControls
             }
 
             var existing = cartItems.FirstOrDefault(x => x.FurnitureId == furniture.FurnitureId);
+            int currentQtyInCart = existing?.Quantity ?? 0;
+            int requestedTotal = currentQtyInCart + 1;
+            if (requestedTotal > furniture.QuantityOnHand)
+            {
+                MessageBox.Show(
+                    $"Cannot add item. Available stock is {furniture.QuantityOnHand}, and the cart would total {requestedTotal}.",
+                    "Quantity Exceeds Stock",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return;
+            }
 
             if (existing != null)
             {
-                existing.Quantity += 1;
+                existing.Quantity = requestedTotal;
             }
             else
             {
@@ -292,7 +325,7 @@ namespace FurnitureRental.UserControls
                     QuantityOnHand = quantityonHand
                 });
             }
-
+            MessageBox.Show("Item Added to Cart.");
             RefreshCart();
         }
 

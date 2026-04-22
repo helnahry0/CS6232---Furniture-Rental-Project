@@ -241,10 +241,7 @@ namespace FurnitureRental.UserControls
                 return;
             }
             
-            RentalCart?.AddToCart(furniture, qty);
-            MessageBox.Show("Item Added to Cart.");
+            RentalCart?.AddToCart(furniture, qty);            
         }
-
-
     }
 }
