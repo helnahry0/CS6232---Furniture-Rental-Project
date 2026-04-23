@@ -288,7 +288,7 @@ namespace FurnitureRental.UserControls
 
             btnEdit.Enabled = hasSelection;
             btnViewRentalHistory.Enabled = hasSelection;
-
+            btnViewReturnHistory.Enabled = hasSelection;
         }
     }
 }
