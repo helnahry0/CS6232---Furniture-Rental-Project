@@ -68,6 +68,120 @@ namespace FurnitureRental.DAL
         }
 
         /// <summary>
+        /// Gets the return history transactions by member identifier.
+        /// </summary>
+        /// <param name="memberId">The member identifier.</param>
+        /// <returns></returns>
+        public List<ReturnHistoryTransaction> GetReturnHistoryTransactionsByMemberId(int memberId)
+        {
+            const string query = @"
+        SELECT
+            rt.return_id,
+            rt.return_date,
+            e.first_name + ' ' + e.last_name AS employee_name,
+            ISNULL(SUM(rd.fine_or_refund_amount), 0) AS total_fine_or_refund
+        FROM dbo.ReturnTransaction rt
+        JOIN dbo.Employee e
+            ON rt.employee_id = e.employee_id
+        LEFT JOIN dbo.ReturnDetail rd
+            ON rt.return_id = rd.return_id
+        WHERE rt.member_id = @MemberId
+        GROUP BY
+            rt.return_id,
+            rt.return_date,
+            e.first_name,
+            e.last_name
+        ORDER BY rt.return_date DESC, rt.return_id DESC;";
+
+            List<ReturnHistoryTransaction> returns = new List<ReturnHistoryTransaction>();
+
+            using SqlConnection connection =
+                new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
+            using SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.Add("@MemberId", SqlDbType.Int).Value = memberId;
+
+            connection.Open();
+
+            using SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                returns.Add(CreateReturnHistoryTransaction(reader));
+            }
+
+            return returns;
+        }
+
+        /// <summary>
+        /// Gets the return history items by return identifier.
+        /// </summary>
+        /// <param name="returnId">The return identifier.</param>
+        /// <returns></returns>
+        public List<ReturnHistoryItem> GetReturnHistoryItemsByReturnId(int returnId)
+        {
+            const string query = @"
+        SELECT
+            rd.return_id,
+            rd.rental_id,
+            rd.furniture_id,
+            f.furniture_name,
+            rd.quantity_returned,
+            rd.fine_or_refund_amount
+        FROM dbo.ReturnDetail rd
+        JOIN dbo.Furniture f
+            ON rd.furniture_id = f.furniture_id
+        WHERE rd.return_id = @ReturnId
+        ORDER BY rd.rental_id, rd.furniture_id;";
+
+            List<ReturnHistoryItem> items = new List<ReturnHistoryItem>();
+
+            using SqlConnection connection =
+                new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
+            using SqlCommand command = new SqlCommand(query, connection);
+
+            command.Parameters.Add("@ReturnId", SqlDbType.Int).Value = returnId;
+
+            connection.Open();
+
+            using SqlDataReader reader = command.ExecuteReader();
+
+            while (reader.Read())
+            {
+                items.Add(CreateReturnHistoryItem(reader));
+            }
+
+            return items;
+        }
+
+
+        private static ReturnHistoryTransaction CreateReturnHistoryTransaction(SqlDataReader reader)
+        {
+            return new ReturnHistoryTransaction
+            {
+                ReturnId = Convert.ToInt32(reader["return_id"]),
+                ReturnDate = Convert.ToDateTime(reader["return_date"]),
+                EmployeeName = Convert.ToString(reader["employee_name"]) ?? string.Empty,
+                TotalFineOrRefund = Convert.ToDecimal(reader["total_fine_or_refund"])
+            };
+        }
+
+
+        private static ReturnHistoryItem CreateReturnHistoryItem(SqlDataReader reader)
+        {
+            return new ReturnHistoryItem
+            {
+                ReturnId = Convert.ToInt32(reader["return_id"]),
+                RentalId = Convert.ToInt32(reader["rental_id"]),
+                FurnitureId = Convert.ToInt32(reader["furniture_id"]),
+                FurnitureName = Convert.ToString(reader["furniture_name"]) ?? string.Empty,
+                QuantityReturned = Convert.ToInt32(reader["quantity_returned"]),
+                FineOrRefundAmount = Convert.ToDecimal(reader["fine_or_refund_amount"])
+            };
+        }
+
+
+        /// <summary>
         /// Submits a return transaction and its detail rows.
         /// </summary>
         /// <param name="returnTransaction">The return transaction to save.</param>
