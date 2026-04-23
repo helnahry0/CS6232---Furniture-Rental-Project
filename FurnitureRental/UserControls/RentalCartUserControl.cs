@@ -1,5 +1,6 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
+using Microsoft.Data.SqlClient;
 using Microsoft.VisualBasic;
 
 namespace FurnitureRental.UserControls
@@ -37,7 +38,6 @@ namespace FurnitureRental.UserControls
         public RentalCartUserControl()
         {
             InitializeComponent();
-            LoadCustomers();
             SetupCartGrid();
 
             dgvCart.DataSource = cartBindingSource;
@@ -57,38 +57,9 @@ namespace FurnitureRental.UserControls
             {
                 lblEmployeeName.Text = "Not logged in";
             }
+            btnSubmitRental.Enabled = false;
         }
 
-        /// <summary>
-        /// Populates the customer combo box with all members registered in the system.
-        /// </summary>
-        public void LoadCustomers()
-        {
-            var customers = memcontroller.GetAllMembers();
-
-            cboCustomer.DataSource = customers;
-            cboCustomer.DisplayMember = "FullName";
-            cboCustomer.ValueMember = "MemberId";
-            cboCustomer.SelectedIndex = -1;
-        }
-
-        /// <summary>
-        /// Handles the customer selection change, updating the member ID text field accordingly.
-        /// </summary>
-        private void cboCustomer_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cboCustomer.SelectedIndex == -1)
-            {
-                txtMemberId.Clear();
-                return;
-            }
-
-            if (cboCustomer.SelectedValue != null &&
-                int.TryParse(cboCustomer.SelectedValue.ToString(), out int memberId))
-            {
-                txtMemberId.Text = memberId.ToString();
-            }
-        }
 
         /// <summary>
         /// Configures the DataGridView columns for displaying cart item details 
@@ -335,7 +306,7 @@ namespace FurnitureRental.UserControls
         /// </summary>
         private void btnSubmitRental_Click(object sender, EventArgs e)
         {
-            if (!int.TryParse(txtMemberId.Text.Trim(), out int memberId))
+            if (!int.TryParse(txtMemID.Text.Trim(), out int memberId))
             {
                 MessageBox.Show("Enter a valid member ID.");
                 return;
@@ -410,6 +381,40 @@ namespace FurnitureRental.UserControls
         private void dtpDueDate_ValueChanged(object sender, EventArgs e)
         {
             RefreshCart();
+        }
+
+        /// <summary>
+        /// Search member registered in the system.
+        /// </summary>
+        private void btnMemberSearch_Click(object sender, EventArgs e)
+        {
+            if (memcontroller.TrySearchByMemberId(txtMemID.Text.Trim(),
+                out Member? member, out string errorMessage))
+            {
+                // Concatenate First and Last name
+                txtMemberName.Text = $"{member?.FirstName} {member?.LastName}";
+
+                btnSubmitRental.Enabled = true;
+            }
+            else
+            {
+                // Clear the field or show the error in the textbox
+                txtMemID.Text = string.Empty;
+                txtMemberName.Text = string.Empty;
+
+                // Disable Submit Rental button
+                btnSubmitRental.Enabled = false;
+
+                // Display a pop-up message to the user
+                MessageBox.Show(errorMessage, "Member Not Found",
+                    MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void txtMemID_TextChanged(object sender, EventArgs e)
+        {
+            // Disable Submit Rental button
+            btnSubmitRental.Enabled = false;
         }
     }
 }
