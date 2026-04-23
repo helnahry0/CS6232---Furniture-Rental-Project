@@ -64,6 +64,19 @@ namespace FurnitureRental.UserControls
             UpdateSearchMode();
         }
 
+        private void btnViewReturnHistory_Click(object sender, EventArgs e)
+        {
+            if (dgvMembers.CurrentRow == null || dgvMembers.CurrentRow.DataBoundItem is not Member selectedMember)
+            {
+                lblError.Text = "Please select a member to view return history.";
+                return;
+            }
+            lblError.Text = string.Empty;
+
+            ReturnHistoryForm form = new ReturnHistoryForm(selectedMember);
+            form.ShowDialog();
+        }
+
         /// <summary>
         /// Handles the CheckedChanged event of the radPhone control.
         /// </summary>

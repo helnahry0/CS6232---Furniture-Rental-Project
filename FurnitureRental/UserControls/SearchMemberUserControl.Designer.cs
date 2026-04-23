@@ -29,6 +29,7 @@
             dgvMembers = new DataGridView();
             pnlSearchControls = new Panel();
             btnViewRentalHistory = new Button();
+            btnViewReturnHistory = new Button();
             lblError = new Label();
             btnEdit = new Button();
             txtMemberId = new TextBox();
@@ -90,6 +91,7 @@
             // 
             // pnlSearchControls
             // 
+            pnlSearchControls.Controls.Add(btnViewReturnHistory);
             pnlSearchControls.Controls.Add(btnViewRentalHistory);
             pnlSearchControls.Controls.Add(lblError);
             pnlSearchControls.Controls.Add(btnEdit);
@@ -125,11 +127,22 @@
             btnViewRentalHistory.UseVisualStyleBackColor = true;
             btnViewRentalHistory.Click += btnViewRentalHistory_Click;
             // 
+            // btnViewReturnHistory
+            // 
+            btnViewReturnHistory.Enabled = false;
+            btnViewReturnHistory.Location = new Point(13, 395);
+            btnViewReturnHistory.Name = "btnViewReturnHistory";
+            btnViewReturnHistory.Size = new Size(286, 30);
+            btnViewReturnHistory.TabIndex = 17;
+            btnViewReturnHistory.Text = "View Return History";
+            btnViewReturnHistory.UseVisualStyleBackColor = true;
+            btnViewReturnHistory.Click += btnViewReturnHistory_Click;
+            // 
             // lblError
             // 
             lblError.AutoSize = true;
             lblError.ForeColor = Color.Red;
-            lblError.Location = new Point(15, 360);
+            lblError.Location = new Point(15, 435);
             lblError.Name = "lblError";
             lblError.Size = new Size(0, 15);
             lblError.TabIndex = 15;
@@ -311,5 +324,6 @@
         private Label lblFirstName;
         private RadioButton radPhone;
         private Button btnViewRentalHistory;
+        private Button btnViewReturnHistory;
     }
 }
