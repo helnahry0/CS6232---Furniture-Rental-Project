@@ -65,5 +65,154 @@ namespace FurnitureRental.Controller
         {
             return _returnDbDal.GetReturnHistoryItemsByReturnId(returnId);
         }
+
+        /// <summary>
+        /// Attempts to get all returnable rental items for a member.
+        /// </summary>
+        /// <param name="memberIdInput">The member ID input.</param>
+        /// <param name="items">The returnable items for the member.</param>
+        /// <param name="errorMessage">The error message if the lookup fails.</param>
+        /// <returns><c>true</c> if returnable items are found; otherwise <c>false</c>.</returns>
+        public bool TryGetReturnableItemsForMember(
+            string memberIdInput,
+            out List<ReturnableRentalItem> items,
+            out string errorMessage)
+        {
+            items = new List<ReturnableRentalItem>();
+            errorMessage = string.Empty;
+
+            if (string.IsNullOrWhiteSpace(memberIdInput))
+            {
+                errorMessage = "Member ID is required.";
+                return false;
+            }
+
+            if (!int.TryParse(memberIdInput.Trim(), out int memberId))
+            {
+                errorMessage = "Member ID must be a valid number.";
+                return false;
+            }
+
+            items = _returnDbDal.GetReturnableItemsByMemberId(memberId);
+
+            if (items.Count == 0)
+            {
+                errorMessage = "No returnable rental items were found for that member.";
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>
+        /// Attempts to submit a return transaction.
+        /// </summary>
+        /// <param name="returnTransaction">The return transaction to submit.</param>
+        /// <param name="savedReturnTransaction">The saved return transaction if successful.</param>
+        /// <param name="errorMessage">The error message if submission fails.</param>
+        /// <returns><c>true</c> if the return transaction is submitted successfully; otherwise <c>false</c>.</returns>
+        public bool TrySubmitReturn(
+            ReturnTransaction returnTransaction,
+            out ReturnTransaction? savedReturnTransaction,
+            out string errorMessage)
+        {
+            savedReturnTransaction = null;
+            errorMessage = string.Empty;
+
+            if (returnTransaction == null)
+            {
+                errorMessage = "Return transaction is required.";
+                return false;
+            }
+
+            if (returnTransaction.MemberId <= 0)
+            {
+                errorMessage = "A valid member is required.";
+                return false;
+            }
+
+            if (returnTransaction.EmployeeId <= 0)
+            {
+                errorMessage = "A valid employee is required.";
+                return false;
+            }
+
+            if (returnTransaction.Items == null || returnTransaction.Items.Count == 0)
+            {
+                errorMessage = "At least one item must be selected for return.";
+                return false;
+            }
+
+            foreach (ReturnItem item in returnTransaction.Items)
+            {
+                if (item.RentalId <= 0)
+                {
+                    errorMessage = "Each return item must have a valid rental transaction ID.";
+                    return false;
+                }
+
+                if (item.FurnitureId <= 0)
+                {
+                    errorMessage = "Each return item must have a valid furniture ID.";
+                    return false;
+                }
+
+                if (item.QuantityToReturn <= 0)
+                {
+                    errorMessage = $"Return quantity must be greater than zero for furniture ID {item.FurnitureId}.";
+                    return false;
+                }
+
+                if (item.QuantityToReturn > item.QuantityRemaining)
+                {
+                    errorMessage =
+                        $"Cannot return more than the remaining quantity for furniture ID {item.FurnitureId}. Remaining: {item.QuantityRemaining}.";
+                    return false;
+                }
+
+                item.ReturnDate = returnTransaction.ReturnDate;
+                item.FineOrRefundAmount = CalculateFineOrRefund(item);
+            }
+
+            try
+            {
+                savedReturnTransaction = _returnDbDal.SubmitReturnTransaction(returnTransaction);
+                return true;
+            }
+            catch (Exception ex)
+            {
+                errorMessage = ex.Message;
+                return false;
+            }
+        }
+
+        /// <summary>
+        /// Calculates the fine or refund amount for a return item.
+        /// Positive values indicate fines. Negative values indicate refunds.
+        /// </summary>
+        /// <param name="item">The return item.</param>
+        /// <returns>The fine or refund amount.</returns>
+        private static decimal CalculateFineOrRefund(ReturnItem item)
+        {
+            int plannedDays = (item.DueDate.Date - item.RentalDate.Date).Days + 1;
+            int actualDays = (item.ReturnDate.Date - item.RentalDate.Date).Days + 1;
+
+            if (plannedDays < 1)
+            {
+                plannedDays = 1;
+            }
+
+            if (actualDays < 1)
+            {
+                actualDays = 1;
+            }
+
+            int differenceInDays = actualDays - plannedDays;
+
+            decimal amount = differenceInDays * item.DailyRentalRate * item.QuantityToReturn;
+
+            return amount;
+        }
+
     }
 }
