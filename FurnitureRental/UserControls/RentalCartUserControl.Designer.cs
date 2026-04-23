@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             lblRentalCart = new Label();
-            lblMemberId = new Label();
             lblDueDate = new Label();
             lblCustomer = new Label();
             lblEmployee = new Label();
-            txtMemberId = new TextBox();
+            txtMemberName = new TextBox();
             dtpDueDate = new DateTimePicker();
             lblEmployeeName = new Label();
             grpShoppingCart = new GroupBox();
@@ -44,6 +43,8 @@
             lblSelectedQty = new Label();
             dgvCart = new DataGridView();
             grpOrderSummary = new GroupBox();
+            lblDays = new Label();
+            lblRentalDays = new Label();
             TotalItemCountLabel = new Label();
             TotalQtyLabel = new Label();
             btnCancel = new Button();
@@ -54,11 +55,10 @@
             lblTotalTitle = new Label();
             lblSubttotalTitle = new Label();
             lblItemCountTitle = new Label();
-            cboCustomer = new ComboBox();
             lblReturnDate = new Label();
             dtpRentalDate = new DateTimePicker();
-            lblDays = new Label();
-            lblRentalDays = new Label();
+            txtMemID = new TextBox();
+            btnMemberSearch = new Button();
             grpShoppingCart.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numQty).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgvCart).BeginInit();
@@ -75,15 +75,6 @@
             lblRentalCart.TabIndex = 1;
             lblRentalCart.Text = "Rental Cart";
             // 
-            // lblMemberId
-            // 
-            lblMemberId.AutoSize = true;
-            lblMemberId.Location = new Point(426, 60);
-            lblMemberId.Name = "lblMemberId";
-            lblMemberId.Size = new Size(69, 15);
-            lblMemberId.TabIndex = 2;
-            lblMemberId.Text = "Member ID:";
-            // 
             // lblDueDate
             // 
             lblDueDate.AutoSize = true;
@@ -96,11 +87,12 @@
             // lblCustomer
             // 
             lblCustomer.AutoSize = true;
-            lblCustomer.Location = new Point(31, 63);
+            lblCustomer.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCustomer.Location = new Point(314, 56);
             lblCustomer.Name = "lblCustomer";
-            lblCustomer.Size = new Size(62, 15);
+            lblCustomer.Size = new Size(107, 17);
             lblCustomer.TabIndex = 4;
-            lblCustomer.Text = "Customer:";
+            lblCustomer.Text = "Customer Name";
             // 
             // lblEmployee
             // 
@@ -111,13 +103,14 @@
             lblEmployee.TabIndex = 5;
             lblEmployee.Text = "Employee:";
             // 
-            // txtMemberId
+            // txtMemberName
             // 
-            txtMemberId.Location = new Point(511, 55);
-            txtMemberId.Name = "txtMemberId";
-            txtMemberId.ReadOnly = true;
-            txtMemberId.Size = new Size(100, 23);
-            txtMemberId.TabIndex = 6;
+            txtMemberName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMemberName.Location = new Point(427, 52);
+            txtMemberName.Name = "txtMemberName";
+            txtMemberName.ReadOnly = true;
+            txtMemberName.Size = new Size(185, 25);
+            txtMemberName.TabIndex = 6;
             // 
             // dtpDueDate
             // 
@@ -233,6 +226,24 @@
             grpOrderSummary.TabStop = false;
             grpOrderSummary.Text = "Order Summary";
             // 
+            // lblDays
+            // 
+            lblDays.AutoSize = true;
+            lblDays.Location = new Point(182, 73);
+            lblDays.Name = "lblDays";
+            lblDays.Size = new Size(14, 15);
+            lblDays.TabIndex = 11;
+            lblDays.Text = "0";
+            // 
+            // lblRentalDays
+            // 
+            lblRentalDays.AutoSize = true;
+            lblRentalDays.Location = new Point(31, 73);
+            lblRentalDays.Name = "lblRentalDays";
+            lblRentalDays.Size = new Size(105, 15);
+            lblRentalDays.TabIndex = 10;
+            lblRentalDays.Text = "No. of Rental Days";
+            // 
             // TotalItemCountLabel
             // 
             TotalItemCountLabel.AutoSize = true;
@@ -328,15 +339,6 @@
             lblItemCountTitle.TabIndex = 0;
             lblItemCountTitle.Text = "Items in Cart:";
             // 
-            // cboCustomer
-            // 
-            cboCustomer.FormattingEnabled = true;
-            cboCustomer.Location = new Point(117, 59);
-            cboCustomer.Name = "cboCustomer";
-            cboCustomer.Size = new Size(213, 23);
-            cboCustomer.TabIndex = 19;
-            cboCustomer.SelectedIndexChanged += cboCustomer_SelectedIndexChanged;
-            // 
             // lblReturnDate
             // 
             lblReturnDate.AutoSize = true;
@@ -355,40 +357,43 @@
             dtpRentalDate.Size = new Size(101, 23);
             dtpRentalDate.TabIndex = 21;
             // 
-            // lblDays
+            // txtMemID
             // 
-            lblDays.AutoSize = true;
-            lblDays.Location = new Point(182, 73);
-            lblDays.Name = "lblDays";
-            lblDays.Size = new Size(14, 15);
-            lblDays.TabIndex = 11;
-            lblDays.Text = "0";
+            txtMemID.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txtMemID.Location = new Point(163, 53);
+            txtMemID.Name = "txtMemID";
+            txtMemID.PlaceholderText = "Enter Member ID";
+            txtMemID.Size = new Size(129, 25);
+            txtMemID.TabIndex = 22;
+            txtMemID.TextChanged += txtMemID_TextChanged;
             // 
-            // lblRentalDays
+            // btnMemberSearch
             // 
-            lblRentalDays.AutoSize = true;
-            lblRentalDays.Location = new Point(31, 73);
-            lblRentalDays.Name = "lblRentalDays";
-            lblRentalDays.Size = new Size(105, 15);
-            lblRentalDays.TabIndex = 10;
-            lblRentalDays.Text = "No. of Rental Days";
+            btnMemberSearch.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnMemberSearch.Location = new Point(31, 52);
+            btnMemberSearch.Name = "btnMemberSearch";
+            btnMemberSearch.Size = new Size(119, 30);
+            btnMemberSearch.TabIndex = 23;
+            btnMemberSearch.Text = "Search Member";
+            btnMemberSearch.UseVisualStyleBackColor = true;
+            btnMemberSearch.Click += btnMemberSearch_Click;
             // 
             // RentalCartUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(txtMemID);
+            Controls.Add(btnMemberSearch);
             Controls.Add(dtpRentalDate);
             Controls.Add(lblReturnDate);
-            Controls.Add(cboCustomer);
             Controls.Add(grpOrderSummary);
             Controls.Add(grpShoppingCart);
             Controls.Add(lblEmployeeName);
             Controls.Add(dtpDueDate);
-            Controls.Add(txtMemberId);
+            Controls.Add(txtMemberName);
             Controls.Add(lblEmployee);
             Controls.Add(lblCustomer);
             Controls.Add(lblDueDate);
-            Controls.Add(lblMemberId);
             Controls.Add(lblRentalCart);
             Name = "RentalCartUserControl";
             Size = new Size(639, 539);
@@ -406,11 +411,10 @@
 
         private DataGridView dataGridView1;
         private Label lblRentalCart;
-        private Label lblMemberId;
         private Label lblDueDate;
         private Label lblCustomer;
         private Label lblEmployee;
-        private TextBox txtMemberId;
+        private TextBox txtMemberName;
         private DateTimePicker dtpDueDate;
         private Label lblEmployeeName;
         private GroupBox grpShoppingCart;
@@ -429,12 +433,13 @@
         private Label lblItemCountTitle;
         private Button btnCancel;
         private Button btnSubmitRental;
-        private ComboBox cboCustomer;
         private Label TotalQtyLabel;
         private Label TotalItemCountLabel;
         private Label lblReturnDate;
         private DateTimePicker dtpRentalDate;
         private Label lblDays;
         private Label lblRentalDays;
+        private TextBox txtMemID;
+        private Button btnMemberSearch;
     }
 }
