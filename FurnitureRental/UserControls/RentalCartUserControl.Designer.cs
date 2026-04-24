@@ -109,7 +109,7 @@
             txtMemberName.Location = new Point(427, 52);
             txtMemberName.Name = "txtMemberName";
             txtMemberName.ReadOnly = true;
-            txtMemberName.Size = new Size(185, 25);
+            txtMemberName.Size = new Size(175, 25);
             txtMemberName.TabIndex = 6;
             // 
             // dtpDueDate
@@ -363,7 +363,7 @@
             txtMemID.Location = new Point(163, 53);
             txtMemID.Name = "txtMemID";
             txtMemID.PlaceholderText = "Enter Member ID";
-            txtMemID.Size = new Size(129, 25);
+            txtMemID.Size = new Size(117, 25);
             txtMemID.TabIndex = 22;
             txtMemID.TextChanged += txtMemID_TextChanged;
             // 
