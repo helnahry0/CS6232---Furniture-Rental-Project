@@ -65,7 +65,7 @@
             tabControlMainform.Margin = new Padding(3, 4, 3, 4);
             tabControlMainform.Name = "tabControlMainform";
             tabControlMainform.SelectedIndex = 0;
-            tabControlMainform.Size = new Size(1353, 700);
+            tabControlMainform.Size = new Size(1400, 755);
             tabControlMainform.TabIndex = 0;
             // 
             // SearchMember
@@ -75,7 +75,7 @@
             SearchMember.Margin = new Padding(3, 4, 3, 4);
             SearchMember.Name = "SearchMember";
             SearchMember.Padding = new Padding(3, 5, 3, 5);
-            SearchMember.Size = new Size(1345, 662);
+            SearchMember.Size = new Size(1392, 717);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
@@ -148,10 +148,10 @@
             // 
             Returns.Controls.Add(returnUserControl1);
             Returns.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Returns.Location = new Point(4, 34);
+            Returns.Location = new Point(4, 29);
             Returns.Margin = new Padding(3, 4, 3, 4);
             Returns.Name = "Returns";
-            Returns.Size = new Size(1345, 662);
+            Returns.Size = new Size(192, 67);
             Returns.TabIndex = 3;
             Returns.Text = "Returns";
             Returns.UseVisualStyleBackColor = true;
@@ -162,7 +162,7 @@
             returnUserControl1.Dock = DockStyle.Fill;
             returnUserControl1.Location = new Point(0, 0);
             returnUserControl1.Name = "returnUserControl1";
-            returnUserControl1.Size = new Size(1345, 662);
+            returnUserControl1.Size = new Size(192, 67);
             returnUserControl1.TabIndex = 0;
             // 
             // Report
@@ -209,7 +209,7 @@
             lnkLogout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lnkLogout.AutoSize = true;
             lnkLogout.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lnkLogout.Location = new Point(1296, 67);
+            lnkLogout.Location = new Point(1343, 67);
             lnkLogout.Name = "lnkLogout";
             lnkLogout.Size = new Size(64, 23);
             lnkLogout.TabIndex = 4;
@@ -222,7 +222,7 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoScroll = true;
-            ClientSize = new Size(1375, 859);
+            ClientSize = new Size(1422, 914);
             Controls.Add(lnkLogout);
             Controls.Add(lblUsername);
             Controls.Add(lblMainForm);

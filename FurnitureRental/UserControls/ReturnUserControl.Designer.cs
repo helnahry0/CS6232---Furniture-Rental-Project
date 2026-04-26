@@ -163,7 +163,7 @@
             // 
             SearchOrderIdButton.Location = new Point(289, 130);
             SearchOrderIdButton.Name = "SearchOrderIdButton";
-            SearchOrderIdButton.Size = new Size(146, 29);
+            SearchOrderIdButton.Size = new Size(167, 29);
             SearchOrderIdButton.TabIndex = 8;
             SearchOrderIdButton.Text = "Select Order";
             SearchOrderIdButton.UseVisualStyleBackColor = true;
@@ -180,7 +180,7 @@
             // 
             SearchRentalIdButton.Location = new Point(289, 82);
             SearchRentalIdButton.Name = "SearchRentalIdButton";
-            SearchRentalIdButton.Size = new Size(146, 29);
+            SearchRentalIdButton.Size = new Size(167, 29);
             SearchRentalIdButton.TabIndex = 6;
             SearchRentalIdButton.Text = "Select Rental";
             SearchRentalIdButton.UseVisualStyleBackColor = true;
@@ -197,7 +197,7 @@
             // 
             SearchMemberButton.Location = new Point(289, 36);
             SearchMemberButton.Name = "SearchMemberButton";
-            SearchMemberButton.Size = new Size(146, 29);
+            SearchMemberButton.Size = new Size(167, 29);
             SearchMemberButton.TabIndex = 4;
             SearchMemberButton.Text = "Search Member";
             SearchMemberButton.UseVisualStyleBackColor = true;
@@ -454,6 +454,7 @@
             // 
             // RentalInfoPanel
             // 
+            RentalInfoPanel.Controls.Add(AddToCartButton);
             RentalInfoPanel.Controls.Add(ActiveEmployeeIdLabel);
             RentalInfoPanel.Controls.Add(ActiveDueDateLabel);
             RentalInfoPanel.Controls.Add(ActiveRentalDateLabel);
@@ -569,7 +570,6 @@
             // 
             // ReturnSelectionTabPage
             // 
-            ReturnSelectionTabPage.Controls.Add(AddToCartButton);
             ReturnSelectionTabPage.Controls.Add(ReturnCartLabel);
             ReturnSelectionTabPage.Controls.Add(panel1);
             ReturnSelectionTabPage.Controls.Add(RentalIdPanel);
@@ -586,7 +586,7 @@
             // 
             // AddToCartButton
             // 
-            AddToCartButton.Location = new Point(374, 692);
+            AddToCartButton.Location = new Point(575, 80);
             AddToCartButton.Name = "AddToCartButton";
             AddToCartButton.Size = new Size(138, 29);
             AddToCartButton.TabIndex = 21;

@@ -201,10 +201,10 @@
             FurnitureDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             FurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             FurnitureDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            FurnitureDataGridView.Location = new Point(472, 0);
+            FurnitureDataGridView.Location = new Point(472, 26);
             FurnitureDataGridView.Name = "FurnitureDataGridView";
             FurnitureDataGridView.RowHeadersWidth = 51;
-            FurnitureDataGridView.Size = new Size(765, 645);
+            FurnitureDataGridView.Size = new Size(752, 597);
             FurnitureDataGridView.TabIndex = 0;
             // 
             // FurnitureSearchUiUserControl
