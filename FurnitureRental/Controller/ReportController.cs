@@ -1,5 +1,4 @@
-﻿using FurnitureRental.DAL;
-using FurnitureRental.DBL;
+﻿using FurnitureRental.DBL;
 using FurnitureRental.Model;
 
 namespace FurnitureRental.Controller

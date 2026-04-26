@@ -35,6 +35,8 @@
             dtpEndDate = new DateTimePicker();
             btnGenerateReport = new Button();
             dgvReport = new DataGridView();
+            btnExportCSV = new Button();
+            btnExportPDF = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvReport).BeginInit();
             SuspendLayout();
             // 
@@ -102,15 +104,39 @@
             // dgvReport
             // 
             dgvReport.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvReport.Location = new Point(15, 106);
+            dgvReport.Location = new Point(15, 151);
             dgvReport.Name = "dgvReport";
             dgvReport.Size = new Size(873, 251);
             dgvReport.TabIndex = 6;
+            // 
+            // btnExportCSV
+            // 
+            btnExportCSV.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExportCSV.Location = new Point(263, 108);
+            btnExportCSV.Name = "btnExportCSV";
+            btnExportCSV.Size = new Size(128, 25);
+            btnExportCSV.TabIndex = 7;
+            btnExportCSV.Text = "Export CSV";
+            btnExportCSV.UseVisualStyleBackColor = true;
+            btnExportCSV.Click += btnExportCSV_Click;
+            // 
+            // btnExportPDF
+            // 
+            btnExportPDF.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnExportPDF.Location = new Point(438, 108);
+            btnExportPDF.Name = "btnExportPDF";
+            btnExportPDF.Size = new Size(108, 26);
+            btnExportPDF.TabIndex = 8;
+            btnExportPDF.Text = "Export PDF";
+            btnExportPDF.UseVisualStyleBackColor = true;
+            btnExportPDF.Click += btnExportPDF_Click;
             // 
             // AdminReportUserControl
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(btnExportPDF);
+            Controls.Add(btnExportCSV);
             Controls.Add(dgvReport);
             Controls.Add(btnGenerateReport);
             Controls.Add(dtpEndDate);
@@ -119,7 +145,7 @@
             Controls.Add(lblStartDate);
             Controls.Add(lblReportTitle);
             Name = "AdminReportUserControl";
-            Size = new Size(898, 378);
+            Size = new Size(898, 423);
             ((System.ComponentModel.ISupportInitialize)dgvReport).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -134,5 +160,7 @@
         private DateTimePicker dtpEndDate;
         private Button btnGenerateReport;
         private DataGridView dgvReport;
+        private Button btnExportCSV;
+        private Button btnExportPDF;
     }
 }

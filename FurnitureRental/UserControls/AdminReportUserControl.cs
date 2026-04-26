@@ -1,14 +1,9 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using iTextSharp.text;
+using iTextSharp.text.pdf;
 
 namespace FurnitureRental.UserControls
 {
@@ -22,9 +17,15 @@ namespace FurnitureRental.UserControls
             SetupReportGrid();
         }
 
+        /// <summary>
+        /// Setup DataGrid for the Most Popular Furniture report.
+        /// </summary>
+        /// <returns> None.</returns>
         private void SetupReportGrid()
         {
             dgvReport.AutoGenerateColumns = false;
+            dgvReport.AllowUserToAddRows = false;
+            dgvReport.ReadOnly = true;
             dgvReport.Columns.Clear();
 
             dgvReport.Columns.Add(new DataGridViewTextBoxColumn
@@ -80,6 +81,11 @@ namespace FurnitureRental.UserControls
             });
         }
 
+        /// <summary>
+        /// Generate the Most Popular Furniture report based on the start data
+        /// and end date and populates the data to the DataGridView Report.
+        /// </summary>
+        /// <returns> None.</returns>
         private void btnGenerateReport_Click(object sender, EventArgs e)
         {
             DateTime startDate = dtpStartDate.Value.Date;
@@ -100,6 +106,150 @@ namespace FurnitureRental.UserControls
             if (reportData.Count == 0)
             {
                 MessageBox.Show("No report data found for the selected date range.");
+            }
+        }
+
+        /// <summary>
+        /// Exports the Most Popular Furniture report to Excel file.
+        /// </summary>
+        /// <returns> None.</returns>
+        private void btnExportCSV_Click(object sender, EventArgs e)
+        {
+            if (dgvReport.Rows.Count == 0)
+            {
+                MessageBox.Show("No report data to export.");
+                return;
+            }
+
+            using SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "CSV File (*.csv)|*.csv";
+            saveDialog.Title = "Save Report as CSV";
+            saveDialog.FileName = "PopularFurnitureReport.csv";
+
+            if (saveDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                StringBuilder sb = new StringBuilder();
+
+                // CSV Report Headers
+                for (int i = 0; i < dgvReport.Columns.Count; i++)
+                {
+                    sb.Append(dgvReport.Columns[i].HeaderText);
+
+                    if (i < dgvReport.Columns.Count - 1)
+                        sb.Append(",");
+                }
+
+                sb.AppendLine();
+
+                // Add Rows
+                foreach (DataGridViewRow row in dgvReport.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    for (int i = 0; i < dgvReport.Columns.Count; i++)
+                    {
+                        string value = row.Cells[i].Value?.ToString() ?? "";
+
+                        // Escape commas
+                        value = $"\"{value.Replace("\"", "\"\"")}\"";
+
+                        sb.Append(value);
+
+                        if (i < dgvReport.Columns.Count - 1)
+                            sb.Append(",");
+                    }
+
+                    sb.AppendLine();
+                }
+
+                File.WriteAllText(saveDialog.FileName, sb.ToString());
+
+                MessageBox.Show("CSV exported successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Export failed.\n" + ex.Message);
+            }
+        }
+
+        /// <summary>
+        /// Exports the Most Popular Furniture report to PDF file.
+        /// </summary>
+        /// <returns> None.</returns>
+        private void btnExportPDF_Click(object sender, EventArgs e)
+        {
+            if (dgvReport.Rows.Count == 0)
+            {
+                MessageBox.Show("No report data to export.");
+                return;
+            }
+
+            using SaveFileDialog saveDialog = new SaveFileDialog();
+            saveDialog.Filter = "PDF File (*.pdf)|*.pdf";
+            saveDialog.Title = "Save Report as PDF";
+            saveDialog.FileName = "PopularFurnitureReport.pdf";
+
+            if (saveDialog.ShowDialog() != DialogResult.OK)
+                return;
+
+            try
+            {
+                iTextSharp.text.Document document = new iTextSharp.text.Document(PageSize.A4.Rotate(), 10f, 10f, 20f, 20f);
+
+                PdfWriter.GetInstance(document, new FileStream(saveDialog.FileName, FileMode.Create));
+
+                document.Open();
+
+                // Title
+                iTextSharp.text.Font titleFont = FontFactory.GetFont(FontFactory.HELVETICA_BOLD, 16);
+                Paragraph title = new Paragraph("Most Popular Furniture Report", titleFont);
+                title.Alignment = Element.ALIGN_CENTER;
+                title.SpacingAfter = 15f;
+
+                document.Add(title);
+
+                // Date
+                document.Add(new Paragraph($"Generated: {DateTime.Now:g}"));
+                document.Add(new Paragraph(" "));
+
+                // Table
+                PdfPTable table = new PdfPTable(dgvReport.Columns.Count);
+                table.WidthPercentage = 100;
+
+                // Headers
+                foreach (DataGridViewColumn column in dgvReport.Columns)
+                {
+                    PdfPCell cell = new PdfPCell(new Phrase(column.HeaderText))
+                    {
+                        BackgroundColor = BaseColor.LIGHT_GRAY
+                    };
+
+                    table.AddCell(cell);
+                }
+
+                // Rows
+                foreach (DataGridViewRow row in dgvReport.Rows)
+                {
+                    if (row.IsNewRow) continue;
+
+                    foreach (DataGridViewCell cell in row.Cells)
+                    {
+                        table.AddCell(cell.Value?.ToString() ?? "");
+                    }
+                }
+
+                document.Add(table);
+
+                document.Close();
+
+                MessageBox.Show("PDF exported successfully.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Export failed.\n" + ex.Message);
             }
         }
     }
