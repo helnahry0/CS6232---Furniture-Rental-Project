@@ -19,6 +19,7 @@ namespace FurnitureRental.DAL
             const string query = @"
                 SELECT
                     rt.rental_id,
+                    rt.employee_id,
                     rd.furniture_id,
                     f.furniture_name,
                     rd.quantity_rented,
@@ -38,6 +39,7 @@ namespace FurnitureRental.DAL
                 WHERE rt.member_id = @MemberId
                 GROUP BY
                     rt.rental_id,
+                    rt.employee_id,
                     rd.furniture_id,
                     f.furniture_name,
                     rd.quantity_rented,
@@ -261,7 +263,7 @@ namespace FurnitureRental.DAL
             ReturnTransaction returnTransaction,
             SqlConnection connection,
             SqlTransaction dbTransaction)
-        {
+          {
             const string query = @"
                 INSERT INTO dbo.ReturnTransaction
                 (
@@ -436,6 +438,7 @@ namespace FurnitureRental.DAL
             return new ReturnableRentalItem
             {
                 RentalId = Convert.ToInt32(reader["rental_id"]),
+                EmployeeId = Convert.ToInt32(reader["employee_id"]),
                 FurnitureId = Convert.ToInt32(reader["furniture_id"]),
                 FurnitureName = Convert.ToString(reader["furniture_name"]) ?? string.Empty,
                 QuantityRented = Convert.ToInt32(reader["quantity_rented"]),

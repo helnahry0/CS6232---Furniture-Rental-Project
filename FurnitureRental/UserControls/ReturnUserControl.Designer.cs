@@ -33,7 +33,7 @@
             SummaryTitleLabel = new Label();
             panel1 = new Panel();
             SearchOrderIdButton = new Button();
-            textBox1 = new TextBox();
+            OrderIdTextBox = new TextBox();
             SearchRentalIdButton = new Button();
             RentalIdTextBox = new TextBox();
             SearchMemberButton = new Button();
@@ -41,9 +41,13 @@
             OrderIDLabel = new Label();
             RentalIDLabel = new Label();
             MemberIdLabel = new Label();
-            panel2 = new Panel();
+            OrderPanel = new Panel();
+            ActiveFurnitureNameLabel = new Label();
+            label17 = new Label();
+            ItemQuantityLabel = new Label();
+            ItemQtyNumericUpDown = new NumericUpDown();
             DayFeesCalculatedLabel = new Label();
-            ActiveFinesLabel = new Label();
+            ActiveLateFinesLabel = new Label();
             EarlyReturnRefundLabel = new Label();
             ActiveBaseCostLabel = new Label();
             BaseCostLabel = new Label();
@@ -51,8 +55,7 @@
             EarlyReturnLabel = new Label();
             BreakdownLabel = new Label();
             AmtDueLabel = new Label();
-            ActiveRefundLabel = new Label();
-            RefundLabel = new Label();
+            ActiveAmountDueLabel = new Label();
             DueDateTimePicker = new DateTimePicker();
             ActiveStatusLabel = new Label();
             ActiveOrderIdLabel = new Label();
@@ -60,26 +63,62 @@
             StatusLabel = new Label();
             OrderLabel = new Label();
             OrderSummaryLabel = new Label();
-            panel3 = new Panel();
+            RentalInfoPanel = new Panel();
+            ActiveEmployeeIdLabel = new Label();
+            ActiveDueDateLabel = new Label();
+            ActiveRentalDateLabel = new Label();
             EmployeeIDLabel = new Label();
             DueDateLabel = new Label();
             RentalDateLabel = new Label();
             RentalInfoLabel = new Label();
             ProcessReturnButton = new Button();
             ClearButton = new Button();
-            ActiveRentalDateLabel = new Label();
-            ActiveDueDateLabel = new Label();
-            ActiveEmployeeIdLabel = new Label();
+            RentalIdPanel = new Panel();
+            ReturnTabControl = new TabControl();
+            ReturnSelectionTabPage = new TabPage();
+            AddToCartButton = new Button();
+            ReturnCartTabPage = new TabPage();
+            ReturnOrderDetailsPanel = new Panel();
+            ClearButton2 = new Button();
+            ActiveFurnitureNameLabel2 = new Label();
+            ActiveOrderIdLabel2 = new Label();
+            ActiveRentalIdLabel = new Label();
+            label15 = new Label();
+            UpdateButton = new Button();
+            RemoveButton = new Button();
+            ActiveLateFinesLabel2 = new Label();
+            EarlyReturnRefundLabel2 = new Label();
+            ActiveBaseCostLabel2 = new Label();
+            label9 = new Label();
+            label10 = new Label();
+            label11 = new Label();
+            label12 = new Label();
+            label13 = new Label();
+            AmountDueLabel2 = new Label();
+            label5 = new Label();
+            ItemQtyNumericUpDown2 = new NumericUpDown();
+            OrderLabel2 = new Label();
+            label3 = new Label();
+            ReturnOrderLabel = new Label();
+            ReturnCartDataGridView = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)ReturnDataGridView).BeginInit();
             panel1.SuspendLayout();
-            panel2.SuspendLayout();
-            panel3.SuspendLayout();
+            OrderPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ItemQtyNumericUpDown).BeginInit();
+            RentalInfoPanel.SuspendLayout();
+            RentalIdPanel.SuspendLayout();
+            ReturnTabControl.SuspendLayout();
+            ReturnSelectionTabPage.SuspendLayout();
+            ReturnCartTabPage.SuspendLayout();
+            ReturnOrderDetailsPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ItemQtyNumericUpDown2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ReturnCartDataGridView).BeginInit();
             SuspendLayout();
             // 
             // ReturnCartLabel
             // 
             ReturnCartLabel.AutoSize = true;
-            ReturnCartLabel.Location = new Point(27, 31);
+            ReturnCartLabel.Location = new Point(44, 24);
             ReturnCartLabel.Name = "ReturnCartLabel";
             ReturnCartLabel.Size = new Size(81, 20);
             ReturnCartLabel.TabIndex = 0;
@@ -87,17 +126,18 @@
             // 
             // ReturnDataGridView
             // 
+            ReturnDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ReturnDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReturnDataGridView.Location = new Point(535, 43);
+            ReturnDataGridView.Location = new Point(13, 34);
             ReturnDataGridView.Name = "ReturnDataGridView";
             ReturnDataGridView.RowHeadersWidth = 51;
-            ReturnDataGridView.Size = new Size(633, 442);
+            ReturnDataGridView.Size = new Size(737, 442);
             ReturnDataGridView.TabIndex = 1;
             // 
             // SummaryTitleLabel
             // 
             SummaryTitleLabel.AutoSize = true;
-            SummaryTitleLabel.Location = new Point(535, 20);
+            SummaryTitleLabel.Location = new Point(13, 11);
             SummaryTitleLabel.Name = "SummaryTitleLabel";
             SummaryTitleLabel.Size = new Size(171, 20);
             SummaryTitleLabel.TabIndex = 2;
@@ -106,7 +146,7 @@
             // panel1
             // 
             panel1.Controls.Add(SearchOrderIdButton);
-            panel1.Controls.Add(textBox1);
+            panel1.Controls.Add(OrderIdTextBox);
             panel1.Controls.Add(SearchRentalIdButton);
             panel1.Controls.Add(RentalIdTextBox);
             panel1.Controls.Add(SearchMemberButton);
@@ -114,30 +154,31 @@
             panel1.Controls.Add(OrderIDLabel);
             panel1.Controls.Add(RentalIDLabel);
             panel1.Controls.Add(MemberIdLabel);
-            panel1.Location = new Point(27, 60);
+            panel1.Location = new Point(44, 53);
             panel1.Name = "panel1";
             panel1.Size = new Size(468, 202);
             panel1.TabIndex = 3;
             // 
             // SearchOrderIdButton
             // 
-            SearchOrderIdButton.Location = new Point(278, 130);
+            SearchOrderIdButton.Location = new Point(289, 130);
             SearchOrderIdButton.Name = "SearchOrderIdButton";
             SearchOrderIdButton.Size = new Size(146, 29);
             SearchOrderIdButton.TabIndex = 8;
             SearchOrderIdButton.Text = "Search Order";
             SearchOrderIdButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // OrderIdTextBox
             // 
-            textBox1.Location = new Point(97, 130);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(155, 27);
-            textBox1.TabIndex = 7;
+            OrderIdTextBox.Location = new Point(108, 130);
+            OrderIdTextBox.Name = "OrderIdTextBox";
+            OrderIdTextBox.ReadOnly = true;
+            OrderIdTextBox.Size = new Size(155, 27);
+            OrderIdTextBox.TabIndex = 7;
             // 
             // SearchRentalIdButton
             // 
-            SearchRentalIdButton.Location = new Point(278, 82);
+            SearchRentalIdButton.Location = new Point(289, 82);
             SearchRentalIdButton.Name = "SearchRentalIdButton";
             SearchRentalIdButton.Size = new Size(146, 29);
             SearchRentalIdButton.TabIndex = 6;
@@ -146,14 +187,15 @@
             // 
             // RentalIdTextBox
             // 
-            RentalIdTextBox.Location = new Point(97, 83);
+            RentalIdTextBox.Location = new Point(108, 83);
             RentalIdTextBox.Name = "RentalIdTextBox";
+            RentalIdTextBox.ReadOnly = true;
             RentalIdTextBox.Size = new Size(155, 27);
             RentalIdTextBox.TabIndex = 5;
             // 
             // SearchMemberButton
             // 
-            SearchMemberButton.Location = new Point(278, 36);
+            SearchMemberButton.Location = new Point(289, 36);
             SearchMemberButton.Name = "SearchMemberButton";
             SearchMemberButton.Size = new Size(146, 29);
             SearchMemberButton.TabIndex = 4;
@@ -162,7 +204,7 @@
             // 
             // MemberIDTextBox
             // 
-            MemberIDTextBox.Location = new Point(97, 36);
+            MemberIDTextBox.Location = new Point(108, 36);
             MemberIDTextBox.Name = "MemberIDTextBox";
             MemberIDTextBox.Size = new Size(155, 27);
             MemberIDTextBox.TabIndex = 3;
@@ -194,29 +236,66 @@
             MemberIdLabel.TabIndex = 0;
             MemberIdLabel.Text = "Member ID:";
             // 
-            // panel2
+            // OrderPanel
             // 
-            panel2.Controls.Add(DayFeesCalculatedLabel);
-            panel2.Controls.Add(ActiveFinesLabel);
-            panel2.Controls.Add(EarlyReturnRefundLabel);
-            panel2.Controls.Add(ActiveBaseCostLabel);
-            panel2.Controls.Add(BaseCostLabel);
-            panel2.Controls.Add(FinesLabel);
-            panel2.Controls.Add(EarlyReturnLabel);
-            panel2.Controls.Add(BreakdownLabel);
-            panel2.Controls.Add(AmtDueLabel);
-            panel2.Controls.Add(ActiveRefundLabel);
-            panel2.Controls.Add(RefundLabel);
-            panel2.Controls.Add(DueDateTimePicker);
-            panel2.Controls.Add(ActiveStatusLabel);
-            panel2.Controls.Add(ActiveOrderIdLabel);
-            panel2.Controls.Add(ReturnDateLabel);
-            panel2.Controls.Add(StatusLabel);
-            panel2.Controls.Add(OrderLabel);
-            panel2.Location = new Point(27, 303);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(468, 327);
-            panel2.TabIndex = 4;
+            OrderPanel.Controls.Add(ActiveFurnitureNameLabel);
+            OrderPanel.Controls.Add(label17);
+            OrderPanel.Controls.Add(ItemQuantityLabel);
+            OrderPanel.Controls.Add(ItemQtyNumericUpDown);
+            OrderPanel.Controls.Add(DayFeesCalculatedLabel);
+            OrderPanel.Controls.Add(ActiveLateFinesLabel);
+            OrderPanel.Controls.Add(EarlyReturnRefundLabel);
+            OrderPanel.Controls.Add(ActiveBaseCostLabel);
+            OrderPanel.Controls.Add(BaseCostLabel);
+            OrderPanel.Controls.Add(FinesLabel);
+            OrderPanel.Controls.Add(EarlyReturnLabel);
+            OrderPanel.Controls.Add(BreakdownLabel);
+            OrderPanel.Controls.Add(AmtDueLabel);
+            OrderPanel.Controls.Add(ActiveAmountDueLabel);
+            OrderPanel.Controls.Add(DueDateTimePicker);
+            OrderPanel.Controls.Add(ActiveStatusLabel);
+            OrderPanel.Controls.Add(ActiveOrderIdLabel);
+            OrderPanel.Controls.Add(ReturnDateLabel);
+            OrderPanel.Controls.Add(StatusLabel);
+            OrderPanel.Controls.Add(OrderLabel);
+            OrderPanel.Location = new Point(44, 296);
+            OrderPanel.Name = "OrderPanel";
+            OrderPanel.Size = new Size(468, 374);
+            OrderPanel.TabIndex = 4;
+            // 
+            // ActiveFurnitureNameLabel
+            // 
+            ActiveFurnitureNameLabel.AutoSize = true;
+            ActiveFurnitureNameLabel.Location = new Point(159, 49);
+            ActiveFurnitureNameLabel.Name = "ActiveFurnitureNameLabel";
+            ActiveFurnitureNameLabel.Size = new Size(108, 20);
+            ActiveFurnitureNameLabel.TabIndex = 20;
+            ActiveFurnitureNameLabel.Text = "Furniture name";
+            // 
+            // label17
+            // 
+            label17.AutoSize = true;
+            label17.Location = new Point(48, 48);
+            label17.Name = "label17";
+            label17.Size = new Size(90, 20);
+            label17.TabIndex = 19;
+            label17.Text = "Item Name :";
+            // 
+            // ItemQuantityLabel
+            // 
+            ItemQuantityLabel.AutoSize = true;
+            ItemQuantityLabel.Location = new Point(32, 179);
+            ItemQuantityLabel.Name = "ItemQuantityLabel";
+            ItemQuantityLabel.Size = new Size(106, 20);
+            ItemQuantityLabel.TabIndex = 18;
+            ItemQuantityLabel.Text = "Item Quantity :";
+            // 
+            // ItemQtyNumericUpDown
+            // 
+            ItemQtyNumericUpDown.Location = new Point(164, 177);
+            ItemQtyNumericUpDown.Name = "ItemQtyNumericUpDown";
+            ItemQtyNumericUpDown.Size = new Size(150, 27);
+            ItemQtyNumericUpDown.TabIndex = 17;
             // 
             // DayFeesCalculatedLabel
             // 
@@ -228,37 +307,37 @@
             DayFeesCalculatedLabel.TabIndex = 16;
             DayFeesCalculatedLabel.Text = "On Time ||  X Days Early ||  X days Late";
             // 
-            // ActiveFinesLabel
+            // ActiveLateFinesLabel
             // 
-            ActiveFinesLabel.AutoSize = true;
-            ActiveFinesLabel.Location = new Point(114, 293);
-            ActiveFinesLabel.Name = "ActiveFinesLabel";
-            ActiveFinesLabel.Size = new Size(199, 20);
-            ActiveFinesLabel.TabIndex = 15;
-            ActiveFinesLabel.Text = "+(Days Late By * Price(Rate))";
+            ActiveLateFinesLabel.AutoSize = true;
+            ActiveLateFinesLabel.Location = new Point(114, 338);
+            ActiveLateFinesLabel.Name = "ActiveLateFinesLabel";
+            ActiveLateFinesLabel.Size = new Size(250, 20);
+            ActiveLateFinesLabel.TabIndex = 15;
+            ActiveLateFinesLabel.Text = "+(Days Late By * (Qty * Price (Rate)))";
             // 
             // EarlyReturnRefundLabel
             // 
             EarlyReturnRefundLabel.AutoSize = true;
-            EarlyReturnRefundLabel.Location = new Point(114, 261);
+            EarlyReturnRefundLabel.Location = new Point(114, 306);
             EarlyReturnRefundLabel.Name = "EarlyReturnRefundLabel";
-            EarlyReturnRefundLabel.Size = new Size(199, 20);
+            EarlyReturnRefundLabel.Size = new Size(250, 20);
             EarlyReturnRefundLabel.TabIndex = 14;
-            EarlyReturnRefundLabel.Text = "-(Days Early By * Price(Rate))";
+            EarlyReturnRefundLabel.Text = "-(Days Early By * (Qty * Price (Rate)))";
             // 
             // ActiveBaseCostLabel
             // 
             ActiveBaseCostLabel.AutoSize = true;
-            ActiveBaseCostLabel.Location = new Point(114, 226);
+            ActiveBaseCostLabel.Location = new Point(114, 271);
             ActiveBaseCostLabel.Name = "ActiveBaseCostLabel";
-            ActiveBaseCostLabel.Size = new Size(186, 20);
+            ActiveBaseCostLabel.Size = new Size(238, 20);
             ActiveBaseCostLabel.TabIndex = 13;
-            ActiveBaseCostLabel.Text = "Price (Rate) * Days booked";
+            ActiveBaseCostLabel.Text = "(Qty * Price (Rate)) * Days booked)";
             // 
             // BaseCostLabel
             // 
             BaseCostLabel.AutoSize = true;
-            BaseCostLabel.Location = new Point(27, 225);
+            BaseCostLabel.Location = new Point(27, 270);
             BaseCostLabel.Name = "BaseCostLabel";
             BaseCostLabel.Size = new Size(80, 20);
             BaseCostLabel.TabIndex = 12;
@@ -268,16 +347,16 @@
             // 
             FinesLabel.AutoSize = true;
             FinesLabel.ForeColor = Color.Red;
-            FinesLabel.Location = new Point(58, 292);
+            FinesLabel.Location = new Point(24, 337);
             FinesLabel.Name = "FinesLabel";
-            FinesLabel.Size = new Size(49, 20);
+            FinesLabel.Size = new Size(81, 20);
             FinesLabel.TabIndex = 11;
-            FinesLabel.Text = "Fines :";
+            FinesLabel.Text = "Late Fines :";
             // 
             // EarlyReturnLabel
             // 
             EarlyReturnLabel.AutoSize = true;
-            EarlyReturnLabel.Location = new Point(12, 259);
+            EarlyReturnLabel.Location = new Point(12, 304);
             EarlyReturnLabel.Name = "EarlyReturnLabel";
             EarlyReturnLabel.Size = new Size(95, 20);
             EarlyReturnLabel.TabIndex = 10;
@@ -286,7 +365,7 @@
             // BreakdownLabel
             // 
             BreakdownLabel.AutoSize = true;
-            BreakdownLabel.Location = new Point(17, 196);
+            BreakdownLabel.Location = new Point(17, 241);
             BreakdownLabel.Name = "BreakdownLabel";
             BreakdownLabel.Size = new Size(90, 20);
             BreakdownLabel.TabIndex = 9;
@@ -296,42 +375,33 @@
             // 
             AmtDueLabel.AutoSize = true;
             AmtDueLabel.ForeColor = Color.Red;
-            AmtDueLabel.Location = new Point(346, 168);
+            AmtDueLabel.Location = new Point(17, 213);
             AmtDueLabel.Name = "AmtDueLabel";
-            AmtDueLabel.Size = new Size(105, 20);
+            AmtDueLabel.Size = new Size(108, 20);
             AmtDueLabel.TabIndex = 8;
-            AmtDueLabel.Text = "AMOUNT DUE";
+            AmtDueLabel.Text = "AMOUNT DUE:";
             // 
-            // ActiveRefundLabel
+            // ActiveAmountDueLabel
             // 
-            ActiveRefundLabel.AutoSize = true;
-            ActiveRefundLabel.Location = new Point(159, 168);
-            ActiveRefundLabel.Name = "ActiveRefundLabel";
-            ActiveRefundLabel.Size = new Size(64, 20);
-            ActiveRefundLabel.TabIndex = 7;
-            ActiveRefundLabel.Text = "$ refund";
-            // 
-            // RefundLabel
-            // 
-            RefundLabel.AutoSize = true;
-            RefundLabel.Location = new Point(18, 168);
-            RefundLabel.Name = "RefundLabel";
-            RefundLabel.Size = new Size(120, 20);
-            RefundLabel.TabIndex = 6;
-            RefundLabel.Text = "Refund Amount :";
+            ActiveAmountDueLabel.AutoSize = true;
+            ActiveAmountDueLabel.Location = new Point(144, 213);
+            ActiveAmountDueLabel.Name = "ActiveAmountDueLabel";
+            ActiveAmountDueLabel.Size = new Size(48, 20);
+            ActiveAmountDueLabel.TabIndex = 7;
+            ActiveAmountDueLabel.Text = "$ 0.00";
             // 
             // DueDateTimePicker
             // 
             DueDateTimePicker.Format = DateTimePickerFormat.Short;
             DueDateTimePicker.Location = new Point(159, 102);
             DueDateTimePicker.Name = "DueDateTimePicker";
-            DueDateTimePicker.Size = new Size(250, 27);
+            DueDateTimePicker.Size = new Size(276, 27);
             DueDateTimePicker.TabIndex = 5;
             // 
             // ActiveStatusLabel
             // 
             ActiveStatusLabel.AutoSize = true;
-            ActiveStatusLabel.Location = new Point(159, 68);
+            ActiveStatusLabel.Location = new Point(159, 74);
             ActiveStatusLabel.Name = "ActiveStatusLabel";
             ActiveStatusLabel.Size = new Size(117, 20);
             ActiveStatusLabel.TabIndex = 4;
@@ -340,11 +410,11 @@
             // ActiveOrderIdLabel
             // 
             ActiveOrderIdLabel.AutoSize = true;
-            ActiveOrderIdLabel.Location = new Point(159, 31);
+            ActiveOrderIdLabel.Location = new Point(159, 19);
             ActiveOrderIdLabel.Name = "ActiveOrderIdLabel";
-            ActiveOrderIdLabel.Size = new Size(135, 20);
+            ActiveOrderIdLabel.Size = new Size(174, 20);
             ActiveOrderIdLabel.TabIndex = 3;
-            ActiveOrderIdLabel.Text = "Order number here";
+            ActiveOrderIdLabel.Text = "Furniture ID number here";
             // 
             // ReturnDateLabel
             // 
@@ -358,7 +428,7 @@
             // StatusLabel
             // 
             StatusLabel.AutoSize = true;
-            StatusLabel.Location = new Point(82, 68);
+            StatusLabel.Location = new Point(82, 74);
             StatusLabel.Name = "StatusLabel";
             StatusLabel.Size = new Size(56, 20);
             StatusLabel.TabIndex = 1;
@@ -367,7 +437,7 @@
             // OrderLabel
             // 
             OrderLabel.AutoSize = true;
-            OrderLabel.Location = new Point(65, 31);
+            OrderLabel.Location = new Point(65, 19);
             OrderLabel.Name = "OrderLabel";
             OrderLabel.Size = new Size(73, 20);
             OrderLabel.TabIndex = 0;
@@ -376,25 +446,52 @@
             // OrderSummaryLabel
             // 
             OrderSummaryLabel.AutoSize = true;
-            OrderSummaryLabel.Location = new Point(31, 277);
+            OrderSummaryLabel.Location = new Point(48, 270);
             OrderSummaryLabel.Name = "OrderSummaryLabel";
             OrderSummaryLabel.Size = new Size(113, 20);
             OrderSummaryLabel.TabIndex = 0;
             OrderSummaryLabel.Text = "Order Summary";
             // 
-            // panel3
+            // RentalInfoPanel
             // 
-            panel3.Controls.Add(ActiveEmployeeIdLabel);
-            panel3.Controls.Add(ActiveDueDateLabel);
-            panel3.Controls.Add(ActiveRentalDateLabel);
-            panel3.Controls.Add(EmployeeIDLabel);
-            panel3.Controls.Add(DueDateLabel);
-            panel3.Controls.Add(RentalDateLabel);
-            panel3.Controls.Add(RentalInfoLabel);
-            panel3.Location = new Point(535, 495);
-            panel3.Name = "panel3";
-            panel3.Size = new Size(633, 125);
-            panel3.TabIndex = 5;
+            RentalInfoPanel.Controls.Add(ActiveEmployeeIdLabel);
+            RentalInfoPanel.Controls.Add(ActiveDueDateLabel);
+            RentalInfoPanel.Controls.Add(ActiveRentalDateLabel);
+            RentalInfoPanel.Controls.Add(EmployeeIDLabel);
+            RentalInfoPanel.Controls.Add(DueDateLabel);
+            RentalInfoPanel.Controls.Add(RentalDateLabel);
+            RentalInfoPanel.Controls.Add(RentalInfoLabel);
+            RentalInfoPanel.Location = new Point(13, 492);
+            RentalInfoPanel.Name = "RentalInfoPanel";
+            RentalInfoPanel.Size = new Size(737, 125);
+            RentalInfoPanel.TabIndex = 5;
+            // 
+            // ActiveEmployeeIdLabel
+            // 
+            ActiveEmployeeIdLabel.AutoSize = true;
+            ActiveEmployeeIdLabel.Location = new Point(118, 84);
+            ActiveEmployeeIdLabel.Name = "ActiveEmployeeIdLabel";
+            ActiveEmployeeIdLabel.Size = new Size(292, 20);
+            ActiveEmployeeIdLabel.TabIndex = 6;
+            ActiveEmployeeIdLabel.Text = "ID of employee responsible for transaction";
+            // 
+            // ActiveDueDateLabel
+            // 
+            ActiveDueDateLabel.AutoSize = true;
+            ActiveDueDateLabel.Location = new Point(118, 61);
+            ActiveDueDateLabel.Name = "ActiveDueDateLabel";
+            ActiveDueDateLabel.Size = new Size(109, 20);
+            ActiveDueDateLabel.TabIndex = 5;
+            ActiveDueDateLabel.Text = "XX / XX / XXXX";
+            // 
+            // ActiveRentalDateLabel
+            // 
+            ActiveRentalDateLabel.AutoSize = true;
+            ActiveRentalDateLabel.Location = new Point(118, 33);
+            ActiveRentalDateLabel.Name = "ActiveRentalDateLabel";
+            ActiveRentalDateLabel.Size = new Size(109, 20);
+            ActiveRentalDateLabel.TabIndex = 4;
+            ActiveRentalDateLabel.Text = "XX / XX / XXXX";
             // 
             // EmployeeIDLabel
             // 
@@ -434,7 +531,7 @@
             // 
             // ProcessReturnButton
             // 
-            ProcessReturnButton.Location = new Point(322, 648);
+            ProcessReturnButton.Location = new Point(1144, 699);
             ProcessReturnButton.Name = "ProcessReturnButton";
             ProcessReturnButton.Size = new Size(173, 29);
             ProcessReturnButton.TabIndex = 17;
@@ -443,65 +540,327 @@
             // 
             // ClearButton
             // 
-            ClearButton.Location = new Point(401, 22);
+            ClearButton.Location = new Point(418, 15);
             ClearButton.Name = "ClearButton";
             ClearButton.Size = new Size(94, 29);
             ClearButton.TabIndex = 18;
             ClearButton.Text = "Clear";
             ClearButton.UseVisualStyleBackColor = true;
             // 
-            // ActiveRentalDateLabel
+            // RentalIdPanel
             // 
-            ActiveRentalDateLabel.AutoSize = true;
-            ActiveRentalDateLabel.Location = new Point(118, 33);
-            ActiveRentalDateLabel.Name = "ActiveRentalDateLabel";
-            ActiveRentalDateLabel.Size = new Size(50, 20);
-            ActiveRentalDateLabel.TabIndex = 4;
-            ActiveRentalDateLabel.Text = "label1";
+            RentalIdPanel.Controls.Add(RentalInfoPanel);
+            RentalIdPanel.Controls.Add(SummaryTitleLabel);
+            RentalIdPanel.Controls.Add(ReturnDataGridView);
+            RentalIdPanel.Location = new Point(538, 47);
+            RentalIdPanel.Name = "RentalIdPanel";
+            RentalIdPanel.Size = new Size(772, 623);
+            RentalIdPanel.TabIndex = 19;
             // 
-            // ActiveDueDateLabel
+            // ReturnTabControl
             // 
-            ActiveDueDateLabel.AutoSize = true;
-            ActiveDueDateLabel.Location = new Point(118, 61);
-            ActiveDueDateLabel.Name = "ActiveDueDateLabel";
-            ActiveDueDateLabel.Size = new Size(50, 20);
-            ActiveDueDateLabel.TabIndex = 5;
-            ActiveDueDateLabel.Text = "label2";
+            ReturnTabControl.Controls.Add(ReturnSelectionTabPage);
+            ReturnTabControl.Controls.Add(ReturnCartTabPage);
+            ReturnTabControl.Location = new Point(14, 14);
+            ReturnTabControl.Name = "ReturnTabControl";
+            ReturnTabControl.SelectedIndex = 0;
+            ReturnTabControl.Size = new Size(1348, 776);
+            ReturnTabControl.TabIndex = 21;
             // 
-            // ActiveEmployeeIdLabel
+            // ReturnSelectionTabPage
             // 
-            ActiveEmployeeIdLabel.AutoSize = true;
-            ActiveEmployeeIdLabel.Location = new Point(118, 84);
-            ActiveEmployeeIdLabel.Name = "ActiveEmployeeIdLabel";
-            ActiveEmployeeIdLabel.Size = new Size(292, 20);
-            ActiveEmployeeIdLabel.TabIndex = 6;
-            ActiveEmployeeIdLabel.Text = "ID of employee responsible for transaction";
+            ReturnSelectionTabPage.Controls.Add(AddToCartButton);
+            ReturnSelectionTabPage.Controls.Add(ReturnCartLabel);
+            ReturnSelectionTabPage.Controls.Add(panel1);
+            ReturnSelectionTabPage.Controls.Add(RentalIdPanel);
+            ReturnSelectionTabPage.Controls.Add(OrderPanel);
+            ReturnSelectionTabPage.Controls.Add(ClearButton);
+            ReturnSelectionTabPage.Controls.Add(OrderSummaryLabel);
+            ReturnSelectionTabPage.Location = new Point(4, 29);
+            ReturnSelectionTabPage.Name = "ReturnSelectionTabPage";
+            ReturnSelectionTabPage.Padding = new Padding(3);
+            ReturnSelectionTabPage.Size = new Size(1340, 743);
+            ReturnSelectionTabPage.TabIndex = 0;
+            ReturnSelectionTabPage.Text = "Return Selection";
+            ReturnSelectionTabPage.UseVisualStyleBackColor = true;
+            // 
+            // AddToCartButton
+            // 
+            AddToCartButton.Location = new Point(374, 692);
+            AddToCartButton.Name = "AddToCartButton";
+            AddToCartButton.Size = new Size(138, 29);
+            AddToCartButton.TabIndex = 21;
+            AddToCartButton.Text = "Add to Cart";
+            AddToCartButton.UseVisualStyleBackColor = true;
+            // 
+            // ReturnCartTabPage
+            // 
+            ReturnCartTabPage.Controls.Add(ReturnOrderDetailsPanel);
+            ReturnCartTabPage.Controls.Add(ReturnCartDataGridView);
+            ReturnCartTabPage.Controls.Add(ProcessReturnButton);
+            ReturnCartTabPage.Location = new Point(4, 29);
+            ReturnCartTabPage.Name = "ReturnCartTabPage";
+            ReturnCartTabPage.Padding = new Padding(3);
+            ReturnCartTabPage.Size = new Size(1340, 743);
+            ReturnCartTabPage.TabIndex = 1;
+            ReturnCartTabPage.Text = "Return Cart";
+            ReturnCartTabPage.UseVisualStyleBackColor = true;
+            // 
+            // ReturnOrderDetailsPanel
+            // 
+            ReturnOrderDetailsPanel.Controls.Add(ClearButton2);
+            ReturnOrderDetailsPanel.Controls.Add(ActiveFurnitureNameLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(ActiveOrderIdLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(ActiveRentalIdLabel);
+            ReturnOrderDetailsPanel.Controls.Add(label15);
+            ReturnOrderDetailsPanel.Controls.Add(UpdateButton);
+            ReturnOrderDetailsPanel.Controls.Add(RemoveButton);
+            ReturnOrderDetailsPanel.Controls.Add(ActiveLateFinesLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(EarlyReturnRefundLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(ActiveBaseCostLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(label9);
+            ReturnOrderDetailsPanel.Controls.Add(label10);
+            ReturnOrderDetailsPanel.Controls.Add(label11);
+            ReturnOrderDetailsPanel.Controls.Add(label12);
+            ReturnOrderDetailsPanel.Controls.Add(label13);
+            ReturnOrderDetailsPanel.Controls.Add(AmountDueLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(label5);
+            ReturnOrderDetailsPanel.Controls.Add(ItemQtyNumericUpDown2);
+            ReturnOrderDetailsPanel.Controls.Add(OrderLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(label3);
+            ReturnOrderDetailsPanel.Controls.Add(ReturnOrderLabel);
+            ReturnOrderDetailsPanel.Location = new Point(27, 28);
+            ReturnOrderDetailsPanel.Name = "ReturnOrderDetailsPanel";
+            ReturnOrderDetailsPanel.Size = new Size(555, 635);
+            ReturnOrderDetailsPanel.TabIndex = 18;
+            // 
+            // ClearButton2
+            // 
+            ClearButton2.Location = new Point(67, 573);
+            ClearButton2.Name = "ClearButton2";
+            ClearButton2.Size = new Size(94, 29);
+            ClearButton2.TabIndex = 36;
+            ClearButton2.Text = "Clear";
+            ClearButton2.UseVisualStyleBackColor = true;
+            ClearButton2.Click += ClearButton2_Click;
+            // 
+            // ActiveFurnitureNameLabel2
+            // 
+            ActiveFurnitureNameLabel2.AutoSize = true;
+            ActiveFurnitureNameLabel2.Location = new Point(167, 129);
+            ActiveFurnitureNameLabel2.Name = "ActiveFurnitureNameLabel2";
+            ActiveFurnitureNameLabel2.Size = new Size(58, 20);
+            ActiveFurnitureNameLabel2.TabIndex = 35;
+            ActiveFurnitureNameLabel2.Text = "label19";
+            // 
+            // ActiveOrderIdLabel2
+            // 
+            ActiveOrderIdLabel2.AutoSize = true;
+            ActiveOrderIdLabel2.Location = new Point(167, 98);
+            ActiveOrderIdLabel2.Name = "ActiveOrderIdLabel2";
+            ActiveOrderIdLabel2.Size = new Size(58, 20);
+            ActiveOrderIdLabel2.TabIndex = 34;
+            ActiveOrderIdLabel2.Text = "label18";
+            // 
+            // ActiveRentalIdLabel
+            // 
+            ActiveRentalIdLabel.AutoSize = true;
+            ActiveRentalIdLabel.Location = new Point(167, 63);
+            ActiveRentalIdLabel.Name = "ActiveRentalIdLabel";
+            ActiveRentalIdLabel.Size = new Size(58, 20);
+            ActiveRentalIdLabel.TabIndex = 33;
+            ActiveRentalIdLabel.Text = "label16";
+            // 
+            // label15
+            // 
+            label15.AutoSize = true;
+            label15.Location = new Point(62, 129);
+            label15.Name = "label15";
+            label15.Size = new Size(90, 20);
+            label15.TabIndex = 32;
+            label15.Text = "Item Name :";
+            // 
+            // UpdateButton
+            // 
+            UpdateButton.Location = new Point(336, 573);
+            UpdateButton.Name = "UpdateButton";
+            UpdateButton.Size = new Size(94, 29);
+            UpdateButton.TabIndex = 31;
+            UpdateButton.Text = "Update";
+            UpdateButton.UseVisualStyleBackColor = true;
+            // 
+            // RemoveButton
+            // 
+            RemoveButton.Location = new Point(202, 573);
+            RemoveButton.Name = "RemoveButton";
+            RemoveButton.Size = new Size(94, 29);
+            RemoveButton.TabIndex = 30;
+            RemoveButton.Text = "Remove";
+            RemoveButton.UseVisualStyleBackColor = true;
+            // 
+            // ActiveLateFinesLabel2
+            // 
+            ActiveLateFinesLabel2.AutoSize = true;
+            ActiveLateFinesLabel2.Location = new Point(139, 358);
+            ActiveLateFinesLabel2.Name = "ActiveLateFinesLabel2";
+            ActiveLateFinesLabel2.Size = new Size(250, 20);
+            ActiveLateFinesLabel2.TabIndex = 29;
+            ActiveLateFinesLabel2.Text = "+(Days Late By * (Qty * Price (Rate)))";
+            // 
+            // EarlyReturnRefundLabel2
+            // 
+            EarlyReturnRefundLabel2.AutoSize = true;
+            EarlyReturnRefundLabel2.Location = new Point(139, 326);
+            EarlyReturnRefundLabel2.Name = "EarlyReturnRefundLabel2";
+            EarlyReturnRefundLabel2.Size = new Size(250, 20);
+            EarlyReturnRefundLabel2.TabIndex = 28;
+            EarlyReturnRefundLabel2.Text = "-(Days Early By * (Qty * Price (Rate)))";
+            // 
+            // ActiveBaseCostLabel2
+            // 
+            ActiveBaseCostLabel2.AutoSize = true;
+            ActiveBaseCostLabel2.Location = new Point(139, 291);
+            ActiveBaseCostLabel2.Name = "ActiveBaseCostLabel2";
+            ActiveBaseCostLabel2.Size = new Size(238, 20);
+            ActiveBaseCostLabel2.TabIndex = 27;
+            ActiveBaseCostLabel2.Text = "(Qty * Price (Rate)) * Days booked)";
+            // 
+            // label9
+            // 
+            label9.AutoSize = true;
+            label9.Location = new Point(52, 290);
+            label9.Name = "label9";
+            label9.Size = new Size(80, 20);
+            label9.TabIndex = 26;
+            label9.Text = "Base Cost :";
+            // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.ForeColor = Color.Red;
+            label10.Location = new Point(49, 357);
+            label10.Name = "label10";
+            label10.Size = new Size(81, 20);
+            label10.TabIndex = 25;
+            label10.Text = "Late Fines :";
+            // 
+            // label11
+            // 
+            label11.AutoSize = true;
+            label11.Location = new Point(37, 324);
+            label11.Name = "label11";
+            label11.Size = new Size(95, 20);
+            label11.TabIndex = 24;
+            label11.Text = "Early Return :";
+            // 
+            // label12
+            // 
+            label12.AutoSize = true;
+            label12.Location = new Point(42, 233);
+            label12.Name = "label12";
+            label12.Size = new Size(90, 20);
+            label12.TabIndex = 23;
+            label12.Text = "Breakdown :";
+            // 
+            // label13
+            // 
+            label13.AutoSize = true;
+            label13.ForeColor = Color.Red;
+            label13.Location = new Point(219, 404);
+            label13.Name = "label13";
+            label13.Size = new Size(108, 20);
+            label13.TabIndex = 22;
+            label13.Text = "AMOUNT DUE:";
+            // 
+            // AmountDueLabel2
+            // 
+            AmountDueLabel2.AutoSize = true;
+            AmountDueLabel2.Location = new Point(341, 404);
+            AmountDueLabel2.Name = "AmountDueLabel2";
+            AmountDueLabel2.Size = new Size(48, 20);
+            AmountDueLabel2.TabIndex = 21;
+            AmountDueLabel2.Text = "$ 0.00";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(46, 167);
+            label5.Name = "label5";
+            label5.Size = new Size(106, 20);
+            label5.TabIndex = 20;
+            label5.Text = "Item Quantity :";
+            // 
+            // ItemQtyNumericUpDown2
+            // 
+            ItemQtyNumericUpDown2.Location = new Point(176, 165);
+            ItemQtyNumericUpDown2.Name = "ItemQtyNumericUpDown2";
+            ItemQtyNumericUpDown2.Size = new Size(150, 27);
+            ItemQtyNumericUpDown2.TabIndex = 19;
+            // 
+            // OrderLabel2
+            // 
+            OrderLabel2.AutoSize = true;
+            OrderLabel2.Location = new Point(81, 98);
+            OrderLabel2.Name = "OrderLabel2";
+            OrderLabel2.Size = new Size(71, 20);
+            OrderLabel2.TabIndex = 2;
+            OrderLabel2.Text = "Order Id :";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(77, 63);
+            label3.Name = "label3";
+            label3.Size = new Size(75, 20);
+            label3.TabIndex = 1;
+            label3.Text = "Rental Id :";
+            // 
+            // ReturnOrderLabel
+            // 
+            ReturnOrderLabel.AutoSize = true;
+            ReturnOrderLabel.Location = new Point(22, 27);
+            ReturnOrderLabel.Name = "ReturnOrderLabel";
+            ReturnOrderLabel.Size = new Size(142, 20);
+            ReturnOrderLabel.TabIndex = 0;
+            ReturnOrderLabel.Text = "Return Order details";
+            // 
+            // ReturnCartDataGridView
+            // 
+            ReturnCartDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            ReturnCartDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            ReturnCartDataGridView.Location = new Point(653, 28);
+            ReturnCartDataGridView.Name = "ReturnCartDataGridView";
+            ReturnCartDataGridView.RowHeadersWidth = 51;
+            ReturnCartDataGridView.Size = new Size(664, 635);
+            ReturnCartDataGridView.TabIndex = 0;
             // 
             // ReturnUserControl
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            Controls.Add(ClearButton);
-            Controls.Add(ProcessReturnButton);
-            Controls.Add(panel3);
-            Controls.Add(OrderSummaryLabel);
-            Controls.Add(panel2);
-            Controls.Add(panel1);
-            Controls.Add(SummaryTitleLabel);
-            Controls.Add(ReturnDataGridView);
-            Controls.Add(ReturnCartLabel);
+            Controls.Add(ReturnTabControl);
             Name = "ReturnUserControl";
-            Size = new Size(1200, 707);
+            Size = new Size(1378, 812);
             Load += ReturnUserControl_Load;
             ((System.ComponentModel.ISupportInitialize)ReturnDataGridView).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
-            panel2.ResumeLayout(false);
-            panel2.PerformLayout();
-            panel3.ResumeLayout(false);
-            panel3.PerformLayout();
+            OrderPanel.ResumeLayout(false);
+            OrderPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ItemQtyNumericUpDown).EndInit();
+            RentalInfoPanel.ResumeLayout(false);
+            RentalInfoPanel.PerformLayout();
+            RentalIdPanel.ResumeLayout(false);
+            RentalIdPanel.PerformLayout();
+            ReturnTabControl.ResumeLayout(false);
+            ReturnSelectionTabPage.ResumeLayout(false);
+            ReturnSelectionTabPage.PerformLayout();
+            ReturnCartTabPage.ResumeLayout(false);
+            ReturnOrderDetailsPanel.ResumeLayout(false);
+            ReturnOrderDetailsPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ItemQtyNumericUpDown2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ReturnCartDataGridView).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -517,9 +876,9 @@
         private TextBox MemberIDTextBox;
         private TextBox RentalIdTextBox;
         private Button SearchOrderIdButton;
-        private TextBox textBox1;
+        private TextBox OrderIdTextBox;
         private Button SearchRentalIdButton;
-        private Panel panel2;
+        private Panel OrderPanel;
         private Label OrderSummaryLabel;
         private Label StatusLabel;
         private Label OrderLabel;
@@ -533,11 +892,11 @@
         private Label EarlyReturnLabel;
         private Label BreakdownLabel;
         private Label AmtDueLabel;
-        private Label ActiveRefundLabel;
-        private Label ActiveFinesLabel;
+        private Label ActiveAmountDueLabel;
+        private Label ActiveLateFinesLabel;
         private Label EarlyReturnRefundLabel;
         private Label ActiveBaseCostLabel;
-        private Panel panel3;
+        private Panel RentalInfoPanel;
         private Label EmployeeIDLabel;
         private Label DueDateLabel;
         private Label RentalDateLabel;
@@ -548,5 +907,37 @@
         private Label ActiveEmployeeIdLabel;
         private Label ActiveDueDateLabel;
         private Label ActiveRentalDateLabel;
+        private Panel RentalIdPanel;
+        private Label ItemQuantityLabel;
+        private NumericUpDown ItemQtyNumericUpDown;
+        private TabControl ReturnTabControl;
+        private TabPage ReturnSelectionTabPage;
+        private TabPage ReturnCartTabPage;
+        private Button AddToCartButton;
+        private DataGridView ReturnCartDataGridView;
+        private Panel ReturnOrderDetailsPanel;
+        private Label ReturnOrderLabel;
+        private Label OrderLabel2;
+        private Label label3;
+        private Button UpdateButton;
+        private Button RemoveButton;
+        private Label ActiveLateFinesLabel2;
+        private Label EarlyReturnRefundLabel2;
+        private Label ActiveBaseCostLabel2;
+        private Label label9;
+        private Label label10;
+        private Label label11;
+        private Label label12;
+        private Label label13;
+        private Label AmountDueLabel2;
+        private Label label5;
+        private NumericUpDown ItemQtyNumericUpDown2;
+        private Label label15;
+        private Label ActiveFurnitureNameLabel;
+        private Label label17;
+        private Label ActiveFurnitureNameLabel2;
+        private Label ActiveOrderIdLabel2;
+        private Label ActiveRentalIdLabel;
+        private Button ClearButton2;
     }
 }
