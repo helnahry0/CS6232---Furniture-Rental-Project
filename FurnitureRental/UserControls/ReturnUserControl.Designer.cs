@@ -165,7 +165,7 @@
             SearchOrderIdButton.Name = "SearchOrderIdButton";
             SearchOrderIdButton.Size = new Size(146, 29);
             SearchOrderIdButton.TabIndex = 8;
-            SearchOrderIdButton.Text = "Search Order";
+            SearchOrderIdButton.Text = "Select Order";
             SearchOrderIdButton.UseVisualStyleBackColor = true;
             // 
             // OrderIdTextBox
@@ -182,7 +182,7 @@
             SearchRentalIdButton.Name = "SearchRentalIdButton";
             SearchRentalIdButton.Size = new Size(146, 29);
             SearchRentalIdButton.TabIndex = 6;
-            SearchRentalIdButton.Text = "Search Rental";
+            SearchRentalIdButton.Text = "Select Rental";
             SearchRentalIdButton.UseVisualStyleBackColor = true;
             // 
             // RentalIdTextBox
@@ -199,7 +199,7 @@
             SearchMemberButton.Name = "SearchMemberButton";
             SearchMemberButton.Size = new Size(146, 29);
             SearchMemberButton.TabIndex = 4;
-            SearchMemberButton.Text = "SEARCH MEMBER";
+            SearchMemberButton.Text = "Search Member";
             SearchMemberButton.UseVisualStyleBackColor = true;
             // 
             // MemberIDTextBox
@@ -531,7 +531,7 @@
             // 
             // ProcessReturnButton
             // 
-            ProcessReturnButton.Location = new Point(1144, 699);
+            ProcessReturnButton.Location = new Point(167, 580);
             ProcessReturnButton.Name = "ProcessReturnButton";
             ProcessReturnButton.Size = new Size(173, 29);
             ProcessReturnButton.TabIndex = 17;
@@ -590,14 +590,13 @@
             AddToCartButton.Name = "AddToCartButton";
             AddToCartButton.Size = new Size(138, 29);
             AddToCartButton.TabIndex = 21;
-            AddToCartButton.Text = "Add to Cart";
+            AddToCartButton.Text = "Add to Return Cart";
             AddToCartButton.UseVisualStyleBackColor = true;
             // 
             // ReturnCartTabPage
             // 
             ReturnCartTabPage.Controls.Add(ReturnOrderDetailsPanel);
             ReturnCartTabPage.Controls.Add(ReturnCartDataGridView);
-            ReturnCartTabPage.Controls.Add(ProcessReturnButton);
             ReturnCartTabPage.Location = new Point(4, 29);
             ReturnCartTabPage.Name = "ReturnCartTabPage";
             ReturnCartTabPage.Padding = new Padding(3);
@@ -610,6 +609,7 @@
             // 
             ReturnOrderDetailsPanel.Controls.Add(ClearButton2);
             ReturnOrderDetailsPanel.Controls.Add(ActiveFurnitureNameLabel2);
+            ReturnOrderDetailsPanel.Controls.Add(ProcessReturnButton);
             ReturnOrderDetailsPanel.Controls.Add(ActiveOrderIdLabel2);
             ReturnOrderDetailsPanel.Controls.Add(ActiveRentalIdLabel);
             ReturnOrderDetailsPanel.Controls.Add(label15);
@@ -636,7 +636,7 @@
             // 
             // ClearButton2
             // 
-            ClearButton2.Location = new Point(67, 573);
+            ClearButton2.Location = new Point(67, 493);
             ClearButton2.Name = "ClearButton2";
             ClearButton2.Size = new Size(94, 29);
             ClearButton2.TabIndex = 36;
@@ -682,7 +682,7 @@
             // 
             // UpdateButton
             // 
-            UpdateButton.Location = new Point(336, 573);
+            UpdateButton.Location = new Point(336, 493);
             UpdateButton.Name = "UpdateButton";
             UpdateButton.Size = new Size(94, 29);
             UpdateButton.TabIndex = 31;
@@ -691,7 +691,7 @@
             // 
             // RemoveButton
             // 
-            RemoveButton.Location = new Point(202, 573);
+            RemoveButton.Location = new Point(202, 493);
             RemoveButton.Name = "RemoveButton";
             RemoveButton.Size = new Size(94, 29);
             RemoveButton.TabIndex = 30;
