@@ -132,6 +132,12 @@ namespace FurnitureRental.UserControls
             {
                 StringBuilder sb = new StringBuilder();
 
+                sb.AppendLine("Most Popular Furniture Report");
+                sb.AppendLine($"Start Date,\"{dtpStartDate.Value:yyyy-MM-dd}\"");
+                sb.AppendLine($"End Date,\"{dtpEndDate.Value:yyyy-MM-dd}\"");
+                sb.AppendLine($"Generated,\"{DateTime.Now:g}\"");
+                sb.AppendLine();
+
                 // CSV Report Headers
                 for (int i = 0; i < dgvReport.Columns.Count; i++)
                 {
@@ -210,6 +216,9 @@ namespace FurnitureRental.UserControls
 
                 document.Add(title);
 
+                //Add the selected date range (Start Date and End Date)
+                document.Add(new Paragraph($"Start Date: {dtpStartDate.Value:yyyy-MM-dd}"));
+                document.Add(new Paragraph($"End Date: {dtpEndDate.Value:yyyy-MM-dd}"));
                 // Date
                 document.Add(new Paragraph($"Generated: {DateTime.Now:g}"));
                 document.Add(new Paragraph(" "));
