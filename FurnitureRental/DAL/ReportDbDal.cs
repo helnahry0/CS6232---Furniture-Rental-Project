@@ -7,6 +7,14 @@ namespace FurnitureRental.DBL
 {
     public class ReportDbDal
     {
+        /// <summary>
+        /// Gets most popular furniture items for given dates.
+        /// </summary>
+        /// <param name="startDate">Start Date.</param>
+        /// <param name="endDate">End Date.</param>
+        /// <returns>A list of furniture items rented between the start and end date,
+        /// and along with the furniture list, rental transaction count, Total Rental 
+        /// Transactions and age category of members are returned.</returns>
         public List<PopularFurnitureReportItem> GetMostPopularFurnitureDuringDates(
             DateTime startDate,
             DateTime endDate)
