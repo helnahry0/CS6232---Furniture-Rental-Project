@@ -64,6 +64,7 @@
             OrderLabel = new Label();
             OrderSummaryLabel = new Label();
             RentalInfoPanel = new Panel();
+            AddToCartButton = new Button();
             ActiveEmployeeIdLabel = new Label();
             ActiveDueDateLabel = new Label();
             ActiveRentalDateLabel = new Label();
@@ -76,7 +77,6 @@
             RentalIdPanel = new Panel();
             ReturnTabControl = new TabControl();
             ReturnSelectionTabPage = new TabPage();
-            AddToCartButton = new Button();
             ReturnCartTabPage = new TabPage();
             ReturnOrderDetailsPanel = new Panel();
             ClearButton2 = new Button();
@@ -467,6 +467,15 @@
             RentalInfoPanel.Size = new Size(737, 125);
             RentalInfoPanel.TabIndex = 5;
             // 
+            // AddToCartButton
+            // 
+            AddToCartButton.Location = new Point(575, 13);
+            AddToCartButton.Name = "AddToCartButton";
+            AddToCartButton.Size = new Size(138, 29);
+            AddToCartButton.TabIndex = 21;
+            AddToCartButton.Text = "Add to Return Cart";
+            AddToCartButton.UseVisualStyleBackColor = true;
+            // 
             // ActiveEmployeeIdLabel
             // 
             ActiveEmployeeIdLabel.AutoSize = true;
@@ -532,7 +541,7 @@
             // 
             // ProcessReturnButton
             // 
-            ProcessReturnButton.Location = new Point(167, 580);
+            ProcessReturnButton.Location = new Point(167, 545);
             ProcessReturnButton.Name = "ProcessReturnButton";
             ProcessReturnButton.Size = new Size(173, 29);
             ProcessReturnButton.TabIndex = 17;
@@ -553,9 +562,9 @@
             RentalIdPanel.Controls.Add(RentalInfoPanel);
             RentalIdPanel.Controls.Add(SummaryTitleLabel);
             RentalIdPanel.Controls.Add(ReturnDataGridView);
-            RentalIdPanel.Location = new Point(538, 47);
+            RentalIdPanel.Location = new Point(538, 15);
             RentalIdPanel.Name = "RentalIdPanel";
-            RentalIdPanel.Size = new Size(772, 623);
+            RentalIdPanel.Size = new Size(772, 655);
             RentalIdPanel.TabIndex = 19;
             // 
             // ReturnTabControl
@@ -565,7 +574,7 @@
             ReturnTabControl.Location = new Point(14, 14);
             ReturnTabControl.Name = "ReturnTabControl";
             ReturnTabControl.SelectedIndex = 0;
-            ReturnTabControl.Size = new Size(1348, 776);
+            ReturnTabControl.Size = new Size(1348, 705);
             ReturnTabControl.TabIndex = 21;
             // 
             // ReturnSelectionTabPage
@@ -579,19 +588,10 @@
             ReturnSelectionTabPage.Location = new Point(4, 29);
             ReturnSelectionTabPage.Name = "ReturnSelectionTabPage";
             ReturnSelectionTabPage.Padding = new Padding(3);
-            ReturnSelectionTabPage.Size = new Size(1340, 743);
+            ReturnSelectionTabPage.Size = new Size(1340, 672);
             ReturnSelectionTabPage.TabIndex = 0;
             ReturnSelectionTabPage.Text = "Return Selection";
             ReturnSelectionTabPage.UseVisualStyleBackColor = true;
-            // 
-            // AddToCartButton
-            // 
-            AddToCartButton.Location = new Point(575, 80);
-            AddToCartButton.Name = "AddToCartButton";
-            AddToCartButton.Size = new Size(138, 29);
-            AddToCartButton.TabIndex = 21;
-            AddToCartButton.Text = "Add to Return Cart";
-            AddToCartButton.UseVisualStyleBackColor = true;
             // 
             // ReturnCartTabPage
             // 
@@ -600,7 +600,7 @@
             ReturnCartTabPage.Location = new Point(4, 29);
             ReturnCartTabPage.Name = "ReturnCartTabPage";
             ReturnCartTabPage.Padding = new Padding(3);
-            ReturnCartTabPage.Size = new Size(1340, 743);
+            ReturnCartTabPage.Size = new Size(1340, 672);
             ReturnCartTabPage.TabIndex = 1;
             ReturnCartTabPage.Text = "Return Cart";
             ReturnCartTabPage.UseVisualStyleBackColor = true;
@@ -631,7 +631,7 @@
             ReturnOrderDetailsPanel.Controls.Add(ReturnOrderLabel);
             ReturnOrderDetailsPanel.Location = new Point(27, 28);
             ReturnOrderDetailsPanel.Name = "ReturnOrderDetailsPanel";
-            ReturnOrderDetailsPanel.Size = new Size(555, 635);
+            ReturnOrderDetailsPanel.Size = new Size(497, 609);
             ReturnOrderDetailsPanel.TabIndex = 18;
             // 
             // ClearButton2
@@ -828,10 +828,10 @@
             // 
             ReturnCartDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             ReturnCartDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            ReturnCartDataGridView.Location = new Point(653, 28);
+            ReturnCartDataGridView.Location = new Point(542, 28);
             ReturnCartDataGridView.Name = "ReturnCartDataGridView";
             ReturnCartDataGridView.RowHeadersWidth = 51;
-            ReturnCartDataGridView.Size = new Size(664, 635);
+            ReturnCartDataGridView.Size = new Size(775, 609);
             ReturnCartDataGridView.TabIndex = 0;
             // 
             // ReturnUserControl
@@ -840,7 +840,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(ReturnTabControl);
             Name = "ReturnUserControl";
-            Size = new Size(1378, 812);
+            Size = new Size(1378, 735);
             Load += ReturnUserControl_Load;
             ((System.ComponentModel.ISupportInitialize)ReturnDataGridView).EndInit();
             panel1.ResumeLayout(false);
