@@ -75,7 +75,7 @@
             SearchMember.Margin = new Padding(3, 4, 3, 4);
             SearchMember.Name = "SearchMember";
             SearchMember.Padding = new Padding(3, 5, 3, 5);
-            SearchMember.Size = new Size(1385, 707);
+            SearchMember.Size = new Size(1385, 731);
             SearchMember.TabIndex = 0;
             SearchMember.Text = "Search Member";
             SearchMember.UseVisualStyleBackColor = true;
@@ -83,11 +83,11 @@
             // CreateMember
             // 
             CreateMember.Controls.Add(createMemberUserControl1);
-            CreateMember.Location = new Point(4, 29);
+            CreateMember.Location = new Point(4, 34);
             CreateMember.Margin = new Padding(3, 4, 3, 4);
             CreateMember.Name = "CreateMember";
             CreateMember.Padding = new Padding(3, 4, 3, 4);
-            CreateMember.Size = new Size(192, 67);
+            CreateMember.Size = new Size(1385, 731);
             CreateMember.TabIndex = 4;
             CreateMember.Text = "Create Member";
             CreateMember.UseVisualStyleBackColor = true;
@@ -97,7 +97,7 @@
             createMemberUserControl1.Dock = DockStyle.Fill;
             createMemberUserControl1.Location = new Point(3, 4);
             createMemberUserControl1.Name = "createMemberUserControl1";
-            createMemberUserControl1.Size = new Size(186, 59);
+            createMemberUserControl1.Size = new Size(1379, 723);
             createMemberUserControl1.TabIndex = 0;
             // 
             // FurnitureSearch
@@ -128,20 +128,21 @@
             // 
             Cart.Controls.Add(rentalCartUserControl1);
             Cart.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            Cart.Location = new Point(4, 29);
+            Cart.Location = new Point(4, 34);
             Cart.Margin = new Padding(3, 4, 3, 4);
             Cart.Name = "Cart";
-            Cart.Size = new Size(192, 67);
+            Cart.Size = new Size(1385, 731);
             Cart.TabIndex = 2;
             Cart.Text = "Cart";
             Cart.UseVisualStyleBackColor = true;
             // 
             // rentalCartUserControl1
             // 
-            rentalCartUserControl1.Location = new Point(94, 15);
+            rentalCartUserControl1.Dock = DockStyle.Fill;
+            rentalCartUserControl1.Location = new Point(0, 0);
             rentalCartUserControl1.Margin = new Padding(3, 5, 3, 5);
             rentalCartUserControl1.Name = "rentalCartUserControl1";
-            rentalCartUserControl1.Size = new Size(730, 704);
+            rentalCartUserControl1.Size = new Size(1385, 731);
             rentalCartUserControl1.TabIndex = 0;
             // 
             // Returns
@@ -168,21 +169,22 @@
             // Report
             // 
             Report.Controls.Add(adminReportUserControl1);
-            Report.Location = new Point(4, 29);
+            Report.Location = new Point(4, 34);
             Report.Margin = new Padding(3, 4, 3, 4);
             Report.Name = "Report";
             Report.Padding = new Padding(3, 4, 3, 4);
-            Report.Size = new Size(192, 67);
+            Report.Size = new Size(1385, 731);
             Report.TabIndex = 5;
             Report.Text = "Admin Report";
             Report.UseVisualStyleBackColor = true;
             // 
             // adminReportUserControl1
             // 
-            adminReportUserControl1.Location = new Point(14, 16);
+            adminReportUserControl1.Dock = DockStyle.Fill;
+            adminReportUserControl1.Location = new Point(3, 4);
             adminReportUserControl1.Margin = new Padding(3, 5, 3, 5);
             adminReportUserControl1.Name = "adminReportUserControl1";
-            adminReportUserControl1.Size = new Size(1027, 529);
+            adminReportUserControl1.Size = new Size(1379, 723);
             adminReportUserControl1.TabIndex = 0;
             // 
             // lblMainForm
