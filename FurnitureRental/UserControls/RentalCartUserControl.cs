@@ -1,7 +1,5 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
-using Microsoft.Data.SqlClient;
-using Microsoft.VisualBasic;
 
 namespace FurnitureRental.UserControls
 {

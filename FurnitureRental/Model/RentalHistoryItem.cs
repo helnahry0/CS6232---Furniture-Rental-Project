@@ -1,6 +1,4 @@
-﻿using Microsoft.VisualBasic;
-
-namespace FurnitureRental.Model
+﻿namespace FurnitureRental.Model
 {
     /// <summary>
     /// Represents an item shown in rental history detail.

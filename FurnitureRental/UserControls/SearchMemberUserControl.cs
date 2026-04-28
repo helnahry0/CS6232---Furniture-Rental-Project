@@ -2,12 +2,21 @@
 using FurnitureRental.Model;
 using FurnitureRental.View;
 
+/// <summary>
+/// FurnitureRental.UserControls namespace contains user controls for the Furniture Rental application, including the SearchMemberUserControl which allows users to search for members by various criteria and view their rental and return history.
+/// </summary>
 namespace FurnitureRental.UserControls
 {
+    /// <summary>
+    /// class SearchMemberUserControl is a user control that provides a form for searching members in the furniture rental application. It includes fields for member ID, phone number, and full name, and allows viewing rental and return history.
+    /// </summary>
     public partial class SearchMemberUserControl : UserControl
     {
         private readonly MemberController _memberController;
 
+        /// <summary>
+        /// Initializes a new instance of the <see cref="SearchMemberUserControl"/> class.
+        /// </summary>
         public SearchMemberUserControl()
         {
             InitializeComponent();
@@ -234,7 +243,7 @@ namespace FurnitureRental.UserControls
 
             btnSearch.PerformClick();
         }
-       
+
         /// <summary>
         /// Loads all members.
         /// </summary>

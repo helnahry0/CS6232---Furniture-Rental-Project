@@ -240,8 +240,8 @@ namespace FurnitureRental.UserControls
                 MessageBox.Show("Selected Item Not in Stock.");
                 return;
             }
-            
-            RentalCart?.AddToCart(furniture, qty);            
+
+            RentalCart?.AddToCart(furniture, qty);
         }
     }
 }

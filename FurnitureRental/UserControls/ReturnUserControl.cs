@@ -390,7 +390,7 @@ namespace FurnitureRental.UserControls
             if (_selectedCartItem == null) return;
 
             _selectedCartItem.QuantityToReturn = (int)ItemQtyNumericUpDown2.Value;
-            _selectedCartItem.FineOrRefundAmount = CalculateFineOrRefund(_selectedCartItem.RentalDate, _selectedCartItem.DueDate, 
+            _selectedCartItem.FineOrRefundAmount = CalculateFineOrRefund(_selectedCartItem.RentalDate, _selectedCartItem.DueDate,
                                                     _selectedCartItem.ReturnDate, _selectedCartItem.DailyRentalRate, _selectedCartItem.QuantityToReturn);
             RefreshCartGrid();
         }

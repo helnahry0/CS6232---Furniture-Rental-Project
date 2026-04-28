@@ -263,7 +263,7 @@ namespace FurnitureRental.DAL
             ReturnTransaction returnTransaction,
             SqlConnection connection,
             SqlTransaction dbTransaction)
-          {
+        {
             const string query = @"
                 INSERT INTO dbo.ReturnTransaction
                 (

@@ -2,8 +2,15 @@
 using FurnitureRental.Model;
 using System.Text.RegularExpressions;
 
+/// <summary>
+/// User control for creating a new member.
+/// </summary>
 namespace FurnitureRental.UserControls
 {
+    /// <summary>
+    /// class CreateMemberUserControl is a user control that provides a form for creating a new member in the furniture rental application. It includes fields for first name, last name, date of birth
+    /// </summary>
+    /// <seealso cref="System.Windows.Forms.UserControl" />
     public partial class CreateMemberUserControl : UserControl
     {
         private readonly MemberController _memberController = new MemberController();

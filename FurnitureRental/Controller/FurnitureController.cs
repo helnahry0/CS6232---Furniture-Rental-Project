@@ -53,16 +53,18 @@ namespace FurnitureRental.Controller
         /// Gets the categories.
         /// </summary>
         /// <returns></returns>
-        public DataTable GetCategories() {
-           return _furnitureDbDal.GetCategories();
+        public DataTable GetCategories()
+        {
+            return _furnitureDbDal.GetCategories();
         }
 
         /// <summary>
         /// Gets the styles.
         /// </summary>
         /// <returns></returns>
-        public DataTable GetStyles() { 
-            return _furnitureDbDal.GetStyles(); 
+        public DataTable GetStyles()
+        {
+            return _furnitureDbDal.GetStyles();
         }
 
 

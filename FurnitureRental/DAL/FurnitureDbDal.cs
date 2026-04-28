@@ -147,7 +147,7 @@ namespace FurnitureRental.DAL
             return furnitureList;
         }
 
-        
+
         /// <summary>
         /// Helper method to map a database row to a Furniture object.
         /// </summary>

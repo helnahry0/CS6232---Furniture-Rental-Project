@@ -19,12 +19,12 @@ namespace FurnitureRental.DBL
             DateTime startDate,
             DateTime endDate)
         {
-            List<PopularFurnitureReportItem> results = new();           
+            List<PopularFurnitureReportItem> results = new();
 
 
             using SqlConnection connection = new SqlConnection(FurnitureRentalDBConnectionString.GetConnectionString());
             using SqlCommand command = new SqlCommand("dbo.getMostPopularFurnitureDuringDates", connection);
-            
+
             command.CommandType = CommandType.StoredProcedure;
             command.Parameters.Add("@StartDate", SqlDbType.Date).Value = startDate.Date;
             command.Parameters.Add("@EndDate", SqlDbType.Date).Value = endDate.Date;
