@@ -11,7 +11,7 @@
         /// <value>
         /// The furniture identifier.
         /// </value>
-/        public int FurnitureId { get; set; }
+        public int FurnitureId { get; set; }
         /// <summary>
         /// Gets or sets the name.
         /// </summary>
