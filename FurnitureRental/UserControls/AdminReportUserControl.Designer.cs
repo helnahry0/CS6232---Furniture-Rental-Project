@@ -95,7 +95,6 @@
             // 
             // btnGenerateReport
             // 
-            btnGenerateReport.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnGenerateReport.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnGenerateReport.Location = new Point(782, 74);
             btnGenerateReport.Margin = new Padding(3, 4, 3, 4);

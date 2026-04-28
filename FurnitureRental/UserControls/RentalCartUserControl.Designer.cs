@@ -381,8 +381,8 @@
             // 
             dtpRentalDate.CustomFormat = "yyyy-MM-dd";
             dtpRentalDate.Format = DateTimePickerFormat.Custom;
-            dtpRentalDate.Location = new Point(131, 128);
-            dtpRentalDate.Margin = new Padding(3, 4, 3, 4);
+            dtpRentalDate.Location = new Point(133, 128);
+            dtpRentalDate.Margin = new Padding(5, 4, 3, 4);
             dtpRentalDate.Name = "dtpRentalDate";
             dtpRentalDate.Size = new Size(164, 27);
             dtpRentalDate.TabIndex = 21;

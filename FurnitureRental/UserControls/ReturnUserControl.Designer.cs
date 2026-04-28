@@ -454,7 +454,6 @@
             // 
             // RentalInfoPanel
             // 
-            RentalInfoPanel.Controls.Add(AddToCartButton);
             RentalInfoPanel.Controls.Add(ActiveEmployeeIdLabel);
             RentalInfoPanel.Controls.Add(ActiveDueDateLabel);
             RentalInfoPanel.Controls.Add(ActiveRentalDateLabel);
@@ -469,7 +468,7 @@
             // 
             // AddToCartButton
             // 
-            AddToCartButton.Location = new Point(575, 13);
+            AddToCartButton.Location = new Point(593, 573);
             AddToCartButton.Name = "AddToCartButton";
             AddToCartButton.Size = new Size(138, 29);
             AddToCartButton.TabIndex = 21;
@@ -559,6 +558,7 @@
             // 
             // RentalIdPanel
             // 
+            RentalIdPanel.Controls.Add(AddToCartButton);
             RentalIdPanel.Controls.Add(RentalInfoPanel);
             RentalIdPanel.Controls.Add(SummaryTitleLabel);
             RentalIdPanel.Controls.Add(ReturnDataGridView);
