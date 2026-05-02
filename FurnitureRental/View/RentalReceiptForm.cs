@@ -1,4 +1,6 @@
 ﻿using FurnitureRental.Model;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace FurnitureRental.View
 {
@@ -19,42 +21,77 @@ namespace FurnitureRental.View
 
             Text = "Rental Receipt";
             StartPosition = FormStartPosition.CenterParent;
-            Size = new Size(850, 500);
+            MinimumSize = new Size(800, 500);
+            Size = new Size(900, 550);
+
+            InitializeLayout();
+        }
+
+        private void InitializeLayout()
+        {
+            TableLayoutPanel mainLayout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                ColumnCount = 1,
+                RowCount = 4,
+                Padding = new Padding(15)
+            };
+
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.Percent, 100F));
+            mainLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
             Label lblHeader = new Label
             {
                 Text = "Rental Receipt",
                 Font = new Font("Segoe UI", 16, FontStyle.Bold),
                 AutoSize = true,
-                Location = new Point(20, 20)
+                Dock = DockStyle.Fill,
+                Margin = new Padding(3, 3, 3, 12)
             };
+
+            TableLayoutPanel detailsLayout = new TableLayoutPanel
+            {
+                Dock = DockStyle.Top,
+                AutoSize = true,
+                ColumnCount = 1,
+                RowCount = 5,
+                Margin = new Padding(0, 0, 0, 12)
+            };
+
+            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
+            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
             Label lblRentalId = new Label
             {
                 Text = $"Rental Transaction ID: {_transaction.RentalTransactionId}",
                 AutoSize = true,
-                Location = new Point(20, 70)
+                Margin = new Padding(3, 3, 3, 6)
             };
 
             Label lblMemberId = new Label
             {
                 Text = $"Member ID: {_transaction.MemberId}",
                 AutoSize = true,
-                Location = new Point(20, 95)
+                Margin = new Padding(3, 3, 3, 6)
             };
 
             Label lblEmployeeId = new Label
             {
                 Text = $"Employee ID: {_transaction.EmployeeId}",
                 AutoSize = true,
-                Location = new Point(20, 120)
+                Margin = new Padding(3, 3, 3, 6)
             };
 
             Label lblDueDate = new Label
             {
                 Text = $"Due Date: {_transaction.DueDate:d}",
                 AutoSize = true,
-                Location = new Point(20, 145)
+                Margin = new Padding(3, 3, 3, 6)
             };
 
             Label lblTotalCost = new Label
@@ -62,18 +99,24 @@ namespace FurnitureRental.View
                 Text = $"Total Cost: {_transaction.TotalCost:C}",
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 AutoSize = true,
-                Location = new Point(20, 170)
+                Margin = new Padding(3, 3, 3, 6)
             };
+
+            detailsLayout.Controls.Add(lblRentalId, 0, 0);
+            detailsLayout.Controls.Add(lblMemberId, 0, 1);
+            detailsLayout.Controls.Add(lblEmployeeId, 0, 2);
+            detailsLayout.Controls.Add(lblDueDate, 0, 3);
+            detailsLayout.Controls.Add(lblTotalCost, 0, 4);
 
             DataGridView dgvReceipt = new DataGridView
             {
-                Location = new Point(20, 210),
-                Size = new Size(790, 180),
+                Dock = DockStyle.Fill,
                 ReadOnly = true,
                 AllowUserToAddRows = false,
                 AllowUserToDeleteRows = false,
                 AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill,
-                RowHeadersVisible = false
+                RowHeadersVisible = false,
+                Margin = new Padding(0, 0, 0, 12)
             };
 
             dgvReceipt.Columns.Add("FurnitureId", "Item ID");
@@ -94,22 +137,30 @@ namespace FurnitureRental.View
                     item.LineTotal.ToString("C"));
             }
 
+            FlowLayoutPanel buttonPanel = new FlowLayoutPanel
+            {
+                Dock = DockStyle.Fill,
+                FlowDirection = FlowDirection.RightToLeft,
+                AutoSize = true,
+                WrapContents = false
+            };
+
             Button btnClose = new Button
             {
                 Text = "Close",
-                Location = new Point(710, 410),
-                Size = new Size(100, 30)
+                AutoSize = true,
+                Padding = new Padding(12, 4, 12, 4)
             };
             btnClose.Click += (s, e) => Close();
 
-            Controls.Add(lblHeader);
-            Controls.Add(lblRentalId);
-            Controls.Add(lblMemberId);
-            Controls.Add(lblEmployeeId);
-            Controls.Add(lblDueDate);
-            Controls.Add(lblTotalCost);
-            Controls.Add(dgvReceipt);
-            Controls.Add(btnClose);
+            buttonPanel.Controls.Add(btnClose);
+
+            mainLayout.Controls.Add(lblHeader, 0, 0);
+            mainLayout.Controls.Add(detailsLayout, 0, 1);
+            mainLayout.Controls.Add(dgvReceipt, 0, 2);
+            mainLayout.Controls.Add(buttonPanel, 0, 3);
+
+            Controls.Add(mainLayout);
         }
     }
 }
