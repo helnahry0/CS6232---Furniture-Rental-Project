@@ -52,45 +52,45 @@
             // 
             FurnitureSearchLabel.AutoSize = true;
             FurnitureSearchLabel.Font = new Font("Segoe UI", 10.8F, FontStyle.Underline, GraphicsUnit.Point, 0);
-            FurnitureSearchLabel.Location = new Point(21, 32);
+            FurnitureSearchLabel.Location = new Point(18, 24);
             FurnitureSearchLabel.Name = "FurnitureSearchLabel";
-            FurnitureSearchLabel.Size = new Size(139, 25);
+            FurnitureSearchLabel.Size = new Size(115, 20);
             FurnitureSearchLabel.TabIndex = 0;
             FurnitureSearchLabel.Text = "Furniture Search";
             // 
             // CategoryLabel
             // 
             CategoryLabel.AutoSize = true;
-            CategoryLabel.Location = new Point(22, 113);
+            CategoryLabel.Location = new Point(19, 85);
             CategoryLabel.Name = "CategoryLabel";
-            CategoryLabel.Size = new Size(84, 20);
+            CategoryLabel.Size = new Size(67, 15);
             CategoryLabel.TabIndex = 1;
             CategoryLabel.Text = "Category   :";
             // 
             // StyleLabel
             // 
             StyleLabel.AutoSize = true;
-            StyleLabel.Location = new Point(21, 169);
+            StyleLabel.Location = new Point(18, 127);
             StyleLabel.Name = "StyleLabel";
-            StyleLabel.Size = new Size(84, 20);
+            StyleLabel.Size = new Size(65, 15);
             StyleLabel.TabIndex = 2;
             StyleLabel.Text = "Style          :";
             // 
             // FurnitureIdLabel
             // 
             FurnitureIdLabel.AutoSize = true;
-            FurnitureIdLabel.Location = new Point(17, 226);
+            FurnitureIdLabel.Location = new Point(15, 170);
             FurnitureIdLabel.Name = "FurnitureIdLabel";
-            FurnitureIdLabel.Size = new Size(89, 20);
+            FurnitureIdLabel.Size = new Size(72, 15);
             FurnitureIdLabel.TabIndex = 3;
             FurnitureIdLabel.Text = "Furniture ID:";
             // 
             // FurnitureNameLabel
             // 
             FurnitureNameLabel.AutoSize = true;
-            FurnitureNameLabel.Location = new Point(20, 290);
+            FurnitureNameLabel.Location = new Point(18, 218);
             FurnitureNameLabel.Name = "FurnitureNameLabel";
-            FurnitureNameLabel.Size = new Size(114, 20);
+            FurnitureNameLabel.Size = new Size(93, 15);
             FurnitureNameLabel.TabIndex = 4;
             FurnitureNameLabel.Text = "Furniture Name:";
             // 
@@ -98,49 +98,55 @@
             // 
             CategoryComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             CategoryComboBox.FormattingEnabled = true;
-            CategoryComboBox.Location = new Point(151, 113);
+            CategoryComboBox.Location = new Point(132, 85);
+            CategoryComboBox.Margin = new Padding(3, 2, 3, 2);
             CategoryComboBox.Name = "CategoryComboBox";
-            CategoryComboBox.Size = new Size(215, 28);
+            CategoryComboBox.Size = new Size(189, 23);
             CategoryComboBox.TabIndex = 5;
             // 
             // StyleComboBox
             // 
             StyleComboBox.DropDownStyle = ComboBoxStyle.DropDownList;
             StyleComboBox.FormattingEnabled = true;
-            StyleComboBox.Location = new Point(151, 169);
+            StyleComboBox.Location = new Point(132, 127);
+            StyleComboBox.Margin = new Padding(3, 2, 3, 2);
             StyleComboBox.Name = "StyleComboBox";
-            StyleComboBox.Size = new Size(215, 28);
+            StyleComboBox.Size = new Size(189, 23);
             StyleComboBox.TabIndex = 6;
             // 
             // FurnitureIdTextBox
             // 
-            FurnitureIdTextBox.Location = new Point(151, 226);
+            FurnitureIdTextBox.Location = new Point(132, 170);
+            FurnitureIdTextBox.Margin = new Padding(3, 2, 3, 2);
             FurnitureIdTextBox.Name = "FurnitureIdTextBox";
-            FurnitureIdTextBox.Size = new Size(215, 27);
+            FurnitureIdTextBox.Size = new Size(189, 23);
             FurnitureIdTextBox.TabIndex = 7;
             // 
             // FurnitureNameTextBox
             // 
-            FurnitureNameTextBox.Location = new Point(163, 290);
+            FurnitureNameTextBox.Location = new Point(143, 218);
+            FurnitureNameTextBox.Margin = new Padding(3, 2, 3, 2);
             FurnitureNameTextBox.Name = "FurnitureNameTextBox";
             FurnitureNameTextBox.ReadOnly = true;
-            FurnitureNameTextBox.Size = new Size(199, 27);
+            FurnitureNameTextBox.Size = new Size(175, 23);
             FurnitureNameTextBox.TabIndex = 8;
             // 
             // SearchButton
             // 
-            SearchButton.Location = new Point(22, 452);
+            SearchButton.Location = new Point(19, 339);
+            SearchButton.Margin = new Padding(3, 2, 3, 2);
             SearchButton.Name = "SearchButton";
-            SearchButton.Size = new Size(94, 29);
+            SearchButton.Size = new Size(82, 22);
             SearchButton.TabIndex = 9;
             SearchButton.Text = "Search";
             SearchButton.UseVisualStyleBackColor = true;
             // 
             // AddToCartButton
             // 
-            AddToCartButton.Location = new Point(234, 452);
+            AddToCartButton.Location = new Point(205, 339);
+            AddToCartButton.Margin = new Padding(3, 2, 3, 2);
             AddToCartButton.Name = "AddToCartButton";
-            AddToCartButton.Size = new Size(149, 29);
+            AddToCartButton.Size = new Size(130, 22);
             AddToCartButton.TabIndex = 10;
             AddToCartButton.Text = "Add To Cart";
             AddToCartButton.UseVisualStyleBackColor = true;
@@ -163,16 +169,18 @@
             FurnSearchPanel.Controls.Add(StyleLabel);
             FurnSearchPanel.Controls.Add(SearchButton);
             FurnSearchPanel.Controls.Add(CategoryLabel);
-            FurnSearchPanel.Location = new Point(27, 26);
+            FurnSearchPanel.Location = new Point(24, 20);
+            FurnSearchPanel.Margin = new Padding(3, 2, 3, 2);
             FurnSearchPanel.Name = "FurnSearchPanel";
-            FurnSearchPanel.Size = new Size(439, 597);
+            FurnSearchPanel.Size = new Size(375, 448);
             FurnSearchPanel.TabIndex = 1;
             // 
             // ClearButton
             // 
-            ClearButton.Location = new Point(130, 452);
+            ClearButton.Location = new Point(114, 339);
+            ClearButton.Margin = new Padding(3, 2, 3, 2);
             ClearButton.Name = "ClearButton";
-            ClearButton.Size = new Size(94, 29);
+            ClearButton.Size = new Size(82, 22);
             ClearButton.TabIndex = 13;
             ClearButton.Text = "Clear";
             ClearButton.UseVisualStyleBackColor = true;
@@ -181,42 +189,41 @@
             // AddDescriptionLabel
             // 
             AddDescriptionLabel.AutoSize = true;
-            AddDescriptionLabel.Location = new Point(27, 370);
+            AddDescriptionLabel.Location = new Point(24, 278);
             AddDescriptionLabel.Name = "AddDescriptionLabel";
-            AddDescriptionLabel.Size = new Size(171, 20);
+            AddDescriptionLabel.Size = new Size(136, 15);
             AddDescriptionLabel.TabIndex = 12;
             AddDescriptionLabel.Text = "description of item here.";
             // 
             // DescriptionLabel
             // 
             DescriptionLabel.AutoSize = true;
-            DescriptionLabel.Location = new Point(20, 344);
+            DescriptionLabel.Location = new Point(18, 258);
             DescriptionLabel.Name = "DescriptionLabel";
-            DescriptionLabel.Size = new Size(96, 20);
+            DescriptionLabel.Size = new Size(76, 15);
             DescriptionLabel.TabIndex = 11;
             DescriptionLabel.Text = "Description : ";
             // 
             // FurnitureDataGridView
             // 
-            FurnitureDataGridView.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             FurnitureDataGridView.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             FurnitureDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            FurnitureDataGridView.Location = new Point(472, 26);
+            FurnitureDataGridView.Location = new Point(450, 0);
+            FurnitureDataGridView.Margin = new Padding(3, 2, 3, 2);
             FurnitureDataGridView.Name = "FurnitureDataGridView";
             FurnitureDataGridView.RowHeadersWidth = 51;
-            FurnitureDataGridView.Size = new Size(752, 597);
+            FurnitureDataGridView.Size = new Size(751, 484);
             FurnitureDataGridView.TabIndex = 0;
             // 
             // FurnitureSearchUiUserControl
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             Controls.Add(FurnitureDataGridView);
             Controls.Add(FurnSearchPanel);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "FurnitureSearchUiUserControl";
-            Size = new Size(1237, 645);
+            Size = new Size(1201, 484);
             FurnSearchPanel.ResumeLayout(false);
             FurnSearchPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)FurnitureDataGridView).EndInit();

@@ -106,7 +106,7 @@ namespace FurnitureRental.DAL
         /// </summary>
         /// <param name="phone">The phone.</param>
         /// <returns></returns>
-        public Member? GetMemberByPhone(string phone)
+        public List<Member> GetMembersByPhone(string phone)
         {
             const string query = @"
                 SELECT
@@ -134,12 +134,12 @@ namespace FurnitureRental.DAL
 
             using SqlDataReader reader = command.ExecuteReader();
 
-            if (!reader.Read())
+            List<Member> members = new List<Member>();
+            while (reader.Read())
             {
-                return null;
+                members.Add(CreateMember(reader));
             }
-
-            return CreateMember(reader);
+            return members;
         }
 
         /// <summary>

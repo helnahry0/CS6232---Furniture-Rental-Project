@@ -48,6 +48,7 @@ namespace FurnitureRental.View
 
             SearchMember.Controls.Clear();
             SearchMember.Controls.Add(searchControl);
+            createMemberUserControl1.MemberCreated += (s, e) => searchControl.LoadAllMembers();
         }
 
         /// <summary>
@@ -70,5 +71,7 @@ namespace FurnitureRental.View
                 DialogResult = DialogResult.Cancel;
             }
         }
+
+
     }
 }

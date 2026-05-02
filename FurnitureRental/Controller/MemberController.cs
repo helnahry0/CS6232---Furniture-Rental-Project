@@ -142,9 +142,9 @@ namespace FurnitureRental.Controller
         /// <param name="member">The member.</param>
         /// <param name="errorMessage">The error message.</param>
         /// <returns></returns>
-        public bool TrySearchByPhone(string phoneInput, out Member? member, out string errorMessage)
+        public bool TrySearchByPhone(string phoneInput, out List<Member> members, out string errorMessage)
         {
-            member = null;
+            members = null;
             errorMessage = string.Empty;
 
             if (string.IsNullOrWhiteSpace(phoneInput))
@@ -159,9 +159,9 @@ namespace FurnitureRental.Controller
                 return false;
             }
 
-            member = _memberDbDal.GetMemberByPhone(phoneInput);
+            members = _memberDbDal.GetMembersByPhone(phoneInput);
 
-            if (member == null)
+            if (members == null)
             {
                 errorMessage = "No member was found with that phone number.";
                 return false;

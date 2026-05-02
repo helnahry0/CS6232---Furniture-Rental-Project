@@ -24,6 +24,8 @@ namespace FurnitureRental.UserControls
         private Label _stateError = new Label();
         private Label _zipError = new Label();
 
+        public event EventHandler? MemberCreated;
+
         /// <summary>
         /// Initializes a new instance of the <see cref="CreateMemberUserControl"/> class.
         /// </summary>
@@ -196,6 +198,7 @@ namespace FurnitureRental.UserControls
                     );
 
                     ClearAllFields();
+                    MemberCreated?.Invoke(this, EventArgs.Empty);
                 }
                 else
                 {

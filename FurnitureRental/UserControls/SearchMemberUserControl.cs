@@ -177,10 +177,10 @@ namespace FurnitureRental.UserControls
             {
                 if (_memberController.TrySearchByPhone(
                     txtPhoneNumber.Text.Trim(),
-                    out Member? member,
+                    out List<Member> members,
                     out string errorMessage))
                 {
-                    dgvMembers.DataSource = new List<Member> { member! };
+                    dgvMembers.DataSource = members;
                 }
                 else
                 {
@@ -247,7 +247,7 @@ namespace FurnitureRental.UserControls
         /// <summary>
         /// Loads all members.
         /// </summary>
-        private void LoadAllMembers()
+        public void LoadAllMembers()
         {
             dgvMembers.DataSource = null;
             dgvMembers.DataSource = _memberController.GetAllMembers();
