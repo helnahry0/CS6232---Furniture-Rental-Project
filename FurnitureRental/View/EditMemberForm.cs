@@ -210,6 +210,11 @@ namespace FurnitureRental.View
                 ShowError(_zipError, "Zip code is required.");
                 isValid = false;
             }
+            else if (txtZip.Text.Trim().Length > 5)
+            {
+                ShowError(_zipError, "Zip code mst be 5 digits.");
+                isValid = false;
+            }
 
             return isValid;
         }

@@ -61,7 +61,7 @@ namespace FurnitureRental.View
             lblMemberID.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblMemberID.Location = new Point(52, 20);
             lblMemberID.Name = "lblMemberID";
-            lblMemberID.Size = new Size(101, 23);
+            lblMemberID.Size = new Size(79, 17);
             lblMemberID.TabIndex = 41;
             lblMemberID.Text = "Member ID:";
             lblMemberID.Click += label1_Click;
@@ -72,7 +72,7 @@ namespace FurnitureRental.View
             lblFirstName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblFirstName.Location = new Point(52, 56);
             lblFirstName.Name = "lblFirstName";
-            lblFirstName.Size = new Size(97, 23);
+            lblFirstName.Size = new Size(77, 17);
             lblFirstName.TabIndex = 31;
             lblFirstName.Text = "First Name:";
             // 
@@ -82,7 +82,7 @@ namespace FurnitureRental.View
             lblLastName.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblLastName.Location = new Point(52, 93);
             lblLastName.Name = "lblLastName";
-            lblLastName.Size = new Size(95, 23);
+            lblLastName.Size = new Size(75, 17);
             lblLastName.TabIndex = 32;
             lblLastName.Text = "Last Name:";
             // 
@@ -92,7 +92,7 @@ namespace FurnitureRental.View
             lblGender.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblGender.Location = new Point(52, 125);
             lblGender.Name = "lblGender";
-            lblGender.Size = new Size(71, 23);
+            lblGender.Size = new Size(56, 17);
             lblGender.TabIndex = 33;
             lblGender.Text = "Gender:";
             // 
@@ -102,7 +102,7 @@ namespace FurnitureRental.View
             lblDOB.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblDOB.Location = new Point(52, 160);
             lblDOB.Name = "lblDOB";
-            lblDOB.Size = new Size(49, 23);
+            lblDOB.Size = new Size(38, 17);
             lblDOB.TabIndex = 34;
             lblDOB.Text = "DOB:";
             // 
@@ -112,7 +112,7 @@ namespace FurnitureRental.View
             lblAddress.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblAddress.Location = new Point(51, 228);
             lblAddress.Name = "lblAddress";
-            lblAddress.Size = new Size(81, 23);
+            lblAddress.Size = new Size(65, 17);
             lblAddress.TabIndex = 36;
             lblAddress.Text = "Address1:";
             // 
@@ -122,7 +122,7 @@ namespace FurnitureRental.View
             lblCity.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblCity.Location = new Point(51, 300);
             lblCity.Name = "lblCity";
-            lblCity.Size = new Size(44, 23);
+            lblCity.Size = new Size(34, 17);
             lblCity.TabIndex = 38;
             lblCity.Text = "City:";
             // 
@@ -132,7 +132,7 @@ namespace FurnitureRental.View
             lblState.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblState.Location = new Point(51, 331);
             lblState.Name = "lblState";
-            lblState.Size = new Size(53, 23);
+            lblState.Size = new Size(42, 17);
             lblState.TabIndex = 39;
             lblState.Text = "State:";
             // 
@@ -142,7 +142,7 @@ namespace FurnitureRental.View
             lblPhone.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblPhone.Location = new Point(51, 191);
             lblPhone.Name = "lblPhone";
-            lblPhone.Size = new Size(63, 23);
+            lblPhone.Size = new Size(50, 17);
             lblPhone.TabIndex = 35;
             lblPhone.Text = "Phone:";
             // 
@@ -179,7 +179,7 @@ namespace FurnitureRental.View
             txtMemberId.Location = new Point(159, 15);
             txtMemberId.Name = "txtMemberId";
             txtMemberId.ReadOnly = true;
-            txtMemberId.Size = new Size(152, 34);
+            txtMemberId.Size = new Size(152, 29);
             txtMemberId.TabIndex = 41;
             txtMemberId.TabStop = false;
             // 
@@ -189,7 +189,7 @@ namespace FurnitureRental.View
             txtFirstName.Font = new Font("Segoe UI", 12F);
             txtFirstName.Location = new Point(158, 51);
             txtFirstName.Name = "txtFirstName";
-            txtFirstName.Size = new Size(266, 34);
+            txtFirstName.Size = new Size(266, 29);
             txtFirstName.TabIndex = 1;
             // 
             // txtLastName
@@ -198,7 +198,7 @@ namespace FurnitureRental.View
             txtLastName.Font = new Font("Segoe UI", 12F);
             txtLastName.Location = new Point(159, 88);
             txtLastName.Name = "txtLastName";
-            txtLastName.Size = new Size(265, 34);
+            txtLastName.Size = new Size(265, 29);
             txtLastName.TabIndex = 2;
             // 
             // txtAddress1
@@ -207,7 +207,7 @@ namespace FurnitureRental.View
             txtAddress1.Font = new Font("Segoe UI", 12F);
             txtAddress1.Location = new Point(160, 228);
             txtAddress1.Name = "txtAddress1";
-            txtAddress1.Size = new Size(264, 34);
+            txtAddress1.Size = new Size(264, 29);
             txtAddress1.TabIndex = 6;
             // 
             // txtCity
@@ -216,7 +216,7 @@ namespace FurnitureRental.View
             txtCity.Font = new Font("Segoe UI", 12F);
             txtCity.Location = new Point(159, 297);
             txtCity.Name = "txtCity";
-            txtCity.Size = new Size(184, 34);
+            txtCity.Size = new Size(184, 29);
             txtCity.TabIndex = 8;
             // 
             // txtPhone
@@ -225,7 +225,7 @@ namespace FurnitureRental.View
             txtPhone.Font = new Font("Segoe UI", 12F);
             txtPhone.Location = new Point(160, 191);
             txtPhone.Name = "txtPhone";
-            txtPhone.Size = new Size(132, 34);
+            txtPhone.Size = new Size(132, 29);
             txtPhone.TabIndex = 5;
             // 
             // cboGender
@@ -235,7 +235,7 @@ namespace FurnitureRental.View
             cboGender.Items.AddRange(new object[] { "Male", "Female" });
             cboGender.Location = new Point(159, 125);
             cboGender.Name = "cboGender";
-            cboGender.Size = new Size(153, 36);
+            cboGender.Size = new Size(153, 29);
             cboGender.TabIndex = 3;
             // 
             // cboState
@@ -244,7 +244,7 @@ namespace FurnitureRental.View
             cboState.FormattingEnabled = true;
             cboState.Location = new Point(159, 331);
             cboState.Name = "cboState";
-            cboState.Size = new Size(133, 36);
+            cboState.Size = new Size(133, 29);
             cboState.TabIndex = 9;
             // 
             // lblAddress2
@@ -253,7 +253,7 @@ namespace FurnitureRental.View
             lblAddress2.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAddress2.Location = new Point(49, 266);
             lblAddress2.Name = "lblAddress2";
-            lblAddress2.Size = new Size(83, 23);
+            lblAddress2.Size = new Size(67, 17);
             lblAddress2.TabIndex = 37;
             lblAddress2.Text = "Address2:";
             // 
@@ -263,7 +263,7 @@ namespace FurnitureRental.View
             txtAddress2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txtAddress2.Location = new Point(159, 264);
             txtAddress2.Name = "txtAddress2";
-            txtAddress2.Size = new Size(265, 34);
+            txtAddress2.Size = new Size(265, 29);
             txtAddress2.TabIndex = 7;
             // 
             // dtpDOB
@@ -277,7 +277,7 @@ namespace FurnitureRental.View
             dtpDOB.MaxDate = new DateTime(2200, 12, 31, 0, 0, 0, 0);
             dtpDOB.MinDate = new DateTime(1900, 1, 1, 0, 0, 0, 0);
             dtpDOB.Name = "dtpDOB";
-            dtpDOB.Size = new Size(153, 29);
+            dtpDOB.Size = new Size(153, 25);
             dtpDOB.TabIndex = 4;
             // 
             // txtZip
@@ -285,8 +285,9 @@ namespace FurnitureRental.View
             txtZip.BorderStyle = BorderStyle.FixedSingle;
             txtZip.Font = new Font("Segoe UI", 12F);
             txtZip.Location = new Point(160, 368);
+            txtZip.MaxLength = 5;
             txtZip.Name = "txtZip";
-            txtZip.Size = new Size(132, 34);
+            txtZip.Size = new Size(132, 29);
             txtZip.TabIndex = 10;
             // 
             // lblZip
@@ -295,13 +296,13 @@ namespace FurnitureRental.View
             lblZip.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold);
             lblZip.Location = new Point(51, 368);
             lblZip.Name = "lblZip";
-            lblZip.Size = new Size(79, 23);
+            lblZip.Size = new Size(62, 17);
             lblZip.TabIndex = 40;
             lblZip.Text = "Zip Code";
             // 
             // EditMemberForm
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(7F, 17F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(642, 474);
             Controls.Add(txtZip);
