@@ -29,37 +29,39 @@
             lblMemberInfo = new Label();
             lblError = new Label();
             pnlTop = new Panel();
-            pnlBottom = new Panel();
+            tblMain = new TableLayoutPanel();
             grpTransactions = new GroupBox();
             dgvRentalTransactions = new DataGridView();
             grpItems = new GroupBox();
             dgvRentalItems = new DataGridView();
+            pnlFooter = new Panel();
             btnClose = new Button();
             pnlTop.SuspendLayout();
-            pnlBottom.SuspendLayout();
+            tblMain.SuspendLayout();
             grpTransactions.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRentalTransactions).BeginInit();
             grpItems.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvRentalItems).BeginInit();
+            pnlFooter.SuspendLayout();
             SuspendLayout();
             // 
             // lblTitle
             // 
             lblTitle.AutoSize = true;
-            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold, GraphicsUnit.Point);
+            lblTitle.Font = new Font("Segoe UI", 16F, FontStyle.Bold);
             lblTitle.Location = new Point(20, 15);
             lblTitle.Name = "lblTitle";
-            lblTitle.Size = new Size(155, 30);
+            lblTitle.Size = new Size(161, 30);
             lblTitle.TabIndex = 0;
             lblTitle.Text = "Rental History";
             // 
             // lblMemberInfo
             // 
             lblMemberInfo.AutoSize = true;
-            lblMemberInfo.Font = new Font("Segoe UI", 10F, FontStyle.Regular, GraphicsUnit.Point);
+            lblMemberInfo.Font = new Font("Segoe UI", 10F);
             lblMemberInfo.Location = new Point(22, 55);
             lblMemberInfo.Name = "lblMemberInfo";
-            lblMemberInfo.Size = new Size(182, 19);
+            lblMemberInfo.Size = new Size(181, 19);
             lblMemberInfo.TabIndex = 1;
             lblMemberInfo.Text = "Rental History for Member...";
             // 
@@ -80,25 +82,31 @@
             pnlTop.Dock = DockStyle.Top;
             pnlTop.Location = new Point(0, 0);
             pnlTop.Name = "pnlTop";
+            pnlTop.Padding = new Padding(15);
             pnlTop.Size = new Size(900, 110);
-            pnlTop.TabIndex = 3;
+            pnlTop.TabIndex = 0;
             // 
-            // pnlBottom
+            // tblMain
             // 
-            pnlBottom.Controls.Add(grpItems);
-            pnlBottom.Controls.Add(grpTransactions);
-            pnlBottom.Controls.Add(btnClose);
-            pnlBottom.Dock = DockStyle.Fill;
-            pnlBottom.Location = new Point(0, 110);
-            pnlBottom.Name = "pnlBottom";
-            pnlBottom.Padding = new Padding(15);
-            pnlBottom.Size = new Size(900, 490);
-            pnlBottom.TabIndex = 4;
+            tblMain.ColumnCount = 1;
+            tblMain.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 100F));
+            tblMain.Controls.Add(grpTransactions, 0, 0);
+            tblMain.Controls.Add(grpItems, 0, 1);
+            tblMain.Dock = DockStyle.Fill;
+            tblMain.Location = new Point(0, 110);
+            tblMain.Name = "tblMain";
+            tblMain.Padding = new Padding(15, 10, 15, 10);
+            tblMain.RowCount = 2;
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 45F));
+            tblMain.RowStyles.Add(new RowStyle(SizeType.Percent, 55F));
+            tblMain.Size = new Size(900, 435);
+            tblMain.TabIndex = 1;
             // 
             // grpTransactions
             // 
             grpTransactions.Controls.Add(dgvRentalTransactions);
-            grpTransactions.Location = new Point(18, 18);
+            grpTransactions.Dock = DockStyle.Fill;
+            grpTransactions.Location = new Point(18, 13);
             grpTransactions.Name = "grpTransactions";
             grpTransactions.Size = new Size(864, 180);
             grpTransactions.TabIndex = 0;
@@ -109,6 +117,7 @@
             // 
             dgvRentalTransactions.AllowUserToAddRows = false;
             dgvRentalTransactions.AllowUserToDeleteRows = false;
+            dgvRentalTransactions.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRentalTransactions.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRentalTransactions.Dock = DockStyle.Fill;
             dgvRentalTransactions.Location = new Point(3, 19);
@@ -123,9 +132,10 @@
             // grpItems
             // 
             grpItems.Controls.Add(dgvRentalItems);
-            grpItems.Location = new Point(18, 215);
+            grpItems.Dock = DockStyle.Fill;
+            grpItems.Location = new Point(18, 199);
             grpItems.Name = "grpItems";
-            grpItems.Size = new Size(864, 210);
+            grpItems.Size = new Size(864, 223);
             grpItems.TabIndex = 1;
             grpItems.TabStop = false;
             grpItems.Text = "Items in Selected Rental";
@@ -134,6 +144,7 @@
             // 
             dgvRentalItems.AllowUserToAddRows = false;
             dgvRentalItems.AllowUserToDeleteRows = false;
+            dgvRentalItems.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvRentalItems.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRentalItems.Dock = DockStyle.Fill;
             dgvRentalItems.Location = new Point(3, 19);
@@ -141,15 +152,26 @@
             dgvRentalItems.Name = "dgvRentalItems";
             dgvRentalItems.ReadOnly = true;
             dgvRentalItems.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRentalItems.Size = new Size(858, 188);
+            dgvRentalItems.Size = new Size(858, 201);
             dgvRentalItems.TabIndex = 0;
+            // 
+            // pnlFooter
+            // 
+            pnlFooter.Controls.Add(btnClose);
+            pnlFooter.Dock = DockStyle.Bottom;
+            pnlFooter.Location = new Point(0, 545);
+            pnlFooter.Name = "pnlFooter";
+            pnlFooter.Padding = new Padding(15, 10, 15, 10);
+            pnlFooter.Size = new Size(900, 55);
+            pnlFooter.TabIndex = 2;
             // 
             // btnClose
             // 
-            btnClose.Location = new Point(787, 440);
+            btnClose.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnClose.Location = new Point(790, 12);
             btnClose.Name = "btnClose";
             btnClose.Size = new Size(95, 30);
-            btnClose.TabIndex = 2;
+            btnClose.TabIndex = 0;
             btnClose.Text = "Close";
             btnClose.UseVisualStyleBackColor = true;
             btnClose.Click += btnClose_Click;
@@ -159,18 +181,21 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(900, 600);
-            Controls.Add(pnlBottom);
+            Controls.Add(tblMain);
+            Controls.Add(pnlFooter);
             Controls.Add(pnlTop);
+            MinimumSize = new Size(800, 550);
             Name = "RentalHistoryForm";
-            Text = "Rental History";
             StartPosition = FormStartPosition.CenterParent;
+            Text = "Rental History";
             pnlTop.ResumeLayout(false);
             pnlTop.PerformLayout();
-            pnlBottom.ResumeLayout(false);
+            tblMain.ResumeLayout(false);
             grpTransactions.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvRentalTransactions).EndInit();
             grpItems.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvRentalItems).EndInit();
+            pnlFooter.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -180,11 +205,12 @@
         private Label lblMemberInfo;
         private Label lblError;
         private Panel pnlTop;
-        private Panel pnlBottom;
+        private TableLayoutPanel tblMain;
         private GroupBox grpTransactions;
         private DataGridView dgvRentalTransactions;
         private GroupBox grpItems;
         private DataGridView dgvRentalItems;
+        private Panel pnlFooter;
         private Button btnClose;
     }
 }

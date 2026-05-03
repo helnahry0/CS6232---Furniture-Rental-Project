@@ -189,29 +189,18 @@ namespace FurnitureRental.Controller
         /// <summary>
         /// Calculates the fine or refund amount for a return item.
         /// Positive values indicate fines. Negative values indicate refunds.
+        /// Same-day returns are charged as one rental day.
         /// </summary>
         /// <param name="item">The return item.</param>
         /// <returns>The fine or refund amount.</returns>
         private static decimal CalculateFineOrRefund(ReturnItem item)
         {
-            int plannedDays = (item.DueDate.Date - item.RentalDate.Date).Days + 1;
-            int actualDays = (item.ReturnDate.Date - item.RentalDate.Date).Days + 1;
-
-            if (plannedDays < 1)
-            {
-                plannedDays = 1;
-            }
-
-            if (actualDays < 1)
-            {
-                actualDays = 1;
-            }
+            int plannedDays = Math.Max(1, (item.DueDate.Date - item.RentalDate.Date).Days + 1);
+            int actualDays = Math.Max(1, (item.ReturnDate.Date - item.RentalDate.Date).Days + 1);
 
             int differenceInDays = actualDays - plannedDays;
 
-            decimal amount = differenceInDays * item.DailyRentalRate * item.QuantityToReturn;
-
-            return amount;
+            return differenceInDays * item.DailyRentalRate * item.QuantityToReturn;
         }
 
     }
