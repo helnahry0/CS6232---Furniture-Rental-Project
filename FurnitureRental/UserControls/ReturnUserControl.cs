@@ -255,7 +255,7 @@ namespace FurnitureRental.UserControls
                 OrderId = item.FurnitureId,
                 Name = item.FurnitureName,
                 Qty = item.QuantityToReturn,
-                TotalPrice = item.FineOrRefundAmount
+                TotalPrice = item.AmountDue
             }).ToList();
         }
 
@@ -427,9 +427,16 @@ namespace FurnitureRental.UserControls
             foreach (ReturnItem item in savedTransaction.Items)
             {
                 receipt.AppendLine($"Item: {item.FurnitureName} (Qty: {item.QuantityToReturn})");
-                receipt.AppendLine($"Fine/Refund: {item.FineOrRefundAmount:C}\n");
+                if (item.FineOrRefundAmount < 0)
+                    receipt.AppendLine($"Early Return Refund: {item.FineOrRefundAmount:C}");
+                else if (item.FineOrRefundAmount > 0)
+                    receipt.AppendLine($"Late Fine: {item.FineOrRefundAmount:C}");
+                receipt.AppendLine($"Amount Due: {item.AmountDue:C}\n");
             }
-            receipt.AppendLine($"Total Net Fine/Refund: {savedTransaction.TotalFineOrRefund:C}");
+            receipt.AppendLine($"Total Amount Due: {savedTransaction.TotalAmountDue:C}");
+            if (savedTransaction.TotalFineOrRefund != 0)
+                receipt.AppendLine($"(Includes Net Fine/Refund: {savedTransaction.TotalFineOrRefund:C})");
+
 
             MessageBox.Show(receipt.ToString(), "Return Complete", MessageBoxButtons.OK, MessageBoxIcon.Information);
 

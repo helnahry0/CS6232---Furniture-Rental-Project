@@ -78,7 +78,14 @@
 
         /// <summary>
         /// Gets the number of actual rental days used through the return date.
+        /// A same-day return counts as 1 day.
         /// </summary>
-        public int ActualRentalDays => (ReturnDate.Date - RentalDate.Date).Days + 1;
+        public int ActualRentalDays => Math.Max(1, (ReturnDate.Date - RentalDate.Date).Days + 1);
+
+        /// <summary>
+        /// Gets the total amount the customer owes for this return item.
+        /// same-day returns are billed as one day
+        /// </summary>
+        public decimal AmountDue => QuantityToReturn * DailyRentalRate * ActualRentalDays;
     }
 }
