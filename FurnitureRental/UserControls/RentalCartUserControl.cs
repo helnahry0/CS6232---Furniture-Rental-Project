@@ -151,19 +151,11 @@ namespace FurnitureRental.UserControls
         /// </summary>
         private void RefreshCart()
         {
-            dgvCart.Rows.Clear();
+            cartBindingSource.DataSource = null;
+            cartBindingSource.DataSource = cartItems.ToList();
+            cartBindingSource.ResetBindings(false);
 
-            foreach (CartItem item in cartItems)
-            {
-                dgvCart.Rows.Add(
-                    item.FurnitureId,
-                    item.Name,
-                    item.DailyRate.ToString("C"),
-                    item.Quantity,
-                    item.LineTotal.ToString("C"));
-            }
-
-            lblTotal.Text = $"Cart Total: {cartItems.Sum(x => x.LineTotal):C}";
+            lblTotal.Text = $"Cart Total: {cartItems.Sum(x => x.TotalPrice):C}";
         }
 
         /// <summary>
