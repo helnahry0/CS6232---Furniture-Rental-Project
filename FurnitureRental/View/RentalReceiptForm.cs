@@ -4,25 +4,18 @@ using System.Windows.Forms;
 
 namespace FurnitureRental.View
 {
-    /// <summary>
-    /// Displays the receipt and transaction summary after a rental is submitted.
-    /// </summary>
     public class RentalReceiptForm : Form
     {
         private readonly RentalTransaction _transaction;
 
-        /// <summary>
-        /// Initializes a new instance of the <see cref="RentalReceiptForm"/> class.
-        /// </summary>
-        /// <param name="transaction">The transaction.</param>
         public RentalReceiptForm(RentalTransaction transaction)
         {
             _transaction = transaction;
 
             Text = "Rental Receipt";
             StartPosition = FormStartPosition.CenterParent;
-            MinimumSize = new Size(800, 500);
-            Size = new Size(900, 550);
+            MinimumSize = new Size(850, 550);
+            Size = new Size(950, 600);
 
             InitializeLayout();
         }
@@ -56,15 +49,9 @@ namespace FurnitureRental.View
                 Dock = DockStyle.Top,
                 AutoSize = true,
                 ColumnCount = 1,
-                RowCount = 5,
+                RowCount = 6,
                 Margin = new Padding(0, 0, 0, 12)
             };
-
-            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
-            detailsLayout.RowStyles.Add(new RowStyle(SizeType.AutoSize));
 
             Label lblRentalId = new Label
             {
@@ -87,6 +74,13 @@ namespace FurnitureRental.View
                 Margin = new Padding(3, 3, 3, 6)
             };
 
+            Label lblRentalDate = new Label
+            {
+                Text = $"Rental Date: {_transaction.RentalDate:d}",
+                AutoSize = true,
+                Margin = new Padding(3, 3, 3, 6)
+            };
+
             Label lblDueDate = new Label
             {
                 Text = $"Due Date: {_transaction.DueDate:d}",
@@ -105,8 +99,9 @@ namespace FurnitureRental.View
             detailsLayout.Controls.Add(lblRentalId, 0, 0);
             detailsLayout.Controls.Add(lblMemberId, 0, 1);
             detailsLayout.Controls.Add(lblEmployeeId, 0, 2);
-            detailsLayout.Controls.Add(lblDueDate, 0, 3);
-            detailsLayout.Controls.Add(lblTotalCost, 0, 4);
+            detailsLayout.Controls.Add(lblRentalDate, 0, 3);
+            detailsLayout.Controls.Add(lblDueDate, 0, 4);
+            detailsLayout.Controls.Add(lblTotalCost, 0, 5);
 
             DataGridView dgvReceipt = new DataGridView
             {

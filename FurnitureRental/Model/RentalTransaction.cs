@@ -1,4 +1,5 @@
-﻿namespace FurnitureRental.Model
+﻿using System.Linq;
+namespace FurnitureRental.Model
 {
     /// <summary>
     /// Represents a rental transaction header.

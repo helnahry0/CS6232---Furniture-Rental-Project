@@ -47,6 +47,13 @@
         /// The total price.
         /// </value>
         public decimal TotalPrice => DailyRate * Quantity;
+        /// <summary>
+        /// Gets the line total.
+        /// </summary>
+        /// <value>
+        /// The line total.
+        /// </value>
+        public decimal LineTotal => Quantity * DailyRate;
     }
 }
 

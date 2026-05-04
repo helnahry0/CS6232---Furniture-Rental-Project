@@ -151,30 +151,19 @@ namespace FurnitureRental.UserControls
         /// </summary>
         private void RefreshCart()
         {
-            cartBindingSource.DataSource = null;
-            cartBindingSource.DataSource = cartItems;
+            dgvCart.Rows.Clear();
 
-            lblItemCount.Text = cartItems.Count.ToString();
-            TotalItemCountLabel.Text = cartItems.Sum(x => x.Quantity).ToString();
+            foreach (CartItem item in cartItems)
+            {
+                dgvCart.Rows.Add(
+                    item.FurnitureId,
+                    item.Name,
+                    item.DailyRate.ToString("C"),
+                    item.Quantity,
+                    item.LineTotal.ToString("C"));
+            }
 
-            int rentalDays = GetRentalDays();
-            lblDays.Text = rentalDays.ToString();
-
-            decimal subtotal = cartItems.Sum(x => x.TotalPrice);
-            lblSubtotal.Text = subtotal.ToString("C");
-
-            decimal total = cartItems.Sum(x => x.TotalPrice * rentalDays);
-            lblTotal.Text = total.ToString("C");
-
-            // To prevent invalid row state
-            dgvCart.ClearSelection();
-            dgvCart.CurrentCell = null;
-
-            decimal nextQty = cartItems.Count > 0
-                ? ClampToNumericRange(cartItems[0].Quantity)
-                : numQty.Minimum;
-
-            numQty.Value = nextQty;
+            lblTotal.Text = $"Cart Total: {cartItems.Sum(x => x.LineTotal):C}";
         }
 
         /// <summary>
@@ -195,7 +184,7 @@ namespace FurnitureRental.UserControls
         /// </summary>
         private void btnUpdateQty_Click(object sender, EventArgs e)
         {
-            var item = GetSelectedCartItem();
+            CartItem? item = GetSelectedCartItem();
 
             if (item == null)
             {
@@ -205,24 +194,7 @@ namespace FurnitureRental.UserControls
 
             int newQty = (int)numQty.Value;
 
-            if (newQty <= 0)
-            {
-                MessageBox.Show("Quantity must be greater than 0.");
-                return;
-            }
-
-            if (newQty > item.QuantityOnHand)
-            {
-                MessageBox.Show(
-                    $"Quantity cannot exceed available stock ({item.QuantityOnHand}).",
-                    "Quantity Exceeds Stock",
-                    MessageBoxButtons.OK,
-                    MessageBoxIcon.Warning);
-                return;
-            }
-
-            item.Quantity = newQty;
-            RefreshCart();
+            TryUpdateCartItemQuantity(item, newQty, item.QuantityOnHand);
         }
 
         /// <summary>
@@ -252,49 +224,45 @@ namespace FurnitureRental.UserControls
         }
 
         /// <summary>
-        /// Adds a furniture item to the cart or increments the quantity if it already exists.
+        /// Adds the item to cart.
         /// </summary>
-        /// <param name="furniture">The furniture item to add.</param>
-        /// <param name="quantity">The number of units to add.</param>
-        public void AddToCart(Furniture furniture, int quantityonHand)
+        /// <param name="furnitureId">The furniture identifier.</param>
+        /// <param name="furnitureName">Name of the furniture.</param>
+        /// <param name="dailyRentalRate">The daily rental rate.</param>
+        /// <param name="quantityToAdd">The quantity to add.</param>
+        /// <param name="quantityOnHand">The quantity on hand.</param>
+        private void AddItemToCart(int furnitureId, string furnitureName, decimal dailyRentalRate, int quantityToAdd, int quantityOnHand)
         {
-            if (furniture == null) return;
+            CartItem? existingItem = cartItems.FirstOrDefault(x => x.FurnitureId == furnitureId);
 
-            if (quantityonHand <= 0)
-            {
-                MessageBox.Show("Quantity must be greater than 0.");
-                return;
-            }
+            int quantityAlreadyInCart = existingItem?.Quantity ?? 0;
+            int newTotalQuantity = quantityAlreadyInCart + quantityToAdd;
 
-            var existing = cartItems.FirstOrDefault(x => x.FurnitureId == furniture.FurnitureId);
-            int currentQtyInCart = existing?.Quantity ?? 0;
-            int requestedTotal = currentQtyInCart + 1;
-            if (requestedTotal > furniture.QuantityOnHand)
+            if (newTotalQuantity > quantityOnHand)
             {
                 MessageBox.Show(
-                    $"Cannot add item. Available stock is {furniture.QuantityOnHand}, and the cart would total {requestedTotal}.",
-                    "Quantity Exceeds Stock",
+                    $"Cannot add that quantity.\n\nAvailable: {quantityOnHand}\nAlready in cart: {quantityAlreadyInCart}\nRequested to add: {quantityToAdd}",
+                    "Quantity Exceeds Available Stock",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
                 return;
             }
 
-            if (existing != null)
+            if (existingItem != null)
             {
-                existing.Quantity = requestedTotal;
+                existingItem.Quantity = newTotalQuantity;
             }
             else
             {
                 cartItems.Add(new CartItem
                 {
-                    FurnitureId = furniture.FurnitureId,
-                    Name = furniture.FurnitureName,
-                    DailyRate = furniture.DailyRentalRate,
-                    Quantity = 1,
-                    QuantityOnHand = quantityonHand
+                    FurnitureId = furnitureId,
+                    Name = furnitureName,
+                    DailyRate = dailyRentalRate,
+                    Quantity = quantityToAdd
                 });
             }
-            MessageBox.Show("Item Added to Cart.");
+
             RefreshCart();
         }
 
@@ -328,6 +296,19 @@ namespace FurnitureRental.UserControls
                 return;
             }
 
+            decimal cartTotal = cartItems.Sum(x => x.TotalPrice) * GetRentalDays();
+
+            DialogResult confirmResult = MessageBox.Show(
+                $"Submit this rental?\n\nMember ID: {memberId}\nItems: {cartItems.Count}\nRental Days: {GetRentalDays()}\nTotal: {cartTotal:C}",
+                "Confirm Rental Submission",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question);
+
+            if (confirmResult != DialogResult.Yes)
+            {
+                return;
+            }
+
             RentalTransaction rentalTransaction = new RentalTransaction
             {
                 MemberId = memberId,
@@ -337,7 +318,9 @@ namespace FurnitureRental.UserControls
                 Items = cartItems.Select(x => new RentalHistoryItem
                 {
                     FurnitureId = x.FurnitureId,
-                    QuantityRented = x.Quantity
+                    FurnitureName = x.Name,
+                    QuantityRented = x.Quantity,
+                    DailyRentalRate = x.DailyRate
                 }).ToList()
             };
 
@@ -413,6 +396,29 @@ namespace FurnitureRental.UserControls
         {
             // Disable Submit Rental button
             btnSubmitRental.Enabled = false;
+        }
+
+        private bool TryUpdateCartItemQuantity(CartItem item, int newQuantity, int quantityOnHand)
+        {
+            if (newQuantity <= 0)
+            {
+                MessageBox.Show("Quantity must be greater than 0.");
+                return false;
+            }
+
+            if (newQuantity > quantityOnHand)
+            {
+                MessageBox.Show(
+                    $"Quantity cannot exceed available stock ({quantityOnHand}).",
+                    "Quantity Exceeds Stock",
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Warning);
+                return false;
+            }
+
+            item.Quantity = newQuantity;
+            RefreshCart();
+            return true;
         }
     }
 }

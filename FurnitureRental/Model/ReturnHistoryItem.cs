@@ -35,5 +35,12 @@
         /// Positive values mean fines. Negative values mean refunds.
         /// </summary>
         public decimal FineOrRefundAmount { get; set; }
+        /// <summary>
+        /// Gets the line total.
+        /// </summary>
+        /// <value>
+        /// The line total.
+        /// </value>
+        public decimal LineTotal => QuantityReturned * FineOrRefundAmount;
     }
 }
