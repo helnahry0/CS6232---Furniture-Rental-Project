@@ -176,9 +176,9 @@ GO
 INSERT INTO dbo.Employee
 (role, dob, first_name, last_name, phone, address1, address2, city, state, zip, username, password)
 VALUES
-('Admin', '1995-08-20', 'Jane', 'Smith', '4785552222', '456 Oak Rd', NULL, 'Warner Robins', 'GA', '31088', 'admin1', 'admin123'),
-('Employee', '2000-01-01', 'Brendan', 'Warren', '4785551111', '123 Main St', NULL, 'Macon', 'GA', '31210', 'bwarren', 'test123'),
-('Employee', '1999-03-10', 'Alex', 'Taylor', '7705553333', '789 Pine Ave', NULL, 'Atlanta', 'GA', '30301', 'ataylor', 'test456');
+('Admin', '1995-08-20', 'Jane', 'Smith', '4785552222', '456 Oak Rd', NULL, 'Warner Robins', 'GA', '31088', 'admin1', '240BE518FABD2724DDB6F04EEB1DA5967448D7E831C08C8FA822809F74C720A9'),
+('Employee', '2000-01-01', 'Brendan', 'Warren', '4785551111', '123 Main St', NULL, 'Macon', 'GA', '31210', 'bwarren', 'ECD71870D1963316A97E3AC3408C9835AD8CF0F3C1BC703527C30265534F75AE'),
+('Employee', '1999-03-10', 'Alex', 'Taylor', '7705553333', '789 Pine Ave', NULL, 'Atlanta', 'GA', '30301', 'ataylor', '50E49EFDE4E37D84B97B14AC4F7D03BA956F1413F7367090BAEABAC67BF69704');
 GO
 
 /* Furniture Category Seeds */

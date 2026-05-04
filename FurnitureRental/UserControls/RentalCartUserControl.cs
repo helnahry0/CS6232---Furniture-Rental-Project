@@ -224,24 +224,27 @@ namespace FurnitureRental.UserControls
         }
 
         /// <summary>
-        /// Adds the item to cart.
+        /// Adds to cart.
         /// </summary>
-        /// <param name="furnitureId">The furniture identifier.</param>
-        /// <param name="furnitureName">Name of the furniture.</param>
-        /// <param name="dailyRentalRate">The daily rental rate.</param>
+        /// <param name="furniture">The furniture.</param>
         /// <param name="quantityToAdd">The quantity to add.</param>
-        /// <param name="quantityOnHand">The quantity on hand.</param>
-        private void AddItemToCart(int furnitureId, string furnitureName, decimal dailyRentalRate, int quantityToAdd, int quantityOnHand)
+        public void AddToCart(Furniture furniture, int quantityToAdd)
         {
-            CartItem? existingItem = cartItems.FirstOrDefault(x => x.FurnitureId == furnitureId);
+            if (furniture == null)
+            {
+                MessageBox.Show("Invalid furniture item.");
+                return;
+            }
+
+            CartItem? existingItem = cartItems.FirstOrDefault(x => x.FurnitureId == furniture.FurnitureId);
 
             int quantityAlreadyInCart = existingItem?.Quantity ?? 0;
             int newTotalQuantity = quantityAlreadyInCart + quantityToAdd;
 
-            if (newTotalQuantity > quantityOnHand)
+            if (newTotalQuantity > furniture.QuantityOnHand)
             {
                 MessageBox.Show(
-                    $"Cannot add that quantity.\n\nAvailable: {quantityOnHand}\nAlready in cart: {quantityAlreadyInCart}\nRequested to add: {quantityToAdd}",
+                    $"Cannot add that quantity.\n\nAvailable: {furniture.QuantityOnHand}\nAlready in cart: {quantityAlreadyInCart}\nRequested to add: {quantityToAdd}",
                     "Quantity Exceeds Available Stock",
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Warning);
@@ -251,15 +254,19 @@ namespace FurnitureRental.UserControls
             if (existingItem != null)
             {
                 existingItem.Quantity = newTotalQuantity;
+                existingItem.QuantityOnHand = furniture.QuantityOnHand;
+                existingItem.DailyRate = furniture.DailyRentalRate;
+                existingItem.Name = furniture.FurnitureName;
             }
             else
             {
                 cartItems.Add(new CartItem
                 {
-                    FurnitureId = furnitureId,
-                    Name = furnitureName,
-                    DailyRate = dailyRentalRate,
-                    Quantity = quantityToAdd
+                    FurnitureId = furniture.FurnitureId,
+                    Name = furniture.FurnitureName,
+                    DailyRate = furniture.DailyRentalRate,
+                    Quantity = quantityToAdd,
+                    QuantityOnHand = furniture.QuantityOnHand
                 });
             }
 
