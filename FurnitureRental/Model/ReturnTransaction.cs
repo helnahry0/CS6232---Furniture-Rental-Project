@@ -34,5 +34,10 @@
         /// Gets the total fine or refund amount for the return transaction.
         /// </summary>
         public decimal TotalFineOrRefund => Items.Sum(item => item.FineOrRefundAmount);
+
+        /// <summary>
+        /// Gets the total amount the customer owes across all returned items.
+        /// </summary>
+        public decimal TotalAmountDue => Items.Sum(item => item.AmountDue);
     }
 }
