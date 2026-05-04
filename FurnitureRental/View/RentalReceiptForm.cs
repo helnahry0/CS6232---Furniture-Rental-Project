@@ -20,8 +20,23 @@ namespace FurnitureRental.View
             InitializeLayout();
         }
 
+        private int GetReceiptRentalDays()
+        {
+            int days = (_transaction.DueDate.Date - _transaction.RentalDate.Date).Days;
+            return days <= 0 ? 1 : days;
+        }
+
+        private decimal GetReceiptTotal()
+        {
+            int rentalDays = GetReceiptRentalDays();
+            return _transaction.Items.Sum(x => x.QuantityRented * x.DailyRentalRate) * rentalDays;
+        }
+
         private void InitializeLayout()
         {
+            int rentalDays = GetReceiptRentalDays();
+            decimal receiptTotal = GetReceiptTotal();
+
             TableLayoutPanel mainLayout = new TableLayoutPanel
             {
                 Dock = DockStyle.Fill,
@@ -49,7 +64,7 @@ namespace FurnitureRental.View
                 Dock = DockStyle.Top,
                 AutoSize = true,
                 ColumnCount = 1,
-                RowCount = 6,
+                RowCount = 7,
                 Margin = new Padding(0, 0, 0, 12)
             };
 
@@ -88,9 +103,16 @@ namespace FurnitureRental.View
                 Margin = new Padding(3, 3, 3, 6)
             };
 
+            Label lblRentalDays = new Label
+            {
+                Text = $"Rental Days: {rentalDays}",
+                AutoSize = true,
+                Margin = new Padding(3, 3, 3, 6)
+            };
+
             Label lblTotalCost = new Label
             {
-                Text = $"Total Cost: {_transaction.TotalCost:C}",
+                Text = $"Total Cost: {receiptTotal:C}",
                 Font = new Font("Segoe UI", 10, FontStyle.Bold),
                 AutoSize = true,
                 Margin = new Padding(3, 3, 3, 6)
@@ -101,7 +123,8 @@ namespace FurnitureRental.View
             detailsLayout.Controls.Add(lblEmployeeId, 0, 2);
             detailsLayout.Controls.Add(lblRentalDate, 0, 3);
             detailsLayout.Controls.Add(lblDueDate, 0, 4);
-            detailsLayout.Controls.Add(lblTotalCost, 0, 5);
+            detailsLayout.Controls.Add(lblRentalDays, 0, 5);
+            detailsLayout.Controls.Add(lblTotalCost, 0, 6);
 
             DataGridView dgvReceipt = new DataGridView
             {
@@ -123,13 +146,15 @@ namespace FurnitureRental.View
 
             foreach (RentalHistoryItem item in _transaction.Items)
             {
+                decimal itemTotal = item.QuantityRented * item.DailyRentalRate * rentalDays;
+
                 dgvReceipt.Rows.Add(
                     item.FurnitureId,
                     item.FurnitureName,
                     _transaction.DueDate.ToShortDateString(),
                     item.DailyRentalRate.ToString("C"),
                     item.QuantityRented,
-                    item.LineTotal.ToString("C"));
+                    itemTotal.ToString("C"));
             }
 
             FlowLayoutPanel buttonPanel = new FlowLayoutPanel

@@ -225,23 +225,15 @@ namespace FurnitureRental.UserControls
             }
 
             var row = FurnitureDataGridView.CurrentRow;
-
             var furniture = (Furniture)row.DataBoundItem;
 
-            object cellValue = row.Cells["QuantityOnHand"].Value;
-            if (cellValue == null || !int.TryParse(cellValue.ToString(), out int qty))
+            if (furniture.QuantityOnHand <= 0)
             {
-                MessageBox.Show("Invalid quantity value.");
+                MessageBox.Show("Selected item is not in stock.");
                 return;
             }
 
-            if (qty <= 0)
-            {
-                MessageBox.Show("Selected Item Not in Stock.");
-                return;
-            }
-
-            RentalCart?.AddToCart(furniture, qty);
+            RentalCart?.AddToCart(furniture, 1);
         }
     }
 }

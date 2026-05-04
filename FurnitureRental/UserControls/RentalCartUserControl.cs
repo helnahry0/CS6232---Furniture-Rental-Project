@@ -1,5 +1,6 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
+using System.ComponentModel;
 
 namespace FurnitureRental.UserControls
 {
@@ -22,7 +23,8 @@ namespace FurnitureRental.UserControls
         /// <summary>
         /// list representing items currently in the cart
         /// </summary>
-        private List<CartItem> cartItems = new List<CartItem>();
+        //private List<CartItem> cartItems = new List<CartItem>();
+        private BindingList<CartItem> cartItems = new BindingList<CartItem>();
 
         /// <summary>
         /// used to bind cart items to the Datagrid view
@@ -38,8 +40,13 @@ namespace FurnitureRental.UserControls
             InitializeComponent();
             SetupCartGrid();
 
+            //dgvCart.DataSource = cartBindingSource;
+            //dgvCart.CellContentClick += DgvCart_CellContentClick;
+
+            cartBindingSource.DataSource = cartItems;
             dgvCart.DataSource = cartBindingSource;
             dgvCart.CellContentClick += DgvCart_CellContentClick;
+
 
             // Set a valid range for quantity editing.
             numQty.Minimum = 1;
@@ -151,11 +158,19 @@ namespace FurnitureRental.UserControls
         /// </summary>
         private void RefreshCart()
         {
-            cartBindingSource.DataSource = null;
-            cartBindingSource.DataSource = cartItems.ToList();
             cartBindingSource.ResetBindings(false);
 
-            lblTotal.Text = $"Cart Total: {cartItems.Sum(x => x.TotalPrice):C}";
+            int itemCount = cartItems.Count;
+            int rentalDays = GetRentalDays();
+            int totalQuantity = cartItems.Sum(x => x.Quantity);
+            decimal subtotal = cartItems.Sum(x => x.TotalPrice);
+            decimal total = subtotal * rentalDays;
+
+            lblItemCount.Text = itemCount.ToString();
+            lblSubtotal.Text = subtotal.ToString("C");
+            lblDays.Text = rentalDays.ToString();
+            TotalItemCountLabel.Text = totalQuantity.ToString();
+            lblTotal.Text = total.ToString("C");
         }
 
         /// <summary>
@@ -295,13 +310,15 @@ namespace FurnitureRental.UserControls
                 return;
             }
 
-            decimal cartTotal = cartItems.Sum(x => x.TotalPrice) * GetRentalDays();
+            int rentalDays = GetRentalDays();
+            decimal dailySubtotal = cartItems.Sum(x => x.TotalPrice);
+            decimal cartTotal = cartItems.Sum(x => x.TotalPrice) * rentalDays;
 
             DialogResult confirmResult = MessageBox.Show(
-                $"Submit this rental?\n\nMember ID: {memberId}\nItems: {cartItems.Count}\nRental Days: {GetRentalDays()}\nTotal: {cartTotal:C}",
-                "Confirm Rental Submission",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Question);
+            $"Submit this rental?\n\nMember ID: {memberId}\nItems: {cartItems.Count}\nRental Days: {rentalDays}\nTotal: {cartTotal:C}",
+            "Confirm Rental Submission",
+            MessageBoxButtons.YesNo,
+            MessageBoxIcon.Question);
 
             if (confirmResult != DialogResult.Yes)
             {
@@ -312,8 +329,8 @@ namespace FurnitureRental.UserControls
             {
                 MemberId = memberId,
                 EmployeeId = CurrentUser.Employee.EmployeeId,
-                RentalDate = DateTime.Now,
-                DueDate = dtpDueDate.Value,
+                RentalDate = DateTime.Today,
+                DueDate = dtpDueDate.Value.Date,
                 Items = cartItems.Select(x => new RentalHistoryItem
                 {
                     FurnitureId = x.FurnitureId,
@@ -335,10 +352,10 @@ namespace FurnitureRental.UserControls
             }
 
             MessageBox.Show(
-                $"Rental submitted successfully.\n\nRental ID: {savedTransaction.RentalTransactionId}\nTotal Cost: {savedTransaction.TotalCost:C}",
-                "Transaction Summary",
-                MessageBoxButtons.OK,
-                MessageBoxIcon.Information);
+             $"Rental submitted successfully.\n\nRental ID: {savedTransaction.RentalTransactionId}\nTotal Cost: {cartTotal:C}",
+             "Transaction Summary",
+             MessageBoxButtons.OK,
+             MessageBoxIcon.Information);
 
             using FurnitureRental.View.RentalReceiptForm receiptForm =
                 new FurnitureRental.View.RentalReceiptForm(savedTransaction);
