@@ -1,5 +1,4 @@
-﻿using FurnitureRental.DAL;
-using FurnitureRental.Model;
+﻿using FurnitureRental.Model;
 using FurnitureRental.Security;
 using Microsoft.Data.SqlClient;
 using System.Data;

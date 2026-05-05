@@ -1,6 +1,4 @@
 ﻿using FurnitureRental.Model;
-using System.Drawing;
-using System.Windows.Forms;
 
 namespace FurnitureRental.View
 {

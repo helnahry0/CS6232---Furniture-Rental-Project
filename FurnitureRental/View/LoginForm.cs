@@ -1,8 +1,6 @@
 ﻿using FurnitureRental.Controller;
 using FurnitureRental.Model;
-using FurnitureRental.Security;
 using FurnitureRental.View;
-using System.Text;
 
 namespace FurnitureRental
 {

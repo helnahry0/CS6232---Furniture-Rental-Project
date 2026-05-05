@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-
-namespace FurnitureRental.Model
+﻿namespace FurnitureRental.Model
 {
     public class RentalTransaction
     {
