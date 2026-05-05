@@ -11,3 +11,12 @@ To Generate Admin Report:
 4. Open the New Query
 5. Paste the Procedure Script from ReportProcedure.SQL
 6. Click Execute
+
+
+Hashed Password: 
+
+Passwords are stored using SHA-256 hashing instead of plain text for improved security. 
+
+
+1. Rerun the FurnitureRentalDBGenerator.sql once.
+2. Now, login with username and password. 
