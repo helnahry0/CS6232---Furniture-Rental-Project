@@ -278,6 +278,12 @@ namespace FurnitureRental.UserControls
             }
 
             RefreshCart();
+
+            MessageBox.Show(
+                $"{furniture.FurnitureName} was added to the cart.",
+                "Added to Cart",
+                MessageBoxButtons.OK,
+                MessageBoxIcon.Information);
         }
 
         /// <summary>
